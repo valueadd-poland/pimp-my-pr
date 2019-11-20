@@ -1,0 +1,21 @@
+{
+  "npmScope": "pimp-my-pr",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "pmp-web-e2e": {
+      "tags": ["type:application", "scope:pmp"]
+    },
+    "pmp-web": {
+      "tags": ["type:application", "scope:pmp"]
+    },
+    "pmp-api": {
+      "tags": ["type:application", "scope:pmp"]
+    }
+  }
+}
