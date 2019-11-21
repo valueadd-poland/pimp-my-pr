@@ -1,0 +1,130 @@
+{
+  branch: {
+    // types of branches
+    types: [
+      'feature',
+      'bugfix',
+      'hotfix',
+      'release'
+    ]
+  },
+  change: {
+    // max number of added lines in change request, default: -1
+    maxAdditions: -1,
+    // max number of deleted lines in change request, default: -1
+    maxDeletions: -1,
+    // max number of edited files in change request, default: -1
+    maxFiles: -1
+  },
+  commitlint: {
+    'body-leading-blank': [
+      2,
+      'always'
+    ],
+    'footer-leading-blank': [
+      2,
+      'always'
+    ],
+    'header-max-length': [
+      2,
+      'always',
+      72
+    ],
+    'body-max-line-length': [
+      2,
+      'always',
+      72
+    ],
+    'footer-max-line-length': [
+      2,
+      'always',
+      72
+    ],
+    'scope-case': [
+      2,
+      'always',
+      'lower-case'
+    ],
+    'subject-case': [
+      2,
+      'never',
+      [
+        'sentence-case',
+        'start-case',
+        'pascal-case',
+        'upper-case'
+      ]
+    ],
+    'subject-empty': [
+      2,
+      'never'
+    ],
+    'subject-full-stop': [
+      2,
+      'never',
+      '.'
+    ],
+    'type-case': [
+      2,
+      'always',
+      'lower-case'
+    ],
+    'type-empty': [
+      2,
+      'never'
+    ],
+    'type-enum': [
+      2,
+      'always',
+      [
+        'build',
+        'chore',
+        'ci',
+        'docs',
+        'feat',
+        'fix',
+        'perf',
+        'refactor',
+        'release',
+        'style',
+        'test',
+        'translation'
+      ]
+    ],
+    'scope-enum': [
+      2,
+      'always',
+      [
+        'pmp',
+        'pmp-api',
+        'pmp-web'
+      ]
+    ]
+  },
+  prettier: {
+    // extensions to check with prettier
+    extensionsToCheck: [
+      '.json',
+      '.ts',
+      '.js',
+      '.html',
+      '.css',
+      '.scss'
+    ]
+  },
+  nxTagsValidator: {
+    // ignore default tags
+    ignore: [
+      'scope:shared',
+      'type:application',
+      'type:config',
+      'type:core',
+      'type:data-access',
+      'type:domain',
+      'type:feature',
+      'type:shell',
+      'type:ui',
+      'type:util'
+    ]
+  }
+}

@@ -56,8 +56,67 @@
         "allow": [],
         "depConstraints": [
           {
-            "sourceTag": "*",
+            "sourceTag": "type:application",
             "onlyDependOnLibsWithTags": ["*"]
+          },
+          {
+            "sourceTag": "type:feature",
+            "onlyDependOnLibsWithTags": ["*"]
+          },
+          {
+            "sourceTag": "type:shell",
+            "onlyDependOnLibsWithTags": ["*"]
+          },
+          {
+            "sourceTag": "type:config",
+            "onlyDependOnLibsWithTags": ["type:config"]
+          },
+          {
+            "sourceTag": "type:util",
+            "onlyDependOnLibsWithTags": [
+              "type:util",
+              "type:config",
+              "type:domain"
+            ]
+          },
+          {
+            "sourceTag": "type:ui",
+            "onlyDependOnLibsWithTags": [
+              "type:ui",
+              "type:config",
+              "type:util",
+              "type:domain"
+            ]
+          },
+          {
+            "sourceTag": "type:core",
+            "onlyDependOnLibsWithTags": [
+              "type:config",
+              "type:util",
+              "type:domain"
+            ]
+          },
+          {
+            "sourceTag": "type:domain",
+            "onlyDependOnLibsWithTags": ["type:domain"]
+          },
+          {
+            "sourceTag": "type:data-access",
+            "onlyDependOnLibsWithTags": [
+              "type:data-access",
+              "type:util",
+              "type:domain",
+              "type:core",
+              "type:config"
+            ]
+          },
+          {
+            "sourceTag": "scope:pmp-web",
+            "onlyDependOnLibsWithTags": ["scope:shared", "scope:pmp-web"]
+          },
+          {
+            "sourceTag": "scope:pmp-api",
+            "onlyDependOnLibsWithTags": ["scope:shared", "scope:pmp-api"]
           }
         ]
       }
