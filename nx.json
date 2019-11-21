@@ -9,13 +9,13 @@
   },
   "projects": {
     "pmp-web-e2e": {
-      "tags": ["type:application", "scope:pmp"]
+      "tags": ["type:application", "scope:pmp-web"]
     },
     "pmp-web": {
-      "tags": ["type:application", "scope:pmp"]
+      "tags": ["type:application", "scope:pmp-web"]
     },
     "pmp-api": {
-      "tags": ["type:application", "scope:pmp"]
+      "tags": ["type:application", "scope:pmp-api"]
     }
   }
 }

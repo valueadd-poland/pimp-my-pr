@@ -21,7 +21,10 @@
             "polyfills": "apps/pmp-web/src/polyfills.ts",
             "tsConfig": "apps/pmp-web/tsconfig.app.json",
             "aot": false,
-            "assets": ["apps/pmp-web/src/favicon.ico", "apps/pmp-web/src/assets"],
+            "assets": [
+              "apps/pmp-web/src/favicon.ico",
+              "apps/pmp-web/src/assets"
+            ],
             "styles": ["apps/pmp-web/src/styles.scss"],
             "scripts": []
           },
