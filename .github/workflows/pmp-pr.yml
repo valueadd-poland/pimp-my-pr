@@ -1,6 +1,9 @@
-name: PMP CI
+name: PMP PR CI
 
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - master
 
 jobs:
   setup:

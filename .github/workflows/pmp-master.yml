@@ -1,0 +1,40 @@
+name: PMP MASTER CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: use master
+      run: git branch master origin/master #https://github.com/nrwl/nx/issues/1988
+    - name: npm install
+      run: |
+        npm ci
+    - name: validate nx tags
+      run: node ./node_modules/@valueadd/dev validate-nx-tags
+    - name: prettier check
+      run: npm run format:check
+    - name: build
+      run: npm run affected:build -- --all
+    - name: test
+      run: npm run affected:test -- --all
+    - name: e2e
+      run: npm run affected:e2e -- --all
+    - name: lint
+      run: npm run affected:lint -- --all
+      env:
+        CI: true
