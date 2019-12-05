@@ -16,6 +16,24 @@
     },
     "pmp-api": {
       "tags": ["type:application", "scope:pmp-api"]
+    },
+    "pmp-web-repository-users-feature": {
+      "tags": ["type:feature", "scope:pmp-web-repository-users"]
+    },
+    "pmp-web-shared-ui-table": {
+      "tags": ["type:ui", "scope:pmp-web-shared"]
+    },
+    "pmp-web-shared-domain": {
+      "tags": ["type:domain", "scope:pmp-web-shared"]
+    },
+    "pmp-web-shared-util": {
+      "tags": ["type:util", "scope:pmp-web-shared"]
+    },
+    "pmp-web-shared-ui-navbar": {
+      "tags": ["type:ui", "scope:pmp-web-shared"]
+    },
+    "pmp-web-shared-ui-sidebar": {
+      "tags": ["type:ui", "scope:pmp-web-shared"]
     }
   }
 }

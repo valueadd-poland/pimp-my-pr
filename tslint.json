@@ -117,6 +117,17 @@
           {
             "sourceTag": "scope:pmp-api",
             "onlyDependOnLibsWithTags": ["scope:shared", "scope:pmp-api"]
+          },
+          {
+            "sourceTag": "scope:pmp-web-repository-users",
+            "onlyDependOnLibsWithTags": [
+              "scope:pmp-web-shared",
+              "scope:pmp-web-repository-users"
+            ]
+          },
+          {
+            "sourceTag": "scope:pmp-web-shared",
+            "onlyDependOnLibsWithTags": ["scope:pmp-web-shared"]
           }
         ]
       }

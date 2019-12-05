@@ -3,7 +3,7 @@ import { getGreeting } from '../support/app.po';
 describe('pmp', () => {
   beforeEach(() => cy.visit('/'));
 
-  it('should display welcome message', () => {
-    getGreeting().contains('Welcome to pmp!');
+  it('should display repository users with table', () => {
+    getGreeting().contains('<pimp-my-pr-table>');
   });
 });

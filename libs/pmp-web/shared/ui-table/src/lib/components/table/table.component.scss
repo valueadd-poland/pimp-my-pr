@@ -1,0 +1,21 @@
+mat-header-cell > span {
+  font-size: 14px;
+  font-weight: normal;
+  padding: 0 5px;
+}
+
+mat-header-cell > span > mat-icon {
+  color: #000000;
+}
+
+.avatar-column {
+  flex: unset;
+  padding-left: 30px;
+  width: 62px;
+}
+
+.link-column {
+  flex: unset;
+  width: 90px;
+  color: rgba(0, 0, 0, 0.6);
+}

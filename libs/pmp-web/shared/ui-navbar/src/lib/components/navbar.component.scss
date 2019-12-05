@@ -1,0 +1,33 @@
+.navbar__container {
+  background: #17304e;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.navbar__title {
+  text-transform: uppercase;
+  font-size: 20px;
+
+  display: flex;
+  align-items: center;
+}
+
+.navbar__user-info {
+  display: flex;
+
+  span {
+    display: flex;
+    align-items: center;
+    margin: 0 40px 0 20px;
+  }
+
+  mat-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 32px;
+  }
+}
