@@ -15,7 +15,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@pimp-my-pr/pmp-web/shell": ["libs/pmp-web/shell/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

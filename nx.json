@@ -16,6 +16,9 @@
     },
     "pmp-api": {
       "tags": ["type:application", "scope:pmp-api"]
+    },
+    "pmp-web-shell": {
+      "tags": ["scope:pmp-web", "type:shell"]
     }
   }
 }

@@ -1,9 +1,9 @@
-import { getGreeting } from '../support/app.po';
+import { getRoot } from '../support/app.po';
 
 describe('pmp', () => {
   beforeEach(() => cy.visit('/'));
 
-  it('should display welcome message', () => {
-    getGreeting().contains('Welcome to pmp!');
+  it('should have root component', () => {
+    expect(getRoot()).to.exist;
   });
 });
