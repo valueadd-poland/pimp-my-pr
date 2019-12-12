@@ -1,14 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PmpWebShellModule } from '@pimp-my-pr/pmp-web/shell';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule, BrowserAnimationsModule],
-  providers: [],
+  imports: [PmpWebShellModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

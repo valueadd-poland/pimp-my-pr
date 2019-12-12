@@ -179,6 +179,37 @@
           }
         }
       }
+    },
+    "pmp-web-shell": {
+      "projectType": "library",
+      "root": "libs/pmp-web/shell",
+      "sourceRoot": "libs/pmp-web/shell/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shell/tsconfig.lib.json",
+              "libs/pmp-web/shell/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shell/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shell/jest.config.js",
+            "tsConfig": "libs/pmp-web/shell/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/shell/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
