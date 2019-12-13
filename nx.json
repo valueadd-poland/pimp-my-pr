@@ -25,6 +25,9 @@
     },
     "pmp-api-project-shell": {
       "tags": ["scope:pmp-api", "type:shell"]
+    },
+    "pmp-api-e2e": {
+      "tags": ["type:application", "scope:pmp-api"]
     }
   }
 }
