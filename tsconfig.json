@@ -31,6 +31,9 @@
       ],
       "@pimp-my-pr/pmp-api/project/domain": [
         "libs/pmp-api/project/domain/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-api/shared/config": [
+        "libs/pmp-api/shared/config/src/index.ts"
       ]
     }
   },

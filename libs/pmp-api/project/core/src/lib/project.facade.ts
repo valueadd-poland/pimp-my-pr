@@ -12,8 +12,10 @@ export class ProjectFacade {
   async createProject(command: CreateProjectCommand): Promise<unknown> {
     return this.commandBus.execute(command);
   }
-  async getAllExternalProjects(): Promise<Project[]> {
-    return this.queryBus.execute(new GetAllExternalProjectsQuery());
+  async getAllExternalProjects(
+    command: GetAllExternalProjectsQuery
+  ): Promise<Project[]> {
+    return this.queryBus.execute(command);
   }
 
   async sync(): Promise<void> {

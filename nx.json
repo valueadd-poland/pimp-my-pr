@@ -37,6 +37,9 @@
     },
     "pmp-api-project-domain": {
       "tags": ["scope:pmp-api", "type:domain"]
+    },
+    "pmp-api-shared-config": {
+      "tags": ["scope:pmp-api", "type:config"]
     }
   }
 }

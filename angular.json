@@ -364,6 +364,31 @@
           }
         }
       }
+    },
+    "pmp-api-shared-config": {
+      "root": "libs/pmp-api/shared/config",
+      "sourceRoot": "libs/pmp-api/shared/config/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-api/shared/config/tsconfig.lib.json",
+              "libs/pmp-api/shared/config/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-api/shared/config/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-api/shared/config/jest.config.js",
+            "tsConfig": "libs/pmp-api/shared/config/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {

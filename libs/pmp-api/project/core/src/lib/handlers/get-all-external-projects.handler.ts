@@ -7,6 +7,6 @@ export class GetAllExternalProjectsHandler
   implements IQueryHandler<GetAllExternalProjectsQuery, Project[]> {
   constructor(private projectRepository: ProjectRepository) {}
   execute(query: GetAllExternalProjectsQuery): Promise<Project[]> {
-    return this.projectRepository.getAllExternalProjects();
+    return this.projectRepository.getAllExternalProjects(query.tokens);
   }
 }

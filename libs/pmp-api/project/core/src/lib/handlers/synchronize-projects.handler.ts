@@ -2,6 +2,7 @@ import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { SynchronizeProjectsCommand } from '../commands/synchronize-projects.command';
 import { CreateProjectCommand } from '../commands/create-project.command';
 import { ProjectFacade } from '../project.facade';
+import { GetAllExternalProjectsQuery } from '../queries/get-all-external-projects.query';
 
 @CommandHandler(SynchronizeProjectsCommand)
 export class SynchronizeProjectsHandler
@@ -9,7 +10,10 @@ export class SynchronizeProjectsHandler
   constructor(private projectFacade: ProjectFacade) {}
 
   async execute(command: SynchronizeProjectsCommand): Promise<void> {
-    const projects = await this.projectFacade.getAllExternalProjects();
+    // TODO get access tokens
+    const projects = await this.projectFacade.getAllExternalProjects(
+      new GetAllExternalProjectsQuery({})
+    );
     for (const project of projects) {
       await this.projectFacade.createProject(new CreateProjectCommand(project));
     }
