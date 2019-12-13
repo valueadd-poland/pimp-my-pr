@@ -97,6 +97,7 @@
             "onlyDependOnLibsWithTags": [
               "type:config",
               "type:util",
+              "type:data-access",
               "type:domain"
             ]
           },

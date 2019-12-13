@@ -31,6 +31,12 @@
     },
     "pmp-api-project-core": {
       "tags": ["scope:pmp-api", "type:core"]
+    },
+    "pmp-api-project-data-access": {
+      "tags": ["scope:pmp-api", "type:data-access"]
+    },
+    "pmp-api-project-domain": {
+      "tags": ["scope:pmp-api", "type:domain"]
     }
   }
 }

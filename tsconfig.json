@@ -25,6 +25,12 @@
       ],
       "@pimp-my-pr/pmp-api/project/core": [
         "libs/pmp-api/project/core/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-api/project/data-access": [
+        "libs/pmp-api/project/data-access/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-api/project/domain": [
+        "libs/pmp-api/project/domain/src/index.ts"
       ]
     }
   },

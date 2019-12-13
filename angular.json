@@ -311,6 +311,59 @@
           }
         }
       }
+    },
+    "pmp-api-project-data-access": {
+      "root": "libs/pmp-api/project/data-access",
+      "sourceRoot": "libs/pmp-api/project/data-access/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-api/project/data-access/tsconfig.lib.json",
+              "libs/pmp-api/project/data-access/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/pmp-api/project/data-access/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-api/project/data-access/jest.config.js",
+            "tsConfig": "libs/pmp-api/project/data-access/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "pmp-api-project-domain": {
+      "root": "libs/pmp-api/project/domain",
+      "sourceRoot": "libs/pmp-api/project/domain/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-api/project/domain/tsconfig.lib.json",
+              "libs/pmp-api/project/domain/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-api/project/domain/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-api/project/domain/jest.config.js",
+            "tsConfig": "libs/pmp-api/project/domain/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {

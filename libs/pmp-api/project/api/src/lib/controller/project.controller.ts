@@ -5,7 +5,7 @@ import { ProjectFacade } from '@pimp-my-pr/pmp-api/project/core';
 export class ProjectController {
   constructor(private projectFacade: ProjectFacade) {}
   @Get('sync')
-  sync(): any {
+  sync(): Promise<void> {
     return this.projectFacade.sync();
   }
 }
