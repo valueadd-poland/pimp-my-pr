@@ -22,6 +22,9 @@
       ],
       "@pimp-my-pr/pmp-api/project/shell": [
         "libs/pmp-api/project/shell/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-api/project/core": [
+        "libs/pmp-api/project/core/src/index.ts"
       ]
     }
   },

@@ -286,6 +286,31 @@
           }
         }
       }
+    },
+    "pmp-api-project-core": {
+      "root": "libs/pmp-api/project/core",
+      "sourceRoot": "libs/pmp-api/project/core/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-api/project/core/tsconfig.lib.json",
+              "libs/pmp-api/project/core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-api/project/core/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-api/project/core/jest.config.js",
+            "tsConfig": "libs/pmp-api/project/core/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {
