@@ -210,6 +210,56 @@
           "styleext": "scss"
         }
       }
+    },
+    "pmp-api-project-api": {
+      "root": "libs/pmp-api/project/api",
+      "sourceRoot": "libs/pmp-api/project/api/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-api/project/api/tsconfig.lib.json",
+              "libs/pmp-api/project/api/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-api/project/api/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-api/project/api/jest.config.js",
+            "tsConfig": "libs/pmp-api/project/api/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "pmp-api-project-shell": {
+      "root": "libs/pmp-api/project/shell",
+      "sourceRoot": "libs/pmp-api/project/shell/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-api/project/shell/tsconfig.lib.json",
+              "libs/pmp-api/project/shell/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-api/project/shell/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-api/project/shell/jest.config.js",
+            "tsConfig": "libs/pmp-api/project/shell/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {

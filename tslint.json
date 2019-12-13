@@ -80,6 +80,10 @@
             ]
           },
           {
+            "sourceTag": "type:api",
+            "onlyDependOnLibsWithTags": ["type:core"]
+          },
+          {
             "sourceTag": "type:ui",
             "onlyDependOnLibsWithTags": [
               "type:ui",

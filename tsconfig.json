@@ -16,7 +16,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@pimp-my-pr/pmp-web/shell": ["libs/pmp-web/shell/src/index.ts"]
+      "@pimp-my-pr/pmp-web/shell": ["libs/pmp-web/shell/src/index.ts"],
+      "@pimp-my-pr/pmp-api/project/api": [
+        "libs/pmp-api/project/api/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-api/project/shell": [
+        "libs/pmp-api/project/shell/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
