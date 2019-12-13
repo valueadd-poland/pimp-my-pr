@@ -1,11 +1,7 @@
 import { Module } from '@nestjs/common';
-
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { PmpApiProjectShellModule } from '@pimp-my-pr/pmp-api/project/shell';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService]
+  imports: [PmpApiProjectShellModule]
 })
 export class AppModule {}

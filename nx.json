@@ -19,6 +19,12 @@
     },
     "pmp-web-shell": {
       "tags": ["scope:pmp-web", "type:shell"]
+    },
+    "pmp-api-project-api": {
+      "tags": ["scope:pmp-api", "type:api"]
+    },
+    "pmp-api-project-shell": {
+      "tags": ["scope:pmp-api", "type:shell"]
     }
   }
 }
