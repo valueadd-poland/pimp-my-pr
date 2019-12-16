@@ -17,6 +17,9 @@
     "pmp-api": {
       "tags": ["type:application", "scope:pmp-api"]
     },
+    "pmp-api-e2e": {
+      "tags": ["type:application", "scope:pmp-api"]
+    },
     "pmp-web-shell": {
       "tags": ["scope:pmp-web", "type:shell"]
     }
