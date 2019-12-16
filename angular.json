@@ -171,6 +171,32 @@
         }
       }
     },
+    "pmp-api-e2e": {
+      "root": "apps/pmp-api-e2e",
+      "sourceRoot": "apps/pmp-api-e2e/src",
+      "projectType": "application",
+      "prefix": "pmp-api-e2e",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/pmp-api-e2e/tsconfig.app.json",
+              "apps/pmp-api-e2e/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/pmp-api-e2e/**"]
+          }
+        },
+        "e2e": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/pmp-api-e2e/jest.config.js",
+            "tsConfig": "apps/pmp-api-e2e/tsconfig.spec.json"
+          }
+        }
+      }
+    },
     "pmp-web-shell": {
       "projectType": "library",
       "root": "libs/pmp-web/shell",
