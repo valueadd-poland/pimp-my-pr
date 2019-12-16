@@ -1,6 +1,6 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { CreateProjectCommand } from '../commands/create-project.command';
-import { ProjectRepository } from '@pimp-my-pr/pmp-api/project/domain';
+import { CreateProjectCommand } from '../create-project.command';
+import { ProjectRepository } from '@pimp-my-pr/pmp-api/project/data-access';
 
 @CommandHandler(CreateProjectCommand)
 export class CreateProjectHandler

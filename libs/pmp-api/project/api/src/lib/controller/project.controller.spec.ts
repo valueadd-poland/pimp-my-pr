@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 
 import { ProjectController } from './project.controller';
 import { ProjectFacade } from '@pimp-my-pr/pmp-api/project/core';
+import * as mocks from 'node-mocks-http';
 
 const mockProjectFacade = {
   sync() {
@@ -22,7 +23,9 @@ describe('ProjectController', () => {
   describe('sync', () => {
     it('should return successful response', () => {
       const controller = app.get<ProjectController>(ProjectController);
-      expect(controller.sync()).toBeTruthy();
+      const response = mocks.createResponse();
+      controller.sync(response);
+      expect(response.statusCode).toBe(200);
     });
   });
 });

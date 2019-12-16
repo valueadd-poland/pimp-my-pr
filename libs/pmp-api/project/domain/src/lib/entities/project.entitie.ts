@@ -1,2 +1,5 @@
-// tslint:disable-next-line:no-empty-interface
-export interface Project {}
+export interface Project {
+  fullName: string;
+  name: string;
+  owner: string;
+}

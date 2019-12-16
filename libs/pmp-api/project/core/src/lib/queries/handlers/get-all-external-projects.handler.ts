@@ -1,6 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { GetAllExternalProjectsQuery } from '../queries/get-all-external-projects.query';
-import { Project, ProjectRepository } from '@pimp-my-pr/pmp-api/project/domain';
+import { GetAllExternalProjectsQuery } from '../get-all-external-projects.query';
+import { Project } from '@pimp-my-pr/pmp-api/project/domain';
+import { ProjectRepository } from '@pimp-my-pr/pmp-api/project/data-access';
 
 @QueryHandler(GetAllExternalProjectsQuery)
 export class GetAllExternalProjectsHandler

@@ -1,26 +1,23 @@
 import { Module } from '@nestjs/common';
 import { ProjectFacade } from './project.facade';
-import { SynchronizeProjectsHandler } from './handlers/synchronize-projects.handler';
+import { SynchronizeProjectsHandler } from './commands/handlers/synchronize-projects.handler';
 import { CqrsModule } from '@nestjs/cqrs';
-import { CreateProjectHandler } from './handlers/create-project.handler';
-import { GetAllExternalProjectsHandler } from './handlers/get-all-external-projects.handler';
-import { ProjectRepository } from '@pimp-my-pr/pmp-api/project/domain';
-import {
-  PmpApiProjectDataAccessModule,
-  ProjectRepositoryImpl
-} from '@pimp-my-pr/pmp-api/project/data-access';
+import { CreateProjectHandler } from './commands/handlers/create-project.handler';
+import { GetAllExternalProjectsHandler } from './queries/handlers/get-all-external-projects.handler';
+import { PmpApiProjectDataAccessModule } from '@pimp-my-pr/pmp-api/project/data-access';
+import { GetAllExternalPRsHandler } from './queries/handlers/get-all-external-prs.handler';
+import { CreatePRHandler } from './commands/handlers/create-pr.handler';
 
-const CommandHandlers = [SynchronizeProjectsHandler, CreateProjectHandler];
-const QueryHandlers = [GetAllExternalProjectsHandler];
+const CommandHandlers = [
+  SynchronizeProjectsHandler,
+  CreatePRHandler,
+  CreateProjectHandler
+];
+const QueryHandlers = [GetAllExternalProjectsHandler, GetAllExternalPRsHandler];
 
 @Module({
   imports: [CqrsModule, PmpApiProjectDataAccessModule],
-  providers: [
-    ProjectFacade,
-    { provide: ProjectRepository, useClass: ProjectRepositoryImpl },
-    ...CommandHandlers,
-    ...QueryHandlers
-  ],
+  providers: [ProjectFacade, ...CommandHandlers, ...QueryHandlers],
   exports: [ProjectFacade]
 })
 export class PmpApiProjectCoreModule {}

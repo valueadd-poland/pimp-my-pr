@@ -1,23 +1,26 @@
 import { HttpService, Injectable } from '@nestjs/common';
-import { ExternalProjectRepository } from './external-project.repository';
-import { Project } from '@pimp-my-pr/pmp-api/project/domain';
+import { GithubPR } from '../../domain/entities/github-pr.entity';
 import { githubConfig } from '@pimp-my-pr/pmp-api/shared/config';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AxiosResponse } from 'axios';
-import { GithubProjectEntity } from '../domain/github-project.entity';
+import { urlFactory } from '@valueadd/typed-urls';
+import { Project } from '@pimp-my-pr/pmp-api/project/domain';
 
 @Injectable()
-export class GithubProjectRepository implements ExternalProjectRepository {
+export class GithubPRRepository {
   readonly endpoints = {
-    projects: githubConfig.apiUrl + '/user/repos'
+    prs: urlFactory<'fullName'>(
+      githubConfig.apiUrl + '/repos/:fullName/pulls',
+      true
+    )
   };
 
   constructor(private httpService: HttpService) {}
 
-  getAllProjects(authToken: string): Observable<GithubProjectEntity[]> {
+  getAllPRs(project: Project, authToken: string): Observable<GithubPR[]> {
     return this.httpService
-      .get<Project[]>(this.endpoints.projects, {
+      .get<GithubPR[]>(this.endpoints.prs.url({ fullName: project.fullName }), {
         headers: { Authorization: 'token ' + authToken }
       })
       .pipe(map((res: AxiosResponse) => res.data));
