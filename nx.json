@@ -19,6 +19,33 @@
     },
     "pmp-web-shell": {
       "tags": ["scope:pmp-web", "type:shell"]
+    },
+    "pmp-api-api-service-repository-api": {
+      "tags": ["scope:pmp-api", "type:api"]
+    },
+    "pmp-api-api-service-shell": {
+      "tags": ["scope:pmp-api", "type:shell"]
+    },
+    "pmp-api-api-service-repository-core": {
+      "tags": ["scope:pmp-api", "type:core"]
+    },
+    "pmp-api-api-service-repository-data-access": {
+      "tags": ["scope:pmp-api", "type:data-access"]
+    },
+    "pmp-api-api-service-repository-domain": {
+      "tags": ["scope:pmp-api", "type:domain"]
+    },
+    "pmp-api-shared-config": {
+      "tags": ["scope:pmp-api", "type:config"]
+    },
+    "pmp-api-shared-domain": {
+      "tags": ["scope:pmp-api", "type:domain"]
+    },
+    "shared-domain": {
+      "tags": ["scope:shared", "type:domain"]
+    },
+    "pmp-api-shared-util": {
+      "tags": ["scope:pmp-api", "type:util"]
     }
   }
 }

@@ -93,6 +93,7 @@
             "onlyDependOnLibsWithTags": [
               "type:config",
               "type:util",
+              "type:data-access",
               "type:domain"
             ]
           },
@@ -109,6 +110,10 @@
               "type:core",
               "type:config"
             ]
+          },
+          {
+            "sourceTag": "type:api",
+            "onlyDependOnLibsWithTags": ["type:core", "type:domain"]
           },
           {
             "sourceTag": "scope:pmp-web",
