@@ -20,9 +20,7 @@
       "@pimp-my-pr/pmp-api/api-service/repository/api": [
         "libs/pmp-api/api-service/repository/api/src/index.ts"
       ],
-      "@pimp-my-pr/pmp-api/api-service/shell": [
-        "libs/pmp-api/api-service/shell/src/index.ts"
-      ],
+      "@pimp-my-pr/pmp-api/api-service/shell": ["libs/pmp-api/api-service/shell/src/index.ts"],
       "@pimp-my-pr/pmp-api/api-service/repository/core": [
         "libs/pmp-api/api-service/repository/core/src/index.ts"
       ],
@@ -32,22 +30,15 @@
       "@pimp-my-pr/pmp-api/api-service/repository/domain": [
         "libs/pmp-api/api-service/repository/domain/src/index.ts"
       ],
-      "@pimp-my-pr/pmp-api/shared/config": [
-        "libs/pmp-api/shared/config/src/index.ts"
-      ],
-      "@pimp-my-pr/pmp-api/shared/domain": [
-        "libs/pmp-api/shared/domain/src/index.ts"
-      ],
+      "@pimp-my-pr/pmp-api/shared/config": ["libs/pmp-api/shared/config/src/index.ts"],
+      "@pimp-my-pr/pmp-api/shared/domain": ["libs/pmp-api/shared/domain/src/index.ts"],
       "@pimp-my-pr/shared/domain": ["libs/shared/domain/src/index.ts"],
-      "@pimp-my-pr/pmp-api/shared/util": [
-        "libs/pmp-api/shared/util/src/index.ts"
-      ],
+      "@pimp-my-pr/pmp-api/shared/util": ["libs/pmp-api/shared/util/src/index.ts"],
       "@pimp-my-pr/pmp-web/repository/users/shell": [
         "libs/pmp-web/repository/users/shell/src/index.ts"
       ],
-      "@pimp-my-pr/pmp-web/repository/shell": [
-        "libs/pmp-web/repository/shell/src/index.ts"
-      ]
+      "@pimp-my-pr/pmp-web/repository/shell": ["libs/pmp-web/repository/shell/src/index.ts"],
+      "@pimp-my-pr/pmp-web/shared/ui/navbar": ["libs/pmp-web/shared/ui/navbar/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

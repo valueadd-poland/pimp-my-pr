@@ -21,10 +21,7 @@
             "polyfills": "apps/pmp-web/src/polyfills.ts",
             "tsConfig": "apps/pmp-web/tsconfig.app.json",
             "aot": false,
-            "assets": [
-              "apps/pmp-web/src/favicon.ico",
-              "apps/pmp-web/src/assets"
-            ],
+            "assets": ["apps/pmp-web/src/favicon.ico", "apps/pmp-web/src/assets"],
             "styles": ["apps/pmp-web/src/styles.scss"],
             "scripts": []
           },
@@ -82,10 +79,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/pmp-web/tsconfig.app.json",
-              "apps/pmp-web/tsconfig.spec.json"
-            ],
+            "tsConfig": ["apps/pmp-web/tsconfig.app.json", "apps/pmp-web/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!apps/pmp-web/**"]
           }
         },
@@ -164,10 +158,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/pmp-api/tsconfig.app.json",
-              "apps/pmp-api/tsconfig.spec.json"
-            ],
+            "tsConfig": ["apps/pmp-api/tsconfig.app.json", "apps/pmp-api/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!apps/pmp-api/**"]
           }
         },
@@ -224,10 +215,7 @@
               "libs/pmp-api/api-service/repository/api/tsconfig.lib.json",
               "libs/pmp-api/api-service/repository/api/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/pmp-api/api-service/repository/api/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/pmp-api/api-service/repository/api/**"]
           }
         },
         "test": {
@@ -252,10 +240,7 @@
               "libs/pmp-api/api-service/shell/tsconfig.lib.json",
               "libs/pmp-api/api-service/shell/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/pmp-api/api-service/shell/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/pmp-api/api-service/shell/**"]
           }
         },
         "test": {
@@ -280,10 +265,7 @@
               "libs/pmp-api/api-service/repository/core/tsconfig.lib.json",
               "libs/pmp-api/api-service/repository/core/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/pmp-api/api-service/repository/core/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/pmp-api/api-service/repository/core/**"]
           }
         },
         "test": {
@@ -308,10 +290,7 @@
               "libs/pmp-api/api-service/repository/data-access/tsconfig.lib.json",
               "libs/pmp-api/api-service/repository/data-access/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/pmp-api/api-service/repository/data-access/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/pmp-api/api-service/repository/data-access/**"]
           }
         },
         "test": {
@@ -336,10 +315,7 @@
               "libs/pmp-api/api-service/repository/domain/tsconfig.lib.json",
               "libs/pmp-api/api-service/repository/domain/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/pmp-api/api-service/repository/domain/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/pmp-api/api-service/repository/domain/**"]
           }
         },
         "test": {
@@ -464,10 +440,7 @@
               "libs/pmp-web/repository/users/shell/tsconfig.lib.json",
               "libs/pmp-web/repository/users/shell/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/pmp-web/repository/users/shell/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/repository/users/shell/**"]
           }
         },
         "test": {
@@ -498,10 +471,7 @@
               "libs/pmp-web/repository/shell/tsconfig.lib.json",
               "libs/pmp-web/repository/shell/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/pmp-web/repository/shell/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/repository/shell/**"]
           }
         },
         "test": {
@@ -510,6 +480,37 @@
             "jestConfig": "libs/pmp-web/repository/shell/jest.config.js",
             "tsConfig": "libs/pmp-web/repository/shell/tsconfig.spec.json",
             "setupFile": "libs/pmp-web/repository/shell/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-shared-ui-navbar": {
+      "projectType": "library",
+      "root": "libs/pmp-web/shared/ui/navbar",
+      "sourceRoot": "libs/pmp-web/shared/ui/navbar/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shared/ui/navbar/tsconfig.lib.json",
+              "libs/pmp-web/shared/ui/navbar/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui/navbar/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shared/ui/navbar/jest.config.js",
+            "tsConfig": "libs/pmp-web/shared/ui/navbar/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/shared/ui/navbar/src/test-setup.ts"
           }
         }
       },
