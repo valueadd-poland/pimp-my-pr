@@ -41,7 +41,8 @@
       "@pimp-my-pr/pmp-web/shared/ui/table": ["libs/pmp-web/shared/ui/table/src/index.ts"],
       "@pimp-my-pr/pmp-web/shared/domain": ["libs/pmp-web/shared/domain/src/index.ts"],
       "@pimp-my-pr/pmp-web/shared/util": ["libs/pmp-web/shared/util/src/index.ts"],
-      "@pimp-my-pr/pmp-web/shared/ui/navbar": ["libs/pmp-web/shared/ui/navbar/src/index.ts"]
+      "@pimp-my-pr/pmp-web/shared/ui/navbar": ["libs/pmp-web/shared/ui/navbar/src/index.ts"],
+      "@pimp-my-pr/pmp-web/shared/ui/sidebar": ["libs/pmp-web/shared/ui/sidebar/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
