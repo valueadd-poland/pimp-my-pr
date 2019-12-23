@@ -30,13 +30,7 @@ export class PrDataService {
         this.endpoints.getPrFiles.url({
           repoFullName,
           prId
-        }),
-        {
-          headers: {
-            Authorization:
-              'token ' + this.pmpApiServiceConfigService.getGithubToken()
-          }
-        }
+        })
       )
       .pipe(
         map((res: AxiosResponse<GithubPrFilesEntity[]>) => res.data),

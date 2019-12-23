@@ -1,9 +1,4 @@
-import {
-  HttpService,
-  Injectable,
-  NotFoundException,
-  UnauthorizedException
-} from '@nestjs/common';
+import { HttpService, Injectable } from '@nestjs/common';
 import {
   PrModel,
   RepositoryModel,
@@ -17,13 +12,15 @@ import { urlFactory } from '@valueadd/typed-urls';
 import { GithubRepositoryEntity } from '../domain/entities/github-repository.entity';
 import { catchError, map } from 'rxjs/operators';
 import { GithubRepositoryMapper } from '../mappers/github-repository.mapper';
-import { AxiosResponse, AxiosError } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import { GithubPrEntity } from '../domain/entities/github-pr.entity';
 import { GithubPrMapper } from '../mappers/github-pr.mapper';
 import { throwError } from 'rxjs';
 import { catchRequestExceptions } from '@pimp-my-pr/pmp-api/shared/util';
-import { CoreException } from '@pimp-my-pr/pmp-api/shared/domain';
-import { CoreNotFoundException } from '@pimp-my-pr/pmp-api/shared/domain';
+import {
+  CoreException,
+  CoreNotFoundException
+} from '@pimp-my-pr/pmp-api/shared/domain';
 
 @Injectable()
 export class RepositoryDataService {
@@ -53,13 +50,7 @@ export class RepositoryDataService {
         this.endpoints.getRepository.url({
           owner: owner,
           title: title
-        }),
-        {
-          headers: {
-            Authorization:
-              'token ' + this.pmpApiServiceConfigService.getGithubToken()
-          }
-        }
+        })
       )
       .pipe(
         map((res: AxiosResponse) => res.data),
