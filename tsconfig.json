@@ -41,6 +41,12 @@
       "@pimp-my-pr/shared/domain": ["libs/shared/domain/src/index.ts"],
       "@pimp-my-pr/pmp-api/shared/util": [
         "libs/pmp-api/shared/util/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/repository/users/shell": [
+        "libs/pmp-web/repository/users/shell/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/repository/shell": [
+        "libs/pmp-web/repository/shell/src/index.ts"
       ]
     }
   },
