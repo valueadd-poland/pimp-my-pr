@@ -46,6 +46,12 @@
     },
     "pmp-api-shared-util": {
       "tags": ["scope:pmp-api", "type:util"]
+    },
+    "pmp-web-repository-users-shell": {
+      "tags": ["scope:pmp-web-repository-users", "type:shell"]
+    },
+    "pmp-web-repository-shell": {
+      "tags": ["scope:pmp-web-repository", "type:shell"]
     }
   }
 }
