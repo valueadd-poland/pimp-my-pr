@@ -52,6 +52,9 @@
     },
     "pmp-web-repository-shell": {
       "tags": ["scope:pmp-web-repository", "type:shell"]
+    },
+    "pmp-web-shared-ui-navbar": {
+      "tags": ["scope:pmp-web", "type:ui"]
     }
   }
 }
