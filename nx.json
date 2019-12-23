@@ -55,6 +55,15 @@
     },
     "pmp-web-shared-ui-navbar": {
       "tags": ["scope:pmp-web", "type:ui"]
+    },
+    "pmp-web-shared-ui-table": {
+      "tags": ["scope:pmp-web-shared", "type:ui"]
+    },
+    "pmp-web-shared-domain": {
+      "tags": ["scope:pmp-web-shared", "type:domain"]
+    },
+    "pmp-web-shared-util": {
+      "tags": ["scope:pmp-web-shared", "type:util"]
     }
   }
 }
