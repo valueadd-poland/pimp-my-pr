@@ -67,6 +67,9 @@
     },
     "pmp-web-shared-ui-sidebar": {
       "tags": ["scope:pmp-web-shared", "type:ui"]
+    },
+    "pmp-web-users-shell": {
+      "tags": ["scope:pmp-web-users", "type:shell"]
     }
   }
 }
