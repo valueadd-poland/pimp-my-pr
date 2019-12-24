@@ -52,6 +52,9 @@
     },
     "pmp-web-repository-shell": {
       "tags": ["scope:pmp-web-repository", "type:shell"]
+    },
+    "pmp-web-profile-shell": {
+      "tags": ["scope:pmp-web-profile", "type:shell"]
     }
   }
 }

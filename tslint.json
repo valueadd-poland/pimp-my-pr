@@ -1,8 +1,5 @@
 {
-  "rulesDirectory": [
-    "node_modules/@nrwl/workspace/src/tslint",
-    "node_modules/codelyzer"
-  ],
+  "rulesDirectory": ["node_modules/@nrwl/workspace/src/tslint", "node_modules/codelyzer"],
   "rules": {
     "arrow-return-shorthand": true,
     "callable-types": true,
@@ -17,12 +14,7 @@
     "member-ordering": [
       true,
       {
-        "order": [
-          "static-field",
-          "instance-field",
-          "static-method",
-          "instance-method"
-        ]
+        "order": ["static-field", "instance-field", "static-method", "instance-method"]
       }
     ],
     "no-arg": true,
@@ -73,20 +65,11 @@
           },
           {
             "sourceTag": "type:util",
-            "onlyDependOnLibsWithTags": [
-              "type:util",
-              "type:config",
-              "type:domain"
-            ]
+            "onlyDependOnLibsWithTags": ["type:util", "type:config", "type:domain"]
           },
           {
             "sourceTag": "type:ui",
-            "onlyDependOnLibsWithTags": [
-              "type:ui",
-              "type:config",
-              "type:util",
-              "type:domain"
-            ]
+            "onlyDependOnLibsWithTags": ["type:ui", "type:config", "type:util", "type:domain"]
           },
           {
             "sourceTag": "type:core",
@@ -137,6 +120,10 @@
           {
             "sourceTag": "scope:pmp-web-repository-users",
             "onlyDependOnLibsWithTags": ["scope:pmp-web-repository-users"]
+          },
+          {
+            "sourceTag": "scope:pmp-web-profile",
+            "onlyDependOnLibsWithTags": ["scope:pmp-web-profile"]
           }
         ]
       }
