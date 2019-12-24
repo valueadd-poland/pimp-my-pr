@@ -8,4 +8,5 @@ export class PrModel {
   state: 'open' | 'closed';
   title: string;
   updatedAt: Date;
+  user: UserModel;
 }

@@ -3,4 +3,5 @@ export interface GithubUserEntity {
   id: string;
   avatar_url: string;
   type: 'User' | 'Organisation';
+  contributions: number;
 }
