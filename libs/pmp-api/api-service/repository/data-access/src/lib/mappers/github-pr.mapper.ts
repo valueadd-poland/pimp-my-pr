@@ -15,13 +15,12 @@ export class GithubPrMapper implements Mapper<GithubPrEntity, PrModel> {
       reviewers: param.requested_reviewers.map(this.userMapper.mapFrom),
       state: param.state,
       title: param.title,
-      updatedAt: new Date(param.updated_at)
+      updatedAt: new Date(param.updated_at),
+      user: this.userMapper.mapFrom(param.user)
     };
   }
 
   mapTo(param: PrModel): GithubPrEntity {
-    throw new NotImplementedException(
-      'Mapping to github pr format is not implemented'
-    );
+    throw new NotImplementedException('Mapping to github pr format is not implemented');
   }
 }

@@ -9,4 +9,5 @@ export interface GithubPrEntity {
   state: 'open' | 'closed';
   title: string;
   updated_at: string;
+  user: GithubUserEntity;
 }
