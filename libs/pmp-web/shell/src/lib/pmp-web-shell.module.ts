@@ -4,6 +4,9 @@ import { ShellRoutingModule } from './shell-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MainComponent } from './containers/main/main.component';
+import { PmpWebSharedUiNavbarModule } from '@pimp-my-pr/pmp-web/shared/ui/navbar';
+import { PmpWebSharedUiSidebarModule } from '@pimp-my-pr/pmp-web/shared/ui/sidebar';
 
 @NgModule({
   imports: [
@@ -11,8 +14,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ShellRoutingModule,
     BrowserModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    PmpWebSharedUiNavbarModule,
+    PmpWebSharedUiSidebarModule
   ],
-  exports: [ShellRoutingModule]
+  exports: [ShellRoutingModule],
+  declarations: [MainComponent]
 })
 export class PmpWebShellModule {}
