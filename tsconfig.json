@@ -34,16 +34,16 @@
       "@pimp-my-pr/pmp-api/shared/domain": ["libs/pmp-api/shared/domain/src/index.ts"],
       "@pimp-my-pr/shared/domain": ["libs/shared/domain/src/index.ts"],
       "@pimp-my-pr/pmp-api/shared/util": ["libs/pmp-api/shared/util/src/index.ts"],
-      "@pimp-my-pr/pmp-web/repository/users/shell": [
-        "libs/pmp-web/repository/users/shell/src/index.ts"
-      ],
       "@pimp-my-pr/pmp-web/repository/shell": ["libs/pmp-web/repository/shell/src/index.ts"],
       "@pimp-my-pr/pmp-web/shared/ui/table": ["libs/pmp-web/shared/ui/table/src/index.ts"],
       "@pimp-my-pr/pmp-web/shared/domain": ["libs/pmp-web/shared/domain/src/index.ts"],
       "@pimp-my-pr/pmp-web/shared/util": ["libs/pmp-web/shared/util/src/index.ts"],
       "@pimp-my-pr/pmp-web/shared/ui/navbar": ["libs/pmp-web/shared/ui/navbar/src/index.ts"],
       "@pimp-my-pr/pmp-web/shared/ui/sidebar": ["libs/pmp-web/shared/ui/sidebar/src/index.ts"],
-      "@pimp-my-pr/pmp-web/users/shell": ["libs/pmp-web/users/shell/src/index.ts"]
+      "@pimp-my-pr/pmp-web/user/shell": ["libs/pmp-web/user/shell/src/index.ts"],
+      "@pimp-my-pr/pmp-web/shared/ui-navbar": ["libs/pmp-web/shared/ui-navbar/src/index.ts"],
+      "@pimp-my-pr/pmp-web/shared/ui-sidebar": ["libs/pmp-web/shared/ui-sidebar/src/index.ts"],
+      "@pimp-my-pr/pmp-web/shared/ui-table": ["libs/pmp-web/shared/ui-table/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

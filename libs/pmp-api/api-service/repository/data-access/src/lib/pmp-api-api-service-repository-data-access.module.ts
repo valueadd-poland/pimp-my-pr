@@ -10,16 +10,15 @@ import { GithubAuthInterceptor } from './interceptors/github-auth.interceptor';
   providers: [RepositoryDataService, PrDataService, GithubAuthInterceptor],
   exports: [RepositoryDataService, PrDataService]
 })
-export class PmpApiApiServiceRepositoryDataAccessModule
-  implements OnModuleInit {
+export class PmpApiApiServiceRepositoryDataAccessModule implements OnModuleInit {
   constructor(
     private httpService: HttpService,
     private githubAuthInterceptor: GithubAuthInterceptor
   ) {}
 
-  public onModuleInit() {
-    this.httpService.axiosRef.interceptors.request.use(
-      (req: AxiosRequestConfig) => this.githubAuthInterceptor.intercept(req)
+  public onModuleInit(): void {
+    this.httpService.axiosRef.interceptors.request.use((req: AxiosRequestConfig) =>
+      this.githubAuthInterceptor.intercept(req)
     );
   }
 }

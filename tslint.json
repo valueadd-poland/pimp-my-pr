@@ -40,6 +40,7 @@
     "prefer-const": true,
     "radix": true,
     "triple-equals": [true, "allow-null-check"],
+    "typedef": [true, "call-signature"],
     "unified-signatures": true,
     "variable-name": false,
     "nx-enforce-module-boundaries": [
@@ -103,7 +104,8 @@
             "onlyDependOnLibsWithTags": [
               "scope:shared",
               "scope:pmp-web",
-              "scope:pmp-web-repository"
+              "scope:pmp-web-repository",
+              "scope:pmp-web-user"
             ]
           },
           {
@@ -112,22 +114,15 @@
           },
           {
             "sourceTag": "scope:pmp-web-repository",
-            "onlyDependOnLibsWithTags": [
-              "scope:pmp-web-repository",
-              "scope:pmp-web-repository-users"
-            ]
-          },
-          {
-            "sourceTag": "scope:pmp-web-repository-users",
-            "onlyDependOnLibsWithTags": ["scope:pmp-web-repository-users"]
+            "onlyDependOnLibsWithTags": ["scope:pmp-web-repository", "scope:pmp-web-shared"]
           },
           {
             "sourceTag": "scope:pmp-web-shared",
             "onlyDependOnLibsWithTags": ["scope:pmp-web-shared"]
           },
           {
-            "sourceTag": "scope:pmp-web-users",
-            "onlyDependOnLibsWithTags": ["scope:pmp-web-users"]
+            "sourceTag": "scope:pmp-web-user",
+            "onlyDependOnLibsWithTags": ["scope:pmp-web-user", "scope:pmp-web-shared"]
           }
         ]
       }
