@@ -1,0 +1,25 @@
+.sidebar__container {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > mat-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 32px;
+
+    color: #fc3b56;
+    cursor: pointer;
+
+    &:first-of-type {
+      margin-top: 84px;
+    }
+
+    &:last-of-type {
+      margin-top: 20px;
+    }
+  }
+}

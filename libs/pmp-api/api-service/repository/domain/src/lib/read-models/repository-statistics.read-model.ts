@@ -20,9 +20,7 @@ export class RepositoryStatisticsReadModel {
 
   private getLongestPrLinesOfCode(prs: PrWithChangesReadModel[]): number {
     return prs.reduce((prev, current) => {
-      return prev.linesOfCodeToCheck > current.linesOfCodeToCheck
-        ? prev
-        : current;
+      return prev.linesOfCodeToCheck > current.linesOfCodeToCheck ? prev : current;
     }).linesOfCodeToCheck;
   }
 
@@ -30,7 +28,7 @@ export class RepositoryStatisticsReadModel {
     return prs.reduce((a, b) => a + b.linesOfCodeToCheck, 0);
   }
 
-  private getSumOfHoursPrsWaiting(prs: PrWithChangesReadModel[]) {
+  private getSumOfHoursPrsWaiting(prs: PrWithChangesReadModel[]): number {
     let result = 0;
     const now = new Date();
     prs.forEach(pr => {

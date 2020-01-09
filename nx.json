@@ -20,9 +20,6 @@
     "pmp-api-e2e": {
       "tags": ["type:application", "scope:pmp-api"]
     },
-    "pmp-web-shell": {
-      "tags": ["scope:pmp-web", "type:shell"]
-    },
     "pmp-api-api-service-repository-api": {
       "tags": ["scope:pmp-api", "type:api"]
     },
@@ -50,17 +47,8 @@
     "pmp-api-shared-util": {
       "tags": ["scope:pmp-api", "type:util"]
     },
-    "pmp-web-repository-users-shell": {
-      "tags": ["scope:pmp-web-repository-users", "type:shell"]
-    },
     "pmp-web-repository-shell": {
       "tags": ["scope:pmp-web-repository", "type:shell"]
-    },
-    "pmp-web-shared-ui-navbar": {
-      "tags": ["scope:pmp-web", "type:ui"]
-    },
-    "pmp-web-shared-ui-table": {
-      "tags": ["scope:pmp-web-shared", "type:ui"]
     },
     "pmp-web-shared-domain": {
       "tags": ["scope:pmp-web-shared", "type:domain"]
@@ -68,11 +56,17 @@
     "pmp-web-shared-util": {
       "tags": ["scope:pmp-web-shared", "type:util"]
     },
+    "pmp-web-user-shell": {
+      "tags": ["scope:pmp-web-user", "type:shell"]
+    },
+    "pmp-web-shared-ui-navbar": {
+      "tags": ["scope:pmp-web-shared", "type:ui"]
+    },
     "pmp-web-shared-ui-sidebar": {
       "tags": ["scope:pmp-web-shared", "type:ui"]
     },
-    "pmp-web-users-shell": {
-      "tags": ["scope:pmp-web-users", "type:shell"]
+    "pmp-web-shared-ui-table": {
+      "tags": ["scope:pmp-web-shared", "type:ui"]
     }
   }
 }
