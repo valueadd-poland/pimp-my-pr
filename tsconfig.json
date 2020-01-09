@@ -43,7 +43,10 @@
       "@pimp-my-pr/pmp-web/user/shell": ["libs/pmp-web/user/shell/src/index.ts"],
       "@pimp-my-pr/pmp-web/shared/ui-navbar": ["libs/pmp-web/shared/ui-navbar/src/index.ts"],
       "@pimp-my-pr/pmp-web/shared/ui-sidebar": ["libs/pmp-web/shared/ui-sidebar/src/index.ts"],
-      "@pimp-my-pr/pmp-web/shared/ui-table": ["libs/pmp-web/shared/ui-table/src/index.ts"]
+      "@pimp-my-pr/pmp-web/shared/ui-table": ["libs/pmp-web/shared/ui-table/src/index.ts"],
+      "@pimp-my-pr/pmp-web/user/single-user-statistics/feature": [
+        "libs/pmp-web/user/single-user-statistics/feature/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
