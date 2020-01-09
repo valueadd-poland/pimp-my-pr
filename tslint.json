@@ -122,7 +122,11 @@
           },
           {
             "sourceTag": "scope:pmp-web-user",
-            "onlyDependOnLibsWithTags": ["scope:pmp-web-user", "scope:pmp-web-shared"]
+            "onlyDependOnLibsWithTags": [
+              "scope:pmp-web-user",
+              "scope:pmp-web-shared",
+              "scope:shared"
+            ]
           }
         ]
       }
