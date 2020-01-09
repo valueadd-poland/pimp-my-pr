@@ -5,7 +5,16 @@ import { UserComponent } from './containers/user/user.component';
 const routes: Routes = [
   {
     path: 'user',
-    component: UserComponent
+    component: UserComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('@pimp-my-pr/pmp-web/user/users-statistics/feature').then(
+            m => m.PmpWebUserUsersStatisticsFeatureModule
+          )
+      }
+    ]
   }
 ];
 

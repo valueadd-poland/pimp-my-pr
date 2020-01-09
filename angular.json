@@ -639,6 +639,37 @@
         }
       }
     },
+    "pmp-web-user-users-statistics-feature": {
+      "projectType": "library",
+      "root": "libs/pmp-web/user/users-statistics/feature",
+      "sourceRoot": "libs/pmp-web/user/users-statistics/feature/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/user/users-statistics/feature/tsconfig.lib.json",
+              "libs/pmp-web/user/users-statistics/feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/user/users-statistics/feature/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/user/users-statistics/feature/jest.config.js",
+            "tsConfig": "libs/pmp-web/user/users-statistics/feature/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/user/users-statistics/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "pmp-web-user-single-user-statistics-feature": {
       "root": "libs/pmp-web/user/single-user-statistics/feature",
       "sourceRoot": "libs/pmp-web/user/single-user-statistics/feature/src",
