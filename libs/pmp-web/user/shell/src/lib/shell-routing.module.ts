@@ -13,6 +13,13 @@ const routes: Routes = [
           import('@pimp-my-pr/pmp-web/user/users-statistics/feature').then(
             m => m.PmpWebUserUsersStatisticsFeatureModule
           )
+      },
+      {
+        path: 'statistics',
+        loadChildren: () =>
+          import('@pimp-my-pr/pmp-web/user/single-user-statistics/feature').then(
+            m => m.PmpWebUserSingleUserStatisticsFeatureModule
+          )
       }
     ]
   }
