@@ -1,6 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { TableConfig } from '@pimp-my-pr/pmp-web/shared/domain';
-import { UserStatisticsReadModel } from '@pimp-my-pr/shared/domain';
+import { UserStatistics } from '@pimp-my-pr/shared/domain';
+import { UserFacade } from '@pimp-my-pr/pmp-web/user/data-access';
 
 const mockedData = {
   data: [
@@ -51,7 +52,7 @@ const mockedData = {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UsersStatisticsComponent implements OnInit {
-  tableConfig: TableConfig<UserStatisticsReadModel[]>;
+  tableConfig: TableConfig<UserStatistics[]>;
   private displayedColumns = [
     'avatar',
     'user',
@@ -62,14 +63,20 @@ export class UsersStatisticsComponent implements OnInit {
     'link'
   ];
 
+  constructor(private chDRef: ChangeDetectorRef, private userFacade: UserFacade) {}
+
   ngOnInit(): void {
-    this.initTableConfig();
+    this.userFacade.userStatisticsCollection$.subscribe(statistics => {
+      this.initTableConfig(statistics);
+      this.chDRef.markForCheck();
+    });
+    this.userFacade.getUserStatisticsCollection({});
   }
 
-  private initTableConfig(): void {
+  private initTableConfig(data: UserStatistics[]): void {
     this.tableConfig = {
       columns: this.displayedColumns,
-      data: mockedData.data,
+      data: data,
       pagination: mockedData.pagination
     };
   }

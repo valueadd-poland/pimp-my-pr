@@ -97,7 +97,8 @@
       [
         'pmp',
         'pmp-api',
-        'pmp-web'
+        'pmp-web',
+        'pmp-web-user'
       ]
     ]
   },

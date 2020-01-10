@@ -1,6 +1,9 @@
 import { Controller, Get } from '@nestjs/common';
 import { RepositoryFacade } from '@pimp-my-pr/pmp-api/api-service/repository/core';
-import { ListRepositoriesResponse, ListRepositoryUsersResponse } from '@pimp-my-pr/shared/domain';
+import {
+  ListRepositoriesResponse,
+  UserStatistics
+} from '@pimp-my-pr/shared/domain';
 
 @Controller('repository')
 export class RepositoryController {
@@ -12,12 +15,12 @@ export class RepositoryController {
   }
 
   @Get('contributors')
-  listContributors(): Promise<ListRepositoryUsersResponse> {
+  listContributors(): Promise<UserStatistics[]> {
     return this.repositoryFacade.listContributors();
   }
 
   @Get('reviewers')
-  listReviewers(): Promise<ListRepositoryUsersResponse> {
+  listReviewers(): Promise<UserStatistics[]> {
     return this.repositoryFacade.listReviewers();
   }
 }

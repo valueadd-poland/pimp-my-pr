@@ -14,7 +14,7 @@
         <span>{{ 'User' }}</span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{ element.user }}
+        {{ element.name }}
       </mat-cell>
     </ng-container>
 
@@ -24,7 +24,7 @@
         <span> {{ 'Pending PR' }}<mat-icon>arrow_upward</mat-icon> </span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{ element.pendingPr }}
+        {{ element.pendingPrs }}
       </mat-cell>
     </ng-container>
 
@@ -34,7 +34,7 @@
         <span>{{ 'Sum of time PR waiting' }}</span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{ element.sumOfTimePrWaiting | resolveHours }}
+        {{ element.sumOfHoursPrsWaiting | resolveHours }}
       </mat-cell>
     </ng-container>
 
@@ -44,7 +44,7 @@
         <span>{{ 'To check [lines of code]' }}</span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{ element.toCheck }}
+        {{ element.linesOfCodeToCheck }}
       </mat-cell>
     </ng-container>
 
@@ -54,7 +54,7 @@
         <span>{{ 'Longest PR [lines of code]' }}</span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{ element.longestPr }}
+        {{ element.longestPrLinesOfCode }}
       </mat-cell>
     </ng-container>
 
