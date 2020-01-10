@@ -1,28 +1,22 @@
-import { IQueryHandler, QueryBus, QueryHandler } from '@nestjs/cqrs';
-import { ListRepositoryUsersQuery } from '../list-repository-users.query';
+import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
+import { ListRepositoryContributorsQuery } from '../list-repository-contributors.query';
 import {
   PrModel,
   RepositoryUserStatisticsReadModel
 } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
-import { RepositoryDataService } from '@pimp-my-pr/pmp-api/api-service/repository/data-access';
+import { BaseListRepositoryUsersHandler } from './base-list-repository-users.handler';
 import { GetUserPrsQuery } from '../get-user-prs.query';
-import { PrsService } from '../../services/prs.service';
 
-@QueryHandler(ListRepositoryUsersQuery)
-export class ListRepositoryUsersHandler
-  implements IQueryHandler<ListRepositoryUsersQuery, RepositoryUserStatisticsReadModel[]> {
-  constructor(
-    private prsService: PrsService,
-    private queryBus: QueryBus,
-    private repositoryRepository: RepositoryDataService
-  ) {}
-
-  async execute(query: ListRepositoryUsersQuery): Promise<RepositoryUserStatisticsReadModel[]> {
+@QueryHandler(ListRepositoryContributorsQuery)
+export class ListRepositoryContributorsHandler extends BaseListRepositoryUsersHandler
+  implements IQueryHandler<ListRepositoryContributorsQuery, RepositoryUserStatisticsReadModel[]> {
+  async execute(
+    query: ListRepositoryContributorsQuery
+  ): Promise<RepositoryUserStatisticsReadModel[]> {
+    const repositoryContributors = await this.repositoryRepository.getRepositoryContributors();
     const repositories = await this.repositoryRepository.find();
-    const repositoryUsers = await this.repositoryRepository.getRepositoryUsers();
-
     const result = await Promise.all(
-      repositoryUsers.map(user =>
+      repositoryContributors.map(user =>
         this.queryBus
           .execute<GetUserPrsQuery, PrModel[]>(new GetUserPrsQuery(user, repositories))
           .then(prs =>

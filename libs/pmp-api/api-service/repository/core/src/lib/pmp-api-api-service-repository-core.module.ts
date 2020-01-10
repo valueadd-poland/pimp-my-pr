@@ -6,12 +6,14 @@ import { PmpApiApiServiceRepositoryDataAccessModule } from '@pimp-my-pr/pmp-api/
 import { GetRepositoryPrsHandler } from './queries/handlers/get-repository-prs.handler';
 import { GetPrChangesHandler } from './queries/handlers/get-pr-changes.handler';
 import { GetUserPrsHandler } from './queries/handlers/get-user-prs.handler';
-import { ListRepositoryUsersHandler } from './queries/handlers/list-repository-users.handler';
+import { ListRepositoryContributorsHandler } from './queries/handlers/list-repository-contributors.handler';
 import { PrsService } from './services/prs.service';
+import { ListRepositoryReviewersHandler } from './queries/handlers/list-repository-reviewers.handler';
 
 const QueryHandlers = [
   ListRepositoriesHandler,
-  ListRepositoryUsersHandler,
+  ListRepositoryContributorsHandler,
+  ListRepositoryReviewersHandler,
   GetRepositoryPrsHandler,
   GetPrChangesHandler,
   GetUserPrsHandler

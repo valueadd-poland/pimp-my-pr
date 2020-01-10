@@ -5,7 +5,8 @@ import {
   RepositoryStatisticsReadModel,
   RepositoryUserStatisticsReadModel
 } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
-import { ListRepositoryUsersQuery } from './queries/list-repository-users.query';
+import { ListRepositoryContributorsQuery } from './queries/list-repository-contributors.query';
+import { ListRepositoryReviewersQuery } from './queries/list-repository-reviewers.query';
 
 @Injectable()
 export class RepositoryFacade {
@@ -15,7 +16,11 @@ export class RepositoryFacade {
     return this.queryBus.execute(new ListRepositoriesQuery());
   }
 
-  listUsers(): Promise<RepositoryUserStatisticsReadModel[]> {
-    return this.queryBus.execute(new ListRepositoryUsersQuery());
+  listContributors(): Promise<RepositoryUserStatisticsReadModel[]> {
+    return this.queryBus.execute(new ListRepositoryContributorsQuery());
+  }
+
+  listReviewers(): Promise<RepositoryUserStatisticsReadModel[]> {
+    return this.queryBus.execute(new ListRepositoryReviewersQuery());
   }
 }

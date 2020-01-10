@@ -13,7 +13,7 @@ import { GithubRepositoryMapper } from '../mappers/github-repository.mapper';
 import { AxiosError, AxiosResponse } from 'axios';
 import { GithubPrEntity } from '../domain/entities/github-pr.entity';
 import { GithubPrMapper } from '../mappers/github-pr.mapper';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchRequestExceptions } from '@pimp-my-pr/pmp-api/shared/util';
 import { CoreException, CoreNotFoundException } from '@pimp-my-pr/pmp-api/shared/domain';
 import { GithubUserEntity } from '../domain/entities/github-user.entity';
@@ -27,7 +27,7 @@ export class RepositoryDataService {
       true
     ),
     getRepositoryPrs: urlFactory<'fullName'>(githubConfig.apiUrl + '/repos/:fullName/pulls', true),
-    getRepositoryUsers: urlFactory<'owner' | 'title'>(
+    getRepositoryContributors: urlFactory<'owner' | 'title'>(
       githubConfig.apiUrl + '/repos/:owner/:title/contributors',
       true
     )
@@ -67,26 +67,46 @@ export class RepositoryDataService {
   }
 
   getRepositoryPrs(repositoryFullName: string): Promise<PrModel[]> {
-    return this.httpService
-      .get<GithubPrEntity>(this.endpoints.getRepositoryPrs.url({ fullName: repositoryFullName }))
-      .pipe(
-        map((res: AxiosResponse) => res.data),
-        map(prs => prs.map(pr => this.prMapper.mapFrom(pr))),
-        catchRequestExceptions()
-      )
-      .toPromise();
+    return this.getRepositoryPrsAsObservable(repositoryFullName).toPromise();
   }
 
-  getRepositoryUsers(): Promise<UserModel[]> {
+  getRepositoryContributors(): Promise<UserModel[]> {
     const owner = this.pmpApiServiceConfigService.getRepositoryOwner();
     const title = this.pmpApiServiceConfigService.getRepositoryTitle();
     return this.httpService
-      .get<GithubUserEntity>(this.endpoints.getRepositoryUsers.url({ owner, title }))
+      .get<GithubUserEntity>(this.endpoints.getRepositoryContributors.url({ owner, title }))
       .pipe(
         map((res: AxiosResponse) => res.data),
         map(users => users.map(user => this.userMapper.mapFrom(user))),
         catchRequestExceptions()
       )
       .toPromise();
+  }
+
+  getRepositoryReviewers(): Promise<UserModel[]> {
+    const owner = this.pmpApiServiceConfigService.getRepositoryOwner();
+    const repositoryTitle = this.pmpApiServiceConfigService.getRepositoryTitle();
+
+    return this.getRepositoryPrsAsObservable(`${owner}/${repositoryTitle}`)
+      .pipe(
+        map(prs =>
+          this.removeDuplicateUsers(prs.map(pr => pr.reviewers).flatMap<UserModel>(users => users))
+        )
+      )
+      .toPromise();
+  }
+
+  private getRepositoryPrsAsObservable(fullName: string): Observable<PrModel[]> {
+    return this.httpService
+      .get<GithubPrEntity[]>(this.endpoints.getRepositoryPrs.url({ fullName }))
+      .pipe(
+        map((res: AxiosResponse<GithubPrEntity[]>) => res.data),
+        map(prs => prs.map(pr => this.prMapper.mapFrom(pr))),
+        catchRequestExceptions()
+      );
+  }
+
+  private removeDuplicateUsers(users: UserModel[]): UserModel[] {
+    return [...new Map(users.map(obj => [JSON.stringify(obj), obj])).values()];
   }
 }
