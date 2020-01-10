@@ -20,8 +20,8 @@ describe('UserDataService', () => {
   });
 
   it('should be created', () => {
-    const service: UserDataService = TestBed.get(UserDataService);
-    expect(service).toBeTruthy();
+    const instance: UserDataService = TestBed.get(UserDataService);
+    expect(instance).toBeTruthy();
   });
 
   describe('#getUserStatisticsReadModelCollection', () => {
@@ -32,7 +32,7 @@ describe('UserDataService', () => {
         expect(res).toBe(response);
       });
 
-      const req = httpMock.expectOne(service.endpoints.getUserStatisticsCollection);
+      const req = httpMock.expectOne(service.endpoints.getUserStatisticsCollection.url());
       expect(req.request.method).toBe('GET');
       req.flush(response);
     });
@@ -49,7 +49,7 @@ describe('UserDataService', () => {
         }
       );
 
-      const req = httpMock.expectOne(service.endpoints.getUserStatisticsCollection);
+      const req = httpMock.expectOne(service.endpoints.getUserStatisticsCollection.url());
       expect(req.request.method).toBe('GET');
       req.flush(response, {
         status: 400,

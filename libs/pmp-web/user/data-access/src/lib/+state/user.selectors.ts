@@ -1,11 +1,16 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { USER_FEATURE_KEY, UserState } from './user.reducer';
+import { USER_FEATURE_KEY, UserState, selectAll } from './user.reducer';
 
 const getUserState = createFeatureSelector<UserState>(USER_FEATURE_KEY);
 
-const getUserStatisticsCollection = createSelector(
+const getUserStatisticsCollectionEntityState = createSelector(
   getUserState,
   state => state.userStatisticsCollection
+);
+
+const getUserStatisticsCollection = createSelector(
+  getUserStatisticsCollectionEntityState,
+  selectAll
 );
 
 const getUserStatisticsCollectionLoading = createSelector(
