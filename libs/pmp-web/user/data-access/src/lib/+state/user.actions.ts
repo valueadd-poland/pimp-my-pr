@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
-import { GetUserStatisticsCollectionPayload } from '../resources/request-payloads/get-user-statistics-collection.payload';
+import { GetUserStatisticsCollectionPayload } from '../resources/payloads/get-user-statistics-collection.payload';
 import { UserStatistics } from '@pimp-my-pr/shared/domain';
 
 export namespace fromUserActions {
