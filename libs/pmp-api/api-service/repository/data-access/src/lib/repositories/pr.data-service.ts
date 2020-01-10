@@ -1,8 +1,5 @@
 import { HttpService, Injectable } from '@nestjs/common';
-import {
-  githubConfig,
-  PmpApiServiceConfigService
-} from '@pimp-my-pr/pmp-api/shared/config';
+import { githubConfig, PmpApiServiceConfigService } from '@pimp-my-pr/pmp-api/shared/config';
 import { urlFactory } from '@valueadd/typed-urls';
 import { map } from 'rxjs/operators';
 import { AxiosResponse } from 'axios';

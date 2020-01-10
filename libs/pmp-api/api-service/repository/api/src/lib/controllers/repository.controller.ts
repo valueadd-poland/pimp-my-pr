@@ -11,8 +11,13 @@ export class RepositoryController {
     return this.repositoryFacade.list();
   }
 
-  @Get('users')
-  listUsers(): Promise<ListRepositoryUsersResponse> {
-    return this.repositoryFacade.listUsers();
+  @Get('contributors')
+  listContributors(): Promise<ListRepositoryUsersResponse> {
+    return this.repositoryFacade.listContributors();
+  }
+
+  @Get('reviewers')
+  listReviewers(): Promise<ListRepositoryUsersResponse> {
+    return this.repositoryFacade.listReviewers();
   }
 }
