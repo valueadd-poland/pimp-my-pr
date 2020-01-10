@@ -6,12 +6,10 @@ import { GetUserStatisticsCollectionPayload } from '../resources/payloads/get-us
 import { ListUsersResponse, UserStatistics } from '@pimp-my-pr/shared/domain';
 import { urlFactory } from '@valueadd/typed-urls';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UserDataService {
   readonly endpoints = {
-    getUserStatisticsCollection: urlFactory('//localhost:3333/api/repository/users')
+    getUserStatisticsCollection: urlFactory('//localhost:3333/api/repository/reviewers')
   };
 
   constructor(private http: HttpClient) {}

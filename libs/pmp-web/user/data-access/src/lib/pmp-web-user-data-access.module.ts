@@ -9,6 +9,7 @@ import {
 } from './+state/user.reducer';
 import { UserEffects } from './+state/user.effects';
 import { UserFacade } from './+state/user.facade';
+import { UserDataService } from './services/user-data.service';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { UserFacade } from './+state/user.facade';
     StoreModule.forFeature(USER_FEATURE_KEY, userReducer),
     EffectsModule.forFeature([UserEffects])
   ],
-  providers: [UserFacade]
+  providers: [UserFacade, UserDataService]
 })
 export class PmpWebUserDataAccessModule {}
