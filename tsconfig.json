@@ -54,6 +54,9 @@
       "@pimp-my-pr/pmp-web/user/domain": ["libs/pmp-web/user/domain/src/index.ts"],
       "@pimp-my-pr/pmp-web/repository/data-access-repository-statistics": [
         "libs/pmp-web/repository/data-access-repository-statistics/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/shared/ui-picture-label": [
+        "libs/pmp-web/shared/ui-picture-label/src/index.ts"
       ]
     }
   },

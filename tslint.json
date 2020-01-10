@@ -136,7 +136,7 @@
       }
     ],
     "directive-selector": [true, "attribute", "app", "camelCase"],
-    "component-selector": [true, "element", "app", "kebab-case"],
+    "component-selector": [true, "element", "app", "kebab-case", "pmp"],
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
     "no-input-rename": true,
