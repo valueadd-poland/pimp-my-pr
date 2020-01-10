@@ -675,7 +675,7 @@
       "sourceRoot": "libs/pmp-web/user/single-user-statistics/feature/src",
       "projectType": "library",
       "schematics": {},
-      "prefix": "pimp-my-pr",
+      "prefix": "pmp",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -792,6 +792,32 @@
       "schematics": {
         "@nrwl/angular:component": {
           "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-shared-ui-picture-label": {
+      "root": "libs/pmp-web/shared/ui-picture-label",
+      "sourceRoot": "libs/pmp-web/shared/ui-picture-label/src",
+      "projectType": "library",
+      "schematics": {},
+      "prefix": "pmp",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shared/ui-picture-label/tsconfig.lib.json",
+              "libs/pmp-web/shared/ui-picture-label/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-picture-label/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shared/ui-picture-label/jest.config.js",
+            "tsConfig": "libs/pmp-web/shared/ui-picture-label/tsconfig.spec.json"
+          }
         }
       }
     }

@@ -4,7 +4,10 @@ import { first } from 'rxjs/operators';
 
 const mockedData = [
   {
-    repository: { name: 'java', picture: '' },
+    repository: {
+      name: 'java',
+      picture: 'https://d301sr5gafysq2.cloudfront.net/39e6dc2e5ab0/img/repo-avatars/java.png'
+    },
     data: [
       {
         title: 'crud users',
@@ -41,7 +44,10 @@ const mockedData = [
     ]
   },
   {
-    repository: { name: 'php', picture: '' },
+    repository: {
+      name: 'php',
+      picture: 'https://d301sr5gafysq2.cloudfront.net/39e6dc2e5ab0/img/repo-avatars/php.png'
+    },
     data: [
       {
         title: 'crud users',
@@ -81,7 +87,7 @@ const mockedData = [
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'pimp-my-pr-single-user-statistics',
+  selector: 'pmp-single-user-statistics',
   templateUrl: './single-user-statistics.component.html',
   styleUrls: ['./single-user-statistics.component.scss']
 })
