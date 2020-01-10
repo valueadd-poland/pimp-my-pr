@@ -675,6 +675,7 @@
       "sourceRoot": "libs/pmp-web/user/single-user-statistics/feature/src",
       "projectType": "library",
       "schematics": {},
+      "prefix": "pimp-my-pr",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
