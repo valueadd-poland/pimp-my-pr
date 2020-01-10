@@ -73,6 +73,9 @@
     },
     "pmp-web-user-single-user-statistics-feature": {
       "tags": ["scope:pmp-web-user", "type:feature"]
+    },
+    "pmp-web-user-data-access": {
+      "tags": ["scope:pmp-web-user", "type:data-access"]
     }
   }
 }

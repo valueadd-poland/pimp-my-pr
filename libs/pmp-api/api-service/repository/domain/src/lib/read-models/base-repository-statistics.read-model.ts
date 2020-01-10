@@ -38,6 +38,6 @@ export abstract class BaseRepositoryStatisticsReadModel {
       result = (now.getTime() - pr.createdAt.getTime()) / (60 * 60 * 1000);
     });
 
-    return result;
+    return result | 0;
   }
 }
