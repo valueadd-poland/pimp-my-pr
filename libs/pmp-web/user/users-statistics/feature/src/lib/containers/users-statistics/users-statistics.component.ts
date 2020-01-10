@@ -1,7 +1,14 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  OnDestroy
+} from '@angular/core';
 import { TableConfig } from '@pimp-my-pr/pmp-web/shared/domain';
 import { UserStatistics } from '@pimp-my-pr/shared/domain';
 import { UserFacade } from '@pimp-my-pr/pmp-web/user/data-access';
+import { untilDestroyed } from 'ngx-take-until-destroy';
 
 const mockedData = {
   data: [
@@ -51,7 +58,7 @@ const mockedData = {
   styleUrls: ['./users-statistics.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UsersStatisticsComponent implements OnInit {
+export class UsersStatisticsComponent implements OnInit, OnDestroy {
   tableConfig: TableConfig<UserStatistics[]>;
   private displayedColumns = [
     'avatar',
@@ -63,12 +70,14 @@ export class UsersStatisticsComponent implements OnInit {
     'link'
   ];
 
-  constructor(private chDRef: ChangeDetectorRef, private userFacade: UserFacade) {}
+  constructor(private cdr: ChangeDetectorRef, private userFacade: UserFacade) {}
+
+  ngOnDestroy(): void {}
 
   ngOnInit(): void {
-    this.userFacade.userStatisticsCollection$.subscribe(statistics => {
+    this.userFacade.userStatisticsCollection$.pipe(untilDestroyed(this)).subscribe(statistics => {
       this.initTableConfig(statistics);
-      this.chDRef.markForCheck();
+      this.cdr.markForCheck();
     });
     this.userFacade.getUserStatisticsCollection({});
   }

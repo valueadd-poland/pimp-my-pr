@@ -52,6 +52,7 @@
     "@nrwl/angular": "8.7.1",
     "@valueadd/typed-urls": "^2.2.0",
     "core-js": "^2.5.4",
+    "ngx-take-until-destroy": "^5.4.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.4.0",
     "semantic-git-commit-cli": "^3.5.0",

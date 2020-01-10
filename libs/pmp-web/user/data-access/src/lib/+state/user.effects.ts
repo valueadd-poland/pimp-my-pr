@@ -11,7 +11,6 @@ import { map } from 'rxjs/operators';
 export class UserEffects {
   @Effect()
   getUserStatisticsCollection$ = this.dp.fetch(fromUserActions.Types.GetUserStatisticsCollection, {
-    id: () => {},
     run: (action: fromUserActions.GetUserStatisticsCollection) => {
       return this.userDataService
         .getUserStatisticsCollection(action.payload)

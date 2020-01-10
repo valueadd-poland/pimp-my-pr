@@ -1,9 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { RepositoryFacade } from '@pimp-my-pr/pmp-api/api-service/repository/core';
-import {
-  ListRepositoriesResponse,
-  UserStatistics
-} from '@pimp-my-pr/shared/domain';
+import { ListRepositoriesResponse, UserStatistics } from '@pimp-my-pr/shared/domain';
 
 @Controller('repository')
 export class RepositoryController {
