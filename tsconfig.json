@@ -50,7 +50,8 @@
       "@pimp-my-pr/pmp-web/user/single-user-statistics/feature": [
         "libs/pmp-web/user/single-user-statistics/feature/src/index.ts"
       ],
-      "@pimp-my-pr/pmp-web/user/data-access": ["libs/pmp-web/user/data-access/src/index.ts"]
+      "@pimp-my-pr/pmp-web/user/data-access": ["libs/pmp-web/user/data-access/src/index.ts"],
+      "@pimp-my-pr/pmp-web/user/domain": ["libs/pmp-web/user/domain/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
