@@ -18,6 +18,8 @@ import { catchRequestExceptions } from '@pimp-my-pr/pmp-api/shared/util';
 import { CoreException, CoreNotFoundException } from '@pimp-my-pr/pmp-api/shared/domain';
 import { GithubUserEntity } from '../domain/entities/github-user.entity';
 import { GithubUserMapper } from '../mappers/github-user.mapper';
+import { UserModelWithPr } from '../domain/interfaces/user-model-with-pr.interface';
+import { CustomUserWithPrMapper } from '../mappers/custom-user-with-pr.mapper';
 
 @Injectable()
 export class RepositoryDataService {
@@ -32,6 +34,7 @@ export class RepositoryDataService {
       true
     )
   };
+  customUserWithPrMapper = new CustomUserWithPrMapper();
   prMapper = new GithubPrMapper();
   repositoryMapper = new GithubRepositoryMapper();
   userMapper = new GithubUserMapper();
@@ -83,16 +86,12 @@ export class RepositoryDataService {
       .toPromise();
   }
 
-  getRepositoryReviewers(): Promise<UserModel[]> {
+  getRepositoryReviewersWithPrs(): Promise<UserModelWithPr[]> {
     const owner = this.pmpApiServiceConfigService.getRepositoryOwner();
     const repositoryTitle = this.pmpApiServiceConfigService.getRepositoryTitle();
 
     return this.getRepositoryPrsAsObservable(`${owner}/${repositoryTitle}`)
-      .pipe(
-        map(prs =>
-          this.removeDuplicateUsers(prs.map(pr => pr.reviewers).flatMap<UserModel>(users => users))
-        )
-      )
+      .pipe(map(prs => this.groupByReviewers(prs)))
       .toPromise();
   }
 
@@ -106,7 +105,20 @@ export class RepositoryDataService {
       );
   }
 
-  private removeDuplicateUsers(users: UserModel[]): UserModel[] {
-    return [...new Map(users.map(obj => [JSON.stringify(obj), obj])).values()];
+  private groupByReviewers(prs: PrModel[]): UserModelWithPr[] {
+    const result: { [id: string]: { reviewer: UserModel; prs: PrModel[] } } = {};
+
+    prs.forEach(pr =>
+      pr.reviewers.forEach(reviewer => {
+        result[reviewer.id] = {
+          reviewer,
+          prs: result[reviewer.id] ? result[reviewer.id].prs.concat(pr) : [pr]
+        };
+      })
+    );
+
+    return Object.keys(result).map(key =>
+      this.customUserWithPrMapper.mapFrom([result[key].reviewer, result[key].prs])
+    );
   }
 }

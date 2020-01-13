@@ -1,6 +1,6 @@
 export interface GithubUserEntity {
   login: string;
-  id: string;
+  id: number;
   avatar_url: string;
   type: 'User' | 'Organisation';
   contributions: number;
