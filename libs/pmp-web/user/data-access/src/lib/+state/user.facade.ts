@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { UserPartialState } from './user.reducer';
 import { userQuery } from './user.selectors';
 import { fromUserActions } from './user.actions';
-import { GetUserStatisticsCollectionPayload } from '../resources/payloads/get-user-statistics-collection.payload';
+import { GetUserStatisticsCollectionPayload } from '@pimp-my-pr/pmp-web/user/domain';
 
 @Injectable()
 export class UserFacade {
