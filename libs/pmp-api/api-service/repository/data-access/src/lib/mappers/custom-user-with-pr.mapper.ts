@@ -4,10 +4,10 @@ import { PrModel, UserModel } from '@pimp-my-pr/pmp-api/api-service/repository/d
 import { NotImplementedException } from '@nestjs/common';
 
 export class CustomUserWithPrMapper implements Mapper<[UserModel, PrModel[]], UserModelWithPr> {
-  mapFrom(param: [UserModel, PrModel[]]): UserModelWithPr {
+  mapFrom([reviewer, prs]: [UserModel, PrModel[]]): UserModelWithPr {
     return {
-      reviewer: param[0],
-      prs: param[1]
+      reviewer,
+      prs
     };
   }
 
