@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { TableConfig } from '@pimp-my-pr/pmp-web/shared/domain';
 
 @Component({
@@ -9,5 +9,22 @@ import { TableConfig } from '@pimp-my-pr/pmp-web/shared/domain';
 })
 export class TableComponent {
   @Input()
-  tableConfig: TableConfig<any>;
+  set tableConfig(config: TableConfig<any>) {
+    this._tableConfig = config;
+    if (config) {
+      this.displayColumns = ['avatar']
+        .concat(config.columns.map(columnConfig => columnConfig.name))
+        .concat(['link']);
+    }
+  }
+
+  @Output()
+  navigateToItem = new EventEmitter<any>();
+
+  displayColumns: string[];
+  _tableConfig: TableConfig<any>;
+
+  onNavigateToItem(item: any): void {
+    this.navigateToItem.emit(item);
+  }
 }

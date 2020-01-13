@@ -1,7 +1,8 @@
 import { Pagination } from './pagination.interface';
+import { ColumnConfig } from './column.config';
 
 export interface TableConfig<T> {
   data: T;
-  columns: string[];
-  pagination: Pagination;
+  columns: ColumnConfig[];
+  pagination?: Pagination;
 }
