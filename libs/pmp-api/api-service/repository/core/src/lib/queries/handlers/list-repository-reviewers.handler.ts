@@ -18,23 +18,20 @@ export class ListRepositoryReviewersHandler
   ) {}
 
   async execute(query: ListRepositoryReviewersQuery): Promise<RepositoryUserStatisticsReadModel[]> {
-    const repositoryReviewers = await this.repositoryRepository.getRepositoryReviewers();
+    const repositoryReviewersWithPrs = await this.repositoryRepository.getRepositoryReviewersWithPrs();
     const repositories = await this.repositoryRepository.find();
     const result = await Promise.all(
-      repositoryReviewers.map(user =>
-        this.queryBus
-          .execute<GetUserPrsQuery, PrModel[]>(new GetUserPrsQuery(user, repositories))
-          .then(prs =>
-            Promise.all(
-              repositories.map(repository =>
-                this.prsService
-                  .getPrsWithChanges(repository, prs)
-                  .then(
-                    prsWithChanges => new RepositoryUserStatisticsReadModel(user, prsWithChanges)
-                  )
+      repositories.map(repository =>
+        Promise.all(
+          repositoryReviewersWithPrs.map(reviewerWithPrs =>
+            this.prsService
+              .getPrsWithChanges(repository, reviewerWithPrs.prs)
+              .then(
+                prsWithChanges =>
+                  new RepositoryUserStatisticsReadModel(reviewerWithPrs.reviewer, prsWithChanges)
               )
-            )
           )
+        )
       )
     );
 

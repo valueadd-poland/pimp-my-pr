@@ -1,6 +1,6 @@
 export class UserModel {
   name: string;
-  id: string;
+  id: number;
   avatarUrl: string;
   contributions: number;
 }
