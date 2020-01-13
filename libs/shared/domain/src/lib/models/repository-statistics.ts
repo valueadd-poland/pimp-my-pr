@@ -1,4 +1,4 @@
-export interface RepositoryStatisticsReadModel {
+export interface RepositoryStatistics {
   comments: string[];
   id: number | string;
   prUrl: string;
