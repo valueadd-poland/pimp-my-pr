@@ -1,72 +1,36 @@
-<div *ngIf="tableConfig">
-  <mat-table [dataSource]="tableConfig?.data">
+<ng-container *ngIf="_tableConfig">
+  <mat-table [dataSource]="_tableConfig.data">
     <!-- Avatar Column -->
     <ng-container matColumnDef="avatar">
-      <mat-header-cell *matHeaderCellDef class="avatar-column"> </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef class="avatar-column"></mat-header-cell>
       <mat-cell *matCellDef="let element" class="avatar-column">
         <div class="avatar-column__empty-space"></div>
       </mat-cell>
     </ng-container>
 
-    <!-- User Column -->
-    <ng-container matColumnDef="user">
+    <!-- Dynamic Columns -->
+    <ng-container
+      *ngFor="let columnConfig of _tableConfig.columns"
+      [matColumnDef]="columnConfig.name"
+    >
       <mat-header-cell *matHeaderCellDef>
-        <span>{{ 'User' }}</span>
+        <span>{{ columnConfig.label }}</span>
+        <mat-icon *ngIf="columnConfig.isOrderColumn">arrow_upward</mat-icon>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{ element.name }}
-      </mat-cell>
-    </ng-container>
-
-    <!-- Pending PR Column -->
-    <ng-container matColumnDef="pendingPr">
-      <mat-header-cell *matHeaderCellDef>
-        <span> {{ 'Pending PR' }}<mat-icon>arrow_upward</mat-icon> </span>
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        {{ element.pendingPrs }}
-      </mat-cell>
-    </ng-container>
-
-    <!-- Sum Of Time PR Waiting Column -->
-    <ng-container matColumnDef="sumOfTimePrWaiting">
-      <mat-header-cell *matHeaderCellDef>
-        <span>{{ 'Sum of time PR waiting' }}</span>
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        {{ element.sumOfHoursPrsWaiting | resolveHours }}
-      </mat-cell>
-    </ng-container>
-
-    <!-- To Check Column -->
-    <ng-container matColumnDef="toCheck">
-      <mat-header-cell *matHeaderCellDef>
-        <span>{{ 'To check [lines of code]' }}</span>
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        {{ element.linesOfCodeToCheck }}
-      </mat-cell>
-    </ng-container>
-
-    <!-- Longest PR Column -->
-    <ng-container matColumnDef="longestPr">
-      <mat-header-cell *matHeaderCellDef>
-        <span>{{ 'Longest PR [lines of code]' }}</span>
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        {{ element.longestPrLinesOfCode }}
+        {{ element[columnConfig.property] }}
       </mat-cell>
     </ng-container>
 
     <!-- Link Column -->
     <ng-container matColumnDef="link">
-      <mat-header-cell *matHeaderCellDef class="link-column"> </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef class="link-column"></mat-header-cell>
       <mat-cell *matCellDef="let element" class="link-column">
-        <mat-icon>launch</mat-icon>
+        <mat-icon (click)="onNavigateToItem(element)">launch</mat-icon>
       </mat-cell>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="tableConfig.columns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: tableConfig.columns"></mat-row>
+    <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayColumns"></mat-row>
   </mat-table>
-</div>
+</ng-container>
