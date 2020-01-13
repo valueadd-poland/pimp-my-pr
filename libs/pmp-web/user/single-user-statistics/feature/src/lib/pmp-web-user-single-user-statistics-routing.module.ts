@@ -5,7 +5,7 @@ import { SingleUserStatisticsComponent } from './containers/single-user-statisti
 
 const routes: Routes = [
   {
-    path: ':id',
+    path: '',
     component: SingleUserStatisticsComponent
   }
 ];
