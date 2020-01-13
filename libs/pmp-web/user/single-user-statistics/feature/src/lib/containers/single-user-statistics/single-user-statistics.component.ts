@@ -6,87 +6,34 @@ const mockedData = [
   {
     repository: {
       name: 'java',
-      picture: 'https://d301sr5gafysq2.cloudfront.net/39e6dc2e5ab0/img/repo-avatars/java.png'
+      picture: 'https://d301sr5gafysq2.cloudfront.net/39e6dc2xe5ab0/img/repo-avatars/java.png'
     },
     data: [
       {
-        title: 'crud users',
-        id: '#1',
-        waitingTime: '35 hours',
-        codeLines: 540,
-        author: { name: 'Filip Chajzer', picture: '' },
-        comments: []
-      },
-      {
-        title: 'crud comments',
-        id: '#3',
-        waitingTime: '28 hours',
-        codeLines: 20,
-        author: { name: 'Filip Chajzer', picture: '' },
-        comments: []
-      },
-      {
-        title: 'unit tests for users',
+        comments: ['elo1', 'elo2'],
         id: '#4',
-        waitingTime: '4 hours',
-        codeLines: 145,
-        author: { name: 'Filip Chajzer', picture: '' },
-        comments: []
+        prUrl: 'https://google.com',
+        sumOfTimePrWaiting: 37,
+        title: 'Crud users',
+        toCheck: 118,
+        user: 'Filip Chajzer',
+        userPicture: 'https://avatarfiles.alphacoders.com/431/thumb-4311.gif'
       },
       {
-        title: 'unit tests for comments',
-        id: '#5',
-        waitingTime: '34 minutes',
-        codeLines: 4,
-        author: { name: 'Filip Chajzer', picture: '' },
-        comments: []
-      }
-    ]
-  },
-  {
-    repository: {
-      name: 'php',
-      picture: 'https://d301sr5gafysq2.cloudfront.net/39e6dc2e5ab0/img/repo-avatars/php.png'
-    },
-    data: [
-      {
-        title: 'crud users',
-        id: '#1',
-        waitingTime: '35 hours',
-        codeLines: 540,
-        author: { name: 'Filip Chajzer', picture: '' },
-        comments: []
-      },
-      {
-        title: 'crud comments',
-        id: '#3',
-        waitingTime: '28 hours',
-        codeLines: 20,
-        author: { name: 'Filip Chajzer', picture: '' },
-        comments: []
-      },
-      {
-        title: 'unit tests for users',
+        comments: ['elo3', 'elo4'],
         id: '#4',
-        waitingTime: '4 hours',
-        codeLines: 145,
-        author: { name: 'Filip Chajzer', picture: '' },
-        comments: []
-      },
-      {
-        title: 'unit tests for comments',
-        id: '#5',
-        waitingTime: '34 minutes',
-        codeLines: 4,
-        author: { name: 'Filip Chajzer', picture: '' },
-        comments: []
+        prUrl: 'https://google.com',
+        sumOfTimePrWaiting: 51,
+        title: 'Crud admins',
+        toCheck: 141,
+        user: 'Filip Chajzer',
+        userPicture: 'https://avatarfiles.alphacoders.com/431/thumb-4311.gif'
       }
     ]
   }
 ];
 
 @Component({
-  // tslint:disable-next-line:component-selector
   selector: 'pmp-single-user-statistics',
   templateUrl: './single-user-statistics.component.html',
   styleUrls: ['./single-user-statistics.component.scss']

@@ -3,4 +3,5 @@ export * from './lib/responses/list-users.response';
 export * from './lib/responses/response.interface';
 export * from './lib/models';
 export * from './lib/responses';
+export * from './lib/models/repository-statistics.read-model';
 export * from './lib/requests';
