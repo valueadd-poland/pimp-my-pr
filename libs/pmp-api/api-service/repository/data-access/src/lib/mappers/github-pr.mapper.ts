@@ -11,6 +11,7 @@ export class GithubPrMapper implements Mapper<GithubPrEntity, PrModel> {
     return {
       closedAt: new Date(param.closed_at),
       createdAt: new Date(param.created_at),
+      url: param.html_url,
       id: param.number,
       reviewers: param.requested_reviewers.map(this.userMapper.mapFrom),
       state: param.state,

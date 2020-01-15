@@ -1,6 +1,9 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Req } from '@nestjs/common';
 import { RepositoryFacade } from '@pimp-my-pr/pmp-api/api-service/repository/core';
 import { ListRepositoriesResponse, UserStatistics } from '@pimp-my-pr/shared/domain';
+import { Request } from 'express';
+import { ListReviewerStatisticsRequest } from '../requests/list-reviewer-statistics.request';
+import { SingleUserStatisticsReadModel } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
 
 @Controller('repository')
 export class RepositoryController {
@@ -19,5 +22,12 @@ export class RepositoryController {
   @Get('reviewers')
   listReviewers(): Promise<UserStatistics[]> {
     return this.repositoryFacade.listReviewers();
+  }
+
+  @Get('reviewers/:username')
+  listReviewerStatistics(@Req() request: Request): Promise<SingleUserStatisticsReadModel> {
+    return this.repositoryFacade.listReviewerStatistics(
+      new ListReviewerStatisticsRequest(request).getParams()
+    );
   }
 }

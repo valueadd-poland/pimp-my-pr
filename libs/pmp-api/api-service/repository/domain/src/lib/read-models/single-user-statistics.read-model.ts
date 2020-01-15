@@ -1,0 +1,15 @@
+import { UserModel } from '../models';
+import { RepositoryPrsStatisticsReadModel } from './repository-prs-statistics.read-model';
+
+export class SingleUserStatisticsReadModel extends UserModel {
+  repositories: RepositoryPrsStatisticsReadModel[];
+
+  constructor(user: UserModel, repositories: RepositoryPrsStatisticsReadModel[]) {
+    super();
+    this.name = user.name;
+    this.id = user.id;
+    this.contributions = user.contributions;
+    this.avatarUrl = user.avatarUrl;
+    this.repositories = repositories;
+  }
+}

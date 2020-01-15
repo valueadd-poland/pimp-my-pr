@@ -1,8 +1,6 @@
 import { PrModel } from './pr.model';
+import { BaseRepositoryModel } from './base-repository.model';
 
-export class RepositoryModel {
-  fullName: string;
-  name: string;
-  owner: string;
+export class RepositoryModel extends BaseRepositoryModel {
   prs: PrModel[];
 }

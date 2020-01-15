@@ -3,10 +3,13 @@ import { QueryBus } from '@nestjs/cqrs';
 import { ListRepositoriesQuery } from './queries/list-repositories.query';
 import {
   RepositoryStatisticsReadModel,
-  RepositoryUserStatisticsReadModel
+  RepositoryUserStatisticsReadModel,
+  SingleUserStatisticsReadModel
 } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
 import { ListRepositoryContributorsQuery } from './queries/list-repository-contributors.query';
 import { ListRepositoryReviewersQuery } from './queries/list-repository-reviewers.query';
+import { ListReviewerStatisticsQuery } from './queries/list-reviewer-statistics.query';
+import { ListReviewerStatisticsParams } from '@pimp-my-pr/shared/domain';
 
 @Injectable()
 export class RepositoryFacade {
@@ -22,5 +25,11 @@ export class RepositoryFacade {
 
   listReviewers(): Promise<RepositoryUserStatisticsReadModel[]> {
     return this.queryBus.execute(new ListRepositoryReviewersQuery());
+  }
+
+  listReviewerStatistics(
+    params: ListReviewerStatisticsParams
+  ): Promise<SingleUserStatisticsReadModel> {
+    return this.queryBus.execute(new ListReviewerStatisticsQuery(params));
   }
 }
