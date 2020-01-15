@@ -2,9 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { QueryBus } from '@nestjs/cqrs';
 import {
   PrChanges,
+  PrDetailsModel,
   PrModel,
+  PrStatisticsReadModel,
   PrWithChangesReadModel,
-  RepositoryModel
+  RepositoryModel,
+  RepositoryPrsStatisticsReadModel
 } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
 import { GetPrChangesQuery } from '../queries/get-pr-changes.query';
 
@@ -30,5 +33,24 @@ export class PrsService {
           })
       )
     );
+  }
+
+  getRepositoryPrStatisticsReadModel(
+    repository: RepositoryModel,
+    prsDetails: PrDetailsModel[]
+  ): RepositoryPrsStatisticsReadModel {
+    return {
+      name: repository.name,
+      fullName: repository.fullName,
+      owner: repository.owner,
+      prsStatistics: prsDetails.map(
+        prDetails =>
+          new PrStatisticsReadModel(prDetails, {
+            additions: prDetails.additions,
+            changes: prDetails.changedFiles,
+            deletions: prDetails.deletions
+          })
+      )
+    };
   }
 }

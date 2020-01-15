@@ -9,14 +9,20 @@ import { GetUserPrsHandler } from './queries/handlers/get-user-prs.handler';
 import { ListRepositoryContributorsHandler } from './queries/handlers/list-repository-contributors.handler';
 import { PrsService } from './services/prs.service';
 import { ListRepositoryReviewersHandler } from './queries/handlers/list-repository-reviewers.handler';
+import { GetPrDetailsHandler } from './queries/handlers/get-pr-details.handler';
+import { ListReviewerStatisticsHandler } from './queries/handlers/list-reviewer-statistics.handler';
+import { GetUserHandler } from './queries/handlers/get-user.handler';
 
 const QueryHandlers = [
   ListRepositoriesHandler,
   ListRepositoryContributorsHandler,
   ListRepositoryReviewersHandler,
+  ListReviewerStatisticsHandler,
   GetRepositoryPrsHandler,
   GetPrChangesHandler,
-  GetUserPrsHandler
+  GetPrDetailsHandler,
+  GetUserPrsHandler,
+  GetUserHandler
 ];
 
 @Module({

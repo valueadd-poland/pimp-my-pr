@@ -3,18 +3,26 @@ import { githubConfig, PmpApiServiceConfigService } from '@pimp-my-pr/pmp-api/sh
 import { urlFactory } from '@valueadd/typed-urls';
 import { map } from 'rxjs/operators';
 import { AxiosResponse } from 'axios';
-import { PrChanges } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
+import { PrChanges, PrDetailsModel } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
 import { GithubPrFilesEntity } from '../domain/entities/github-pr-files.entity';
 import { catchRequestExceptions } from '@pimp-my-pr/pmp-api/shared/util';
+import { GithubPrDetailsEntity } from '../domain/entities/github-pr-details.entity';
+import { GithubPrDetailsMapper } from '../mappers/github-pr-details.mapper';
 
 @Injectable()
 export class PrDataService {
   endpoints = {
+    getPrDetails: urlFactory<'repoFullName' | 'prId'>(
+      githubConfig.apiUrl + '/repos/:repoFullName/pulls/:prId',
+      true
+    ),
     getPrFiles: urlFactory<'repoFullName' | 'prId'>(
       githubConfig.apiUrl + '/repos/:repoFullName/pulls/:prId/files',
       true
     )
   };
+
+  prDetailsMapper = new GithubPrDetailsMapper();
 
   constructor(
     private httpService: HttpService,
@@ -40,6 +48,16 @@ export class PrDataService {
             };
           })
         ),
+        catchRequestExceptions()
+      )
+      .toPromise();
+  }
+
+  getPrDetails(repoFullName: string, prId: number): Promise<PrDetailsModel> {
+    return this.httpService
+      .get<GithubPrDetailsEntity>(this.endpoints.getPrDetails.url({ repoFullName, prId }))
+      .pipe(
+        map((res: AxiosResponse<GithubPrDetailsEntity>) => this.prDetailsMapper.mapFrom(res.data)),
         catchRequestExceptions()
       )
       .toPromise();
