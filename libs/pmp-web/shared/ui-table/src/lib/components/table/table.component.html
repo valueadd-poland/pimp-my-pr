@@ -32,51 +32,5 @@
 
     <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayColumns"></mat-row>
-    <!-- Title Column -->
-    <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef class="title-column">
-        <span> {{ 'Title' }}</span>
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element" class="title-column">
-        {{ element.title }}
-      </mat-cell>
-    </ng-container>
-
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef class="id-column">
-        <span> {{ 'ID' }}</span>
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element" class="id-column">
-        {{ element.id }}
-      </mat-cell>
-    </ng-container>
-
-    <!-- Author Column -->
-    <ng-container matColumnDef="author">
-      <mat-header-cell *matHeaderCellDef class="author-column">
-        <span> {{ 'Author' }}</span>
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element" class="author-column">
-        <pmp-picture-label [label]="element.user" [picture]="element.userPicture">
-        </pmp-picture-label>
-      </mat-cell>
-    </ng-container>
-
-    <!-- Comments Column -->
-    <ng-container matColumnDef="comments">
-      <mat-header-cell *matHeaderCellDef class="comments-column">
-        <span> {{ 'Comments' }}</span>
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element" class="comments-column">
-        <mat-icon>
-          comment
-        </mat-icon>
-        {{ element.comments.length }}
-      </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="tableConfig.columns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: tableConfig.columns"></mat-row>
   </mat-table>
 </ng-container>

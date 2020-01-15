@@ -1,5 +1,5 @@
 export interface RepositoryStatistics {
-  comments: string[];
+  comments: number;
   id: number | string;
   prUrl: string;
   sumOfHoursPrsWaiting: number;

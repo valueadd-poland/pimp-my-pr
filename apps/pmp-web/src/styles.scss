@@ -18,13 +18,14 @@ $pmp-web-accent: mat-palette($mat-pink, A200, A100, A400);
 $pmp-web-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$pmp-web-theme: mat-light-theme(
-  $pmp-web-primary,
-  $pmp-web-accent,
-  $pmp-web-warn
-);
+$pmp-web-theme: mat-light-theme($pmp-web-primary, $pmp-web-accent, $pmp-web-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($pmp-web-theme);
+
+body,
+html {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}

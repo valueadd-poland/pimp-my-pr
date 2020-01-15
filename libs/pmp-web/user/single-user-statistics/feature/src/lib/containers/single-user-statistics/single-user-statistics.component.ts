@@ -1,8 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { TableConfig } from '@pimp-my-pr/pmp-web/shared/domain';
-import { RepositoryStatistics } from '@pimp-my-pr/shared/domain';
+
+const mockedUser = {
+  name: 'Krzysztof Kolumb',
+  picture: 'https://avatarfiles.alphacoders.com/893/thumb-89303.gif'
+};
 
 const mockedData = [
   {
@@ -85,30 +88,13 @@ const mockedData = [
 })
 export class SingleUserStatisticsComponent implements OnInit {
   mockedData = mockedData;
+  mockedUser = mockedUser;
   user: string | null;
-
-  private displayedColumns = [
-    'id',
-    'title',
-    'sumOfTimePrWaiting',
-    'toCheck',
-    'author',
-    'comments',
-    'link'
-  ];
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.readRouteUserId();
-  }
-
-  createTableConfigForData(mock): TableConfig<RepositoryStatistics[]> {
-    return {
-      columns: this.displayedColumns,
-      pagination: mock.pagination,
-      data: mock.data
-    };
   }
 
   private readRouteUserId(): void {
