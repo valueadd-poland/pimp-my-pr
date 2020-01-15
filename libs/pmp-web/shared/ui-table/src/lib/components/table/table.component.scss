@@ -14,6 +14,12 @@ mat-header-cell > span > mat-icon {
   width: 62px;
 }
 
+.id-column {
+  flex: unset;
+  width: 64px;
+}
+
+.comments-column,
 .link-column {
   flex: unset;
   width: 90px;
