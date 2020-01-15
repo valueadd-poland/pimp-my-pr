@@ -2,9 +2,9 @@ export interface RepositoryStatistics {
   comments: string[];
   id: number | string;
   prUrl: string;
-  sumOfTimePrWaiting: number;
+  sumOfHoursPrsWaiting: number;
   title: string;
-  toCheck: number;
+  linesOfCodeToCheck: number;
   user: string;
   userPicture: string;
 }

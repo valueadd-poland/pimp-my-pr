@@ -1,10 +1,13 @@
-<div class="user-statistics">
+<div class="user-statistics__container">
   <div *ngFor="let repo of mockedData">
-    <pmp-picture-label
-      [label]="repo.repository.name"
-      [picture]="repo.repository.picture"
-      [pictureSize]="32"
-    >
-    </pmp-picture-label>
+    <div class="user-statistics__repository-label">
+      <pmp-picture-label
+        [label]="repo.repository.name"
+        [picture]="repo.repository.picture"
+        [pictureSize]="32"
+      >
+      </pmp-picture-label>
+    </div>
+    <pmp-table [tableConfig]="createTableConfigForData(repo)"></pmp-table>
   </div>
 </div>
