@@ -1,0 +1,19 @@
+.link-column,
+.id-column {
+  flex: unset;
+  width: 64px;
+}
+
+.link-column {
+  color: rgba(0, 0, 0, 0.6);
+  justify-content: flex-end;
+  > mat-icon {
+    cursor: pointer;
+  }
+}
+
+.comments-column {
+  color: rgba(0, 0, 0, 0.6);
+  flex: unset;
+  width: 96px;
+}
