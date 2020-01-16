@@ -1,10 +1,11 @@
 import { BasePrWithChangesReadModel } from './base-pr-with-changes.read-model';
 import { PrDetailsModel } from '../models';
-import { PrChanges } from '../interfaces';
+import { PrAuthor, PrChanges } from '../interfaces';
 
 export class PrStatisticsReadModel extends BasePrWithChangesReadModel {
+  id: number;
   title: string;
-  author: string;
+  author: PrAuthor;
   reviewCommentsCount: number;
   commentsCount: number;
   url: string;
@@ -12,8 +13,13 @@ export class PrStatisticsReadModel extends BasePrWithChangesReadModel {
 
   constructor(pr: PrDetailsModel, prChanges: PrChanges) {
     super(pr, prChanges);
+    this.id = pr.id;
     this.title = pr.title;
-    this.author = pr.user.name;
+    this.author = {
+      avatarUrl: pr.user.avatarUrl,
+      id: pr.user.id,
+      name: pr.user.name
+    };
     this.commentsCount = pr.commentsCount;
     this.reviewCommentsCount = pr.reviewCommentsCount;
     this.url = pr.url;

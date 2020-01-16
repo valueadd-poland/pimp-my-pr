@@ -3,6 +3,7 @@ import { ListReviewerStatisticsQuery } from '../list-reviewer-statistics.query';
 import {
   PrDetailsModel,
   PrModel,
+  RepositoryPrsStatisticsReadModelFactory,
   SingleUserStatisticsReadModel,
   UserModel
 } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
@@ -22,7 +23,8 @@ export class ListReviewerStatisticsHandler
     private prRepository: PrDataService,
     private prsService: PrsService,
     private queryBus: QueryBus,
-    private repositoryRepository: RepositoryDataService
+    private repositoryRepository: RepositoryDataService,
+    private repositoryPrsStatisticsFactory: RepositoryPrsStatisticsReadModelFactory
   ) {}
   async execute(query: ListReviewerStatisticsQuery): Promise<SingleUserStatisticsReadModel> {
     const repositories = await this.repositoryRepository.find();
@@ -47,9 +49,7 @@ export class ListReviewerStatisticsHandler
                 )
             );
           })
-          .then(prDetails =>
-            this.prsService.getRepositoryPrStatisticsReadModel(repository, prDetails)
-          )
+          .then(prDetails => this.repositoryPrsStatisticsFactory.create(repository, prDetails))
       )
     );
 

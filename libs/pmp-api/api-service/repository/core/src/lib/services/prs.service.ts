@@ -43,6 +43,7 @@ export class PrsService {
       name: repository.name,
       fullName: repository.fullName,
       owner: repository.owner,
+      pictureUrl: repository.pictureUrl,
       prsStatistics: prsDetails.map(
         prDetails =>
           new PrStatisticsReadModel(prDetails, {
