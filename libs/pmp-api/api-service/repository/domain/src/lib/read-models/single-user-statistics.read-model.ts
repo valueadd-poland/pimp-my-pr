@@ -1,4 +1,4 @@
-import { UserModel } from '../models';
+import { UserModel } from '../models/user.model';
 import { RepositoryPrsStatisticsReadModel } from './repository-prs-statistics.read-model';
 
 export class SingleUserStatisticsReadModel extends UserModel {
