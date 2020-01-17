@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { PrStatistics } from '@pimp-my-pr/shared/domain';
 
 @Component({
   selector: 'pmp-single-user-statistics-table',
@@ -9,7 +10,7 @@ export class SingleUserStatisticsTableComponent implements OnInit {
   displayedColumns = ['id', 'title', 'waitingTime', 'linesToCheck', 'author', 'comments', 'link'];
 
   @Input()
-  tableData: any[];
+  tableData: PrStatistics[];
 
   constructor() {}
 

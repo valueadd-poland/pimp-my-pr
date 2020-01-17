@@ -1,13 +1,18 @@
 <div class="user-statistics__container">
   <div class="user-statistics__header-container">
     <h2 class="user-statistics__header-label">Pull requests pending</h2>
-    <pmp-picture-label [label]="mockedUser.name" [picture]="mockedUser.picture"></pmp-picture-label>
+    <pmp-picture-label
+      [label]="mockedData.name"
+      [picture]="mockedData.avatarUrl"
+    ></pmp-picture-label>
   </div>
-  <div *ngFor="let repo of mockedData">
+  <div *ngFor="let repo of mockedData.repositories">
     <div class="user-statistics__repository-label">
-      <pmp-picture-label [label]="repo.repository.name" [picture]="repo.repository.picture">
+      <pmp-picture-label [label]="repo.name" [picture]="repo.repositoryPictureUrl">
       </pmp-picture-label>
     </div>
-    <pmp-single-user-statistics-table [tableData]="repo.data"></pmp-single-user-statistics-table>
+    <pmp-single-user-statistics-table
+      [tableData]="repo.prsStatistics"
+    ></pmp-single-user-statistics-table>
   </div>
 </div>

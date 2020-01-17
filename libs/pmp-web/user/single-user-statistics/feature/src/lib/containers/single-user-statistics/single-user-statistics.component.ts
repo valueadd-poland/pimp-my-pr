@@ -1,84 +1,36 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { SingleUserStatisticsResponse } from '@pimp-my-pr/shared/domain';
 
-const mockedUser = {
+const mockedData: SingleUserStatisticsResponse = {
+  id: 111,
   name: 'Krzysztof Kolumb',
-  picture: 'https://avatarfiles.alphacoders.com/893/thumb-89303.gif'
+  avatarUrl: 'https://forum.jaslo4u.pl/download/file.php?avatar=29129_1490859586.gif',
+  repositories: [
+    {
+      fullName: 'fullName',
+      name: 'JavaBackend',
+      repositoryPictureUrl: 'https://static.alphacoders.com/avatars/21577.jpg',
+      owner: 'owner',
+      prsStatistics: [
+        {
+          author: 'Filip Chajzer',
+          id: 123,
+          authorAvatarUrl:
+            'https://steamuserimages-a.akamaihd.net/ugc/794239356574677969/E12388F9644B085E342153360759BA2D788C3D12/',
+          commentsCount: 6,
+          createdAt: 'dupa',
+          linesOfCodeToCheck: 118,
+          reviewCommentsCount: 0,
+          timeWaiting: '76',
+          title: 'Crud users',
+          url: 'https://google.com'
+        }
+      ]
+    }
+  ]
 };
-
-const mockedData = [
-  {
-    repository: {
-      name: 'java',
-      picture:
-        'https://mpng.pngfly.com/20190713/ppg/kisspng-java-development-kit-programming-language-computer-download-logo-transparent-background-java-png-imag-5d2a9388bf5271.0703141315630713687837.jpg'
-    },
-    data: [
-      // repository-statistics
-      {
-        comments: ['elo1', 'elo2'],
-        id: '#4',
-        prUrl: 'https://google.com',
-        sumOfHoursPrsWaiting: 37,
-        title: 'Crud users',
-        linesOfCodeToCheck: 118,
-        user: 'Filip Chajzer',
-        userPicture: 'https://avatarfiles.alphacoders.com/431/thumb-4311.gif'
-      },
-      {
-        comments: ['elo3', 'elo4'],
-        id: '#4',
-        prUrl: 'https://google.com',
-        sumOfHoursPrsWaiting: 51,
-        title: 'Crud admins',
-        linesOfCodeToCheck: 141,
-        user: 'Filip Chajzer',
-        userPicture: 'https://avatarfiles.alphacoders.com/431/thumb-4311.gif'
-      }
-    ],
-    pagination: {
-      page: 1,
-      size: 4,
-      total: 4
-    }
-  },
-  {
-    repository: {
-      name: 'java',
-      picture:
-        'https://mpng.pngfly.com/20190713/ppg/kisspng-java-development-kit-programming-language-computer-download-logo-transparent-background-java-png-imag-5d2a9388bf5271.0703141315630713687837.jpg'
-    },
-    data: [
-      // repository-statistics
-      {
-        comments: ['elo1', 'elo2'],
-        id: '#4',
-        prUrl: 'https://google.com',
-        sumOfHoursPrsWaiting: 37,
-        title: 'Crud users',
-        linesOfCodeToCheck: 118,
-        user: 'Filip Chajzer',
-        userPicture: 'https://avatarfiles.alphacoders.com/431/thumb-4311.gif'
-      },
-      {
-        comments: ['elo3', 'elo4'],
-        id: '#4',
-        prUrl: 'https://google.com',
-        sumOfHoursPrsWaiting: 51,
-        title: 'Crud admins',
-        linesOfCodeToCheck: 141,
-        user: 'Filip Chajzer',
-        userPicture: 'https://avatarfiles.alphacoders.com/431/thumb-4311.gif'
-      }
-    ],
-    pagination: {
-      page: 1,
-      size: 4,
-      total: 4
-    }
-  }
-];
 
 @Component({
   selector: 'pmp-single-user-statistics',
@@ -88,7 +40,6 @@ const mockedData = [
 })
 export class SingleUserStatisticsComponent implements OnInit {
   mockedData = mockedData;
-  mockedUser = mockedUser;
   user: string | null;
 
   constructor(private route: ActivatedRoute) {}
