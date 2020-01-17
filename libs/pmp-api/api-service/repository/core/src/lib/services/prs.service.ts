@@ -34,24 +34,4 @@ export class PrsService {
       )
     );
   }
-
-  getRepositoryPrStatisticsReadModel(
-    repository: RepositoryModel,
-    prsDetails: PrDetailsModel[]
-  ): RepositoryPrsStatisticsReadModel {
-    return {
-      name: repository.name,
-      fullName: repository.fullName,
-      owner: repository.owner,
-      pictureUrl: repository.pictureUrl,
-      prsStatistics: prsDetails.map(
-        prDetails =>
-          new PrStatisticsReadModel(prDetails, {
-            additions: prDetails.additions,
-            changes: prDetails.changedFiles,
-            deletions: prDetails.deletions
-          })
-      )
-    };
-  }
 }

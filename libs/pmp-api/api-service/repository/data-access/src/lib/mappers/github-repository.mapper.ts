@@ -8,6 +8,7 @@ export class GithubRepositoryMapper implements Mapper<GithubRepositoryEntity, Re
   mapFrom(param: GithubRepositoryEntity): RepositoryModel {
     return {
       fullName: param.full_name,
+      id: param.id,
       name: param.name,
       owner: param.owner.login,
       prs: [],
