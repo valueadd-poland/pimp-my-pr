@@ -5,6 +5,7 @@ import {
 } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
 
 export abstract class BaseRepositoryStatisticsReadModel {
+  id: number;
   linesOfCodeToCheck: number;
   longestPrLinesOfCode?: number;
   name: string;
@@ -12,6 +13,7 @@ export abstract class BaseRepositoryStatisticsReadModel {
   sumOfHoursPrsWaiting?: number;
 
   protected constructor(model: RepositoryModel | UserModel, prs: PrWithChangesReadModel[]) {
+    this.id = model.id;
     this.name = model.name;
     this.pendingPrs = prs.length;
     this.sumOfHoursPrsWaiting = this.getSumOfHoursPrsWaiting(prs);
