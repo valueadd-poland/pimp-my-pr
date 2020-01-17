@@ -3,8 +3,7 @@ import { RepositoryModel } from '@pimp-my-pr/pmp-api/api-service/repository/doma
 import { Mapper } from '@pimp-my-pr/pmp-api/shared/domain';
 import { NotImplementedException } from '@nestjs/common';
 
-export class GithubRepositoryMapper
-  implements Mapper<GithubRepositoryEntity, RepositoryModel> {
+export class GithubRepositoryMapper implements Mapper<GithubRepositoryEntity, RepositoryModel> {
   mapFrom(param: GithubRepositoryEntity): RepositoryModel {
     return {
       fullName: param.full_name,
@@ -15,8 +14,6 @@ export class GithubRepositoryMapper
   }
 
   mapTo(param: RepositoryModel): GithubRepositoryEntity {
-    throw new NotImplementedException(
-      'Mapping to github repository format is not implemented'
-    );
+    throw new NotImplementedException('Mapping to github repository format is not implemented');
   }
 }
