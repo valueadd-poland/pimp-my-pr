@@ -1,12 +1,11 @@
-import { PrAuthor } from '../interfaces/pr-author.interface';
-
 export interface PrStatistics {
+  id: number;
   createdAt: string;
   title: string;
   timeWaiting: string;
-  id: number;
   linesOfCodeToCheck: number;
-  author: PrAuthor;
+  author: string;
+  authorAvatarUrl: string;
   commentsCount: number;
   reviewCommentsCount: number;
   url: string;

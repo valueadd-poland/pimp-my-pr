@@ -4,6 +4,6 @@ export interface RepositoryModel {
   name: string;
   fullName: string;
   owner: string;
-  pictureUrl: string;
+  repositoryPictureUrl: string;
   prsStatistics: PrStatistics[];
 }
