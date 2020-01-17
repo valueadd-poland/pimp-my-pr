@@ -1,6 +1,7 @@
 import { BasePrWithChangesReadModel } from './base-pr-with-changes.read-model';
-import { PrDetailsModel } from '../models';
-import { PrAuthor, PrChanges } from '../interfaces';
+import { PrDetailsModel } from '../models/pr-details.model';
+import { PrAuthor } from '../interfaces/pr-author.interface';
+import { PrChanges } from '../interfaces/pr-changes.interface';
 
 export class PrStatisticsReadModel extends BasePrWithChangesReadModel {
   id: number;

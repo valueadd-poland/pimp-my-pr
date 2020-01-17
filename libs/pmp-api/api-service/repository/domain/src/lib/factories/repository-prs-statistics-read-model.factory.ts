@@ -1,10 +1,8 @@
-import {
-  PrDetailsModel,
-  PrStatisticsReadModel,
-  RepositoryModel,
-  RepositoryPrsStatisticsReadModel
-} from '@pimp-my-pr/pmp-api/api-service/repository/domain';
 import { Injectable } from '@nestjs/common';
+import { PrDetailsModel } from '../models/pr-details.model';
+import { RepositoryModel } from '../models/repository.model';
+import { RepositoryPrsStatisticsReadModel } from '../read-models/repository-prs-statistics.read-model';
+import { PrStatisticsReadModel } from '../read-models/pr-statistics.read-model';
 
 @Injectable()
 export class RepositoryPrsStatisticsReadModelFactory {

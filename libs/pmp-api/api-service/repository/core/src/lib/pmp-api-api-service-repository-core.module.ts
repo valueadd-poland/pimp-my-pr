@@ -12,6 +12,7 @@ import { ListRepositoryReviewersHandler } from './queries/handlers/list-reposito
 import { GetPrDetailsHandler } from './queries/handlers/get-pr-details.handler';
 import { ListReviewerStatisticsHandler } from './queries/handlers/list-reviewer-statistics.handler';
 import { GetUserHandler } from './queries/handlers/get-user.handler';
+import { RepositoryPrsStatisticsReadModelFactory } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
 
 const QueryHandlers = [
   ListRepositoriesHandler,
@@ -27,7 +28,12 @@ const QueryHandlers = [
 
 @Module({
   imports: [CqrsModule, PmpApiApiServiceRepositoryDataAccessModule],
-  providers: [RepositoryFacade, PrsService, ...QueryHandlers],
+  providers: [
+    RepositoryFacade,
+    PrsService,
+    RepositoryPrsStatisticsReadModelFactory,
+    ...QueryHandlers
+  ],
   exports: [RepositoryFacade]
 })
 export class PmpApiApiServiceRepositoryCoreModule {}
