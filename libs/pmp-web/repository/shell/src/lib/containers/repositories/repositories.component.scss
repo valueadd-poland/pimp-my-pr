@@ -1,0 +1,23 @@
+.repositories-component__container {
+  background-color: #eef1f6;
+  height: 100vh;
+}
+
+.navbar {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 60px;
+  overflow-x: hidden;
+  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.2);
+}

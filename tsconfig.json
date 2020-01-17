@@ -60,6 +60,9 @@
       ],
       "@pimp-my-pr/pmp-web/user/single-user-statistics/data-access": [
         "libs/pmp-web/user/single-user-statistics/data-access/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/repository/repositories-statistics/feature": [
+        "libs/pmp-web/repository/repositories-statistics/feature/src/index.ts"
       ]
     }
   },
