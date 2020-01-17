@@ -1,4 +1,16 @@
-<div class="sidebar__container">
-  <mat-icon>people</mat-icon>
-  <mat-icon>folder</mat-icon>
-</div>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+    <div class="sidebar-content">
+      <a class="sidebar__item" [routerLink]="['/user']" routerLinkActive="sidebar__item--active">
+        <mat-icon>people</mat-icon>
+      </a>
+      <a
+        class="sidebar__item"
+        [routerLink]="['/repositories']"
+        routerLinkActive="sidebar__item--active"
+      >
+        <mat-icon>folder</mat-icon>
+      </a>
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>

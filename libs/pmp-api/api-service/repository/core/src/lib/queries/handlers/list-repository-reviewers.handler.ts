@@ -1,12 +1,8 @@
 import { IQueryHandler, QueryBus, QueryHandler } from '@nestjs/cqrs';
 import { ListRepositoryReviewersQuery } from '../list-repository-reviewers.query';
-import {
-  PrModel,
-  RepositoryUserStatisticsReadModel
-} from '@pimp-my-pr/pmp-api/api-service/repository/domain';
+import { RepositoryUserStatisticsReadModel } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
 import { PrsService } from '../../services/prs.service';
 import { RepositoryDataService } from '@pimp-my-pr/pmp-api/api-service/repository/data-access';
-import { GetUserPrsQuery } from '../get-user-prs.query';
 
 @QueryHandler(ListRepositoryReviewersQuery)
 export class ListRepositoryReviewersHandler

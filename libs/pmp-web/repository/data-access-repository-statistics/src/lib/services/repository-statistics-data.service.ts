@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ApiRepositoryStatisticsResponse, RepositoryStatistics } from '@pimp-my-pr/shared/domain';
 import { map } from 'rxjs/operators';
 
+@Injectable()
 export class RepositoryStatisticsDataService {
   readonly endpoints = {
     getRepositoryStatisticsCollection: urlFactory('//localhost:3333/api/repository')
