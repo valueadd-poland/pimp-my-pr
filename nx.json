@@ -89,6 +89,18 @@
     "pmp-web-repository-repositories-statistics-feature": {
       "tags": ["scope:pmp-web-repository", "type:feature"]
     },
+    "pmp-web-repository-domain": {
+      "tags": ["scope:pmp-web-repository", "type:domain"]
+    },
+    "pmp-web-repository-feature-repository-statistics": {
+      "tags": ["scope:pmp-web-repository", "type:feature"]
+    },
+    "pmp-web-shared-ui-table-statistic": {
+      "tags": ["scope:shared", "type:ui"]
+    },
+    "pmp-web-shared-ui-header-container": {
+      "tags": ["scope:shared", "type:ui"]
+    },
     "pmp-web-shared-ui-statistics-overview-table": {
       "tags": ["scope:pmp-web-shared", "type:ui"]
     },
