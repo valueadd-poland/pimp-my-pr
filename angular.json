@@ -854,6 +854,133 @@
           "styleext": "scss"
         }
       }
+    },
+    "pmp-web-repository-domain": {
+      "projectType": "library",
+      "root": "libs/pmp-web/repository/domain",
+      "sourceRoot": "libs/pmp-web/repository/domain/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/repository/domain/tsconfig.lib.json",
+              "libs/pmp-web/repository/domain/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/repository/domain/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/repository/domain/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/domain/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/repository/domain/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-repository-feature-repository-statistics": {
+      "projectType": "library",
+      "root": "libs/pmp-web/repository/feature-repository-statistics",
+      "sourceRoot": "libs/pmp-web/repository/feature-repository-statistics/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/repository/feature-repository-statistics/tsconfig.lib.json",
+              "libs/pmp-web/repository/feature-repository-statistics/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/pmp-web/repository/feature-repository-statistics/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/repository/feature-repository-statistics/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/feature-repository-statistics/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/repository/feature-repository-statistics/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-shared-ui-table-statistic": {
+      "projectType": "library",
+      "root": "libs/pmp-web/shared/ui-table-statistic",
+      "sourceRoot": "libs/pmp-web/shared/ui-table-statistic/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shared/ui-table-statistic/tsconfig.lib.json",
+              "libs/pmp-web/shared/ui-table-statistic/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-table-statistic/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shared/ui-table-statistic/jest.config.js",
+            "tsConfig": "libs/pmp-web/shared/ui-table-statistic/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/shared/ui-table-statistic/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-shared-ui-header-container": {
+      "projectType": "library",
+      "root": "libs/pmp-web/shared/ui-header-container",
+      "sourceRoot": "libs/pmp-web/shared/ui-header-container/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shared/ui-header-container/tsconfig.lib.json",
+              "libs/pmp-web/shared/ui-header-container/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-header-container/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shared/ui-header-container/jest.config.js",
+            "tsConfig": "libs/pmp-web/shared/ui-header-container/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/shared/ui-header-container/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

@@ -1,17 +1,17 @@
-<div class="user-statistics__container" *ngIf="userStatistics">
+<div class="repository-statistics__container">
   <pmp-header-container
-    [avatarLabel]="userStatistics.name"
-    [avatarUrl]="userStatistics.avatarUrl"
+    [avatarLabel]="'Dupa'"
+    [avatarUrl]="''"
     header="Pull requests pending"
   ></pmp-header-container>
-  <div *ngFor="let repo of userStatistics.repositories">
+  <div *ngFor="let repo of mockedData.repositories">
     <div class="user-statistics__repository-label">
       <pmp-picture-label [label]="repo.name" [picture]="repo.repositoryPictureUrl">
       </pmp-picture-label>
     </div>
     <pmp-table-statistic
       [tableData]="repo.prsStatistics"
-      columnPropertyName="comments"
+      columnPropertyName="reviewer"
     ></pmp-table-statistic>
   </div>
 </div>

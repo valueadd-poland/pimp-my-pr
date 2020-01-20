@@ -88,6 +88,18 @@
     },
     "pmp-web-user-single-user-statistics-data-access": {
       "tags": ["scope:pmp-web-user", "type:data-access"]
+    },
+    "pmp-web-repository-domain": {
+      "tags": ["scope:pmp-web-repository", "type:domain"]
+    },
+    "pmp-web-repository-feature-repository-statistics": {
+      "tags": ["scope:pmp-web-repository", "type:feature"]
+    },
+    "pmp-web-shared-ui-table-statistic": {
+      "tags": ["scope:shared", "type:ui"]
+    },
+    "pmp-web-shared-ui-header-container": {
+      "tags": ["scope:shared", "type:ui"]
     }
   }
 }

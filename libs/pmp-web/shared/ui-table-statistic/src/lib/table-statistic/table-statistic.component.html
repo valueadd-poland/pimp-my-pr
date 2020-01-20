@@ -27,8 +27,8 @@
     <!-- Lines To Check Column -->
     <ng-container matColumnDef="linesToCheck">
       <mat-header-cell *matHeaderCellDef class="lines-to-check-column"
-        >To check [lines of code]</mat-header-cell
-      >
+        >To check [lines of code]
+      </mat-header-cell>
       <mat-cell *matCellDef="let element" class="lines-to-check-column">
         {{ element.linesOfCodeToCheck }}
       </mat-cell>
@@ -53,7 +53,17 @@
       </mat-cell>
     </ng-container>
 
-    <!--     Comments Column -->
+    <!-- Reviewers Column -->
+    <ng-container matColumnDef="reviewers">
+      <mat-header-cell *matHeaderCellDef class="reviewers-column">
+        <span> {{ 'Reviewers' }}</span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="reviewers-column" #customCell>
+        <span>dupa</span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Comments Column -->
     <ng-container matColumnDef="comments">
       <mat-header-cell *matHeaderCellDef class="comments-column">
         <span> {{ 'Comments' }}</span>
