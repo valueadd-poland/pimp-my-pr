@@ -9,4 +9,6 @@ export class PictureLabelComponent {
   @Input() label: string;
   @Input() picture: string;
   @Input() pictureSize = 32;
+
+  fallbackImage = 'https://www.drupal.org/files/issues/default-avatar.png';
 }

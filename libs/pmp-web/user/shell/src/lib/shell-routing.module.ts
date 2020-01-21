@@ -15,7 +15,7 @@ const routes: Routes = [
           )
       },
       {
-        path: ':id',
+        path: ':userName',
         loadChildren: () =>
           import('@pimp-my-pr/pmp-web/user/single-user-statistics/feature').then(
             m => m.PmpWebUserSingleUserStatisticsFeatureModule

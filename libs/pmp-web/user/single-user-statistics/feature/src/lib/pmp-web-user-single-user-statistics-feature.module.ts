@@ -5,12 +5,14 @@ import { SingleUserStatisticsComponent } from './containers/single-user-statisti
 import { PmpWebSharedUiPictureLabelModule } from '@pimp-my-pr/pmp-web/shared/ui-picture-label';
 import { SingleUserStatisticsTableComponent } from './components/single-user-statistics-table/single-user-statistics-table.component';
 import { MatIconModule, MatTableModule } from '@angular/material';
+import { PmpWebUserSingleUserStatisticsDataAccessModule } from '@pimp-my-pr/pmp-web/user/single-user-statistics/data-access';
 
 @NgModule({
   imports: [
     CommonModule,
     PmpWebUserSingleUserStatisticsRoutingModule,
     PmpWebSharedUiPictureLabelModule,
+    PmpWebUserSingleUserStatisticsDataAccessModule,
     MatTableModule,
     MatIconModule
   ],

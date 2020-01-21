@@ -57,6 +57,9 @@
       ],
       "@pimp-my-pr/pmp-web/shared/ui-picture-label": [
         "libs/pmp-web/shared/ui-picture-label/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/user/single-user-statistics/data-access": [
+        "libs/pmp-web/user/single-user-statistics/data-access/src/index.ts"
       ]
     }
   },
