@@ -85,6 +85,9 @@
     },
     "pmp-web-repository-data-access": {
       "tags": ["scope:pmp-web-repository", "type:data-access"]
+    },
+    "pmp-web-user-single-user-statistics-data-access": {
+      "tags": ["scope:pmp-web-user", "type:data-access"]
     }
   }
 }
