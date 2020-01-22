@@ -2,6 +2,7 @@
   branch: {
     // types of branches
     types: [
+      'ci',
       'feature',
       'bugfix',
       'hotfix',
