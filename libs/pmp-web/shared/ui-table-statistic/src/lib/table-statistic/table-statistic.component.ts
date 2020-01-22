@@ -11,9 +11,9 @@ export class TableStatisticComponent implements OnInit {
   tableData: PrStatistics[];
 
   @Input()
-  columnPropertyName: String;
+  columnPropertyName: string;
 
-  displayedColumns: String[];
+  displayedColumns: string[];
 
   ngOnInit(): void {
     this.displayedColumns = [
