@@ -7,11 +7,11 @@ import { Component, Input } from '@angular/core';
 })
 export class HeaderContainerComponent {
   @Input()
-  header: String;
+  label: string;
 
   @Input()
-  avatarLabel: String;
+  avatarLabel: string;
 
   @Input()
-  avatarUrl: String;
+  avatarUrl: string;
 }
