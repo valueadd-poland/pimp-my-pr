@@ -32,8 +32,6 @@ jobs:
       run: npm run affected:build -- --all
     - name: test
       run: npm run affected:test -- --all
-    - name: e2e
-      run: npm run affected:e2e -- --all
     - name: lint
       run: npm run affected:lint -- --all
       env:
