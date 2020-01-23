@@ -109,6 +109,12 @@
     },
     "pmp-web-shared-ui-go-back-header": {
       "tags": ["scope:pmp-web-shared", "type:ui"]
+    },
+    "pmp-web-auth-shell": {
+      "tags": ["scope:pmp-web-auth", "type:shell"]
+    },
+    "pmp-web-auth-login-feature": {
+      "tags": ["scope:pmp-web-auth", "type:feature"]
     }
   }
 }

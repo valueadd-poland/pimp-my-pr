@@ -7,6 +7,9 @@
   <div class="navbar__user-info">
     <div class="navbar__empty-line"></div>
     <span>{{ 'Essie Vasquez' }}</span>
-    <mat-icon>input</mat-icon>
+    <!-- @TODO translate -->
+    <button (click)="logout()" [matTooltip]="'Logout'" mat-icon-button>
+      <mat-icon>input</mat-icon>
+    </button>
   </div>
 </div>

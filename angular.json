@@ -1083,6 +1083,68 @@
           "styleext": "scss"
         }
       }
+    },
+    "pmp-web-auth-shell": {
+      "projectType": "library",
+      "root": "libs/pmp-web/auth/shell",
+      "sourceRoot": "libs/pmp-web/auth/shell/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/auth/shell/tsconfig.lib.json",
+              "libs/pmp-web/auth/shell/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/shell/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/auth/shell/jest.config.js",
+            "tsConfig": "libs/pmp-web/auth/shell/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/auth/shell/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-auth-login-feature": {
+      "projectType": "library",
+      "root": "libs/pmp-web/auth/login-feature",
+      "sourceRoot": "libs/pmp-web/auth/login-feature/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/auth/login-feature/tsconfig.lib.json",
+              "libs/pmp-web/auth/login-feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/login-feature/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/auth/login-feature/jest.config.js",
+            "tsConfig": "libs/pmp-web/auth/login-feature/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/auth/login-feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
