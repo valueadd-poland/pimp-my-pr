@@ -1,0 +1,37 @@
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: #f1f1f1;
+}
+
+.login-page__card {
+  height: 20rem;
+  min-width: 25rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.mat-card-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.login-page__system-info {
+  display: flex;
+  flex-direction: column;
+
+  img {
+    height: 100px;
+    margin-bottom: 16px;
+  }
+
+  button {
+    color: #ffffff;
+  }
+}

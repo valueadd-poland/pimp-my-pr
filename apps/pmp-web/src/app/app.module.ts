@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { PmpWebRepositoryShellModule } from '@pimp-my-pr/pmp-web/repository/shell';
-import { PmpWebUserShellModule } from '@pimp-my-pr/pmp-web/user/shell';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { NxModule } from '@nrwl/angular';
 import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
+import { PmpWebUserShellModule } from '@pimp-my-pr/pmp-web/user/shell';
+import { PmpWebAuthShellModule } from '@pimp-my-pr/pmp-web/auth/shell';
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,7 +38,8 @@ import { AppRoutingModule } from './app-routing.module';
     }),
     AppRoutingModule,
     PmpWebRepositoryShellModule,
-    PmpWebUserShellModule
+    PmpWebUserShellModule,
+    PmpWebAuthShellModule
   ],
   bootstrap: [AppComponent]
 })

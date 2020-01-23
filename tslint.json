@@ -105,7 +105,8 @@
               "scope:shared",
               "scope:pmp-web",
               "scope:pmp-web-repository",
-              "scope:pmp-web-user"
+              "scope:pmp-web-user",
+              "scope:pmp-web-auth"
             ]
           },
           {
@@ -131,6 +132,10 @@
               "scope:pmp-web-shared",
               "scope:shared"
             ]
+          },
+          {
+            "sourceTag": "scope:pmp-web-auth",
+            "onlyDependOnLibsWithTags": ["scope:pmp-web-shared", "scope:shared"]
           }
         ]
       }

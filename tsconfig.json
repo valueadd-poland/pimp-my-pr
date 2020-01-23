@@ -81,7 +81,9 @@
       ],
       "@pimp-my-pr/pmp-web/repository/repository-statistics/data-access": [
         "libs/pmp-web/repository/repository-statistics/data-access/src/index.ts"
-      ]
+      ],
+      "@pimp-my-pr/pmp-web/auth/shell": ["libs/pmp-web/auth/shell/src/index.ts"],
+      "@pimp-my-pr/pmp-web/auth/login-feature": ["libs/pmp-web/auth/login-feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

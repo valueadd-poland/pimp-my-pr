@@ -1,0 +1,18 @@
+<div class="login-page">
+  <mat-card class="login-page__card">
+    <!-- @TODO translate -->
+    <mat-card-title>Login with an existing system</mat-card-title>
+    <mat-card-content>
+      <div *ngFor="let system of systems" class="login-page__system-info">
+        <img [src]="system.imageSrc" />
+        <button
+          (click)="login(system.name)"
+          [style.backgroundColor]="system.color"
+          mat-raised-button
+        >
+          {{ system.name | titlecase }}
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

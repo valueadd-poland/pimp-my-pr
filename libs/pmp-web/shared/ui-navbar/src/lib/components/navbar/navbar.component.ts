@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pmp-navbar',
@@ -6,4 +7,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavbarComponent {}
+export class NavbarComponent {
+  constructor(private router: Router) {}
+
+  logout(): void {
+    this.router.navigate(['login']);
+  }
+}
