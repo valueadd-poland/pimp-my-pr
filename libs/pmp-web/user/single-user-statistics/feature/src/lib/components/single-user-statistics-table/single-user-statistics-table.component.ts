@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PrStatistics } from '@pimp-my-pr/shared/domain';
 
 @Component({
@@ -6,15 +6,13 @@ import { PrStatistics } from '@pimp-my-pr/shared/domain';
   templateUrl: './single-user-statistics-table.component.html',
   styleUrls: ['./single-user-statistics-table.component.scss']
 })
-export class SingleUserStatisticsTableComponent implements OnInit {
+export class SingleUserStatisticsTableComponent {
   displayedColumns = ['id', 'title', 'waitingTime', 'linesToCheck', 'author', 'comments', 'link'];
 
   @Input()
   tableData: PrStatistics[];
 
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  onNavigateToItem(any): void {}
+  onNavigateToItem(url: string): void {
+    window.open(url, '_blank');
+  }
 }
