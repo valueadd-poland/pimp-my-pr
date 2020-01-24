@@ -104,6 +104,9 @@
     "pmp-web-shared-ui-header-container": {
       "tags": ["scope:shared", "type:ui"]
     },
+    "pmp-web-repository-data-access-single-repository-statistics": {
+      "tags": ["scope:pmp-web-repository", "type:data-access"]
+    },
     "pmp-web-shared-ui-statistics-overview-table": {
       "tags": ["scope:pmp-web-shared", "type:ui"]
     },
