@@ -124,6 +124,9 @@
     },
     "server-shared-util-repository": {
       "tags": ["platform:server", "scope:shared", "type:util"]
+    },
+    "pmp-web-core": {
+      "tags": ["platform:web", "type:core"]
     }
   }
 }

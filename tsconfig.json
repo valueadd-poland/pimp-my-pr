@@ -100,7 +100,8 @@
       ],
       "@pimp-my-pr/pmp-web/repository/data-access": [
         "libs/pmp-web/repository/data-access/src/index.ts"
-      ]
+      ],
+      "@pimp-my-pr/pmp-web/core": ["libs/pmp-web/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
