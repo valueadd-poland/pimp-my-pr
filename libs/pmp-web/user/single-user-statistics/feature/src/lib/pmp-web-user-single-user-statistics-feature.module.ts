@@ -6,6 +6,7 @@ import { PmpWebSharedUiPictureLabelModule } from '@pimp-my-pr/pmp-web/shared/ui-
 import { SingleUserStatisticsTableComponent } from './components/single-user-statistics-table/single-user-statistics-table.component';
 import { MatIconModule, MatTableModule } from '@angular/material';
 import { PmpWebUserSingleUserStatisticsDataAccessModule } from '@pimp-my-pr/pmp-web/user/single-user-statistics/data-access';
+import { PmpWebSharedUiGoBackHeaderModule } from '@pimp-my-pr/pmp-web/shared/ui-go-back-header';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { PmpWebUserSingleUserStatisticsDataAccessModule } from '@pimp-my-pr/pmp-
     PmpWebSharedUiPictureLabelModule,
     PmpWebUserSingleUserStatisticsDataAccessModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    PmpWebSharedUiGoBackHeaderModule
   ],
   declarations: [SingleUserStatisticsComponent, SingleUserStatisticsTableComponent]
 })

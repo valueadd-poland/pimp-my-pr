@@ -91,6 +91,9 @@
     },
     "pmp-web-shared-ui-statistics-overview-table": {
       "tags": ["scope:pmp-web-shared", "type:ui"]
+    },
+    "pmp-web-shared-ui-go-back-header": {
+      "tags": ["scope:pmp-web-shared", "type:ui"]
     }
   }
 }

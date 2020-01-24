@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'pmp-repositories',
   templateUrl: './repositories.component.html',
-  styleUrls: ['./repositories.component.scss']
+  styleUrls: ['./repositories.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RepositoriesComponent {
-  constructor() {}
-}
+export class RepositoriesComponent {}

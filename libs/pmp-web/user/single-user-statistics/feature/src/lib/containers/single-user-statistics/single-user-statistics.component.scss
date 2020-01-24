@@ -1,13 +1,8 @@
-:host {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .user-statistics__container {
+  padding: 40px 0;
   width: 90%;
+  max-width: 1400px;
+  margin: auto;
 }
 
 .user-statistics__repository-label {
@@ -17,7 +12,7 @@
 .user-statistics__header-container {
   display: flex;
   align-items: center;
-  margin: 2em 0;
+  margin-bottom: 2em;
 }
 
 .user-statistics__header-label {

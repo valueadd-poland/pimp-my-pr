@@ -1,6 +1,6 @@
+// TODO: share between user and repistory shells?
 .user-component__container {
-  background-color: #eef1f6;
-  height: 500px;
+  margin: 64px 0 0 60px;
 }
 
 .navbar {
@@ -20,11 +20,4 @@
   width: 60px;
   overflow-x: hidden;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.2);
-}
-
-.router-outlet__wrapper {
-  position: absolute;
-  left: 60px;
-  top: 64px;
-  right: 0;
 }

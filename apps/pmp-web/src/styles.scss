@@ -25,7 +25,14 @@ $pmp-web-theme: mat-light-theme($pmp-web-primary, $pmp-web-accent, $pmp-web-warn
 // that you are using.
 @include angular-material-theme($pmp-web-theme);
 
-body,
-html {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+  // TODO: move to SCSS variable
+  background-color: #eef1f6;
 }

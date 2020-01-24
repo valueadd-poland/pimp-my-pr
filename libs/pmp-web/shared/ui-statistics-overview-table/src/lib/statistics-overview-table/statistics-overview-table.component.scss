@@ -8,10 +8,14 @@ mat-header-cell > span > mat-icon {
   color: #000000;
 }
 
+mat-cell {
+  padding: 0 5px;
+}
+
 .avatar-column {
   flex: unset;
-  padding-left: 30px;
   width: 62px;
+  padding: 0 0 0 5px;
 }
 
 .link-column {
@@ -28,4 +32,5 @@ mat-header-cell > span > mat-icon {
   height: 32px;
   background: gray;
   border-radius: 50%;
+  margin: auto;
 }
