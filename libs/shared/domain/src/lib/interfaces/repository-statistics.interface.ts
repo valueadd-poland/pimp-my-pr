@@ -1,3 +1,5 @@
+import { PrStatistics } from '@pimp-my-pr/shared/domain';
+
 export interface RepositoryStatistics {
   id: number;
   name: string;
@@ -6,4 +8,5 @@ export interface RepositoryStatistics {
   pendingPrs?: number;
   pictureUrl: string;
   sumOfHoursPrsWaiting?: number;
+  stat?: PrStatistics[];
 }

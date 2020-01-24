@@ -13,6 +13,13 @@ const routes: Routes = [
           import('@pimp-my-pr/pmp-web/repository/repositories-statistics/feature').then(
             m => m.PmpWebRepositoryRepositoriesStatisticsFeatureModule
           )
+      },
+      {
+        path: ':repositoryName',
+        loadChildren: () =>
+          import('@pimp-my-pr/pmp-web/repository/feature-repository-statistics').then(
+            m => m.PmpWebRepositoryRepositoryStatisticsFeatureModule
+          )
       }
     ]
   }

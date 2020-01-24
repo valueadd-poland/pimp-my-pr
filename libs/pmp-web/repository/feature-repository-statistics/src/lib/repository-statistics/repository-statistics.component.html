@@ -1,17 +1,13 @@
 <div class="repository-statistics__container">
   <pmp-header-container
-    [avatarLabel]=""
-    [avatarUrl]=""
-    [label]="Pull requests pending"
+    [avatarLabel]="repository.fullName"
+    [avatarUrl]="repository.repositoryPictureUrl"
+    label="Pull requests pending"
   ></pmp-header-container>
-  <div *ngFor="let repo of mockedData.repositories">
-    <div class="user-statistics__repository-label">
-      <pmp-picture-label [label]="repo.name" [picture]="repo.repositoryPictureUrl">
-      </pmp-picture-label>
-    </div>
-    <pmp-table-statistic
-      [tableData]="repo.prsStatistics"
-      columnPropertyName="reviewer"
-    ></pmp-table-statistic>
-  </div>
+  <!-- TODO missing property from API model -->
+  <!-- TODO change 'comments' to 'reviewers' when property is ready -->
+  <pmp-table-statistic
+    [tableData]="repository.prsStatistics"
+    columnPropertyName="comments"
+  ></pmp-table-statistic>
 </div>
