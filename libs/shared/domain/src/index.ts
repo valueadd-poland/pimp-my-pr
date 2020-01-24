@@ -7,5 +7,4 @@ export * from './lib/models/user.statistics';
 export * from './lib/models/repository.model';
 export * from './lib/interfaces/repository-statistics.interface';
 export * from './lib/models/pr.statistics';
-export * from './lib/models/repository-statistics.interface';
 export * from './lib/requests';
