@@ -1,1 +1,4 @@
-<pmp-table [tableConfig]="tableConfig" (navigateToItem)="onNavigateToUser($event)"></pmp-table>
+<pmp-statistics-overview-table
+  [data]="userStatisticsCollection$ | async"
+  (navigateToItem)="onNavigateToUser($event)"
+></pmp-statistics-overview-table>

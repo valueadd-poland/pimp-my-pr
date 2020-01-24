@@ -4,8 +4,7 @@ import { RepositoryDataService } from '@pimp-my-pr/pmp-api/api-service/repositor
 import { GetRepositoryPrsQuery } from '../get-repository-prs.query';
 
 @QueryHandler(GetRepositoryPrsQuery)
-export class GetRepositoryPrsHandler
-  implements IQueryHandler<GetRepositoryPrsQuery, PrModel[]> {
+export class GetRepositoryPrsHandler implements IQueryHandler<GetRepositoryPrsQuery, PrModel[]> {
   constructor(private repositoryRepository: RepositoryDataService) {}
 
   async execute(query: GetRepositoryPrsQuery): Promise<PrModel[]> {

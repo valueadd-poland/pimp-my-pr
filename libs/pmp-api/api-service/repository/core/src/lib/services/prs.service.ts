@@ -2,12 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { QueryBus } from '@nestjs/cqrs';
 import {
   PrChanges,
-  PrDetailsModel,
   PrModel,
-  PrStatisticsReadModel,
   PrWithChangesReadModel,
-  RepositoryModel,
-  RepositoryPrsStatisticsReadModel
+  RepositoryModel
 } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
 import { GetPrChangesQuery } from '../queries/get-pr-changes.query';
 

@@ -1,8 +1,5 @@
 import { Module } from '@nestjs/common';
-import {
-  pmpApiServiceConfig,
-  PmpApiServiceConfigService
-} from './configs/pmp-api-service.config';
+import { pmpApiServiceConfig, PmpApiServiceConfigService } from './configs/pmp-api-service.config';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({

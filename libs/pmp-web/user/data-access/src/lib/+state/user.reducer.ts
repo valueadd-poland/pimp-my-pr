@@ -1,7 +1,7 @@
 import { fromUserActions } from './user.actions';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserStatistics } from '@pimp-my-pr/shared/domain';
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
 export const USER_FEATURE_KEY = 'user';
 
