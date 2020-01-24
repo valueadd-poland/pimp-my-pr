@@ -98,7 +98,7 @@
     "pmp-web-repository-feature-repository-statistics": {
       "tags": ["scope:pmp-web-repository", "type:feature"]
     },
-    "pmp-web-shared-ui-table-statistic": {
+    "pmp-web-shared-ui-table-pr-statistic": {
       "tags": ["scope:shared", "type:ui"]
     },
     "pmp-web-shared-ui-header-container": {
