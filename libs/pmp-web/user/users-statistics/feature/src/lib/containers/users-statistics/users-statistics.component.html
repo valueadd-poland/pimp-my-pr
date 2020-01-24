@@ -1,4 +1,9 @@
-<pmp-statistics-overview-table
-  [data]="userStatisticsCollection$ | async"
-  (navigateToItem)="onNavigateToUser($event)"
-></pmp-statistics-overview-table>
+<div class="page__content">
+  <h1 class="page__title">Repository users with PRs pending</h1>
+
+  <pmp-statistics-overview-table
+    class="users-table"
+    [data]="userStatisticsCollection$ | async"
+    (navigateToItem)="onNavigateToUser($event)"
+  ></pmp-statistics-overview-table>
+</div>

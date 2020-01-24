@@ -1,11 +1,17 @@
-:host {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+// TODO: share styles between repositories statisics and users statistics
+.page__title {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 35px;
 }
 
-pmp-statistics-overview-table {
-  width: 80%;
+.page__content {
+  width: 90%;
+  max-width: 1400px;
+  margin: auto;
+  padding: 40px 0;
+}
+
+.repositories-table {
+  width: 100%;
 }

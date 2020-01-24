@@ -891,6 +891,37 @@
           "styleext": "scss"
         }
       }
+    },
+    "pmp-web-shared-ui-go-back-header": {
+      "projectType": "library",
+      "root": "libs/pmp-web/shared/ui-go-back-header",
+      "sourceRoot": "libs/pmp-web/shared/ui-go-back-header/src",
+      "prefix": "pmp",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shared/ui-go-back-header/tsconfig.lib.json",
+              "libs/pmp-web/shared/ui-go-back-header/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-go-back-header/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shared/ui-go-back-header/jest.config.js",
+            "tsConfig": "libs/pmp-web/shared/ui-go-back-header/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/shared/ui-go-back-header/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

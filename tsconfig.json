@@ -65,6 +65,9 @@
       ],
       "@pimp-my-pr/pmp-web/shared/ui-statistics-overview-table": [
         "libs/pmp-web/shared/ui-statistics-overview-table/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/shared/ui-go-back-header": [
+        "libs/pmp-web/shared/ui-go-back-header/src/index.ts"
       ]
     }
   },
