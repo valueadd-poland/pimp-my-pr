@@ -10,10 +10,11 @@
     <div class="user-statistics__repository-label">
       <pmp-picture-label [label]="repo.name" [picture]="repo.pictureUrl"> </pmp-picture-label>
     </div>
+    <pmp-table-pr-statistic
 
-    <pmp-table-statistic
+    <pmp-table-pr-statistic
       [tableData]="repo.prsStatistics"
       columnPropertyName="comments"
-    ></pmp-table-statistic>
+    ></pmp-table-pr-statistic>
   </div>
 </div>

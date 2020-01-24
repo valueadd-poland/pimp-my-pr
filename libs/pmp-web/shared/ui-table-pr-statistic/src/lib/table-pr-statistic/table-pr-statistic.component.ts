@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { PrStatistics } from '@pimp-my-pr/shared/domain';
 
 @Component({
-  selector: 'pmp-table-statistic',
-  templateUrl: './table-statistic.component.html',
-  styleUrls: ['./table-statistic.component.scss']
+  selector: 'pmp-table-pr-statistic',
+  templateUrl: './table-pr-statistic.component.html',
+  styleUrls: ['./table-pr-statistic.component.scss']
 })
-export class TableStatisticComponent implements OnInit {
+export class TablePrStatisticComponent implements OnInit {
   @Input()
   tableData: PrStatistics[];
 

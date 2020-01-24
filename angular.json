@@ -988,28 +988,28 @@
         }
       }
     },
-    "pmp-web-shared-ui-table-statistic": {
+    "pmp-web-shared-ui-table-pr-statistic": {
       "projectType": "library",
-      "root": "libs/pmp-web/shared/ui-table-statistic",
-      "sourceRoot": "libs/pmp-web/shared/ui-table-statistic/src",
+      "root": "libs/pmp-web/shared/ui-table-pr-statistic",
+      "sourceRoot": "libs/pmp-web/shared/ui-table-pr-statistic/src",
       "prefix": "pmp",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/pmp-web/shared/ui-table-statistic/tsconfig.lib.json",
-              "libs/pmp-web/shared/ui-table-statistic/tsconfig.spec.json"
+              "libs/pmp-web/shared/ui-table-pr-statistic/tsconfig.lib.json",
+              "libs/pmp-web/shared/ui-table-pr-statistic/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-table-statistic/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-table-pr-statistic/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/pmp-web/shared/ui-table-statistic/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/ui-table-statistic/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/ui-table-statistic/src/test-setup.ts"
+            "jestConfig": "libs/pmp-web/shared/ui-table-pr-statistic/jest.config.js",
+            "tsConfig": "libs/pmp-web/shared/ui-table-pr-statistic/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/shared/ui-table-pr-statistic/src/test-setup.ts"
           }
         }
       },

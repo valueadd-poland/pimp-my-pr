@@ -73,8 +73,8 @@
       "@pimp-my-pr/pmp-web/repository/feature-repository-statistics": [
         "libs/pmp-web/repository/feature-repository-statistics/src/index.ts"
       ],
-      "@pimp-my-pr/pmp-web/shared/ui-table-statistic": [
-        "libs/pmp-web/shared/ui-table-statistic/src/index.ts"
+      "@pimp-my-pr/pmp-web/shared/ui-table-pr-statistic": [
+        "libs/pmp-web/shared/ui-table-pr-statistic/src/index.ts"
       ],
       "@pimp-my-pr/pmp-web/shared/ui-header-container": [
         "libs/pmp-web/shared/ui-header-container/src/index.ts"
