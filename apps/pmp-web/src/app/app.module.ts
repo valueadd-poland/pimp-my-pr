@@ -12,6 +12,7 @@ import { NxModule } from '@nrwl/angular';
 import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot([]),
     EffectsModule.forRoot([]),
     NxModule.forRoot(),
     StoreModule.forRoot(
@@ -36,6 +36,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production // Restrict extension to log-only mode
     }),
+    AppRoutingModule,
     PmpWebRepositoryShellModule,
     PmpWebUserShellModule
   ],
