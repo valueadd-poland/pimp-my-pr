@@ -13,9 +13,11 @@ import { GetPrDetailsHandler } from './queries/handlers/get-pr-details.handler';
 import { ListReviewerStatisticsHandler } from './queries/handlers/list-reviewer-statistics.handler';
 import { GetUserHandler } from './queries/handlers/get-user.handler';
 import { RepositoryPrsStatisticsReadModelFactory } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
+import { ListSingleRepositoryHandler } from './queries/handlers/list-single-repository.handler';
 
 const QueryHandlers = [
   ListRepositoriesHandler,
+  ListSingleRepositoryHandler,
   ListRepositoryContributorsHandler,
   ListRepositoryReviewersHandler,
   ListReviewerStatisticsHandler,
