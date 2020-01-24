@@ -9,7 +9,11 @@ import {
 import { ListRepositoryContributorsQuery } from './queries/list-repository-contributors.query';
 import { ListRepositoryReviewersQuery } from './queries/list-repository-reviewers.query';
 import { ListReviewerStatisticsQuery } from './queries/list-reviewer-statistics.query';
-import { ListReviewerStatisticsParams } from '@pimp-my-pr/shared/domain';
+import {
+  ListReviewerStatisticsParams,
+  ListSingleRepositoryParams
+} from '@pimp-my-pr/shared/domain';
+import { ListSingleRepositoryQuery } from './queries/list-single-repository.query';
 
 @Injectable()
 export class RepositoryFacade {
@@ -17,6 +21,12 @@ export class RepositoryFacade {
 
   list(): Promise<RepositoryStatisticsReadModel[]> {
     return this.queryBus.execute(new ListRepositoriesQuery());
+  }
+
+  listSingleRepository(
+    params: ListSingleRepositoryParams
+  ): Promise<RepositoryStatisticsReadModel[]> {
+    return this.queryBus.execute(new ListSingleRepositoryQuery(params.repositoryId));
   }
 
   listContributors(): Promise<RepositoryUserStatisticsReadModel[]> {

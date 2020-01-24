@@ -28,6 +28,7 @@ export class RepositoryDataService {
       githubConfig.apiUrl + '/repos/:owner/:title',
       true
     ),
+    getSingleRepository: urlFactory<'id'>(githubConfig.apiUrl + '/repositories/:id', true),
     getRepositoryPrs: urlFactory<'fullName'>(githubConfig.apiUrl + '/repos/:fullName/pulls', true),
     getRepositoryContributors: urlFactory<'owner' | 'title'>(
       githubConfig.apiUrl + '/repos/:owner/:title/contributors',
@@ -62,6 +63,23 @@ export class RepositoryDataService {
         catchError((error: AxiosError | CoreException) => {
           if (error instanceof CoreNotFoundException) {
             return throwError(new RepositoryNotFoundException(`${owner}/${title}`));
+          }
+          return throwError(error);
+        })
+      )
+      .toPromise();
+  }
+
+  getSingleRepository(id: string): Promise<RepositoryModel> {
+    return this.httpService
+      .get<RepositoryModel>(this.endpoints.getSingleRepository.url({ id }))
+      .pipe(
+        map((res: AxiosResponse) => res.data),
+        map(this.repositoryMapper.mapFrom),
+        catchRequestExceptions(),
+        catchError((error: AxiosError | CoreException) => {
+          if (error instanceof CoreNotFoundException) {
+            return throwError(new RepositoryNotFoundException(`${id}`));
           }
           return throwError(error);
         })
