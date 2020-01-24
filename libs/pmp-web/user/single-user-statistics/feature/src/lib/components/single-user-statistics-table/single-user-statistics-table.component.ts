@@ -12,7 +12,7 @@ export class SingleUserStatisticsTableComponent {
   @Input()
   tableData: PrStatistics[];
 
-  onNavigateToItem(url: string): void {
-    window.open(url, '_blank');
+  onNavigateToItem(prStatistics: PrStatistics): void {
+    window.open(prStatistics.url, '_blank');
   }
 }
