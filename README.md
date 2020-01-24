@@ -25,14 +25,16 @@ A brilliant tool that will pimp your pull requests by collecting and presenting 
 - (optional) start a database with docker `docker run --name pmp-postgres -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_USER=pmp -p 5432:5432 -d postgres`
 - serve application with `ng serve pmp-api`
 
-### Tokens 
+### Tokens
 
 To generate tokens follow these guidelines.
 
 #### Github
+
 - https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
 
 #### Bitbucket
+
 - https://auth0.com/docs/connections/social/bitbucket
 - https://developer.atlassian.com/bitbucket/api/2/reference/meta/authentication
 

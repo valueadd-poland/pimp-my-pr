@@ -1239,6 +1239,37 @@
           "styleext": "scss"
         }
       }
+    },
+    "pmp-web-core": {
+      "projectType": "library",
+      "root": "libs/pmp-web/core",
+      "sourceRoot": "libs/pmp-web/core/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/core/tsconfig.lib.json",
+              "libs/pmp-web/core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/core/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/core/jest.config.js",
+            "tsConfig": "libs/pmp-web/core/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/core/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
