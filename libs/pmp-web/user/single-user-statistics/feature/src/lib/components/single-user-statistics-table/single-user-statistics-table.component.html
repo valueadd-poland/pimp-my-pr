@@ -38,7 +38,7 @@
     <ng-container matColumnDef="link">
       <mat-header-cell *matHeaderCellDef class="link-column"></mat-header-cell>
       <mat-cell *matCellDef="let element" class="link-column">
-        <mat-icon (click)="onNavigateToItem(element)">launch</mat-icon>
+        <mat-icon (click)="onNavigateToItem(element.url)">launch</mat-icon>
       </mat-cell>
     </ng-container>
 
@@ -48,7 +48,7 @@
         <span> {{ 'Author' }}</span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element" class="author-column">
-        <pmp-picture-label [label]="element.author" [picture]="element.authorAvatarUrl">
+        <pmp-picture-label [label]="element.author.name" [picture]="element.author.avatarUrl">
         </pmp-picture-label>
       </mat-cell>
     </ng-container>

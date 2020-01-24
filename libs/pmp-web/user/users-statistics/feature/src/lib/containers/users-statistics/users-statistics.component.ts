@@ -1,9 +1,9 @@
 import {
-  Component,
-  OnInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  OnDestroy
+  Component,
+  OnDestroy,
+  OnInit
 } from '@angular/core';
 import { TableConfig } from '@pimp-my-pr/pmp-web/shared/domain';
 import { UserStatistics } from '@pimp-my-pr/shared/domain';
@@ -37,7 +37,7 @@ export class UsersStatisticsComponent implements OnInit, OnDestroy {
   }
 
   onNavigateToUser(userStatistics: UserStatistics): void {
-    this.router.navigate(['user', userStatistics.id]);
+    this.router.navigate(['user', userStatistics.name]);
   }
 
   private initTableConfig(data: UserStatistics[]): void {
