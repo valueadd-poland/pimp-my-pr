@@ -65,9 +65,6 @@
     "pmp-web-shared-ui-sidebar": {
       "tags": ["scope:pmp-web-shared", "type:ui"]
     },
-    "pmp-web-shared-ui-table": {
-      "tags": ["scope:pmp-web-shared", "type:ui"]
-    },
     "pmp-web-user-users-statistics-feature": {
       "tags": ["scope:pmp-web-user", "type:feature"]
     },
@@ -91,6 +88,9 @@
     },
     "pmp-web-repository-repositories-statistics-feature": {
       "tags": ["scope:pmp-web-repository", "type:feature"]
+    },
+    "pmp-web-shared-ui-statistics-overview-table": {
+      "tags": ["scope:pmp-web-shared", "type:ui"]
     }
   }
 }

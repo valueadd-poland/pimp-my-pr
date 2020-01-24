@@ -11,8 +11,7 @@ export class GithubAuthInterceptor {
 
   intercept(req: AxiosRequestConfig): AxiosRequestConfig {
     req.headers = {
-      Authorization:
-        'token ' + this.pmpApiServiceConfigService.getGithubToken(),
+      Authorization: 'token ' + this.pmpApiServiceConfigService.getGithubToken(),
       ...req.headers
     };
     return req;

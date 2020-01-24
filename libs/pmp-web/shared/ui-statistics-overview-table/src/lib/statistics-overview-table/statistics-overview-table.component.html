@@ -1,0 +1,70 @@
+<mat-table matSort [dataSource]="dataSource">
+  <!-- Avatar Column -->
+  <ng-container matColumnDef="avatar">
+    <mat-header-cell *matHeaderCellDef class="avatar-column"></mat-header-cell>
+    <mat-cell *matCellDef="let element" class="avatar-column">
+      <img [src]="element.avatarUrl || element.pictureUrl" class="avatar-column__empty-space" />
+    </mat-cell>
+  </ng-container>
+
+  <!-- User Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      <span>{{ 'Name' }}</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.name }}
+    </mat-cell>
+  </ng-container>
+
+  <!-- Pending PR Column -->
+  <ng-container matColumnDef="pendingPrs">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      <span> {{ 'Pending PR' }}</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.pendingPrs }}
+    </mat-cell>
+  </ng-container>
+
+  <!-- Sum Of Time PR Waiting Column -->
+  <ng-container matColumnDef="sumOfHoursPrsWaiting">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      <span>{{ 'Sum of time PR waiting' }}</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.sumOfHoursPrsWaiting | resolveHours }}
+    </mat-cell>
+  </ng-container>
+
+  <!-- To Check Column -->
+  <ng-container matColumnDef="linesOfCodeToCheck">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      <span>{{ 'To check [lines of code]' }}</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.linesOfCodeToCheck }}
+    </mat-cell>
+  </ng-container>
+
+  <!-- Longest PR Column -->
+  <ng-container matColumnDef="longestPrLinesOfCode">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      <span>{{ 'Longest PR [lines of code]' }}</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.longestPrLinesOfCode }}
+    </mat-cell>
+  </ng-container>
+
+  <!-- Link Column -->
+  <ng-container matColumnDef="link">
+    <mat-header-cell *matHeaderCellDef class="link-column"></mat-header-cell>
+    <mat-cell *matCellDef="let element" class="link-column">
+      <mat-icon (click)="onNavigateToItem(element)">launch</mat-icon>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayColumns"></mat-row>
+</mat-table>

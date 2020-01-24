@@ -1,4 +1,4 @@
-<pmp-table
+<pmp-statistics-overview-table
   (navigateToItem)="onNavigateToRepository($event)"
-  [tableConfig]="tableConfig"
-></pmp-table>
+  [data]="repositoryStatisticsCollection$ | async"
+></pmp-statistics-overview-table>

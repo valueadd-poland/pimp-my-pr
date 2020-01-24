@@ -1,4 +1,5 @@
 export interface UserStatistics {
+  avatarUrl: string;
   id: number;
   name: string;
   linesOfCodeToCheck?: number;

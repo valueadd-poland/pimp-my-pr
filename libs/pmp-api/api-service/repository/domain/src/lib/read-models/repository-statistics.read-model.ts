@@ -4,9 +4,11 @@ import { BaseRepositoryStatisticsReadModel } from './base-repository-statistics.
 
 export class RepositoryStatisticsReadModel extends BaseRepositoryStatisticsReadModel {
   owner: string;
+  pictureUrl: string;
 
   constructor(repository: RepositoryModel, prs: PrWithChangesReadModel[]) {
     super(repository, prs);
     this.owner = repository.owner;
+    this.pictureUrl = repository.pictureUrl;
   }
 }

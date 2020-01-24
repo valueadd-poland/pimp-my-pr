@@ -4,5 +4,6 @@ export interface RepositoryStatistics {
   linesOfCodeToCheck?: number;
   longestPrLinesOfCode?: number;
   pendingPrs?: number;
+  pictureUrl: string;
   sumOfHoursPrsWaiting?: number;
 }

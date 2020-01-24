@@ -4,8 +4,7 @@ import { PrDataService } from '@pimp-my-pr/pmp-api/api-service/repository/data-a
 import { GetPrChangesQuery } from '../get-pr-changes.query';
 
 @QueryHandler(GetPrChangesQuery)
-export class GetPrChangesHandler
-  implements IQueryHandler<GetPrChangesQuery, PrChanges> {
+export class GetPrChangesHandler implements IQueryHandler<GetPrChangesQuery, PrChanges> {
   constructor(private prRepository: PrDataService) {}
 
   async execute(query: GetPrChangesQuery): Promise<PrChanges> {

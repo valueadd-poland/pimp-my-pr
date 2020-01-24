@@ -1,8 +1,3 @@
-export type ListRepositoriesResponse = {
-  id: number;
-  name: string;
-  linesOfCodeToCheck?: number;
-  longestPrLinesOfCode?: number;
-  pendingPrs?: number;
-  sumOfHoursPrsWaiting?: number;
-}[];
+import { RepositoryStatistics } from '../models/repository-statistics.interface';
+
+export type ListRepositoriesResponse = RepositoryStatistics[];
