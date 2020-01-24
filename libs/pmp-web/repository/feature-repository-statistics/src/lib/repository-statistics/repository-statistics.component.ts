@@ -50,7 +50,7 @@ export class RepositoryStatisticsComponent implements OnDestroy, OnInit {
 
   private initSubscribeRepositoryStatistics(): void {
     this.facade.repositoryStatistics$.pipe(untilDestroyed(this)).subscribe(repository => {
-      // this.repository = repository;
+      this.repository = repository;
       this.cdr.markForCheck();
     });
   }
