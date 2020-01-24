@@ -8,8 +8,7 @@
   </div>
   <div *ngFor="let repo of userStatistics.repositories">
     <div class="user-statistics__repository-label">
-      <pmp-picture-label [label]="repo.name" [picture]="repo.repositoryPictureUrl">
-      </pmp-picture-label>
+      <pmp-picture-label [label]="repo.name" [picture]="repo.pictureUrl"> </pmp-picture-label>
     </div>
     <pmp-single-user-statistics-table
       [tableData]="repo.prsStatistics"
