@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 export class SingleUserStatisticsDataService {
   readonly endpoints = {
     getSingleUserStatisticsResponse: urlFactory<'username'>(
-      '//localhost:3333/api/repository/reviewers/:username',
+      '/api/repository/reviewers/:username',
       true
     )
   };
