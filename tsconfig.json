@@ -78,6 +78,9 @@
       ],
       "@pimp-my-pr/pmp-web/shared/ui-header-container": [
         "libs/pmp-web/shared/ui-header-container/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/repository/data-access-single-repository-statistics": [
+        "libs/pmp-web/repository/data-access-single-repository-statistics/src/index.ts"
       ]
     }
   },
