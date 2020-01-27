@@ -1,3 +1,3 @@
-import { RepositoryStatistics } from '../models/repository-statistics.interface';
+import { RepositoryStatistics } from '@pimp-my-pr/shared/domain';
 
 export type ListRepositoriesResponse = RepositoryStatistics[];
