@@ -1,13 +1,13 @@
 <div class="repository-statistics__container">
   <pmp-header-container
-    [avatarLabel]="repository.name"
-    [avatarUrl]="repository.pictureUrl"
+    [avatarLabel]="(repository$ | async).name"
+    [avatarUrl]="(repository$ | async).pictureUrl"
     label="Pull requests pending"
   ></pmp-header-container>
   <!-- TODO missing property from API model -->
   <!-- TODO change 'comments' to 'reviewers' when property is ready -->
   <pmp-table-pr-statistic
-    [tableData]="repository.prsStatistics"
+    [tableData]="(repository$ | async).prsStatistics"
     columnPropertyName="comments"
   ></pmp-table-pr-statistic>
 </div>
