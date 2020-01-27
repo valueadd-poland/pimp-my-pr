@@ -5,28 +5,6 @@ import { untilDestroyed } from 'ngx-take-until-destroy';
 import { RepositoryModel } from '@pimp-my-pr/shared/domain';
 import { first } from 'rxjs/operators';
 
-const mockedData = {
-  // TODO mocked data for repository
-  owner: 'valueadd',
-  fullName: 'pimp-my-pr',
-  name: 'pmp',
-  repositoryPictureUrl: 'https://homepages.cae.wisc.edu/~ece533/images/airplane.png',
-  prsStatistics: [
-    {
-      author: 'asda',
-      authorAvatarUrl: 'https://homepages.cae.wisc.edu/~ece533/images/airplane.png',
-      commentsCount: 123,
-      createdAt: '12/12/12',
-      linesOfCodeToCheck: 3245,
-      reviewCommentsCount: 234,
-      id: 2345,
-      timeWaiting: '124',
-      title: '12414',
-      url: 'https://homepages.cae.wisc.edu/~ece533/images/airplane.png'
-    }
-  ]
-};
-
 @Component({
   selector: 'pimp-my-pr-repository-statistics',
   templateUrl: './repository-statistics.component.html',
@@ -51,7 +29,7 @@ export class RepositoryStatisticsComponent implements OnDestroy, OnInit {
 
   private initSubscribeRepositoryStatistics(): void {
     this.facade.repositoryStatistics$.pipe(untilDestroyed(this)).subscribe(repository => {
-      this.repository = mockedData; /* TODO repository instead mockedData */
+      this.repository = repository;
       this.cdr.markForCheck();
     });
   }

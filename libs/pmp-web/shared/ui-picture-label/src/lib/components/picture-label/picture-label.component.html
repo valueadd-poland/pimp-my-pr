@@ -1,5 +1,9 @@
 <div>
-  <img [src]="picture ? picture : fallbackImage" [style.width]="pictureSize + 'px'" />
+  <img
+    [src]="picture ? picture : fallbackImage"
+    [style.width]="pictureSize + 'px'"
+    [style.height]="pictureSize + 'px'"
+  />
   <span>
     {{ label }}
   </span>
