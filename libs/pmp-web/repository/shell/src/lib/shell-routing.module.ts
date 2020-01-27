@@ -15,7 +15,7 @@ const routes: Routes = [
           )
       },
       {
-        path: ':repositoryName',
+        path: ':repositoryId',
         loadChildren: () =>
           import('@pimp-my-pr/pmp-web/repository/feature-repository-statistics').then(
             m => m.PmpWebRepositoryRepositoryStatisticsFeatureModule
