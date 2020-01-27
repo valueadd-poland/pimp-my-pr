@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
-import { GetRepositoryStatisticsRequestPayload } from '../resources/request-payloads/get-repository-statistics.request-payload';
+import { GetRepositoryStatisticsPayload } from '@pimp-my-pr/pmp-web/repository/domain';
 import { RepositoryModel } from '@pimp-my-pr/shared/domain';
 
 export namespace fromSingleRepositoryStatisticsActions {
@@ -13,7 +13,7 @@ export namespace fromSingleRepositoryStatisticsActions {
   export class GetRepositoryStatistics implements Action {
     readonly type = Types.GetRepositoryStatistics;
 
-    constructor(public payload: GetRepositoryStatisticsRequestPayload) {}
+    constructor(public payload: GetRepositoryStatisticsPayload) {}
   }
 
   export class GetRepositoryStatisticsFail implements Action {

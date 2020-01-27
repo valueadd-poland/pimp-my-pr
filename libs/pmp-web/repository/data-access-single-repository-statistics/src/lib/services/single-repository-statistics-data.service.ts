@@ -1,8 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { GetRepositoryStatisticsRequestPayload } from '../resources/request-payloads/get-repository-statistics.request-payload';
+import { GetRepositoryStatisticsPayload } from '../../../../domain/src/lib/payloads/get-repository-statistics.payload';
 import { RepositoryModel } from '@pimp-my-pr/shared/domain';
+
+const mockedData: RepositoryModel = {
+  // TODO mocked data for repository
+  owner: 'valueadd',
+  fullName: 'pimp-my-pr',
+  name: 'pmp',
+  pictureUrl: 'https://picsum.photos/id/1025/200/300',
+  prsStatistics: [
+    {
+      author: {
+        name: 'MockUser',
+        avatarUrl: 'https://picsum.photos/id/237/200/300',
+        id: 1231
+      },
+      commentsCount: 123,
+      createdAt: '12/12/12',
+      linesOfCodeToCheck: 3245,
+      reviewCommentsCount: 234,
+      id: 2345,
+      timeWaiting: '124',
+      title: '12414',
+      url: 'https://picsum.photos/id/1050/200/300'
+    }
+  ]
+};
 
 @Injectable()
 export class SingleRepositoryStatisticsDataService {
@@ -12,9 +37,7 @@ export class SingleRepositoryStatisticsDataService {
   };
   constructor(private http: HttpClient) {}
 
-  getRepositoryStatistics(
-    payload: GetRepositoryStatisticsRequestPayload
-  ): Observable<RepositoryModel> {
-    return this.http.get<any>(this.endpoints.getRepositoryStatistics);
+  getRepositoryStatistics(payload: GetRepositoryStatisticsPayload): Observable<RepositoryModel> {
+    return of(mockedData);
   }
 }
