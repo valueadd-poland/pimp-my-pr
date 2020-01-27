@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { SingleRepositoryStatisticsPartialState } from './single-repository-statistics.reducer';
 import { singleRepositoryStatisticsQuery } from './single-repository-statistics.selectors';
 import { fromSingleRepositoryStatisticsActions } from './single-repository-statistics.actions';
-import { GetRepositoryStatisticsPayload } from '../../../../domain/src/lib/payloads/get-repository-statistics.payload';
+import { GetRepositoryStatisticsPayload } from '@pimp-my-pr/pmp-web/repository/domain';
 
 @Injectable()
 export class SingleRepositoryStatisticsFacade {
