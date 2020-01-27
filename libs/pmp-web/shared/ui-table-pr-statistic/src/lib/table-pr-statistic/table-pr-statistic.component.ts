@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PrStatistics } from '@pimp-my-pr/shared/domain';
 
 @Component({
@@ -12,6 +12,9 @@ export class TablePrStatisticComponent implements OnInit {
 
   @Input()
   columnPropertyName: string;
+
+  @Output()
+  navigateItem = new EventEmitter<PrStatistics>();
 
   displayedColumns: string[];
 
@@ -27,5 +30,7 @@ export class TablePrStatisticComponent implements OnInit {
     ];
   }
 
-  onNavigateToItem(item: PrStatistics): void {}
+  onNavigateToItem(item: PrStatistics): void {
+    this.navigateItem.emit(item);
+  }
 }
