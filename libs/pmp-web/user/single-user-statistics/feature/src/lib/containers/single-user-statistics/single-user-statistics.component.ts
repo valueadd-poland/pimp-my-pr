@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { SingleUserStatisticsResponse } from '@pimp-my-pr/shared/domain';
+import { PrStatistics, SingleUserStatisticsResponse } from '@pimp-my-pr/shared/domain';
 import { SingleUserStatisticsFacade } from '@pimp-my-pr/pmp-web/user/single-user-statistics/data-access';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 
@@ -32,6 +32,10 @@ export class SingleUserStatisticsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initGetUserStatistics();
     this.initSubscribeUserStatistics();
+  }
+
+  onNavigateItem(prStatistics: PrStatistics): void {
+    window.open(prStatistics.url, '_blank');
   }
 
   private initSubscribeUserStatistics(): void {
