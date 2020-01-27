@@ -38,6 +38,7 @@ export class SingleUserStatisticsComponent implements OnInit, OnDestroy {
     window.open(prStatistics.url, '_blank');
   }
 
+  // TODO Useless function. Use async pipe instead
   private initSubscribeUserStatistics(): void {
     this.facade.singleUserStatisticsResponse$
       .pipe(untilDestroyed(this))

@@ -7,6 +7,7 @@ import { GetSingleUserStatisticsResponseRequestPayload } from '../resources/requ
 
 @Injectable()
 export class SingleUserStatisticsFacade {
+  // TODO Remove 'Response' from name
   singleUserStatisticsResponse$ = this.store.pipe(
     select(singleUserStatisticsQuery.getSingleUserStatisticsResponse)
   );
