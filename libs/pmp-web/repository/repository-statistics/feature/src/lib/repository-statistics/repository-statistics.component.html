@@ -1,13 +1,14 @@
 <div class="repository-statistics__container">
   <pmp-header-container
+    *ngIf="repository$ | async"
     [avatarLabel]="(repository$ | async).name"
     [avatarUrl]="(repository$ | async).pictureUrl"
     label="Pull requests pending"
   ></pmp-header-container>
-  <!-- TODO missing property from API model -->
-  <!-- TODO change 'comments' to 'reviewers' when property is ready -->
   <pmp-table-pr-statistic
+    *ngIf="(repository$ | async)?.prsStatistics"
     [tableData]="(repository$ | async).prsStatistics"
-    columnPropertyName="comments"
+    (navigateItem)="onNavigateItem($event)"
+    columnPropertyName="reviewers"
   ></pmp-table-pr-statistic>
 </div>

@@ -58,8 +58,10 @@
       <mat-header-cell *matHeaderCellDef class="reviewers-column">
         <span> {{ 'Reviewers' }}</span>
       </mat-header-cell>
-      <mat-cell *matCellDef="let element" class="reviewers-column" #customCell>
-        <span>Placeholder</span>
+      <mat-cell *matCellDef="let element" class="reviewers-column">
+        <!-- TODO Bind reviewers data. Missing API property -->
+        <pmp-picture-label label="Placeholder" picture="https://picsum.photos/id/1074/200/300">
+        </pmp-picture-label>
       </mat-cell>
     </ng-container>
 

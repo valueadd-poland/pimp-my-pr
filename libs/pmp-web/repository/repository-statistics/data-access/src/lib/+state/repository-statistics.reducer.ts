@@ -1,11 +1,11 @@
 import { fromSingleRepositoryStatisticsActions } from './repository-statistics.actions';
 import { HttpErrorResponse } from '@angular/common/http';
-import { RepositoryModel } from '@pimp-my-pr/shared/domain';
+import { RepositoryStatistics } from '@pimp-my-pr/shared/domain';
 
 export const SINGLEREPOSITORYSTATISTICS_FEATURE_KEY = 'singleRepositoryStatistics';
 
 export interface SingleRepositoryStatisticsState {
-  repositoryStatistics: RepositoryModel | null;
+  repositoryStatistics: RepositoryStatistics | null;
   repositoryStatisticsLoading: boolean;
   repositoryStatisticsLoadError: HttpErrorResponse | null;
 }

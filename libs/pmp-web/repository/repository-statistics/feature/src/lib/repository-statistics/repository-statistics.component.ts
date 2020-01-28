@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { RepositoryStatisticsFacade } from '@pimp-my-pr/pmp-web/repository/repository-statistics/data-access';
+import { PrStatistics } from '@pimp-my-pr/shared/domain';
 
 @Component({
   selector: 'pimp-my-pr-repository-statistics',
@@ -9,7 +10,7 @@ import { RepositoryStatisticsFacade } from '@pimp-my-pr/pmp-web/repository/repos
   styleUrls: ['./repository-statistics.component.scss']
 })
 export class RepositoryStatisticsComponent implements OnDestroy, OnInit {
-  repositoryName: string | null;
+  repositoryId: number | null;
   repository$ = this.facade.repositoryStatistics$;
 
   constructor(private route: ActivatedRoute, private facade: RepositoryStatisticsFacade) {}
@@ -20,10 +21,14 @@ export class RepositoryStatisticsComponent implements OnDestroy, OnInit {
     this.initGetRepositoryStatistics();
   }
 
+  onNavigateItem(prStatistics: PrStatistics): void {
+    window.open(prStatistics.url, '_blank');
+  }
+
   private initGetRepositoryStatistics(): void {
     this.route.params.pipe(first()).subscribe(params => {
-      this.repositoryName = params.repositoryName;
-      this.facade.getRepositoryStatistics({ id: this.repositoryName });
+      this.repositoryId = params.repositoryId;
+      this.facade.getRepositoryStatistics({ id: this.repositoryId });
     });
   }
 }

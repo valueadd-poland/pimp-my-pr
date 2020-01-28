@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
 import { GetRepositoryStatisticsPayload } from '@pimp-my-pr/pmp-web/repository/domain';
-import { RepositoryModel } from '@pimp-my-pr/shared/domain';
+import { RepositoryStatistics } from '@pimp-my-pr/shared/domain';
 
 export namespace fromSingleRepositoryStatisticsActions {
   export enum Types {
@@ -25,7 +25,7 @@ export namespace fromSingleRepositoryStatisticsActions {
   export class GetRepositoryStatisticsSuccess implements Action {
     readonly type = Types.GetRepositoryStatisticsSuccess;
 
-    constructor(public payload: RepositoryModel) {}
+    constructor(public payload: RepositoryStatistics) {}
   }
 
   export type CollectiveType =
