@@ -12,9 +12,7 @@ export class Response<T, E> implements IResponse<T, E> {
     return res;
   }
 
-  public static createErrorResponse<E>(
-    error: HttpException
-  ): Response<null, E> {
+  public static createErrorResponse<E>(error: HttpException): Response<null, E> {
     const res = new Response<null, E>();
     res.data = null;
     res.error = error.message.message || error.message.error || null;

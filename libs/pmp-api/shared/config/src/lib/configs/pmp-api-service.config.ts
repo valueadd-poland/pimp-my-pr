@@ -18,14 +18,10 @@ export class PmpApiServiceConfigService {
   }
 
   getRepositoryOwner(): string {
-    return this.configService.get<string>(
-      CONFIG_NAMESPACE + '.repositoryOwner'
-    );
+    return this.configService.get<string>(CONFIG_NAMESPACE + '.repositoryOwner');
   }
 
   getRepositoryTitle(): string {
-    return this.configService.get<string>(
-      CONFIG_NAMESPACE + '.repositoryTitle'
-    );
+    return this.configService.get<string>(CONFIG_NAMESPACE + '.repositoryTitle');
   }
 }
