@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'pmp-web-repositories-statistics-data-access',
+  name: 'pmp-web-repository-repositories-statistics-data-access',
   preset: '../../../../jest.config.js',
   coverageDirectory:
     '../../../../coverage/libs/pmp-web/repository/repositories-statistics/data-access',
