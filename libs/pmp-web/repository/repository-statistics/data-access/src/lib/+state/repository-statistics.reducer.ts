@@ -1,4 +1,4 @@
-import { fromSingleRepositoryStatisticsActions } from './single-repository-statistics.actions';
+import { fromSingleRepositoryStatisticsActions } from './repository-statistics.actions';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RepositoryModel } from '@pimp-my-pr/shared/domain';
 
@@ -20,7 +20,7 @@ export const initialState: SingleRepositoryStatisticsState = {
   repositoryStatisticsLoadError: null
 };
 
-export function singleRepositoryStatisticsReducer(
+export function repositoryStatisticsReducer(
   state: SingleRepositoryStatisticsState = initialState,
   action: fromSingleRepositoryStatisticsActions.CollectiveType
 ): SingleRepositoryStatisticsState {

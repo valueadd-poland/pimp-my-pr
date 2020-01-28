@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { SingleRepositoryStatisticsPartialState } from './single-repository-statistics.reducer';
-import { singleRepositoryStatisticsQuery } from './single-repository-statistics.selectors';
-import { fromSingleRepositoryStatisticsActions } from './single-repository-statistics.actions';
+import { SingleRepositoryStatisticsPartialState } from './repository-statistics.reducer';
+import { singleRepositoryStatisticsQuery } from './repository-statistics.selectors';
+import { fromSingleRepositoryStatisticsActions } from './repository-statistics.actions';
 import { GetRepositoryStatisticsPayload } from '@pimp-my-pr/pmp-web/repository/domain';
 
 @Injectable()
-export class SingleRepositoryStatisticsFacade {
+export class RepositoryStatisticsFacade {
   repositoryStatistics$ = this.store.pipe(
     select(singleRepositoryStatisticsQuery.getRepositoryStatistics)
   );
