@@ -4,7 +4,7 @@ import { RepositoryStatisticsComponent } from './repository-statistics/repositor
 import { PmpWebSharedUiTablePrStatisticModule } from '@pimp-my-pr/pmp-web/shared/ui-table-pr-statistic';
 import { PmpWebSharedUiHeaderContainerModule } from '@pimp-my-pr/pmp-web/shared/ui-header-container';
 import { PmpWebRepositoryRepositoryStatisticsRoutingModule } from './pmp-web-repository-repository-statistics-routing.module';
-import { PmpWebRepositoryDataAccessSingleRepositoryStatisticsModule } from '@pimp-my-pr/pmp-web/repository/data-access-single-repository-statistics';
+import { PmpWebRepositoryRepositoryStatisticsDataAccessModule } from '@pimp-my-pr/pmp-web/repository/repository-statistics/data-access';
 
 @NgModule({
   imports: [
@@ -12,7 +12,7 @@ import { PmpWebRepositoryDataAccessSingleRepositoryStatisticsModule } from '@pim
     PmpWebSharedUiHeaderContainerModule,
     PmpWebSharedUiTablePrStatisticModule,
     PmpWebRepositoryRepositoryStatisticsRoutingModule,
-    PmpWebRepositoryDataAccessSingleRepositoryStatisticsModule
+    PmpWebRepositoryRepositoryStatisticsDataAccessModule
   ],
   declarations: [RepositoryStatisticsComponent]
 })

@@ -2,7 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
   SINGLEREPOSITORYSTATISTICS_FEATURE_KEY,
   SingleRepositoryStatisticsState
-} from './single-repository-statistics.reducer';
+} from './repository-statistics.reducer';
 
 // Lookup the 'SingleRepositoryStatistics' feature state managed by NgRx
 const getSingleRepositoryStatisticsState = createFeatureSelector<SingleRepositoryStatisticsState>(

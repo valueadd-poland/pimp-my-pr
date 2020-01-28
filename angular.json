@@ -1050,31 +1050,31 @@
         }
       }
     },
-    "pmp-web-repository-data-access-single-repository-statistics": {
+    "pmp-web-repository-repository-statistics-data-access": {
       "projectType": "library",
-      "root": "libs/pmp-web/repository/data-access-single-repository-statistics",
-      "sourceRoot": "libs/pmp-web/repository/data-access-single-repository-statistics/src",
+      "root": "libs/pmp-web/repository/repository-statistics/data-access",
+      "sourceRoot": "libs/pmp-web/repository/repository-statistics/data-access/src",
       "prefix": "pimp-my-pr",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/pmp-web/repository/data-access-single-repository-statistics/tsconfig.lib.json",
-              "libs/pmp-web/repository/data-access-single-repository-statistics/tsconfig.spec.json"
+              "libs/pmp-web/repository/repository-statistics/data-access/tsconfig.lib.json",
+              "libs/pmp-web/repository/repository-statistics/data-access/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/data-access-single-repository-statistics/**"
+              "!libs/pmp-web/repository/repository-statistics/data-access/**"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/pmp-web/repository/data-access-single-repository-statistics/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/data-access-single-repository-statistics/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/data-access-single-repository-statistics/src/test-setup.ts"
+            "jestConfig": "libs/pmp-web/repository/repository-statistics/data-access/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/repository-statistics/data-access/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/repository/repository-statistics/data-access/src/test-setup.ts"
           }
         }
       },

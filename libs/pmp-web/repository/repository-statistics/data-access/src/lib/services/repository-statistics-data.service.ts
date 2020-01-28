@@ -30,7 +30,7 @@ const mockedData: RepositoryModel = {
 };
 
 @Injectable()
-export class SingleRepositoryStatisticsDataService {
+export class RepositoryStatisticsDataService {
   readonly endpoints = {
     // TODO missing API url to get details about repository
     getRepositoryStatistics: ''
