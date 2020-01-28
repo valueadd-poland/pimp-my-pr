@@ -70,8 +70,8 @@
         "libs/pmp-web/shared/ui-go-back-header/src/index.ts"
       ],
       "@pimp-my-pr/pmp-web/repository/domain": ["libs/pmp-web/repository/domain/src/index.ts"],
-      "@pimp-my-pr/pmp-web/repository/feature-repository-statistics": [
-        "libs/pmp-web/repository/feature-repository-statistics/src/index.ts"
+      "@pimp-my-pr/pmp-web/repository/repository-statistics/feature": [
+        "libs/pmp-web/repository/repository-statistics/feature/src/index.ts"
       ],
       "@pimp-my-pr/pmp-web/shared/ui-table-pr-statistic": [
         "libs/pmp-web/shared/ui-table-pr-statistic/src/index.ts"
