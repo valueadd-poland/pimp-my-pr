@@ -1,11 +1,6 @@
-:host {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .repository-statistics__container {
+  padding: 40px 0;
   width: 90%;
+  max-width: 1400px;
+  margin: auto;
 }

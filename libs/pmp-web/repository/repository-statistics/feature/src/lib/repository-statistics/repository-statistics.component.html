@@ -1,6 +1,7 @@
-<div class="repository-statistics__container">
+<pmp-go-back-header link="/repository">Projects with PRs pending</pmp-go-back-header>
+
+<div class="repository-statistics__container" *ngIf="repository$ | async">
   <pmp-header-container
-    *ngIf="repository$ | async"
     [avatarLabel]="(repository$ | async).name"
     [avatarUrl]="(repository$ | async).pictureUrl"
     label="Pull requests pending"
