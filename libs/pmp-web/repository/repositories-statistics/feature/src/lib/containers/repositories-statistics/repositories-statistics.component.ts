@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { RepositoryStatisticsFacade } from '@pimp-my-pr/pmp-web/repository/data-access-repository-statistics';
 import { RepositoryStatistics } from '@pimp-my-pr/shared/domain';
 import { RepositoriesStatisticsPresenter } from './repositories-statistics.presenter';
 import { Observable } from 'rxjs';
+import { RepositoriesStatisticsFacade } from '@pimp-my-pr/pmp-web/repository/repositories-statistics/data-access';
 
 @Component({
   selector: 'pmp-repositories-statistics',
@@ -16,7 +16,7 @@ export class RepositoriesStatisticsComponent implements OnInit, OnDestroy {
     .repositoryStatisticsFacade.repositoryStatisticsCollection$;
 
   constructor(
-    private repositoryStatisticsFacade: RepositoryStatisticsFacade,
+    private repositoryStatisticsFacade: RepositoriesStatisticsFacade,
     private repositoriesStatisticsPresenter: RepositoriesStatisticsPresenter
   ) {}
 

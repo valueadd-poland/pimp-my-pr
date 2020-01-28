@@ -6,7 +6,7 @@ import { ApiRepositoryStatisticsResponse, RepositoryStatistics } from '@pimp-my-
 import { map } from 'rxjs/operators';
 
 @Injectable()
-export class RepositoryStatisticsDataService {
+export class RepositoriesStatisticsDataService {
   readonly endpoints = {
     getRepositoryStatisticsCollection: urlFactory('/api/repository')
   };
