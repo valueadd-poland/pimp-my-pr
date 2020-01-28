@@ -80,7 +80,7 @@
     "pmp-web-user-domain": {
       "tags": ["scope:pmp-web-user", "type:domain"]
     },
-    "pmp-web-repository-data-access": {
+    "pmp-web-repository-repositories-statistics-data-access": {
       "tags": ["scope:pmp-web-repository", "type:data-access"]
     },
     "pmp-web-repository-data-access-single-repository-statistics": {
@@ -103,9 +103,6 @@
     },
     "pmp-web-shared-ui-header-container": {
       "tags": ["scope:shared", "type:ui"]
-    },
-    "pmp-web-repository-data-access-single-repository-statistics": {
-      "tags": ["scope:pmp-web-repository", "type:data-access"]
     },
     "pmp-web-shared-ui-statistics-overview-table": {
       "tags": ["scope:pmp-web-shared", "type:ui"]

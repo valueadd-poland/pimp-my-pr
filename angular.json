@@ -730,22 +730,22 @@
         }
       }
     },
-    "pmp-web-repository-data-access": {
+    "pmp-web-repository-repositories-statistics-data-access": {
       "projectType": "library",
-      "root": "libs/pmp-web/repository/data-access-repository-statistics",
-      "sourceRoot": "libs/pmp-web/repository/data-access-repository-statistics/src",
+      "root": "libs/pmp-web/repository/repositories-statistics/data-access",
+      "sourceRoot": "libs/pmp-web/repository/repositories-statistics/data-access/src",
       "prefix": "pmp",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/pmp-web/repository/data-access-repository-statistics/tsconfig.lib.json",
-              "libs/pmp-web/repository/data-access-repository-statistics/tsconfig.spec.json"
+              "libs/pmp-web/repository/repositories-statistics/data-access/tsconfig.lib.json",
+              "libs/pmp-web/repository/repositories-statistics/data-access/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/data-access-repository-statistics/**"
+              "!libs/pmp-web/repository/repositories-statistics/data-access/**"
             ]
           }
         },

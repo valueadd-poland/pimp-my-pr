@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { RepositoryStatisticsPartialState } from './repository-statistics.reducer';
-import { fromRepositoryStatisticsActions } from './repository-statistics.actions';
-import { repositoryStatisticsQuery } from './repository-statistics.selectors';
+import { RepositoriesStatisticsPartialState } from './repositories-statistics.reducer';
+import { fromRepositoriesStatisticsActions } from './repositories-statistics.actions';
+import { repositoryStatisticsQuery } from './repositories-statistics.selectors';
 
 @Injectable()
-export class RepositoryStatisticsFacade {
+export class RepositoriesStatisticsFacade {
   repositoryStatisticsCollection$ = this.store.pipe(
     select(repositoryStatisticsQuery.getRepositoryStatisticsCollection)
   );
@@ -16,9 +16,11 @@ export class RepositoryStatisticsFacade {
     select(repositoryStatisticsQuery.getRepositoryStatisticsCollectionLoadError)
   );
 
-  constructor(private store: Store<RepositoryStatisticsPartialState>) {}
+  constructor(private store: Store<RepositoriesStatisticsPartialState>) {}
 
   getRepositoryStatisticsCollection(): void {
-    this.store.dispatch(new fromRepositoryStatisticsActions.GetRepositoryStatisticsCollection());
+    this.store.dispatch(
+      new fromRepositoriesStatisticsActions.GetRepositoriesStatisticsCollection()
+    );
   }
 }
