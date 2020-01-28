@@ -752,9 +752,9 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/pmp-web/repository/data-access-repository-statistics/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/data-access-repository-statistics/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/data-access-repository-statistics/src/test-setup.ts"
+            "jestConfig": "libs/pmp-web/repository/repositories-statistics/data-access/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/repositories-statistics/data-access/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/repository/repositories-statistics/data-access/src/test-setup.ts"
           }
         }
       },
