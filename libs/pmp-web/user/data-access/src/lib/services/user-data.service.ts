@@ -9,7 +9,7 @@ import { urlFactory } from '@valueadd/typed-urls';
 @Injectable()
 export class UserDataService {
   readonly endpoints = {
-    getUserStatisticsCollection: urlFactory('/api/repository/reviewers')
+    getUserStatisticsCollection: urlFactory('/api/reviewers')
   };
 
   constructor(private http: HttpClient) {}

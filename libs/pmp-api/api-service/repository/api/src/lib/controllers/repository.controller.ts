@@ -6,16 +6,16 @@ import { ListReviewerStatisticsRequest } from '../requests/list-reviewer-statist
 import { SingleUserStatisticsReadModel } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
 import { ListSingleRepositoryRequest } from '../requests/list-single-repository.request';
 
-@Controller('repository')
+@Controller()
 export class RepositoryController {
   constructor(private repositoryFacade: RepositoryFacade) {}
 
-  @Get()
+  @Get('repository')
   list(): Promise<ListRepositoriesResponse> {
     return this.repositoryFacade.list();
   }
 
-  @Get(':repositoryId')
+  @Get('repository/:repositoryId')
   listSingleRepository(@Req() request: Request): Promise<ListRepositoriesResponse> {
     return this.repositoryFacade.listSingleRepository(
       new ListSingleRepositoryRequest(request).getParams()
@@ -29,11 +29,13 @@ export class RepositoryController {
 
   @Get('reviewers')
   listReviewers(): Promise<UserStatistics[]> {
+    console.log('reviewers');
     return this.repositoryFacade.listReviewers();
   }
 
   @Get('reviewers/:username')
   listReviewerStatistics(@Req() request: Request): Promise<SingleUserStatisticsReadModel> {
+    console.log('reviewer');
     return this.repositoryFacade.listReviewerStatistics(
       new ListReviewerStatisticsRequest(request).getParams()
     );

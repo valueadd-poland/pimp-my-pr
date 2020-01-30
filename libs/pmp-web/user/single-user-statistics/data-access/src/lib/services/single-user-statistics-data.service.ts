@@ -9,10 +9,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class SingleUserStatisticsDataService {
   readonly endpoints = {
-    getSingleUserStatisticsResponse: urlFactory<'username'>(
-      '/api/repository/reviewers/:username',
-      true
-    )
+    getSingleUserStatisticsResponse: urlFactory<'username'>('/api/reviewers/:username', true)
   };
 
   constructor(private http: HttpClient) {}
