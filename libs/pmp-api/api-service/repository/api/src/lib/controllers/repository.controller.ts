@@ -29,13 +29,11 @@ export class RepositoryController {
 
   @Get('reviewers')
   listReviewers(): Promise<UserStatistics[]> {
-    console.log('reviewers');
     return this.repositoryFacade.listReviewers();
   }
 
   @Get('reviewers/:username')
   listReviewerStatistics(@Req() request: Request): Promise<SingleUserStatisticsReadModel> {
-    console.log('reviewer');
     return this.repositoryFacade.listReviewerStatistics(
       new ListReviewerStatisticsRequest(request).getParams()
     );

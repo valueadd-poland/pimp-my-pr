@@ -1,8 +1,6 @@
 import { IQueryHandler, QueryBus, QueryHandler } from '@nestjs/cqrs';
 import {
   PrDetailsModel,
-  PrModel,
-  RepositoryModel,
   RepositoryPrsStatisticsReadModel,
   RepositoryPrsStatisticsReadModelFactory
 } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
@@ -10,6 +8,7 @@ import { RepositoryDataService } from '@pimp-my-pr/pmp-api/api-service/repositor
 import { PrsService } from '../../services/prs.service';
 import { ListSingleRepositoryQuery } from '../list-single-repository.query';
 import { GetRepositoryPrsQuery } from '../get-repository-prs.query';
+import { GetPrDetailsQuery } from '../get-pr-details.query';
 
 @QueryHandler(ListSingleRepositoryQuery)
 export class ListSingleRepositoryHandler
@@ -28,6 +27,17 @@ export class ListSingleRepositoryHandler
       .execute<GetRepositoryPrsQuery, PrDetailsModel[]>(
         new GetRepositoryPrsQuery(repository.fullName)
       )
-      .then(prDetails => this.repositoryPrsStatisticsFactory.create(repository, prDetails));
+      .then(prs => {
+        return Promise.all(
+          prs.map(pr =>
+            this.queryBus.execute<GetPrDetailsQuery, PrDetailsModel>(
+              new GetPrDetailsQuery(repository.fullName, pr.id)
+            )
+          )
+        );
+      })
+      .then((prsDetails: PrDetailsModel[]) =>
+        this.repositoryPrsStatisticsFactory.createWithPrsReviewers(repository, prsDetails)
+      );
   }
 }

@@ -2,9 +2,9 @@ import { PrAuthor } from '../interfaces/pr-author.interface';
 
 export interface PrStatistics {
   id: number;
-  createdAt: string;
+  createdAt: Date;
   title: string;
-  timeWaiting: string;
+  timeWaiting: number;
   linesOfCodeToCheck: number;
   author: PrAuthor;
   commentsCount: number;

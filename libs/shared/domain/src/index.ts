@@ -8,3 +8,4 @@ export * from './lib/interfaces/repository.model';
 export * from './lib/interfaces/repository-statistics.interface';
 export * from './lib/interfaces/pr.statistics';
 export * from './lib/requests';
+export * from './lib/interfaces/pr-reviewer.interface';
