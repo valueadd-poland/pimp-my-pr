@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { PrStatistics } from '@pimp-my-pr/shared/domain';
+import { MatSort, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'pmp-table-pr-statistic',
@@ -8,13 +9,31 @@ import { PrStatistics } from '@pimp-my-pr/shared/domain';
 })
 export class TablePrStatisticComponent implements OnInit {
   @Input()
-  tableData: PrStatistics[];
+  set tableData(data: PrStatistics[]) {
+    this.dataSource = new MatTableDataSource<PrStatistics>(data);
+    this.dataSource.sortingDataAccessor = (item, property) => {
+      switch (property) {
+        case 'author':
+          return item.author.name;
+        case 'comments':
+          return item.commentsCount + item.reviewCommentsCount;
+        default:
+          return item[property];
+      }
+    };
+    this.dataSource.sort = this.sort;
+  }
 
   @Input()
   columnPropertyName: string;
 
   @Output()
   navigateItem = new EventEmitter<PrStatistics>();
+
+  @ViewChild(MatSort, { static: true })
+  sort: MatSort;
+
+  dataSource: MatTableDataSource<PrStatistics>;
 
   displayedColumns: string[];
 

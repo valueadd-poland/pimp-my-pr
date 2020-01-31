@@ -1,84 +1,87 @@
-<ng-container *ngIf="tableData">
-  <mat-table [dataSource]="tableData">
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef class="id-column">ID</mat-header-cell>
-      <mat-cell *matCellDef="let element" class="id-column">
-        {{ element.id }}
-      </mat-cell>
-    </ng-container>
+<mat-table matSort [dataSource]="dataSource">
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef class="id-column" mat-sort-header>ID</mat-header-cell>
+    <mat-cell *matCellDef="let element" class="id-column">
+      {{ element.id }}
+    </mat-cell>
+  </ng-container>
 
-    <!-- Title Column -->
-    <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef class="title-column">Title</mat-header-cell>
-      <mat-cell *matCellDef="let element" class="title-column">
-        {{ element.title }}
-      </mat-cell>
-    </ng-container>
+  <!-- Title Column -->
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef class="title-column" mat-sort-header>Title</mat-header-cell>
+    <mat-cell *matCellDef="let element" class="title-column">
+      {{ element.title }}
+    </mat-cell>
+  </ng-container>
 
-    <!-- Time waiting Column -->
-    <ng-container matColumnDef="waitingTime">
-      <mat-header-cell *matHeaderCellDef class="waiting-time-column">Time waiting</mat-header-cell>
-      <mat-cell *matCellDef="let element" class="waiting-time-column">
-        {{ element.timeWaiting }} hours
-      </mat-cell>
-    </ng-container>
+  <!-- Time waiting Column -->
+  <ng-container matColumnDef="waitingTime">
+    <mat-header-cell *matHeaderCellDef class="waiting-time-column" mat-sort-header="timeWaiting"
+      >Time waiting</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element" class="waiting-time-column">
+      {{ element.timeWaiting }} hours
+    </mat-cell>
+  </ng-container>
 
-    <!-- Lines To Check Column -->
-    <ng-container matColumnDef="linesToCheck">
-      <mat-header-cell *matHeaderCellDef class="lines-to-check-column"
-        >To check [lines of code]
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element" class="lines-to-check-column">
-        {{ element.linesOfCodeToCheck }}
-      </mat-cell>
-    </ng-container>
+  <!-- Lines To Check Column -->
+  <ng-container matColumnDef="linesToCheck">
+    <mat-header-cell
+      *matHeaderCellDef
+      class="lines-to-check-column"
+      mat-sort-header="linesOfCodeToCheck"
+      >To check [lines of code]
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="lines-to-check-column">
+      {{ element.linesOfCodeToCheck }}
+    </mat-cell>
+  </ng-container>
 
-    <!-- Link Column -->
-    <ng-container matColumnDef="link">
-      <mat-header-cell *matHeaderCellDef class="link-column"></mat-header-cell>
-      <mat-cell *matCellDef="let element" class="link-column">
-        <mat-icon (click)="onNavigateToItem(element)">launch</mat-icon>
-      </mat-cell>
-    </ng-container>
+  <!-- Link Column -->
+  <ng-container matColumnDef="link">
+    <mat-header-cell *matHeaderCellDef class="link-column"></mat-header-cell>
+    <mat-cell *matCellDef="let element" class="link-column">
+      <mat-icon (click)="onNavigateToItem(element)">launch</mat-icon>
+    </mat-cell>
+  </ng-container>
 
-    <!-- Author Column -->
-    <ng-container matColumnDef="author">
-      <mat-header-cell *matHeaderCellDef class="author-column">
-        <span> {{ 'Author' }}</span>
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element" class="author-column">
-        <pmp-picture-label [label]="element.author.name" [picture]="element.author.avatarUrl">
-        </pmp-picture-label>
-      </mat-cell>
-    </ng-container>
+  <!-- Author Column -->
+  <ng-container matColumnDef="author">
+    <mat-header-cell *matHeaderCellDef class="author-column" mat-sort-header>
+      <span> {{ 'Author' }}</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="author-column">
+      <pmp-picture-label [label]="element.author.name" [picture]="element.author.avatarUrl">
+      </pmp-picture-label>
+    </mat-cell>
+  </ng-container>
 
-    <!-- Reviewers Column -->
-    <ng-container matColumnDef="reviewers">
-      <mat-header-cell *matHeaderCellDef class="reviewers-column">
-        <span> {{ 'Reviewers' }}</span>
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element" class="reviewers-column">
-        <!-- TODO Bind reviewers data. Missing API property -->
-        <pmp-picture-label label="Placeholder" picture="https://picsum.photos/id/1074/200/300">
-        </pmp-picture-label>
-      </mat-cell>
-    </ng-container>
+  <!-- Reviewers Column -->
+  <ng-container matColumnDef="reviewers">
+    <mat-header-cell *matHeaderCellDef class="reviewers-column">
+      <span> {{ 'Reviewers' }}</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="reviewers-column">
+      <!-- TODO Bind reviewers data. Missing API property -->
+      <pmp-picture-label label="Placeholder" picture="https://picsum.photos/id/1074/200/300">
+      </pmp-picture-label>
+    </mat-cell>
+  </ng-container>
 
-    <!-- Comments Column -->
-    <ng-container matColumnDef="comments">
-      <mat-header-cell *matHeaderCellDef class="comments-column">
-        <span> {{ 'Comments' }}</span>
-      </mat-header-cell>
-      <mat-cell *matCellDef="let element" class="comments-column">
-        <mat-icon>
-          comment
-        </mat-icon>
-        {{ element.commentsCount + element.reviewCommentsCount }}
-      </mat-cell>
-    </ng-container>
+  <!-- Comments Column -->
+  <ng-container matColumnDef="comments">
+    <mat-header-cell *matHeaderCellDef class="comments-column" mat-sort-header>
+      <span> {{ 'Comments' }}</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="comments-column">
+      <mat-icon>
+        comment
+      </mat-icon>
+      {{ element.commentsCount + element.reviewCommentsCount }}
+    </mat-cell>
+  </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-  </mat-table>
-</ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
