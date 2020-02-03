@@ -20,7 +20,7 @@
     <ng-container matColumnDef="waitingTime">
       <mat-header-cell *matHeaderCellDef class="waiting-time-column">Time waiting</mat-header-cell>
       <mat-cell *matCellDef="let element" class="waiting-time-column">
-        {{ element.timeWaiting }} hours
+        <pmp-time-waiting-label [waitingTime]="element.timeWaiting"></pmp-time-waiting-label>
       </mat-cell>
     </ng-container>
 

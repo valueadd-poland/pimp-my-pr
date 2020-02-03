@@ -33,7 +33,7 @@
       <span>{{ 'Sum of time PR waiting' }}</span>
     </mat-header-cell>
     <mat-cell *matCellDef="let element">
-      {{ element.sumOfHoursPrsWaiting | resolveHours }}
+      <pmp-time-waiting-label [waitingTime]="element.sumOfHoursPrsWaiting"></pmp-time-waiting-label>
     </mat-cell>
   </ng-container>
 

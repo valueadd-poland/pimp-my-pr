@@ -81,6 +81,9 @@
       ],
       "@pimp-my-pr/pmp-web/repository/repository-statistics/data-access": [
         "libs/pmp-web/repository/repository-statistics/data-access/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/shared/ui-time-waiting-label": [
+        "libs/pmp-web/shared/ui-time-waiting-label/src/index.ts"
       ]
     }
   },

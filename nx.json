@@ -109,6 +109,9 @@
     },
     "pmp-web-shared-ui-go-back-header": {
       "tags": ["scope:pmp-web-shared", "type:ui"]
+    },
+    "pmp-web-shared-ui-time-waiting-label": {
+      "tags": ["scope:pmp-web-shared", "type:ui"]
     }
   }
 }

@@ -1083,6 +1083,31 @@
           "styleext": "scss"
         }
       }
+    },
+    "pmp-web-shared-ui-time-waiting-label": {
+      "root": "libs/pmp-web/shared/ui-time-waiting-label",
+      "sourceRoot": "libs/pmp-web/shared/ui-time-waiting-label/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shared/ui-time-waiting-label/tsconfig.lib.json",
+              "libs/pmp-web/shared/ui-time-waiting-label/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-time-waiting-label/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shared/ui-time-waiting-label/jest.config.js",
+            "tsConfig": "libs/pmp-web/shared/ui-time-waiting-label/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {
