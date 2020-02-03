@@ -59,13 +59,11 @@
 
   <!-- Reviewers Column -->
   <ng-container matColumnDef="reviewers">
-    <mat-header-cell *matHeaderCellDef class="reviewers-column">
+    <mat-header-cell *matHeaderCellDef class="reviewers-column" mat-sort-header>
       <span> {{ 'Reviewers' }}</span>
     </mat-header-cell>
     <mat-cell *matCellDef="let element" class="reviewers-column">
-      <!-- TODO Bind reviewers data. Missing API property -->
-      <pmp-picture-label label="Placeholder" picture="https://picsum.photos/id/1074/200/300">
-      </pmp-picture-label>
+      <pmp-persons-bar [persons]="element.reviewers"> </pmp-persons-bar>
     </mat-cell>
   </ng-container>
 

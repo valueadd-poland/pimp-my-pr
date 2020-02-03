@@ -1,0 +1,9 @@
+<span class="person-bar-container">
+  <pmp-picture-label
+    *ngFor="let person of persons"
+    [picture]="person.avatarUrl"
+    [pictureSize]="pictureSize"
+    [matTooltip]="person.name"
+  >
+  </pmp-picture-label>
+</span>

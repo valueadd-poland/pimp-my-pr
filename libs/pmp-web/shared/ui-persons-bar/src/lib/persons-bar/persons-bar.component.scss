@@ -1,0 +1,7 @@
+pmp-picture-label {
+  display: inline-block;
+
+  &:not(:last-child) {
+    margin-right: 0.3em;
+  }
+}

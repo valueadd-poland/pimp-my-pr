@@ -4,7 +4,7 @@
     [style.width]="pictureSize + 'px'"
     [style.height]="pictureSize + 'px'"
   />
-  <span>
+  <span *ngIf="label">
     {{ label }}
   </span>
 </div>
