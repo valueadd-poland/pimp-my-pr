@@ -110,6 +110,9 @@
     "pmp-web-shared-ui-go-back-header": {
       "tags": ["scope:pmp-web-shared", "type:ui"]
     },
+    "pmp-web-shared-ui-persons-bar": {
+      "tags": ["scope:shared", "type:ui"]
+    },
     "pmp-web-auth-shell": {
       "tags": ["scope:pmp-web-auth", "type:shell"]
     },

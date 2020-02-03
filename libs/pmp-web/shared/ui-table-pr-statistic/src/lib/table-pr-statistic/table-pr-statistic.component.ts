@@ -17,6 +17,8 @@ export class TablePrStatisticComponent implements OnInit {
           return item.author.name;
         case 'comments':
           return item.commentsCount + item.reviewCommentsCount;
+        case 'reviewers':
+          return item.reviewers.length;
         default:
           return item[property];
       }

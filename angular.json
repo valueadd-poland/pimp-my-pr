@@ -1084,6 +1084,37 @@
         }
       }
     },
+    "pmp-web-shared-ui-persons-bar": {
+      "projectType": "library",
+      "root": "libs/pmp-web/shared/ui-persons-bar",
+      "sourceRoot": "libs/pmp-web/shared/ui-persons-bar/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shared/ui-persons-bar/tsconfig.lib.json",
+              "libs/pmp-web/shared/ui-persons-bar/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-persons-bar/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shared/ui-persons-bar/jest.config.js",
+            "tsConfig": "libs/pmp-web/shared/ui-persons-bar/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/shared/ui-persons-bar/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "pmp-web-auth-shell": {
       "projectType": "library",
       "root": "libs/pmp-web/auth/shell",

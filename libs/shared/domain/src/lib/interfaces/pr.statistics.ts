@@ -1,4 +1,5 @@
-import { PrAuthor } from '../interfaces/pr-author.interface';
+import { PrAuthor } from './pr-author.interface';
+import { PrReviewer } from './pr-reviewer.interface';
 
 export interface PrStatistics {
   id: number;
@@ -10,4 +11,5 @@ export interface PrStatistics {
   commentsCount: number;
   reviewCommentsCount: number;
   url: string;
+  reviewers: PrReviewer[];
 }
