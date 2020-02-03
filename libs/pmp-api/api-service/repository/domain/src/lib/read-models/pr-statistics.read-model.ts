@@ -2,6 +2,7 @@ import { BasePrWithChangesReadModel } from './base-pr-with-changes.read-model';
 import { PrDetailsModel } from '../models/pr-details.model';
 import { PrAuthor } from '../interfaces/pr-author.interface';
 import { PrChanges } from '../interfaces/pr-changes.interface';
+import { PrReviewer } from '../interfaces/pr-reviewer.interface';
 
 export class PrStatisticsReadModel extends BasePrWithChangesReadModel {
   id: number;
@@ -11,6 +12,7 @@ export class PrStatisticsReadModel extends BasePrWithChangesReadModel {
   commentsCount: number;
   url: string;
   timeWaiting: number;
+  reviewers: PrReviewer[];
 
   constructor(pr: PrDetailsModel, prChanges: PrChanges) {
     super(pr, prChanges);
