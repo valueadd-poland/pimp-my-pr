@@ -1,28 +1,20 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { PrStatistics } from '@pimp-my-pr/shared/domain';
 import { MatSort, MatTableDataSource } from '@angular/material';
+import { TablePrStatisticsPresenter } from './table-pr-statistics.presenter';
 
 @Component({
   selector: 'pmp-table-pr-statistic',
   templateUrl: './table-pr-statistic.component.html',
-  styleUrls: ['./table-pr-statistic.component.scss']
+  styleUrls: ['./table-pr-statistic.component.scss'],
+  providers: [TablePrStatisticsPresenter]
 })
 export class TablePrStatisticComponent implements OnInit {
   @Input()
   set tableData(data: PrStatistics[]) {
     this.dataSource = new MatTableDataSource<PrStatistics>(data);
-    this.dataSource.sortingDataAccessor = (item, property) => {
-      switch (property) {
-        case 'author':
-          return item.author.name;
-        case 'comments':
-          return item.commentsCount + item.reviewCommentsCount;
-        case 'reviewers':
-          return item.reviewers.length;
-        default:
-          return item[property];
-      }
-    };
+    this.dataSource.sortingDataAccessor = (item, property) =>
+      this.presenter.sortData(item, property);
     this.dataSource.sort = this.sort;
   }
 
@@ -38,6 +30,8 @@ export class TablePrStatisticComponent implements OnInit {
   dataSource: MatTableDataSource<PrStatistics>;
 
   displayedColumns: string[];
+
+  constructor(private presenter: TablePrStatisticsPresenter) {}
 
   ngOnInit(): void {
     this.displayedColumns = [
