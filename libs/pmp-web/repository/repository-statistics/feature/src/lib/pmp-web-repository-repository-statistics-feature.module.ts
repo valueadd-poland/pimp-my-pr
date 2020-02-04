@@ -6,6 +6,7 @@ import { PmpWebSharedUiHeaderContainerModule } from '@pimp-my-pr/pmp-web/shared/
 import { PmpWebRepositoryRepositoryStatisticsRoutingModule } from './pmp-web-repository-repository-statistics-routing.module';
 import { PmpWebRepositoryRepositoryStatisticsDataAccessModule } from '@pimp-my-pr/pmp-web/repository/repository-statistics/data-access';
 import { PmpWebSharedUiGoBackHeaderModule } from '@pimp-my-pr/pmp-web/shared/ui-go-back-header';
+import { ContentLoaderModule } from '@ngneat/content-loader';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { PmpWebSharedUiGoBackHeaderModule } from '@pimp-my-pr/pmp-web/shared/ui-
     PmpWebSharedUiTablePrStatisticModule,
     PmpWebRepositoryRepositoryStatisticsRoutingModule,
     PmpWebRepositoryRepositoryStatisticsDataAccessModule,
-    PmpWebSharedUiGoBackHeaderModule
+    PmpWebSharedUiGoBackHeaderModule,
+    ContentLoaderModule
   ],
   declarations: [RepositoryStatisticsComponent]
 })

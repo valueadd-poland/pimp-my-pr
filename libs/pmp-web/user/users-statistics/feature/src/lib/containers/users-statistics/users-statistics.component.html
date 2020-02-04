@@ -2,8 +2,9 @@
   <h1 class="page__title">Repository users with PRs pending</h1>
 
   <pmp-statistics-overview-table
-    class="users-table"
     [data]="userStatisticsCollection$ | async"
+    [isLoading]="userStatisticsCollectionLoading$ | async"
     (navigateToItem)="onNavigateToUser($event)"
+    class="users-table"
   ></pmp-statistics-overview-table>
 </div>

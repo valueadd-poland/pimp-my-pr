@@ -8,6 +8,7 @@ import { PmpWebUserSingleUserStatisticsDataAccessModule } from '@pimp-my-pr/pmp-
 import { PmpWebSharedUiGoBackHeaderModule } from '@pimp-my-pr/pmp-web/shared/ui-go-back-header';
 import { PmpWebSharedUiTablePrStatisticModule } from '@pimp-my-pr/pmp-web/shared/ui-table-pr-statistic';
 import { PmpWebSharedUiHeaderContainerModule } from '@pimp-my-pr/pmp-web/shared/ui-header-container';
+import { ContentLoaderModule } from '@ngneat/content-loader';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { PmpWebSharedUiHeaderContainerModule } from '@pimp-my-pr/pmp-web/shared/
     PmpWebSharedUiHeaderContainerModule,
     MatTableModule,
     MatIconModule,
-    PmpWebSharedUiGoBackHeaderModule
+    PmpWebSharedUiGoBackHeaderModule,
+    ContentLoaderModule
   ],
   declarations: [SingleUserStatisticsComponent]
 })

@@ -1,15 +1,8 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnDestroy,
-  OnInit
-} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { PrStatistics, SingleUserStatisticsResponse } from '@pimp-my-pr/shared/domain';
+import { PrStatistics } from '@pimp-my-pr/shared/domain';
 import { SingleUserStatisticsFacade } from '@pimp-my-pr/pmp-web/user/single-user-statistics/data-access';
-import { untilDestroyed } from 'ngx-take-until-destroy';
 
 @Component({
   selector: 'pmp-single-user-statistics',
@@ -17,35 +10,26 @@ import { untilDestroyed } from 'ngx-take-until-destroy';
   styleUrls: ['./single-user-statistics.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SingleUserStatisticsComponent implements OnInit, OnDestroy {
-  userName: string | null;
-  userStatistics: SingleUserStatisticsResponse;
+export class SingleUserStatisticsComponent implements OnInit {
+  userName: string | null = null;
+  userAvatarUrl: string | null = null;
+  userStatistics$ = this.facade.singleUserStatisticsResponse$;
+  userStatisticsLoading$ = this.facade.singleUserStatisticsResponseLoading$;
 
   constructor(
-    private route: ActivatedRoute,
     private facade: SingleUserStatisticsFacade,
-    private cdr: ChangeDetectorRef
-  ) {}
-
-  ngOnDestroy(): void {}
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.initUserInfoRouterNavigation();
+  }
 
   ngOnInit(): void {
     this.initGetUserStatistics();
-    this.initSubscribeUserStatistics();
   }
 
   onNavigateItem(prStatistics: PrStatistics): void {
     window.open(prStatistics.url, '_blank');
-  }
-
-  // TODO Useless function. Use async pipe instead
-  private initSubscribeUserStatistics(): void {
-    this.facade.singleUserStatisticsResponse$
-      .pipe(untilDestroyed(this))
-      .subscribe(userStatistics => {
-        this.userStatistics = userStatistics;
-        this.cdr.markForCheck();
-      });
   }
 
   private initGetUserStatistics(): void {
@@ -53,5 +37,14 @@ export class SingleUserStatisticsComponent implements OnInit, OnDestroy {
       this.userName = params.userName;
       this.facade.getSingleUserStatisticsResponse({ username: this.userName });
     });
+  }
+
+  private initUserInfoRouterNavigation(): void {
+    if (!this.router.getCurrentNavigation() || !this.router.getCurrentNavigation().extras.state) {
+      return;
+    }
+
+    const routerNavigationState = this.router.getCurrentNavigation().extras.state;
+    this.userAvatarUrl = routerNavigationState.avatarUrl;
   }
 }

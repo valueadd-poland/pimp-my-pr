@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { PrStatistics } from '@pimp-my-pr/shared/domain';
 import { MatSort, MatTableDataSource } from '@angular/material';
 import { TablePrStatisticsPresenter } from './table-pr-statistics.presenter';
@@ -7,9 +15,14 @@ import { TablePrStatisticsPresenter } from './table-pr-statistics.presenter';
   selector: 'pmp-table-pr-statistic',
   templateUrl: './table-pr-statistic.component.html',
   styleUrls: ['./table-pr-statistic.component.scss'],
-  providers: [TablePrStatisticsPresenter]
+  providers: [TablePrStatisticsPresenter],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TablePrStatisticComponent implements OnInit {
+  @Input()
+  columnPropertyName: string;
+  @Input()
+  isLoading = false;
   @Input()
   set tableData(data: PrStatistics[]) {
     this.dataSource = new MatTableDataSource<PrStatistics>(data);
@@ -18,9 +31,6 @@ export class TablePrStatisticComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  @Input()
-  columnPropertyName: string;
-
   @Output()
   navigateItem = new EventEmitter<PrStatistics>();
 
@@ -28,7 +38,6 @@ export class TablePrStatisticComponent implements OnInit {
   sort: MatSort;
 
   dataSource: MatTableDataSource<PrStatistics>;
-
   displayedColumns: string[];
 
   constructor(private presenter: TablePrStatisticsPresenter) {}

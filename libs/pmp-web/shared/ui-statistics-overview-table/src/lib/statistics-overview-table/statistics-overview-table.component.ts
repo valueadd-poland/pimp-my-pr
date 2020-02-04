@@ -22,10 +22,14 @@ export class StatisticsOverviewTableComponent {
     this.dataSource.sort = this.sort;
   }
 
-  @Output()
-  navigateToItem = new EventEmitter<any>();
+  @Input()
+  isLoading = false;
 
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @Output()
+  navigateToItem = new EventEmitter<UserStatistics | RepositoryStatistics>();
+
+  @ViewChild(MatSort, { static: true })
+  sort: MatSort;
 
   dataSource: MatTableDataSource<UserStatistics | RepositoryStatistics>;
   displayColumns = [
