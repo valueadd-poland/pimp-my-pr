@@ -1,12 +1,12 @@
 <pmp-go-back-header link="/user">Projects with PRs pending</pmp-go-back-header>
 
-<div class="user-statistics__container" *ngIf="userStatistics">
+<div class="user-statistics__container">
   <pmp-header-container
-    [avatarLabel]="userStatistics.name"
-    [avatarUrl]="userStatistics.avatarUrl"
+    [avatarLabel]="userName || (userStatistics$ | async)?.name"
+    [avatarUrl]="userAvatarUrl || (userStatistics$ | async)?.avatarUrl"
     label="Pull requests pending"
   ></pmp-header-container>
-  <div *ngFor="let repo of userStatistics.repositories">
+  <div *ngFor="let repo of (userStatistics$ | async)?.repositories">
     <div class="user-statistics__repository-label">
       <pmp-picture-label [label]="repo.name" [picture]="repo.pictureUrl"></pmp-picture-label>
     </div>
@@ -15,5 +15,9 @@
       (navigateItem)="onNavigateItem($event)"
       columnPropertyName="comments"
     ></pmp-table-pr-statistic>
+  </div>
+
+  <div *ngIf="userStatisticsLoading$ | async" class="content-loader">
+    <list-content-loader></list-content-loader>
   </div>
 </div>

@@ -44,6 +44,7 @@
     "@nestjs/core": "^6.8.3",
     "@nestjs/cqrs": "^6.1.0",
     "@nestjs/platform-express": "^6.8.3",
+    "@ngneat/content-loader": "^4.1.0",
     "@ngrx/effects": "^8.6.0",
     "@ngrx/entity": "^8.6.0",
     "@ngrx/router-store": "^8.6.0",

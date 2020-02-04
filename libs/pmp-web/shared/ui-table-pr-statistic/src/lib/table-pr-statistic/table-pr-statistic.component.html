@@ -41,7 +41,7 @@
   <!-- Link Column -->
   <ng-container matColumnDef="link">
     <mat-header-cell *matHeaderCellDef class="link-column"></mat-header-cell>
-    <mat-cell *matCellDef="let element" class="link-column">
+    <mat-cell *matCellDef="let element" [matTooltip]="'See details'" class="link-column">
       <mat-icon (click)="onNavigateToItem(element)">launch</mat-icon>
     </mat-cell>
   </ng-container>
@@ -83,3 +83,7 @@
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>
+
+<div *ngIf="isLoading" class="content-loader">
+  <list-content-loader></list-content-loader>
+</div>
