@@ -99,7 +99,7 @@
         'pmp',
         'pmp-api',
         'pmp-web',
-        'pmp-web-user'
+        'pmp-web-report'
       ]
     ]
   },
