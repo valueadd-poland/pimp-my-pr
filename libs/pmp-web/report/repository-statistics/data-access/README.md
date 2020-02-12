@@ -1,7 +1,7 @@
-# pmp-web-repository-repository-statistics-data-access
+# pmp-web-report-repository-statistics-data-access
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test pmp-web-repository-repository-statistics-data-access` to execute the unit tests.
+Run `nx test pmp-web-report-repository-statistics-data-access` to execute the unit tests.

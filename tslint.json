@@ -104,8 +104,7 @@
             "onlyDependOnLibsWithTags": [
               "scope:shared",
               "scope:pmp-web",
-              "scope:pmp-web-repository",
-              "scope:pmp-web-user",
+              "scope:pmp-web-report",
               "scope:pmp-web-auth"
             ]
           },
@@ -114,9 +113,9 @@
             "onlyDependOnLibsWithTags": ["scope:shared", "scope:pmp-api"]
           },
           {
-            "sourceTag": "scope:pmp-web-repository",
+            "sourceTag": "scope:pmp-web-report",
             "onlyDependOnLibsWithTags": [
-              "scope:pmp-web-repository",
+              "scope:pmp-web-report",
               "scope:pmp-web-shared",
               "scope:shared"
             ]
@@ -124,14 +123,6 @@
           {
             "sourceTag": "scope:pmp-web-shared",
             "onlyDependOnLibsWithTags": ["scope:pmp-web-shared", "scope:shared"]
-          },
-          {
-            "sourceTag": "scope:pmp-web-user",
-            "onlyDependOnLibsWithTags": [
-              "scope:pmp-web-user",
-              "scope:pmp-web-shared",
-              "scope:shared"
-            ]
           },
           {
             "sourceTag": "scope:pmp-web-auth",
