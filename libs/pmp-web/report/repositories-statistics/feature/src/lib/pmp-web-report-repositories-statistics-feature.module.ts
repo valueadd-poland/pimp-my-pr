@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RepositoriesStatisticsComponent } from './containers/repositories-statistics/repositories-statistics.component';
 import { PmpWebReportRepositoriesStatisticsRoutingModule } from './pmp-web-report-repositories-statistics-routing.module';
-import { PmpWebSharedUiStatisticsOverviewTableModule } from '@pimp-my-pr/pmp-web/shared/ui-statistics-overview-table';
+import { PmpWebSharedReportUiStatisticsOverviewTableModule } from '@pimp-my-pr/pmp-web/shared/report/ui-statistics-overview-table';
 import { PmpWebRepositoriesStatisticsDataAccessModule } from '@pimp-my-pr/pmp-web/report/repositories-statistics/data-access';
 
 @NgModule({
@@ -10,7 +10,7 @@ import { PmpWebRepositoriesStatisticsDataAccessModule } from '@pimp-my-pr/pmp-we
     CommonModule,
     PmpWebRepositoriesStatisticsDataAccessModule,
     PmpWebReportRepositoriesStatisticsRoutingModule,
-    PmpWebSharedUiStatisticsOverviewTableModule
+    PmpWebSharedReportUiStatisticsOverviewTableModule
   ],
   declarations: [RepositoriesStatisticsComponent]
 })

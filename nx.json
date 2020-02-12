@@ -62,14 +62,8 @@
     "pmp-web-shared-ui-picture-label": {
       "tags": ["scope:pmp-web-shared", "type:ui"]
     },
-    "pmp-web-shared-ui-table-pr-statistic": {
-      "tags": ["scope:shared", "type:ui"]
-    },
     "pmp-web-shared-ui-header-container": {
       "tags": ["scope:shared", "type:ui"]
-    },
-    "pmp-web-shared-ui-statistics-overview-table": {
-      "tags": ["scope:pmp-web-shared", "type:ui"]
     },
     "pmp-web-shared-ui-go-back-header": {
       "tags": ["scope:pmp-web-shared", "type:ui"]
@@ -112,6 +106,12 @@
     },
     "pmp-web-report-users-statistics-feature": {
       "tags": ["scope:pmp-web-report", "type:feature"]
+    },
+    "pmp-web-shared-report-ui-table-pr-statistic": {
+      "tags": ["scope:shared", "type:ui"]
+    },
+    "pmp-web-shared-report-ui-statistics-overview-table": {
+      "tags": ["scope:pmp-web-shared", "type:ui"]
     }
   }
 }

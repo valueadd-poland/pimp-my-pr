@@ -6,7 +6,7 @@ import { PmpWebSharedUiPictureLabelModule } from '@pimp-my-pr/pmp-web/shared/ui-
 import { MatIconModule, MatTableModule } from '@angular/material';
 import { PmpWebReportSingleUserStatisticsDataAccessModule } from '@pimp-my-pr/pmp-web/report/single-user-statistics/data-access';
 import { PmpWebSharedUiGoBackHeaderModule } from '@pimp-my-pr/pmp-web/shared/ui-go-back-header';
-import { PmpWebSharedUiTablePrStatisticModule } from '@pimp-my-pr/pmp-web/shared/ui-table-pr-statistic';
+import { PmpWebSharedReportUiTablePrStatisticModule } from '@pimp-my-pr/pmp-web/shared/report/ui-table-pr-statistic';
 import { PmpWebSharedUiHeaderContainerModule } from '@pimp-my-pr/pmp-web/shared/ui-header-container';
 import { ContentLoaderModule } from '@ngneat/content-loader';
 
@@ -16,7 +16,7 @@ import { ContentLoaderModule } from '@ngneat/content-loader';
     PmpWebReportSingleUserStatisticsRoutingModule,
     PmpWebSharedUiPictureLabelModule,
     PmpWebReportSingleUserStatisticsDataAccessModule,
-    PmpWebSharedUiTablePrStatisticModule,
+    PmpWebSharedReportUiTablePrStatisticModule,
     PmpWebSharedUiHeaderContainerModule,
     MatTableModule,
     MatIconModule,
