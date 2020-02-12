@@ -572,40 +572,6 @@
         }
       }
     },
-    "pmp-web-shared-ui-statistics-overview-table": {
-      "projectType": "library",
-      "root": "libs/pmp-web/shared/ui-statistics-overview-table",
-      "sourceRoot": "libs/pmp-web/shared/ui-statistics-overview-table/src",
-      "prefix": "pmp",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/pmp-web/shared/ui-statistics-overview-table/tsconfig.lib.json",
-              "libs/pmp-web/shared/ui-statistics-overview-table/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/pmp-web/shared/ui-statistics-overview-table/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/pmp-web/shared/ui-statistics-overview-table/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/ui-statistics-overview-table/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/ui-statistics-overview-table/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
-        }
-      }
-    },
     "pmp-web-shared-ui-go-back-header": {
       "projectType": "library",
       "root": "libs/pmp-web/shared/ui-go-back-header",
@@ -628,37 +594,6 @@
             "jestConfig": "libs/pmp-web/shared/ui-go-back-header/jest.config.js",
             "tsConfig": "libs/pmp-web/shared/ui-go-back-header/tsconfig.spec.json",
             "setupFile": "libs/pmp-web/shared/ui-go-back-header/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
-        }
-      }
-    },
-    "pmp-web-shared-ui-table-pr-statistic": {
-      "projectType": "library",
-      "root": "libs/pmp-web/shared/ui-table-pr-statistic",
-      "sourceRoot": "libs/pmp-web/shared/ui-table-pr-statistic/src",
-      "prefix": "pmp",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/pmp-web/shared/ui-table-pr-statistic/tsconfig.lib.json",
-              "libs/pmp-web/shared/ui-table-pr-statistic/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-table-pr-statistic/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/pmp-web/shared/ui-table-pr-statistic/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/ui-table-pr-statistic/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/ui-table-pr-statistic/src/test-setup.ts"
           }
         }
       },
@@ -1109,6 +1044,74 @@
             "jestConfig": "libs/pmp-web/report/users-statistics/feature/jest.config.js",
             "tsConfig": "libs/pmp-web/report/users-statistics/feature/tsconfig.spec.json",
             "setupFile": "libs/pmp-web/report/users-statistics/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-shared-report-ui-table-pr-statistic": {
+      "projectType": "library",
+      "root": "libs/pmp-web/shared/report/ui-table-pr-statistic",
+      "sourceRoot": "libs/pmp-web/shared/report/ui-table-pr-statistic/src",
+      "prefix": "pmp",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shared/report/ui-table-pr-statistic/tsconfig.lib.json",
+              "libs/pmp-web/shared/report/ui-table-pr-statistic/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/pmp-web/shared/report/ui-table-pr-statistic/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shared/report/ui-table-pr-statistic/jest.config.js",
+            "tsConfig": "libs/pmp-web/shared/report/ui-table-pr-statistic/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/shared/report/ui-table-pr-statistic/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-shared-report-ui-statistics-overview-table": {
+      "projectType": "library",
+      "root": "libs/pmp-web/shared/report/ui-statistics-overview-table",
+      "sourceRoot": "libs/pmp-web/shared/report/ui-statistics-overview-table/src",
+      "prefix": "pmp",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shared/report/ui-statistics-overview-table/tsconfig.lib.json",
+              "libs/pmp-web/shared/report/ui-statistics-overview-table/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/pmp-web/shared/report/ui-statistics-overview-table/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shared/report/ui-statistics-overview-table/jest.config.js",
+            "tsConfig": "libs/pmp-web/shared/report/ui-statistics-overview-table/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/shared/report/ui-statistics-overview-table/src/test-setup.ts"
           }
         }
       },

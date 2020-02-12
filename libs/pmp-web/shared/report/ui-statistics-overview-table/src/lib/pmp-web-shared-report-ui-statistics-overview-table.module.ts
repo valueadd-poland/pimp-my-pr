@@ -18,4 +18,4 @@ import { ContentLoaderModule } from '@ngneat/content-loader';
   declarations: [StatisticsOverviewTableComponent],
   exports: [StatisticsOverviewTableComponent]
 })
-export class PmpWebSharedUiStatisticsOverviewTableModule {}
+export class PmpWebSharedReportUiStatisticsOverviewTableModule {}
