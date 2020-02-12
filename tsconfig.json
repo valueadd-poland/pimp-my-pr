@@ -43,25 +43,9 @@
       "@pimp-my-pr/pmp-web/user/shell": ["libs/pmp-web/user/shell/src/index.ts"],
       "@pimp-my-pr/pmp-web/shared/ui-navbar": ["libs/pmp-web/shared/ui-navbar/src/index.ts"],
       "@pimp-my-pr/pmp-web/shared/ui-sidebar": ["libs/pmp-web/shared/ui-sidebar/src/index.ts"],
-      "@pimp-my-pr/pmp-web/user/users-statistics/feature": [
-        "libs/pmp-web/user/users-statistics/feature/src/index.ts"
-      ],
-      "@pimp-my-pr/pmp-web/user/single-user-statistics/feature": [
-        "libs/pmp-web/user/single-user-statistics/feature/src/index.ts"
-      ],
-      "@pimp-my-pr/pmp-web/user/data-access": ["libs/pmp-web/user/data-access/src/index.ts"],
       "@pimp-my-pr/pmp-web/user/domain": ["libs/pmp-web/user/domain/src/index.ts"],
-      "@pimp-my-pr/pmp-web/repository/repositories-statistics/data-access": [
-        "libs/pmp-web/repository/repositories-statistics/data-access/src/index.ts"
-      ],
       "@pimp-my-pr/pmp-web/shared/ui-picture-label": [
         "libs/pmp-web/shared/ui-picture-label/src/index.ts"
-      ],
-      "@pimp-my-pr/pmp-web/user/single-user-statistics/data-access": [
-        "libs/pmp-web/user/single-user-statistics/data-access/src/index.ts"
-      ],
-      "@pimp-my-pr/pmp-web/repository/repositories-statistics/feature": [
-        "libs/pmp-web/repository/repositories-statistics/feature/src/index.ts"
       ],
       "@pimp-my-pr/pmp-web/shared/ui-statistics-overview-table": [
         "libs/pmp-web/shared/ui-statistics-overview-table/src/index.ts"
@@ -69,24 +53,43 @@
       "@pimp-my-pr/pmp-web/shared/ui-go-back-header": [
         "libs/pmp-web/shared/ui-go-back-header/src/index.ts"
       ],
-      "@pimp-my-pr/pmp-web/repository/domain": ["libs/pmp-web/repository/domain/src/index.ts"],
-      "@pimp-my-pr/pmp-web/repository/repository-statistics/feature": [
-        "libs/pmp-web/repository/repository-statistics/feature/src/index.ts"
-      ],
       "@pimp-my-pr/pmp-web/shared/ui-table-pr-statistic": [
         "libs/pmp-web/shared/ui-table-pr-statistic/src/index.ts"
       ],
       "@pimp-my-pr/pmp-web/shared/ui-header-container": [
         "libs/pmp-web/shared/ui-header-container/src/index.ts"
       ],
-      "@pimp-my-pr/pmp-web/repository/repository-statistics/data-access": [
-        "libs/pmp-web/repository/repository-statistics/data-access/src/index.ts"
-      ],
       "@pimp-my-pr/pmp-web/shared/ui-persons-bar": [
         "libs/pmp-web/shared/ui-persons-bar/src/index.ts"
       ],
       "@pimp-my-pr/pmp-web/auth/shell": ["libs/pmp-web/auth/shell/src/index.ts"],
-      "@pimp-my-pr/pmp-web/auth/login-feature": ["libs/pmp-web/auth/login-feature/src/index.ts"]
+      "@pimp-my-pr/pmp-web/auth/login-feature": ["libs/pmp-web/auth/login-feature/src/index.ts"],
+      "@pimp-my-pr/pmp-web/report/shell": ["libs/pmp-web/report/shell/src/index.ts"],
+      "@pimp-my-pr/pmp-web/report/domain": ["libs/pmp-web/report/domain/src/index.ts"],
+      "@pimp-my-pr/pmp-web/report/repository-statistics/feature": [
+        "libs/pmp-web/report/repository-statistics/feature/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/report/repository-statistics/data-access": [
+        "libs/pmp-web/report/repository-statistics/data-access/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/report/repositories-statistics/feature": [
+        "libs/pmp-web/report/repositories-statistics/feature/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/report/repositories-statistics/data-access": [
+        "libs/pmp-web/report/repositories-statistics/data-access/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/report/single-user-statistics/feature": [
+        "libs/pmp-web/report/single-user-statistics/feature/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/report/single-user-statistics/data-access": [
+        "libs/pmp-web/report/single-user-statistics/data-access/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/report/users-statistics/data-access": [
+        "libs/pmp-web/report/users-statistics/data-access/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/report/users-statistics/feature": [
+        "libs/pmp-web/report/users-statistics/feature/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
