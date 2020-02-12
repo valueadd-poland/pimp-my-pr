@@ -84,7 +84,7 @@
       "tags": ["scope:pmp-web-auth", "type:feature"]
     },
     "pmp-web-report-shell": {
-      "tags": ["scope:pmp-report", "type:feature"]
+      "tags": ["scope:pmp-web-report", "type:feature"]
     },
     "pmp-web-report-domain": {
       "tags": ["scope:pmp-web-report", "type:domain"]
