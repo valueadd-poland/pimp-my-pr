@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { PmpWebRepositoryShellModule } from '@pimp-my-pr/pmp-web/repository/shell';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,8 +10,8 @@ import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
-import { PmpWebUserShellModule } from '@pimp-my-pr/pmp-web/user/shell';
 import { PmpWebAuthShellModule } from '@pimp-my-pr/pmp-web/auth/shell';
+import { PmpWebReportShellModule } from '@pimp-my-pr/pmp-web/report/shell';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,8 +36,7 @@ import { PmpWebAuthShellModule } from '@pimp-my-pr/pmp-web/auth/shell';
       logOnly: environment.production // Restrict extension to log-only mode
     }),
     AppRoutingModule,
-    PmpWebRepositoryShellModule,
-    PmpWebUserShellModule,
+    PmpWebReportShellModule,
     PmpWebAuthShellModule
   ],
   bootstrap: [AppComponent]
