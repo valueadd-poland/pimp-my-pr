@@ -727,93 +727,130 @@
         }
       }
     },
-    "pmp-web-report-shell": {
+    "pmp-web-repository-ui-statistics-overview-table": {
       "projectType": "library",
-      "root": "libs/pmp-web/report/shell",
-      "sourceRoot": "libs/pmp-web/report/shell/src",
+      "root": "libs/pmp-web/repository/ui-statistics-overview-table",
+      "sourceRoot": "libs/pmp-web/repository/ui-statistics-overview-table/src",
+      "prefix": "pmp",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/repository/ui-statistics-overview-table/tsconfig.lib.json",
+              "libs/pmp-web/repository/ui-statistics-overview-table/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/pmp-web/repository/ui-statistics-overview-table/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/repository/ui-statistics-overview-table/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/ui-statistics-overview-table/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/repository/ui-statistics-overview-table/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-repository-ui-table-pr-statistic": {
+      "projectType": "library",
+      "root": "libs/pmp-web/repository/ui-table-pr-statistic",
+      "sourceRoot": "libs/pmp-web/repository/ui-table-pr-statistic/src",
+      "prefix": "pmp",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/repository/ui-table-pr-statistic/tsconfig.lib.json",
+              "libs/pmp-web/repository/ui-table-pr-statistic/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/repository/ui-table-pr-statistic/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/repository/ui-table-pr-statistic/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/ui-table-pr-statistic/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/repository/ui-table-pr-statistic/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-repository-repository-statistics-feature": {
+      "projectType": "library",
+      "root": "libs/pmp-web/repository/repository-statistics/feature",
+      "sourceRoot": "libs/pmp-web/repository/repository-statistics/feature/src",
+      "prefix": "pmp",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/repository/repository-statistics/feature/tsconfig.lib.json",
+              "libs/pmp-web/repository/repository-statistics/feature/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/pmp-web/repository/repository-statistics/feature/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/repository/repository-statistics/feature/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/repository-statistics/feature/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/repository/repository-statistics/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-repository-repository-statistics-data-access": {
+      "projectType": "library",
+      "root": "libs/pmp-web/repository/repository-statistics/data-access",
+      "sourceRoot": "libs/pmp-web/repository/repository-statistics/data-access/src",
       "prefix": "pimp-my-pr",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/pmp-web/report/shell/tsconfig.lib.json",
-              "libs/pmp-web/report/shell/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/report/shell/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/pmp-web/report/shell/jest.config.js",
-            "tsConfig": "libs/pmp-web/report/shell/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/report/shell/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
-        }
-      }
-    },
-    "pmp-web-report-domain": {
-      "projectType": "library",
-      "root": "libs/pmp-web/report/domain",
-      "sourceRoot": "libs/pmp-web/report/domain/src",
-      "prefix": "pmp",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/pmp-web/report/domain/tsconfig.lib.json",
-              "libs/pmp-web/report/domain/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/report/domain/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/pmp-web/report/domain/jest.config.js",
-            "tsConfig": "libs/pmp-web/report/domain/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/report/domain/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
-        }
-      }
-    },
-    "pmp-web-report-repository-statistics-feature": {
-      "projectType": "library",
-      "root": "libs/pmp-web/report/repository-statistics/feature",
-      "sourceRoot": "libs/pmp-web/report/repository-statistics/feature/src",
-      "prefix": "pmp",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/pmp-web/report/repository-statistics/feature/tsconfig.lib.json",
-              "libs/pmp-web/report/repository-statistics/feature/tsconfig.spec.json"
+              "libs/pmp-web/repository/repository-statistics/data-access/tsconfig.lib.json",
+              "libs/pmp-web/repository/repository-statistics/data-access/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/report/repository-statistics/feature/**"
+              "!libs/pmp-web/repository/repository-statistics/data-access/**"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/pmp-web/report/repository-statistics/feature/jest.config.js",
-            "tsConfig": "libs/pmp-web/report/repository-statistics/feature/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/report/repository-statistics/feature/src/test-setup.ts"
+            "jestConfig": "libs/pmp-web/repository/repository-statistics/data-access/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/repository-statistics/data-access/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/repository/repository-statistics/data-access/src/test-setup.ts"
           }
         }
       },
@@ -823,65 +860,31 @@
         }
       }
     },
-    "pmp-web-report-repository-statistics-data-access": {
+    "pmp-web-repository-repositories-statistics-feature": {
       "projectType": "library",
-      "root": "libs/pmp-web/report/repository-statistics/data-access",
-      "sourceRoot": "libs/pmp-web/report/repository-statistics/data-access/src",
-      "prefix": "pimp-my-pr",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/pmp-web/report/repository-statistics/data-access/tsconfig.lib.json",
-              "libs/pmp-web/report/repository-statistics/data-access/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/pmp-web/report/repository-statistics/data-access/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/pmp-web/report/repository-statistics/data-access/jest.config.js",
-            "tsConfig": "libs/pmp-web/report/repository-statistics/data-access/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/report/repository-statistics/data-access/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
-        }
-      }
-    },
-    "pmp-web-report-repositories-statistics-feature": {
-      "projectType": "library",
-      "root": "libs/pmp-web/report/repositories-statistics/feature",
-      "sourceRoot": "libs/pmp-web/report/repositories-statistics/feature/src",
+      "root": "libs/pmp-web/repository/repositories-statistics/feature",
+      "sourceRoot": "libs/pmp-web/repository/repositories-statistics/feature/src",
       "prefix": "pmp",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/pmp-web/report/repositories-statistics/feature/tsconfig.lib.json",
-              "libs/pmp-web/report/repositories-statistics/feature/tsconfig.spec.json"
+              "libs/pmp-web/repository/repositories-statistics/feature/tsconfig.lib.json",
+              "libs/pmp-web/repository/repositories-statistics/feature/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/report/repositories-statistics/feature/**"
+              "!libs/pmp-web/repository/repositories-statistics/feature/**"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/pmp-web/report/repositories-statistics/feature/jest.config.js",
-            "tsConfig": "libs/pmp-web/report/repositories-statistics/feature/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/report/repositories-statistics/feature/src/test-setup.ts"
+            "jestConfig": "libs/pmp-web/repository/repositories-statistics/feature/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/repositories-statistics/feature/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/repository/repositories-statistics/feature/src/test-setup.ts"
           }
         }
       },
@@ -891,31 +894,31 @@
         }
       }
     },
-    "pmp-web-report-repositories-statistics-data-access": {
+    "pmp-web-repository-repositories-statistics-data-access": {
       "projectType": "library",
-      "root": "libs/pmp-web/report/repositories-statistics/data-access",
-      "sourceRoot": "libs/pmp-web/report/repositories-statistics/data-access/src",
+      "root": "libs/pmp-web/repository/repositories-statistics/data-access",
+      "sourceRoot": "libs/pmp-web/repository/repositories-statistics/data-access/src",
       "prefix": "pmp",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/pmp-web/report/repositories-statistics/data-access/tsconfig.lib.json",
-              "libs/pmp-web/report/repositories-statistics/data-access/tsconfig.spec.json"
+              "libs/pmp-web/repository/repositories-statistics/data-access/tsconfig.lib.json",
+              "libs/pmp-web/repository/repositories-statistics/data-access/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/report/repositories-statistics/data-access/**"
+              "!libs/pmp-web/repository/repositories-statistics/data-access/**"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/pmp-web/report/repositories-statistics/data-access/jest.config.js",
-            "tsConfig": "libs/pmp-web/report/repositories-statistics/data-access/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/report/repositories-statistics/data-access/src/test-setup.ts"
+            "jestConfig": "libs/pmp-web/repository/repositories-statistics/data-access/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/repositories-statistics/data-access/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/repository/repositories-statistics/data-access/src/test-setup.ts"
           }
         }
       },
@@ -925,9 +928,9 @@
         }
       }
     },
-    "pmp-web-report-single-user-statistics-feature": {
-      "root": "libs/pmp-web/report/single-user-statistics/feature",
-      "sourceRoot": "libs/pmp-web/report/single-user-statistics/feature/src",
+    "pmp-web-repository-reviewer-statistics-feature": {
+      "root": "libs/pmp-web/repository/reviewer-statistics/feature",
+      "sourceRoot": "libs/pmp-web/repository/reviewer-statistics/feature/src",
       "projectType": "library",
       "schematics": {},
       "prefix": "pmp",
@@ -936,49 +939,49 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/pmp-web/report/single-user-statistics/feature/tsconfig.lib.json",
-              "libs/pmp-web/report/single-user-statistics/feature/tsconfig.spec.json"
+              "libs/pmp-web/repository/reviewer-statistics/feature/tsconfig.lib.json",
+              "libs/pmp-web/repository/reviewer-statistics/feature/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/report/single-user-statistics/feature/**"
+              "!libs/pmp-web/repository/reviewer-statistics/feature/**"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/pmp-web/report/single-user-statistics/feature/jest.config.js",
-            "tsConfig": "libs/pmp-web/report/single-user-statistics/feature/tsconfig.spec.json"
+            "jestConfig": "libs/pmp-web/repository/reviewer-statistics/feature/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/reviewer-statistics/feature/tsconfig.spec.json"
           }
         }
       }
     },
-    "pmp-web-report-single-user-statistics-data-access": {
+    "pmp-web-repository-reviewer-statistics-data-access": {
       "projectType": "library",
-      "root": "libs/pmp-web/report/single-user-statistics/data-access",
-      "sourceRoot": "libs/pmp-web/report/single-user-statistics/data-access/src",
+      "root": "libs/pmp-web/repository/reviewer-statistics/data-access",
+      "sourceRoot": "libs/pmp-web/repository/reviewer-statistics/data-access/src",
       "prefix": "pmp",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/pmp-web/report/single-user-statistics/data-access/tsconfig.lib.json",
-              "libs/pmp-web/report/single-user-statistics/data-access/tsconfig.spec.json"
+              "libs/pmp-web/repository/reviewer-statistics/data-access/tsconfig.lib.json",
+              "libs/pmp-web/repository/reviewer-statistics/data-access/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/report/single-user-statistics/data-access/**"
+              "!libs/pmp-web/repository/reviewer-statistics/data-access/**"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/pmp-web/report/single-user-statistics/data-access/jest.config.js",
-            "tsConfig": "libs/pmp-web/report/single-user-statistics/data-access/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/report/single-user-statistics/data-access/src/test-setup.ts"
+            "jestConfig": "libs/pmp-web/repository/reviewer-statistics/data-access/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/reviewer-statistics/data-access/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/repository/reviewer-statistics/data-access/src/test-setup.ts"
           }
         }
       },
@@ -988,31 +991,31 @@
         }
       }
     },
-    "pmp-web-report-users-statistics-data-access": {
+    "pmp-web-repository-reviewers-statistics-feature": {
       "projectType": "library",
-      "root": "libs/pmp-web/report/users-statistics/data-access",
-      "sourceRoot": "libs/pmp-web/report/users-statistics/data-access/src",
+      "root": "libs/pmp-web/repository/reviewers-statistics/feature",
+      "sourceRoot": "libs/pmp-web/repository/reviewers-statistics/feature/src",
       "prefix": "pmp",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/pmp-web/report/users-statistics/data-access/tsconfig.lib.json",
-              "libs/pmp-web/report/users-statistics/data-access/tsconfig.spec.json"
+              "libs/pmp-web/repository/reviewers-statistics/feature/tsconfig.lib.json",
+              "libs/pmp-web/repository/reviewers-statistics/feature/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/report/users-statistics/data-access/**"
+              "!libs/pmp-web/repository/reviewers-statistics/feature/**"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/pmp-web/report/users-statistics/data-access/jest.config.js",
-            "tsConfig": "libs/pmp-web/report/users-statistics/data-access/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/report/users-statistics/data-access/src/test-setup.ts"
+            "jestConfig": "libs/pmp-web/repository/reviewers-statistics/feature/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/reviewers-statistics/feature/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/repository/reviewers-statistics/feature/src/test-setup.ts"
           }
         }
       },
@@ -1022,28 +1025,31 @@
         }
       }
     },
-    "pmp-web-report-users-statistics-feature": {
+    "pmp-web-repository-reviewers-statistics-data-access": {
       "projectType": "library",
-      "root": "libs/pmp-web/report/users-statistics/feature",
-      "sourceRoot": "libs/pmp-web/report/users-statistics/feature/src",
+      "root": "libs/pmp-web/repository/reviewers-statistics/data-access",
+      "sourceRoot": "libs/pmp-web/repository/reviewers-statistics/data-access/src",
       "prefix": "pmp",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/pmp-web/report/users-statistics/feature/tsconfig.lib.json",
-              "libs/pmp-web/report/users-statistics/feature/tsconfig.spec.json"
+              "libs/pmp-web/repository/reviewers-statistics/data-access/tsconfig.lib.json",
+              "libs/pmp-web/repository/reviewers-statistics/data-access/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/report/users-statistics/feature/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/pmp-web/repository/reviewers-statistics/data-access/**"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/pmp-web/report/users-statistics/feature/jest.config.js",
-            "tsConfig": "libs/pmp-web/report/users-statistics/feature/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/report/users-statistics/feature/src/test-setup.ts"
+            "jestConfig": "libs/pmp-web/repository/reviewers-statistics/data-access/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/reviewers-statistics/data-access/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/repository/reviewers-statistics/data-access/src/test-setup.ts"
           }
         }
       },
@@ -1053,31 +1059,28 @@
         }
       }
     },
-    "pmp-web-shared-report-ui-table-pr-statistic": {
+    "pmp-web-repository-domain": {
       "projectType": "library",
-      "root": "libs/pmp-web/shared/report/ui-table-pr-statistic",
-      "sourceRoot": "libs/pmp-web/shared/report/ui-table-pr-statistic/src",
+      "root": "libs/pmp-web/repository/domain",
+      "sourceRoot": "libs/pmp-web/repository/domain/src",
       "prefix": "pmp",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/pmp-web/shared/report/ui-table-pr-statistic/tsconfig.lib.json",
-              "libs/pmp-web/shared/report/ui-table-pr-statistic/tsconfig.spec.json"
+              "libs/pmp-web/repository/domain/tsconfig.lib.json",
+              "libs/pmp-web/repository/domain/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/pmp-web/shared/report/ui-table-pr-statistic/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/repository/domain/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/pmp-web/shared/report/ui-table-pr-statistic/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/report/ui-table-pr-statistic/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/report/ui-table-pr-statistic/src/test-setup.ts"
+            "jestConfig": "libs/pmp-web/repository/domain/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/domain/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/repository/domain/src/test-setup.ts"
           }
         }
       },
@@ -1087,31 +1090,28 @@
         }
       }
     },
-    "pmp-web-shared-report-ui-statistics-overview-table": {
+    "pmp-web-repository-shell": {
       "projectType": "library",
-      "root": "libs/pmp-web/shared/report/ui-statistics-overview-table",
-      "sourceRoot": "libs/pmp-web/shared/report/ui-statistics-overview-table/src",
-      "prefix": "pmp",
+      "root": "libs/pmp-web/repository/shell",
+      "sourceRoot": "libs/pmp-web/repository/shell/src",
+      "prefix": "pimp-my-pr",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/pmp-web/shared/report/ui-statistics-overview-table/tsconfig.lib.json",
-              "libs/pmp-web/shared/report/ui-statistics-overview-table/tsconfig.spec.json"
+              "libs/pmp-web/repository/shell/tsconfig.lib.json",
+              "libs/pmp-web/repository/shell/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/pmp-web/shared/report/ui-statistics-overview-table/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/repository/shell/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/pmp-web/shared/report/ui-statistics-overview-table/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/report/ui-statistics-overview-table/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/report/ui-statistics-overview-table/src/test-setup.ts"
+            "jestConfig": "libs/pmp-web/repository/shell/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/shell/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/repository/shell/src/test-setup.ts"
           }
         }
       },
