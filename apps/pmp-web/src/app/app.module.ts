@@ -11,7 +11,7 @@ import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 import { PmpWebAuthShellModule } from '@pimp-my-pr/pmp-web/auth/shell';
-import { PmpWebReportShellModule } from '@pimp-my-pr/pmp-web/report/shell';
+import { PmpWebRepositoryShellModule } from '@pimp-my-pr/pmp-web/repository/shell';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,7 +36,7 @@ import { PmpWebReportShellModule } from '@pimp-my-pr/pmp-web/report/shell';
       logOnly: environment.production // Restrict extension to log-only mode
     }),
     AppRoutingModule,
-    PmpWebReportShellModule,
+    PmpWebRepositoryShellModule,
     PmpWebAuthShellModule
   ],
   bootstrap: [AppComponent]

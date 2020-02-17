@@ -77,41 +77,41 @@
     "pmp-web-auth-login-feature": {
       "tags": ["scope:pmp-web-auth", "type:feature"]
     },
-    "pmp-web-report-shell": {
-      "tags": ["scope:pmp-web-report", "type:feature"]
+    "pmp-web-repository-ui-statistics-overview-table": {
+      "tags": ["scope:pmp-web-shared", "type:ui"]
     },
-    "pmp-web-report-domain": {
-      "tags": ["scope:pmp-web-report", "type:domain"]
-    },
-    "pmp-web-report-repository-statistics-feature": {
-      "tags": ["scope:pmp-web-report", "type:feature"]
-    },
-    "pmp-web-report-repository-statistics-data-access": {
-      "tags": ["scope:pmp-web-report", "type:data-access"]
-    },
-    "pmp-web-report-repositories-statistics-feature": {
-      "tags": ["scope:pmp-web-report", "type:feature"]
-    },
-    "pmp-web-report-repositories-statistics-data-access": {
-      "tags": ["scope:pmp-web-report", "type:data-access"]
-    },
-    "pmp-web-report-single-user-statistics-feature": {
-      "tags": ["scope:pmp-web-report", "type:feature"]
-    },
-    "pmp-web-report-single-user-statistics-data-access": {
-      "tags": ["scope:pmp-web-report", "type:data-access"]
-    },
-    "pmp-web-report-users-statistics-data-access": {
-      "tags": ["scope:pmp-web-report", "type:data-access"]
-    },
-    "pmp-web-report-users-statistics-feature": {
-      "tags": ["scope:pmp-web-report", "type:feature"]
-    },
-    "pmp-web-shared-report-ui-table-pr-statistic": {
+    "pmp-web-repository-ui-table-pr-statistic": {
       "tags": ["scope:shared", "type:ui"]
     },
-    "pmp-web-shared-report-ui-statistics-overview-table": {
-      "tags": ["scope:pmp-web-shared", "type:ui"]
+    "pmp-web-repository-repository-statistics-feature": {
+      "tags": ["scope:pmp-web-report", "type:feature"]
+    },
+    "pmp-web-repository-repository-statistics-data-access": {
+      "tags": ["scope:pmp-web-report", "type:data-access"]
+    },
+    "pmp-web-repository-repositories-statistics-feature": {
+      "tags": ["scope:pmp-web-report", "type:feature"]
+    },
+    "pmp-web-repository-repositories-statistics-data-access": {
+      "tags": ["scope:pmp-web-report", "type:data-access"]
+    },
+    "pmp-web-repository-reviewer-statistics-feature": {
+      "tags": ["scope:pmp-web-report", "type:feature"]
+    },
+    "pmp-web-repository-reviewer-statistics-data-access": {
+      "tags": ["scope:pmp-web-report", "type:data-access"]
+    },
+    "pmp-web-repository-reviewers-statistics-feature": {
+      "tags": ["scope:pmp-web-report", "type:feature"]
+    },
+    "pmp-web-repository-reviewers-statistics-data-access": {
+      "tags": ["scope:pmp-web-report", "type:data-access"]
+    },
+    "pmp-web-repository-domain": {
+      "tags": ["scope:pmp-web-report", "type:domain"]
+    },
+    "pmp-web-repository-shell": {
+      "tags": ["scope:pmp-web-report", "type:feature"]
     }
   }
 }
