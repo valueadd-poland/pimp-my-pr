@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PmpWebReportSingleUserStatisticsRoutingModule } from './pmp-web-report-single-user-statistics-routing.module';
+import { PmpWebRepositoryReviewerStatisticsRoutingModule } from './pmp-web-repository-reviewer-statistics-routing.module';
 import { SingleUserStatisticsComponent } from './containers/single-user-statistics/single-user-statistics.component';
 import { PmpWebSharedUiPictureLabelModule } from '@pimp-my-pr/pmp-web/shared/ui-picture-label';
 import { MatIconModule, MatTableModule } from '@angular/material';
@@ -13,7 +13,7 @@ import { ContentLoaderModule } from '@ngneat/content-loader';
 @NgModule({
   imports: [
     CommonModule,
-    PmpWebReportSingleUserStatisticsRoutingModule,
+    PmpWebRepositoryReviewerStatisticsRoutingModule,
     PmpWebSharedUiPictureLabelModule,
     PmpWebRepositoryReviewerStatisticsDataAccessModule,
     PmpWebRepositoryUiTablePrStatisticModule,
