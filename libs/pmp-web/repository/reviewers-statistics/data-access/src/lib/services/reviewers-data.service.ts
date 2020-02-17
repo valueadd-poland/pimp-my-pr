@@ -4,21 +4,21 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { ListUsersResponse, UserStatistics } from '@pimp-my-pr/shared/domain';
 import { urlFactory } from '@valueadd/typed-urls';
-import { GetUserStatisticsCollectionPayload } from '@pimp-my-pr/pmp-web/repository/domain';
+import { GetReviewersStatisticsCollectionPayload } from '@pimp-my-pr/pmp-web/repository/domain';
 
 @Injectable()
-export class UserDataService {
+export class ReviewersDataService {
   readonly endpoints = {
-    getUserStatisticsCollection: urlFactory('/api/reviewers')
+    getReviewersStatisticsCollection: urlFactory('/api/reviewers')
   };
 
   constructor(private http: HttpClient) {}
 
-  getUserStatisticsCollection(
-    payload: GetUserStatisticsCollectionPayload
+  getReviewersStatisticsCollection(
+    payload: GetReviewersStatisticsCollectionPayload
   ): Observable<UserStatistics[]> {
     return this.http
-      .get<ListUsersResponse>(this.endpoints.getUserStatisticsCollection.url())
+      .get<ListUsersResponse>(this.endpoints.getReviewersStatisticsCollection.url())
       .pipe(map((res: ListUsersResponse) => res.data));
   }
 }

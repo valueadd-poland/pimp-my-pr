@@ -1,3 +1,3 @@
 import { UserModel } from '../interfaces/user.model';
 
-export type SingleUserStatisticsResponse = UserModel;
+export type ReviewerStatisticsResponse = UserModel;

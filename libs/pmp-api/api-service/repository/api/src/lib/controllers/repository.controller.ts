@@ -3,7 +3,7 @@ import { RepositoryFacade } from '@pimp-my-pr/pmp-api/api-service/repository/cor
 import { ListRepositoriesResponse, UserStatistics } from '@pimp-my-pr/shared/domain';
 import { Request } from 'express';
 import { ListReviewerStatisticsRequest } from '../requests/list-reviewer-statistics.request';
-import { SingleUserStatisticsReadModel } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
+import { ReviewerStatisticsReadModel } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
 import { ListSingleRepositoryRequest } from '../requests/list-single-repository.request';
 
 @Controller()
@@ -33,7 +33,7 @@ export class RepositoryController {
   }
 
   @Get('reviewers/:username')
-  listReviewerStatistics(@Req() request: Request): Promise<SingleUserStatisticsReadModel> {
+  listReviewerStatistics(@Req() request: Request): Promise<ReviewerStatisticsReadModel> {
     return this.repositoryFacade.listReviewerStatistics(
       new ListReviewerStatisticsRequest(request).getParams()
     );

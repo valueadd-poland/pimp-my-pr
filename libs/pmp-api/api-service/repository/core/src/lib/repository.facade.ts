@@ -4,7 +4,7 @@ import { ListRepositoriesQuery } from './queries/list-repositories.query';
 import {
   RepositoryStatisticsReadModel,
   RepositoryUserStatisticsReadModel,
-  SingleUserStatisticsReadModel
+  ReviewerStatisticsReadModel
 } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
 import { ListRepositoryContributorsQuery } from './queries/list-repository-contributors.query';
 import { ListRepositoryReviewersQuery } from './queries/list-repository-reviewers.query';
@@ -39,7 +39,7 @@ export class RepositoryFacade {
 
   listReviewerStatistics(
     params: ListReviewerStatisticsParams
-  ): Promise<SingleUserStatisticsReadModel> {
+  ): Promise<ReviewerStatisticsReadModel> {
     return this.queryBus.execute(new ListReviewerStatisticsQuery(params));
   }
 }
