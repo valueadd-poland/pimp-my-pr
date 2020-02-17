@@ -10,6 +10,6 @@ export * from './lib/models/pr-details.model';
 export * from './lib/read-models/repository-prs-statistics.read-model';
 export * from './lib/read-models/pr-with-changes.read-model';
 export * from './lib/read-models/pr-statistics.read-model';
-export * from './lib/read-models/single-user-statistics.read-model';
+export * from './lib/read-models/reviewer-statistics.read-model';
 export * from './lib/read-models/repository-user-statistics.read-model';
 export * from './lib/read-models/repository-statistics.read-model';

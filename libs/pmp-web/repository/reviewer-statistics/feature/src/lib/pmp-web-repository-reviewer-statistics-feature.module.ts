@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PmpWebRepositoryReviewerStatisticsRoutingModule } from './pmp-web-repository-reviewer-statistics-routing.module';
-import { SingleUserStatisticsComponent } from './containers/single-user-statistics/single-user-statistics.component';
+import { ReviewerStatisticsComponent } from './containers/reviewer-statistics/reviewer-statistics.component';
 import { PmpWebSharedUiPictureLabelModule } from '@pimp-my-pr/pmp-web/shared/ui-picture-label';
 import { MatIconModule, MatTableModule } from '@angular/material';
 import { PmpWebRepositoryReviewerStatisticsDataAccessModule } from '@pimp-my-pr/pmp-web/repository/reviewer-statistics/data-access';
@@ -23,6 +23,6 @@ import { ContentLoaderModule } from '@ngneat/content-loader';
     PmpWebSharedUiGoBackHeaderModule,
     ContentLoaderModule
   ],
-  declarations: [SingleUserStatisticsComponent]
+  declarations: [ReviewerStatisticsComponent]
 })
 export class PmpWebRepositoryReviewerStatisticsFeatureModule {}

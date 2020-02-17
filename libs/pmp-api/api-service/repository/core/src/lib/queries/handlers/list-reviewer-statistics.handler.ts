@@ -4,7 +4,7 @@ import {
   PrDetailsModel,
   PrModel,
   RepositoryPrsStatisticsReadModelFactory,
-  SingleUserStatisticsReadModel,
+  ReviewerStatisticsReadModel,
   UserModel
 } from '@pimp-my-pr/pmp-api/api-service/repository/domain';
 import {
@@ -18,7 +18,7 @@ import { GetUserQuery } from '../get-user.query';
 
 @QueryHandler(ListReviewerStatisticsQuery)
 export class ListReviewerStatisticsHandler
-  implements IQueryHandler<ListReviewerStatisticsQuery, SingleUserStatisticsReadModel> {
+  implements IQueryHandler<ListReviewerStatisticsQuery, ReviewerStatisticsReadModel> {
   constructor(
     private prRepository: PrDataService,
     private prsService: PrsService,
@@ -26,7 +26,7 @@ export class ListReviewerStatisticsHandler
     private repositoryRepository: RepositoryDataService,
     private repositoryPrsStatisticsFactory: RepositoryPrsStatisticsReadModelFactory
   ) {}
-  async execute(query: ListReviewerStatisticsQuery): Promise<SingleUserStatisticsReadModel> {
+  async execute(query: ListReviewerStatisticsQuery): Promise<ReviewerStatisticsReadModel> {
     const repositories = await this.repositoryRepository.find();
 
     const user = await this.queryBus.execute<GetUserQuery, UserModel>(
@@ -53,6 +53,6 @@ export class ListReviewerStatisticsHandler
       )
     );
 
-    return new SingleUserStatisticsReadModel(user, repositoryStatistics);
+    return new ReviewerStatisticsReadModel(user, repositoryStatistics);
   }
 }

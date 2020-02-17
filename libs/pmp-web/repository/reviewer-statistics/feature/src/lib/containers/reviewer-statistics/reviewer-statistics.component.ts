@@ -2,22 +2,22 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { PrStatistics } from '@pimp-my-pr/shared/domain';
-import { SingleUserStatisticsFacade } from '@pimp-my-pr/pmp-web/repository/reviewer-statistics/data-access';
+import { ReviewerStatisticsFacade } from '@pimp-my-pr/pmp-web/repository/reviewer-statistics/data-access';
 
 @Component({
-  selector: 'pmp-single-user-statistics',
-  templateUrl: './single-user-statistics.component.html',
-  styleUrls: ['./single-user-statistics.component.scss'],
+  selector: 'pmp-reviewer-statistics',
+  templateUrl: './reviewer-statistics.component.html',
+  styleUrls: ['./reviewer-statistics.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SingleUserStatisticsComponent implements OnInit {
+export class ReviewerStatisticsComponent implements OnInit {
   userName: string | null = null;
   userAvatarUrl: string | null = null;
-  userStatistics$ = this.facade.singleUserStatisticsResponse$;
-  userStatisticsLoading$ = this.facade.singleUserStatisticsResponseLoading$;
+  userStatistics$ = this.facade.reviewerStatistics$;
+  userStatisticsLoading$ = this.facade.reviewerStatisticsResponseLoading$;
 
   constructor(
-    private facade: SingleUserStatisticsFacade,
+    private facade: ReviewerStatisticsFacade,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -35,7 +35,7 @@ export class SingleUserStatisticsComponent implements OnInit {
   private initGetUserStatistics(): void {
     this.route.params.pipe(first()).subscribe(params => {
       this.userName = params.userName;
-      this.facade.getSingleUserStatisticsResponse({ username: this.userName });
+      this.facade.getReviewerStatisticsResponse({ username: this.userName });
     });
   }
 

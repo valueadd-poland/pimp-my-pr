@@ -99,7 +99,7 @@
         'pmp',
         'pmp-api',
         'pmp-web',
-        'pmp-web-report'
+        'pmp-web-repository'
       ]
     ]
   },
