@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UsersStatisticsComponent } from './containers/users-statistics/users-statistics.component';
+
+import { SingleUserStatisticsComponent } from './containers/single-user-statistics/single-user-statistics.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: UsersStatisticsComponent
+    component: SingleUserStatisticsComponent
   }
 ];
 
@@ -13,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PmpWebReportUsersStatisticsRoutingModule {}
+export class PmpWebRepositoryReviewerStatisticsRoutingModule {}

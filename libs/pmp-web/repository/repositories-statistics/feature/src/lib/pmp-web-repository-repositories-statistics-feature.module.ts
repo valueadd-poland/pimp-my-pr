@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RepositoriesStatisticsComponent } from './containers/repositories-statistics/repositories-statistics.component';
-import { PmpWebReportRepositoriesStatisticsRoutingModule } from './pmp-web-report-repositories-statistics-routing.module';
+import { PmpWebRepositoryRepositoriesStatisticsRoutingModule } from './pmp-web-repository-repositories-statistics-routing.module';
 import { PmpWebRepositoryUiStatisticsOverviewTableModule } from '@pimp-my-pr/pmp-web/repository/ui-statistics-overview-table';
 import { PmpWebRepositoriesStatisticsDataAccessModule } from '@pimp-my-pr/pmp-web/repository/repositories-statistics/data-access';
 
@@ -9,7 +9,7 @@ import { PmpWebRepositoriesStatisticsDataAccessModule } from '@pimp-my-pr/pmp-we
   imports: [
     CommonModule,
     PmpWebRepositoriesStatisticsDataAccessModule,
-    PmpWebReportRepositoriesStatisticsRoutingModule,
+    PmpWebRepositoryRepositoriesStatisticsRoutingModule,
     PmpWebRepositoryUiStatisticsOverviewTableModule
   ],
   declarations: [RepositoriesStatisticsComponent]
