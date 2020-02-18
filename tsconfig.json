@@ -17,23 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@pimp-my-pr/pmp-web/shell": ["libs/pmp-web/shell/src/index.ts"],
-      "@pimp-my-pr/pmp-api/api-service/repository/api": [
-        "libs/pmp-api/api-service/repository/api/src/index.ts"
-      ],
-      "@pimp-my-pr/pmp-api/api-service/shell": ["libs/pmp-api/api-service/shell/src/index.ts"],
-      "@pimp-my-pr/pmp-api/api-service/repository/core": [
-        "libs/pmp-api/api-service/repository/core/src/index.ts"
-      ],
-      "@pimp-my-pr/pmp-api/api-service/repository/data-access": [
-        "libs/pmp-api/api-service/repository/data-access/src/index.ts"
-      ],
-      "@pimp-my-pr/pmp-api/api-service/repository/domain": [
-        "libs/pmp-api/api-service/repository/domain/src/index.ts"
-      ],
-      "@pimp-my-pr/pmp-api/shared/config": ["libs/pmp-api/shared/config/src/index.ts"],
-      "@pimp-my-pr/pmp-api/shared/domain": ["libs/pmp-api/shared/domain/src/index.ts"],
       "@pimp-my-pr/shared/domain": ["libs/shared/domain/src/index.ts"],
-      "@pimp-my-pr/pmp-api/shared/util": ["libs/pmp-api/shared/util/src/index.ts"],
       "@pimp-my-pr/pmp-web/repository/shell": ["libs/pmp-web/repository/shell/src/index.ts"],
       "@pimp-my-pr/pmp-web/shared/ui/table": ["libs/pmp-web/shared/ui/table/src/index.ts"],
       "@pimp-my-pr/pmp-web/shared/domain": ["libs/pmp-web/shared/domain/src/index.ts"],
@@ -88,7 +72,23 @@
       "@pimp-my-pr/pmp-web/repository/reviewers-statistics/data-access": [
         "libs/pmp-web/repository/reviewers-statistics/data-access/src/index.ts"
       ],
-      "@pimp-my-pr/pmp-web/repository/domain": ["libs/pmp-web/repository/domain/src/index.ts"]
+      "@pimp-my-pr/pmp-web/repository/domain": ["libs/pmp-web/repository/domain/src/index.ts"],
+      "@pimp-my-pr/server/repository/api-rest": ["libs/server/repository/api-rest/src/index.ts"],
+      "@pimp-my-pr/server/repository/core/domain": [
+        "libs/server/repository/core/domain/src/index.ts"
+      ],
+      "@pimp-my-pr/server/repository/core/application-services": [
+        "libs/server/repository/core/application-services/src/index.ts"
+      ],
+      "@pimp-my-pr/server/repository/shell": ["libs/server/repository/shell/src/index.ts"],
+      "@pimp-my-pr/server/repository/infrastructure": [
+        "libs/server/repository/infrastructure/src/index.ts"
+      ],
+      "@pimp-my-pr/server/shared/domain": ["libs/server/shared/domain/src/index.ts"],
+      "@pimp-my-pr/server/shared/util-exception": [
+        "libs/server/shared/util-exception/src/index.ts"
+      ],
+      "@pimp-my-pr/server/shared/core": ["libs/server/shared/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
