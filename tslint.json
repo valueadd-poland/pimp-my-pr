@@ -49,41 +49,40 @@
         "allow": [],
         "depConstraints": [
           {
+            "sourceTag": "platform:server",
+            "onlyDependOnLibsWithTags": ["platform:any", "platform:server"]
+          },
+          {
+            "sourceTag": "platform:web",
+            "onlyDependOnLibsWithTags": ["platform:any", "platform:web"]
+          },
+          {
+            "sourceTag": "scope:auth",
+            "onlyDependOnLibsWithTags": ["scope:shared", "scope:shared"]
+          },
+          {
+            "sourceTag": "scope:repository",
+            "onlyDependOnLibsWithTags": ["scope:repository", "scope:shared"]
+          },
+          {
+            "sourceTag": "scope:shared",
+            "onlyDependOnLibsWithTags": ["scope:shared"]
+          },
+          {
+            "sourceTag": "type:api",
+            "onlyDependOnLibsWithTags": ["type:application-services", "type:domain"]
+          },
+          {
             "sourceTag": "type:application",
-            "onlyDependOnLibsWithTags": ["*"]
+            "onlyDependOnLibsWithTags": ["type:api", "type:core", "type:shell"]
           },
           {
-            "sourceTag": "type:feature",
-            "onlyDependOnLibsWithTags": ["*"]
-          },
-          {
-            "sourceTag": "type:shell",
-            "onlyDependOnLibsWithTags": ["*"]
-          },
-          {
-            "sourceTag": "type:config",
-            "onlyDependOnLibsWithTags": ["type:config"]
-          },
-          {
-            "sourceTag": "type:util",
-            "onlyDependOnLibsWithTags": ["type:util", "type:config", "type:domain"]
-          },
-          {
-            "sourceTag": "type:ui",
-            "onlyDependOnLibsWithTags": ["type:ui", "type:config", "type:util", "type:domain"]
+            "sourceTag": "type:application-services",
+            "onlyDependOnLibsWithTags": ["type:domain"]
           },
           {
             "sourceTag": "type:core",
-            "onlyDependOnLibsWithTags": [
-              "type:config",
-              "type:util",
-              "type:data-access",
-              "type:domain"
-            ]
-          },
-          {
-            "sourceTag": "type:domain",
-            "onlyDependOnLibsWithTags": ["type:domain"]
+            "onlyDependOnLibsWithTags": ["type:util", "type:domain"]
           },
           {
             "sourceTag": "type:data-access",
@@ -96,37 +95,28 @@
             ]
           },
           {
-            "sourceTag": "type:api",
-            "onlyDependOnLibsWithTags": ["type:core", "type:domain"]
+            "sourceTag": "type:domain",
+            "onlyDependOnLibsWithTags": ["type:domain"]
           },
           {
-            "sourceTag": "scope:pmp-web",
-            "onlyDependOnLibsWithTags": [
-              "scope:shared",
-              "scope:pmp-web",
-              "scope:pmp-web-repository",
-              "scope:pmp-web-auth"
-            ]
+            "sourceTag": "type:feature",
+            "onlyDependOnLibsWithTags": ["*"]
           },
           {
-            "sourceTag": "scope:pmp-api",
-            "onlyDependOnLibsWithTags": ["scope:shared", "scope:pmp-api"]
+            "sourceTag": "type:infrastructure",
+            "onlyDependOnLibsWithTags": ["*"]
           },
           {
-            "sourceTag": "scope:pmp-web-repository",
-            "onlyDependOnLibsWithTags": [
-              "scope:pmp-web-repository",
-              "scope:pmp-web-shared",
-              "scope:shared"
-            ]
+            "sourceTag": "type:shell",
+            "onlyDependOnLibsWithTags": ["*"]
           },
           {
-            "sourceTag": "scope:pmp-web-shared",
-            "onlyDependOnLibsWithTags": ["scope:pmp-web-shared", "scope:shared"]
+            "sourceTag": "type:ui",
+            "onlyDependOnLibsWithTags": ["type:ui", "type:config", "type:util", "type:domain"]
           },
           {
-            "sourceTag": "scope:pmp-web-auth",
-            "onlyDependOnLibsWithTags": ["scope:pmp-web-shared", "scope:shared"]
+            "sourceTag": "type:util",
+            "onlyDependOnLibsWithTags": ["type:util", "type:config", "type:domain"]
           }
         ]
       }

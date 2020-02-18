@@ -197,181 +197,6 @@
         }
       }
     },
-    "pmp-api-api-service-repository-api": {
-      "root": "libs/pmp-api/api-service/repository/api",
-      "sourceRoot": "libs/pmp-api/api-service/repository/api/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/pmp-api/api-service/repository/api/tsconfig.lib.json",
-              "libs/pmp-api/api-service/repository/api/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-api/api-service/repository/api/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/pmp-api/api-service/repository/api/jest.config.js",
-            "tsConfig": "libs/pmp-api/api-service/repository/api/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "pmp-api-api-service-shell": {
-      "root": "libs/pmp-api/api-service/shell",
-      "sourceRoot": "libs/pmp-api/api-service/shell/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/pmp-api/api-service/shell/tsconfig.lib.json",
-              "libs/pmp-api/api-service/shell/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-api/api-service/shell/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/pmp-api/api-service/shell/jest.config.js",
-            "tsConfig": "libs/pmp-api/api-service/shell/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "pmp-api-api-service-repository-core": {
-      "root": "libs/pmp-api/api-service/repository/core",
-      "sourceRoot": "libs/pmp-api/api-service/repository/core/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/pmp-api/api-service/repository/core/tsconfig.lib.json",
-              "libs/pmp-api/api-service/repository/core/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-api/api-service/repository/core/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/pmp-api/api-service/repository/core/jest.config.js",
-            "tsConfig": "libs/pmp-api/api-service/repository/core/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "pmp-api-api-service-repository-data-access": {
-      "root": "libs/pmp-api/api-service/repository/data-access",
-      "sourceRoot": "libs/pmp-api/api-service/repository/data-access/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/pmp-api/api-service/repository/data-access/tsconfig.lib.json",
-              "libs/pmp-api/api-service/repository/data-access/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-api/api-service/repository/data-access/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/pmp-api/api-service/repository/data-access/jest.config.js",
-            "tsConfig": "libs/pmp-api/api-service/repository/data-access/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "pmp-api-api-service-repository-domain": {
-      "root": "libs/pmp-api/api-service/repository/domain",
-      "sourceRoot": "libs/pmp-api/api-service/repository/domain/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/pmp-api/api-service/repository/domain/tsconfig.lib.json",
-              "libs/pmp-api/api-service/repository/domain/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-api/api-service/repository/domain/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/pmp-api/api-service/repository/domain/jest.config.js",
-            "tsConfig": "libs/pmp-api/api-service/repository/domain/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "pmp-api-shared-config": {
-      "root": "libs/pmp-api/shared/config",
-      "sourceRoot": "libs/pmp-api/shared/config/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/pmp-api/shared/config/tsconfig.lib.json",
-              "libs/pmp-api/shared/config/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-api/shared/config/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/pmp-api/shared/config/jest.config.js",
-            "tsConfig": "libs/pmp-api/shared/config/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "pmp-api-shared-domain": {
-      "root": "libs/pmp-api/shared/domain",
-      "sourceRoot": "libs/pmp-api/shared/domain/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/pmp-api/shared/domain/tsconfig.lib.json",
-              "libs/pmp-api/shared/domain/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-api/shared/domain/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/pmp-api/shared/domain/jest.config.js",
-            "tsConfig": "libs/pmp-api/shared/domain/tsconfig.spec.json"
-          }
-        }
-      }
-    },
     "shared-domain": {
       "root": "libs/shared/domain",
       "sourceRoot": "libs/shared/domain/src",
@@ -393,31 +218,6 @@
           "options": {
             "jestConfig": "libs/shared/domain/jest.config.js",
             "tsConfig": "libs/shared/domain/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "pmp-api-shared-util": {
-      "root": "libs/pmp-api/shared/util",
-      "sourceRoot": "libs/pmp-api/shared/util/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/pmp-api/shared/util/tsconfig.lib.json",
-              "libs/pmp-api/shared/util/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-api/shared/util/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/pmp-api/shared/util/jest.config.js",
-            "tsConfig": "libs/pmp-api/shared/util/tsconfig.spec.json"
           }
         }
       }
@@ -1118,6 +918,209 @@
       "schematics": {
         "@nrwl/angular:component": {
           "styleext": "scss"
+        }
+      }
+    },
+    "server-repository-api-rest": {
+      "root": "libs/server/repository/api-rest",
+      "sourceRoot": "libs/server/repository/api-rest/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/repository/api-rest/tsconfig.lib.json",
+              "libs/server/repository/api-rest/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/repository/api-rest/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/repository/api-rest/jest.config.js",
+            "tsConfig": "libs/server/repository/api-rest/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-repository-core-domain": {
+      "root": "libs/server/repository/core/domain",
+      "sourceRoot": "libs/server/repository/core/domain/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/repository/core/domain/tsconfig.lib.json",
+              "libs/server/repository/core/domain/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/repository/core/domain/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/repository/core/domain/jest.config.js",
+            "tsConfig": "libs/server/repository/core/domain/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-repository-core-application-services": {
+      "root": "libs/server/repository/core/application-services",
+      "sourceRoot": "libs/server/repository/core/application-services/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/repository/core/application-services/tsconfig.lib.json",
+              "libs/server/repository/core/application-services/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/server/repository/core/application-services/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/repository/core/application-services/jest.config.js",
+            "tsConfig": "libs/server/repository/core/application-services/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-repository-shell": {
+      "root": "libs/server/repository/shell",
+      "sourceRoot": "libs/server/repository/shell/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/repository/shell/tsconfig.lib.json",
+              "libs/server/repository/shell/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/repository/shell/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/repository/shell/jest.config.js",
+            "tsConfig": "libs/server/repository/shell/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-repository-infrastructure": {
+      "root": "libs/server/repository/infrastructure",
+      "sourceRoot": "libs/server/repository/infrastructure/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/repository/infrastructure/tsconfig.lib.json",
+              "libs/server/repository/infrastructure/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/repository/infrastructure/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/repository/infrastructure/jest.config.js",
+            "tsConfig": "libs/server/repository/infrastructure/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-shared-domain": {
+      "root": "libs/server/shared/domain",
+      "sourceRoot": "libs/server/shared/domain/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/shared/domain/tsconfig.lib.json",
+              "libs/server/shared/domain/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/shared/domain/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/shared/domain/jest.config.js",
+            "tsConfig": "libs/server/shared/domain/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-shared-util-exception": {
+      "root": "libs/server/shared/util-exception",
+      "sourceRoot": "libs/server/shared/util-exception/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/shared/util-exception/tsconfig.lib.json",
+              "libs/server/shared/util-exception/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/shared/util-exception/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/shared/util-exception/jest.config.js",
+            "tsConfig": "libs/server/shared/util-exception/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-shared-core": {
+      "root": "libs/server/shared/core",
+      "sourceRoot": "libs/server/shared/core/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/shared/core/tsconfig.lib.json",
+              "libs/server/shared/core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/shared/core/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/shared/core/jest.config.js",
+            "tsConfig": "libs/server/shared/core/tsconfig.spec.json"
+          }
         }
       }
     }

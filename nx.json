@@ -9,109 +9,109 @@
   },
   "projects": {
     "pmp-web-e2e": {
-      "tags": ["type:application", "scope:pmp-web"]
+      "tags": ["platform:web", "type:application"]
     },
     "pmp-web": {
-      "tags": ["type:application", "scope:pmp-web"]
+      "tags": ["platform:web", "type:application"]
     },
     "pmp-api": {
-      "tags": ["type:application", "scope:pmp-api"]
+      "tags": ["platform:server", "type:application"]
     },
     "pmp-api-e2e": {
-      "tags": ["type:application", "scope:pmp-api"]
-    },
-    "pmp-api-api-service-repository-api": {
-      "tags": ["scope:pmp-api", "type:api"]
-    },
-    "pmp-api-api-service-shell": {
-      "tags": ["scope:pmp-api", "type:shell"]
-    },
-    "pmp-api-api-service-repository-core": {
-      "tags": ["scope:pmp-api", "type:core"]
-    },
-    "pmp-api-api-service-repository-data-access": {
-      "tags": ["scope:pmp-api", "type:data-access"]
-    },
-    "pmp-api-api-service-repository-domain": {
-      "tags": ["scope:pmp-api", "type:domain"]
-    },
-    "pmp-api-shared-config": {
-      "tags": ["scope:pmp-api", "type:config"]
-    },
-    "pmp-api-shared-domain": {
-      "tags": ["scope:pmp-api", "type:domain"]
+      "tags": ["platform:server", "type:application"]
     },
     "shared-domain": {
-      "tags": ["scope:shared", "type:domain"]
-    },
-    "pmp-api-shared-util": {
-      "tags": ["scope:pmp-api", "type:util"]
+      "tags": ["platform:any", "scope:shared", "type:domain"]
     },
     "pmp-web-shared-domain": {
-      "tags": ["scope:pmp-web-shared", "type:domain"]
+      "tags": ["platform:web", "scope:shared", "type:domain"]
     },
     "pmp-web-shared-util": {
-      "tags": ["scope:pmp-web-shared", "type:util"]
+      "tags": ["platform:web", "scope:shared", "type:util"]
     },
     "pmp-web-shared-ui-navbar": {
-      "tags": ["scope:pmp-web-shared", "type:ui"]
+      "tags": ["platform:web", "scope:shared", "type:ui"]
     },
     "pmp-web-shared-ui-sidebar": {
-      "tags": ["scope:pmp-web-shared", "type:ui"]
+      "tags": ["platform:web", "scope:shared", "type:ui"]
     },
     "pmp-web-shared-ui-picture-label": {
-      "tags": ["scope:pmp-web-shared", "type:ui"]
+      "tags": ["platform:web", "scope:shared", "type:ui"]
     },
     "pmp-web-shared-ui-header-container": {
-      "tags": ["scope:shared", "type:ui"]
+      "tags": ["platform:web", "scope:shared", "type:ui"]
     },
     "pmp-web-shared-ui-go-back-header": {
-      "tags": ["scope:pmp-web-shared", "type:ui"]
+      "tags": ["platform:web", "scope:shared", "type:ui"]
     },
     "pmp-web-shared-ui-persons-bar": {
-      "tags": ["scope:shared", "type:ui"]
+      "tags": ["platform:web", "scope:shared", "type:ui"]
     },
     "pmp-web-auth-shell": {
-      "tags": ["scope:pmp-web-auth", "type:shell"]
+      "tags": ["platform:web", "scope:auth", "type:shell"]
     },
     "pmp-web-auth-login-feature": {
-      "tags": ["scope:pmp-web-auth", "type:feature"]
+      "tags": ["platform:web", "scope:auth", "type:feature"]
     },
     "pmp-web-repository-ui-statistics-overview-table": {
-      "tags": ["scope:pmp-web-shared", "type:ui"]
+      "tags": ["platform:web", "scope:shared", "type:ui"]
     },
     "pmp-web-repository-ui-table-pr-statistic": {
-      "tags": ["scope:shared", "type:ui"]
+      "tags": ["platform:web", "scope:shared", "type:ui"]
     },
     "pmp-web-repository-repository-statistics-feature": {
-      "tags": ["scope:pmp-web-repository", "type:feature"]
+      "tags": ["platform:web", "scope:repository", "type:feature"]
     },
     "pmp-web-repository-repository-statistics-data-access": {
-      "tags": ["scope:pmp-web-repository", "type:data-access"]
+      "tags": ["platform:web", "scope:repository", "type:data-access"]
     },
     "pmp-web-repository-repositories-statistics-feature": {
-      "tags": ["scope:pmp-web-repository", "type:feature"]
+      "tags": ["platform:web", "scope:repository", "type:feature"]
     },
     "pmp-web-repository-repositories-statistics-data-access": {
-      "tags": ["scope:pmp-web-repository", "type:data-access"]
+      "tags": ["platform:web", "scope:repository", "type:data-access"]
     },
     "pmp-web-repository-reviewer-statistics-feature": {
-      "tags": ["scope:pmp-web-repository", "type:feature"]
+      "tags": ["platform:web", "scope:repository", "type:feature"]
     },
     "pmp-web-repository-reviewer-statistics-data-access": {
-      "tags": ["scope:pmp-web-repository", "type:data-access"]
+      "tags": ["platform:web", "scope:repository", "type:data-access"]
     },
     "pmp-web-repository-reviewers-statistics-feature": {
-      "tags": ["scope:pmp-web-repository", "type:feature"]
+      "tags": ["platform:web", "scope:repository", "type:feature"]
     },
     "pmp-web-repository-reviewers-statistics-data-access": {
-      "tags": ["scope:pmp-web-repository", "type:data-access"]
+      "tags": ["platform:web", "scope:repository", "type:data-access"]
     },
     "pmp-web-repository-domain": {
-      "tags": ["scope:pmp-web-repository", "type:domain"]
+      "tags": ["platform:web", "scope:repository", "type:domain"]
     },
     "pmp-web-repository-shell": {
-      "tags": ["scope:pmp-web-repository", "type:feature"]
+      "tags": ["platform:web", "scope:repository", "type:shell"]
+    },
+    "server-repository-api-rest": {
+      "tags": ["platform:server", "scope:repository", "type:api"]
+    },
+    "server-repository-core-domain": {
+      "tags": ["platform:server", "scope:repository", "type:domain"]
+    },
+    "server-repository-core-application-services": {
+      "tags": ["platform:server", "scope:repository", "type:application-services"]
+    },
+    "server-repository-shell": {
+      "tags": ["scope:repository", "type:shell"]
+    },
+    "server-repository-infrastructure": {
+      "tags": ["platform:server", "scope:repository", "type:infrastructure"]
+    },
+    "server-shared-domain": {
+      "tags": ["platform:server", "scope:shared", "type:domain"]
+    },
+    "server-shared-util-exception": {
+      "tags": ["platform:server", "scope:shared", "type:util"]
+    },
+    "server-shared-core": {
+      "tags": ["platform:server", "scope:shared", "type:core"]
     }
   }
 }
