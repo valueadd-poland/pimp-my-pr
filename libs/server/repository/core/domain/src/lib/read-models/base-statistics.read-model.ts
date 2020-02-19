@@ -1,10 +1,10 @@
 import {
-  PrWithChangesReadModel,
-  RepositoryModel,
+  PrEntity,
+  RepositoryEntity,
   ReviewerEntity
 } from '@pimp-my-pr/server/repository/core/domain';
 
-export abstract class BaseRepositoryStatisticsReadModel {
+export abstract class BaseStatisticsReadModel {
   id: number;
   linesOfCodeToCheck: number;
   longestPrLinesOfCode?: number;
@@ -12,7 +12,7 @@ export abstract class BaseRepositoryStatisticsReadModel {
   pendingPrs: number;
   sumOfHoursPrsWaiting?: number;
 
-  protected constructor(model: RepositoryModel | ReviewerEntity, prs: PrWithChangesReadModel[]) {
+  protected constructor(model: RepositoryEntity | ReviewerEntity, prs: PrEntity[]) {
     this.id = model.id;
     this.name = model.name;
     this.pendingPrs = prs.length;
@@ -21,7 +21,7 @@ export abstract class BaseRepositoryStatisticsReadModel {
     this.longestPrLinesOfCode = this.getLongestPrLinesOfCode(prs);
   }
 
-  private getLongestPrLinesOfCode(prs: PrWithChangesReadModel[]): number {
+  private getLongestPrLinesOfCode(prs: PrEntity[]): number {
     return prs.length
       ? prs.reduce((prev, current) => {
           return prev.linesOfCodeToCheck > current.linesOfCodeToCheck ? prev : current;
@@ -29,11 +29,11 @@ export abstract class BaseRepositoryStatisticsReadModel {
       : 0;
   }
 
-  private getLinesOfCodeToCheck(prs: PrWithChangesReadModel[]): number {
+  private getLinesOfCodeToCheck(prs: PrEntity[]): number {
     return prs.length ? prs.reduce((a, b) => a + b.linesOfCodeToCheck, 0) : 0;
   }
 
-  private getSumOfHoursPrsWaiting(prs: PrWithChangesReadModel[]): number {
+  private getSumOfHoursPrsWaiting(prs: PrEntity[]): number {
     let result = 0;
     const now = new Date();
     prs.forEach(pr => {

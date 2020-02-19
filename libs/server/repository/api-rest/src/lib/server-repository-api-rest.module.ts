@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { RepositoryController } from './controllers/repository.controller';
-import { ServerRepositoryCoreApplicationServicesModule } from '@pimp-my-pr/server/repository/core/application-services';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
+import { ServerRepositoryCoreApplicationServicesModule } from '@pimp-my-pr/server/repository/core/application-services';
+import { RepositoryController } from './controllers/repository.controller';
 import { HttpExceptionFilter } from './exception-filters/http.exception-filter';
-import { ResponseTransformInterceptor } from './interceptors/response-transform.interceptor';
 import { ErrorsInterceptor } from './interceptors/errors.interceptor';
+import { ResponseTransformInterceptor } from './interceptors/response-transform.interceptor';
 
 @Module({
   imports: [ServerRepositoryCoreApplicationServicesModule],

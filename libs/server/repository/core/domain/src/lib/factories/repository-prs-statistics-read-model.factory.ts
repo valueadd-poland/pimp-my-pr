@@ -1,50 +1,38 @@
 import { Injectable } from '@nestjs/common';
-import { PrDetailsModel } from '../entities/pr-details.model';
-import { RepositoryModel } from '../entities/repository.model';
-import { RepositoryPrsStatisticsReadModel } from '../read-models/repository-prs-statistics.read-model';
-import { PrStatisticsReadModel } from '../read-models/pr-statistics.read-model';
+import { PrEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { RepositoryEntity } from '../entities/repository.entity';
 import { PrStatisticsWithReviewersReadModel } from '../read-models/pr-statistics-with-reviewers.read-model';
+import { PrStatisticsReadModel } from '../read-models/pr-statistics.read-model';
+import { RepositoryPrsStatisticsReadModel } from '../read-models/repository-prs-statistics.read-model';
 
 @Injectable()
 export class RepositoryPrsStatisticsReadModelFactory {
-  create(
-    repository: RepositoryModel,
-    prsDetails: PrDetailsModel[]
-  ): RepositoryPrsStatisticsReadModel {
+  create(repository: RepositoryEntity, prs: PrEntity[]): RepositoryPrsStatisticsReadModel {
     const repositoryPrsStatisticsReadModel = new RepositoryPrsStatisticsReadModel();
     repositoryPrsStatisticsReadModel.name = repository.name;
     repositoryPrsStatisticsReadModel.pictureUrl = repository.pictureUrl;
     repositoryPrsStatisticsReadModel.owner = repository.owner;
     repositoryPrsStatisticsReadModel.fullName = repository.fullName;
-    repositoryPrsStatisticsReadModel.prsStatistics = prsDetails.map(
-      prDetails =>
-        new PrStatisticsReadModel(prDetails, {
-          additions: prDetails.additions,
-          changes: prDetails.changedFiles,
-          deletions: prDetails.deletions
-        })
+    repositoryPrsStatisticsReadModel.prsStatistics = prs.map(
+      prDetails => new PrStatisticsReadModel(prDetails)
     );
 
     return repositoryPrsStatisticsReadModel;
   }
 
   createWithPrsReviewers(
-    repository: RepositoryModel,
-    prsDetails: PrDetailsModel[]
+    repository: RepositoryEntity,
+    prs: PrEntity[]
   ): RepositoryPrsStatisticsReadModel {
     const repositoryPrsStatisticsReadModel = new RepositoryPrsStatisticsReadModel();
     repositoryPrsStatisticsReadModel.name = repository.name;
     repositoryPrsStatisticsReadModel.pictureUrl = repository.pictureUrl;
     repositoryPrsStatisticsReadModel.owner = repository.owner;
     repositoryPrsStatisticsReadModel.fullName = repository.fullName;
-    repositoryPrsStatisticsReadModel.prsStatistics = prsDetails.map(
+    repositoryPrsStatisticsReadModel.prsStatistics = prs.map(
       prDetails =>
         new PrStatisticsWithReviewersReadModel(
-          new PrStatisticsReadModel(prDetails, {
-            additions: prDetails.additions,
-            changes: prDetails.changedFiles,
-            deletions: prDetails.deletions
-          }),
+          new PrStatisticsReadModel(prDetails),
           prDetails.reviewers
         )
     );

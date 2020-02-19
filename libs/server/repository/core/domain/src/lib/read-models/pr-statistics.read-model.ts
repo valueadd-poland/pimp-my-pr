@@ -1,21 +1,22 @@
-import { BasePrWithChangesReadModel } from './base-pr-with-changes.read-model';
-import { PrDetailsModel } from '../entities/pr-details.model';
+import { PrEntity } from '@pimp-my-pr/server/repository/core/domain';
 import { PrAuthor } from '../interfaces/pr-author.interface';
-import { PrChanges } from '../interfaces/pr-changes.interface';
 import { PrReviewer } from '../interfaces/pr-reviewer.interface';
 
-export class PrStatisticsReadModel extends BasePrWithChangesReadModel {
-  id: number;
-  title: string;
+export class PrStatisticsReadModel {
   author: PrAuthor;
-  reviewCommentsCount: number;
   commentsCount: number;
-  url: string;
-  timeWaiting: number;
+  createdAt: Date;
+  id: number;
+  linesOfCodeToCheck: number;
+  reviewCommentsCount: number;
   reviewers: PrReviewer[];
+  timeWaiting: number;
+  title: string;
+  url: string;
 
-  constructor(pr: PrDetailsModel, prChanges: PrChanges) {
-    super(pr, prChanges);
+  constructor(pr: PrEntity) {
+    this.createdAt = pr.createdAt;
+    this.linesOfCodeToCheck = pr.linesOfCodeToCheck;
     this.id = pr.id;
     this.title = pr.title;
     this.author = {
@@ -29,7 +30,7 @@ export class PrStatisticsReadModel extends BasePrWithChangesReadModel {
     this.timeWaiting = this.getTimePrWaiting(pr);
   }
 
-  private getTimePrWaiting(pr: PrDetailsModel): number {
+  private getTimePrWaiting(pr: PrEntity): number {
     let result: number;
     const now = new Date();
     result = (now.getTime() - pr.createdAt.getTime()) / (60 * 60 * 1000);

@@ -1,13 +1,12 @@
 import { HttpService, Injectable } from '@nestjs/common';
-import { githubConfig, PmpApiServiceConfigService } from '@pimp-my-pr/server/shared/core';
-import { urlFactory } from '@valueadd/typed-urls';
-import { map } from 'rxjs/operators';
-import { AxiosResponse } from 'axios';
-import { PrChanges, PrDetailsModel } from '@pimp-my-pr/server/repository/core/domain';
-import { GithubPrFilesEntity } from '../domain/entities/github-pr-files.entity';
+import { PrEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { githubConfig } from '@pimp-my-pr/server/shared/core';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
+import { urlFactory } from '@valueadd/typed-urls';
+import { AxiosResponse } from 'axios';
+import { map } from 'rxjs/operators';
 import { GithubPrDetailsEntity } from '../domain/entities/github-pr-details.entity';
-import { GithubPrDetailsMapper } from '../mappers/github-pr-details.mapper';
+import { GithubPrMapper } from '../mappers/github-pr.mapper';
 
 @Injectable()
 export class PrDataService {
@@ -15,45 +14,14 @@ export class PrDataService {
     getPrDetails: urlFactory<'repoFullName' | 'prId'>(
       githubConfig.apiUrl + '/repos/:repoFullName/pulls/:prId',
       true
-    ),
-    getPrFiles: urlFactory<'repoFullName' | 'prId'>(
-      githubConfig.apiUrl + '/repos/:repoFullName/pulls/:prId/files',
-      true
     )
   };
 
-  prDetailsMapper = new GithubPrDetailsMapper();
+  prDetailsMapper = new GithubPrMapper();
 
-  constructor(
-    private httpService: HttpService,
-    private pmpApiServiceConfigService: PmpApiServiceConfigService
-  ) {}
+  constructor(private httpService: HttpService) {}
 
-  getPrChanges(repoFullName: string, prId: number): Promise<PrChanges> {
-    return this.httpService
-      .get<GithubPrFilesEntity[]>(
-        this.endpoints.getPrFiles.url({
-          repoFullName,
-          prId
-        })
-      )
-      .pipe(
-        map((res: AxiosResponse<GithubPrFilesEntity[]>) => res.data),
-        map(files =>
-          files.reduce((prev, current) => {
-            return {
-              additions: prev.additions + current.additions,
-              changes: prev.changes + current.changes,
-              deletions: prev.deletions + current.deletions
-            };
-          })
-        ),
-        catchRequestExceptions()
-      )
-      .toPromise();
-  }
-
-  getPrDetails(repoFullName: string, prId: number): Promise<PrDetailsModel> {
+  get(repoFullName: string, prId: number): Promise<PrEntity> {
     return this.httpService
       .get<GithubPrDetailsEntity>(this.endpoints.getPrDetails.url({ repoFullName, prId }))
       .pipe(

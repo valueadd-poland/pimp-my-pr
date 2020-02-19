@@ -1,9 +1,9 @@
 import { HttpModule, HttpService, Module, OnModuleInit } from '@nestjs/common';
-import { RepositoryDataService } from './repositories/repository.data-service';
-import { PrDataService } from './repositories/pr.data-service';
 import { ServerSharedCoreModule } from '@pimp-my-pr/server/shared/core';
 import { AxiosRequestConfig } from 'axios';
 import { GithubAuthInterceptor } from './interceptors/github-auth.interceptor';
+import { PrDataService } from './repositories/pr.data-service';
+import { RepositoryDataService } from './repositories/repository.data-service';
 import { UserDataService } from './repositories/user.data-service';
 
 @Module({
