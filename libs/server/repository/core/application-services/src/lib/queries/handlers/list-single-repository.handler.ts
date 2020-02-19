@@ -1,20 +1,18 @@
 import { IQueryHandler, QueryBus, QueryHandler } from '@nestjs/cqrs';
 import {
-  PrDetailsModel,
+  PrEntity,
   RepositoryPrsStatisticsReadModel,
   RepositoryPrsStatisticsReadModelFactory
 } from '@pimp-my-pr/server/repository/core/domain';
 import { RepositoryDataService } from '@pimp-my-pr/server/repository/infrastructure';
-import { PrsService } from '../../services/prs.service';
-import { ListSingleRepositoryQuery } from '../list-single-repository.query';
-import { GetRepositoryPrsQuery } from '../get-repository-prs.query';
 import { GetPrDetailsQuery } from '../get-pr-details.query';
+import { GetRepositoryPrsQuery } from '../get-repository-prs.query';
+import { ListSingleRepositoryQuery } from '../list-single-repository.query';
 
 @QueryHandler(ListSingleRepositoryQuery)
 export class ListSingleRepositoryHandler
   implements IQueryHandler<ListSingleRepositoryQuery, RepositoryPrsStatisticsReadModel> {
   constructor(
-    private prsService: PrsService,
     private repositoryRepository: RepositoryDataService,
     private queryBus: QueryBus,
     private repositoryPrsStatisticsFactory: RepositoryPrsStatisticsReadModelFactory
@@ -24,20 +22,18 @@ export class ListSingleRepositoryHandler
     const repository = await this.repositoryRepository.getSingleRepository(query.repositoryId);
 
     return await this.queryBus
-      .execute<GetRepositoryPrsQuery, PrDetailsModel[]>(
-        new GetRepositoryPrsQuery(repository.fullName)
-      )
+      .execute<GetRepositoryPrsQuery, PrEntity[]>(new GetRepositoryPrsQuery(repository.fullName))
       .then(prs => {
         return Promise.all(
           prs.map(pr =>
-            this.queryBus.execute<GetPrDetailsQuery, PrDetailsModel>(
+            this.queryBus.execute<GetPrDetailsQuery, PrEntity>(
               new GetPrDetailsQuery(repository.fullName, pr.id)
             )
           )
         );
       })
-      .then((prsDetails: PrDetailsModel[]) =>
-        this.repositoryPrsStatisticsFactory.createWithPrsReviewers(repository, prsDetails)
+      .then((prs: PrEntity[]) =>
+        this.repositoryPrsStatisticsFactory.createWithPrsReviewers(repository, prs)
       );
   }
 }

@@ -1,7 +1,7 @@
-import { GithubOrganizationEntity } from '../domain/entities/github-organization.entity';
-import { Mapper } from '@pimp-my-pr/server/shared/domain';
 import { NotImplementedException } from '@nestjs/common';
 import { OrganizationEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { Mapper } from '@pimp-my-pr/server/shared/domain';
+import { GithubOrganizationEntity } from '../domain/entities/github-organization.entity';
 
 export class GithubOrganizationMapper
   implements Mapper<GithubOrganizationEntity, OrganizationEntity> {

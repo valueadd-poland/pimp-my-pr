@@ -1,8 +1,8 @@
 import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { Response } from 'express';
 import { Response as VAResponse } from '@pimp-my-pr/server/shared/domain';
+import { Response } from 'express';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ResponseTransformInterceptor<T> implements NestInterceptor<T, Response<T>> {

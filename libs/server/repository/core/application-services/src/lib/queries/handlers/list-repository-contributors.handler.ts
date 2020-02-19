@@ -1,11 +1,11 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { ListRepositoryContributorsQuery } from '../list-repository-contributors.query';
 import {
-  PrModel,
+  PrEntity,
   RepositoryUserStatisticsReadModel
 } from '@pimp-my-pr/server/repository/core/domain';
-import { BaseListRepositoryUsersHandler } from './base-list-repository-users.handler';
 import { GetUserPrsQuery } from '../get-user-prs.query';
+import { ListRepositoryContributorsQuery } from '../list-repository-contributors.query';
+import { BaseListRepositoryUsersHandler } from './base-list-repository-users.handler';
 
 @QueryHandler(ListRepositoryContributorsQuery)
 export class ListRepositoryContributorsHandler extends BaseListRepositoryUsersHandler
@@ -18,18 +18,11 @@ export class ListRepositoryContributorsHandler extends BaseListRepositoryUsersHa
     const result = await Promise.all(
       repositoryContributors.map(user =>
         this.queryBus
-          .execute<GetUserPrsQuery, PrModel[]>(new GetUserPrsQuery(user, repositories))
+          .execute<GetUserPrsQuery, PrEntity[]>(new GetUserPrsQuery(user, repositories))
           .then(prs =>
             Promise.all(
               prs.length
-                ? repositories.map(repository =>
-                    this.prsService
-                      .getPrsWithChanges(repository, prs)
-                      .then(
-                        prsWithChanges =>
-                          new RepositoryUserStatisticsReadModel(user, prsWithChanges)
-                      )
-                  )
+                ? repositories.map(repository => new RepositoryUserStatisticsReadModel(user, prs))
                 : []
             )
           )

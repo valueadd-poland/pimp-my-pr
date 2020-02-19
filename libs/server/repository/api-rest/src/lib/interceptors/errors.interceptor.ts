@@ -6,12 +6,12 @@ import {
   NotFoundException,
   UnauthorizedException
 } from '@nestjs/common';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import {
   CoreNotFoundException,
   CoreUnauthorizedFoundException
 } from '@pimp-my-pr/server/shared/domain';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class ErrorsInterceptor implements NestInterceptor {

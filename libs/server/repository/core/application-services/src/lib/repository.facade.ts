@@ -1,18 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { QueryBus } from '@nestjs/cqrs';
-import { ListRepositoriesQuery } from './queries/list-repositories.query';
 import {
   RepositoryStatisticsReadModel,
   RepositoryUserStatisticsReadModel,
   ReviewerStatisticsReadModel
 } from '@pimp-my-pr/server/repository/core/domain';
-import { ListRepositoryContributorsQuery } from './queries/list-repository-contributors.query';
-import { ListRepositoryReviewersQuery } from './queries/list-repository-reviewers.query';
-import { ListReviewerStatisticsQuery } from './queries/list-reviewer-statistics.query';
 import {
   ListReviewerStatisticsParams,
   ListSingleRepositoryParams
 } from '@pimp-my-pr/shared/domain';
+import { ListRepositoriesQuery } from './queries/list-repositories.query';
+import { ListRepositoryContributorsQuery } from './queries/list-repository-contributors.query';
+import { ListRepositoryReviewersQuery } from './queries/list-repository-reviewers.query';
+import { ListReviewerStatisticsQuery } from './queries/list-reviewer-statistics.query';
 import { ListSingleRepositoryQuery } from './queries/list-single-repository.query';
 
 @Injectable()

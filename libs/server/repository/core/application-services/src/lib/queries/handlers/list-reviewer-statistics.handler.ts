@@ -1,24 +1,21 @@
 import { IQueryHandler, QueryBus, QueryHandler } from '@nestjs/cqrs';
-import { ListReviewerStatisticsQuery } from '../list-reviewer-statistics.query';
 import {
-  PrDetailsModel,
-  PrModel,
+  PrEntity,
   RepositoryPrsStatisticsReadModelFactory,
-  ReviewerStatisticsReadModel,
-  ReviewerEntity
+  ReviewerEntity,
+  ReviewerStatisticsReadModel
 } from '@pimp-my-pr/server/repository/core/domain';
 import { PrDataService, RepositoryDataService } from '@pimp-my-pr/server/repository/infrastructure';
-import { GetRepositoryPrsQuery } from '../get-repository-prs.query';
 import { GetPrDetailsQuery } from '../get-pr-details.query';
-import { PrsService } from '../../services/prs.service';
+import { GetRepositoryPrsQuery } from '../get-repository-prs.query';
 import { GetUserQuery } from '../get-user.query';
+import { ListReviewerStatisticsQuery } from '../list-reviewer-statistics.query';
 
 @QueryHandler(ListReviewerStatisticsQuery)
 export class ListReviewerStatisticsHandler
   implements IQueryHandler<ListReviewerStatisticsQuery, ReviewerStatisticsReadModel> {
   constructor(
     private prRepository: PrDataService,
-    private prsService: PrsService,
     private queryBus: QueryBus,
     private repositoryRepository: RepositoryDataService,
     private repositoryPrsStatisticsFactory: RepositoryPrsStatisticsReadModelFactory
@@ -32,7 +29,9 @@ export class ListReviewerStatisticsHandler
     const repositoryStatistics = await Promise.all(
       repositories.map(repository =>
         this.queryBus
-          .execute<GetRepositoryPrsQuery, PrModel[]>(new GetRepositoryPrsQuery(repository.fullName))
+          .execute<GetRepositoryPrsQuery, PrEntity[]>(
+            new GetRepositoryPrsQuery(repository.fullName)
+          )
           .then(prs => {
             return Promise.all(
               prs
@@ -40,7 +39,7 @@ export class ListReviewerStatisticsHandler
                   pr.reviewers.some(reviewer => reviewer.name === query.payload.username)
                 )
                 .map(pr =>
-                  this.queryBus.execute<GetPrDetailsQuery, PrDetailsModel>(
+                  this.queryBus.execute<GetPrDetailsQuery, PrEntity>(
                     new GetPrDetailsQuery(repository.fullName, pr.id)
                   )
                 )

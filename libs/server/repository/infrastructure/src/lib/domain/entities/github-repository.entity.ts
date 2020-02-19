@@ -1,5 +1,5 @@
-import { GithubUserEntity } from './github-user.entity';
 import { GithubOrganizationEntity } from './github-organization.entity';
+import { GithubUserEntity } from './github-user.entity';
 
 export interface GithubRepositoryEntity {
   id: number;

@@ -1,6 +1,6 @@
 import { PrStatisticsReadModel } from '@pimp-my-pr/server/repository/core/domain';
-import { PrAuthor } from '../interfaces/pr-author.interface';
 import { PrReviewer, PrStatistics } from '@pimp-my-pr/shared/domain';
+import { PrAuthor } from '../interfaces/pr-author.interface';
 
 export class PrStatisticsWithReviewersReadModel implements PrStatistics {
   author: PrAuthor;

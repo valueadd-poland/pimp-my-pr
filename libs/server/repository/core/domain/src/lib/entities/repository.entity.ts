@@ -1,10 +1,10 @@
-import { PrModel } from './pr.model';
+import { PrEntity } from './pr.entity';
 
-export class RepositoryModel {
+export class RepositoryEntity {
   id: number;
   fullName: string;
   name: string;
   owner: string;
   pictureUrl: string;
-  prs: PrModel[];
+  prs: PrEntity[];
 }

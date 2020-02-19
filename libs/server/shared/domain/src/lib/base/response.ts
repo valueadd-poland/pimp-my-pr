@@ -1,5 +1,5 @@
-import { IResponse } from '@pimp-my-pr/shared/domain';
 import { HttpException } from '@nestjs/common';
+import { IResponse } from '@pimp-my-pr/shared/domain';
 
 export class Response<T, E> implements IResponse<T, E> {
   data: T;

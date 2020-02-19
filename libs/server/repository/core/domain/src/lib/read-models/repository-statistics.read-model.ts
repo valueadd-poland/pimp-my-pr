@@ -1,12 +1,12 @@
-import { RepositoryModel } from '../entities/repository.model';
-import { PrWithChangesReadModel } from './pr-with-changes.read-model';
-import { BaseRepositoryStatisticsReadModel } from './base-repository-statistics.read-model';
+import { PrEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { RepositoryEntity } from '../entities/repository.entity';
+import { BaseStatisticsReadModel } from './base-statistics.read-model';
 
-export class RepositoryStatisticsReadModel extends BaseRepositoryStatisticsReadModel {
+export class RepositoryStatisticsReadModel extends BaseStatisticsReadModel {
   owner: string;
   pictureUrl: string;
 
-  constructor(repository: RepositoryModel, prs: PrWithChangesReadModel[]) {
+  constructor(repository: RepositoryEntity, prs: PrEntity[]) {
     super(repository, prs);
     this.owner = repository.owner;
     this.pictureUrl = repository.pictureUrl;

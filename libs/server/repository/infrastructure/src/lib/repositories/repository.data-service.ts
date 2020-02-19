@@ -1,25 +1,26 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import {
-  PrModel,
-  RepositoryModel,
+  PrEntity,
+  RepositoryEntity,
   RepositoryNotFoundException,
   ReviewerEntity
 } from '@pimp-my-pr/server/repository/core/domain';
 import { githubConfig, PmpApiServiceConfigService } from '@pimp-my-pr/server/shared/core';
-import { urlFactory } from '@valueadd/typed-urls';
-import { GithubRepositoryEntity } from '../domain/entities/github-repository.entity';
-import { catchError, map } from 'rxjs/operators';
-import { GithubRepositoryMapper } from '../mappers/github-repository.mapper';
-import { AxiosError, AxiosResponse } from 'axios';
-import { GithubPrEntity } from '../domain/entities/github-pr.entity';
-import { GithubPrMapper } from '../mappers/github-pr.mapper';
-import { Observable, throwError } from 'rxjs';
-import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
 import { CoreException, CoreNotFoundException } from '@pimp-my-pr/server/shared/domain';
+import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
+import { urlFactory } from '@valueadd/typed-urls';
+import { AxiosError, AxiosResponse } from 'axios';
+import { forkJoin, Observable, throwError } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
+import { GithubPrEntity } from '../domain/entities/github-pr.entity';
+import { GithubRepositoryEntity } from '../domain/entities/github-repository.entity';
 import { GithubUserEntity } from '../domain/entities/github-user.entity';
-import { GithubUserMapper } from '../mappers/github-user.mapper';
 import { UserModelWithPr } from '../domain/interfaces/user-model-with-pr.interface';
 import { CustomUserWithPrMapper } from '../mappers/custom-user-with-pr.mapper';
+import { GithubPrMapper } from '../mappers/github-pr.mapper';
+import { GithubRepositoryMapper } from '../mappers/github-repository.mapper';
+import { GithubUserMapper } from '../mappers/github-user.mapper';
+import { PrDataService } from './pr.data-service';
 
 @Injectable()
 export class RepositoryDataService {
@@ -42,10 +43,11 @@ export class RepositoryDataService {
 
   constructor(
     private httpService: HttpService,
+    private prRepository: PrDataService,
     private pmpApiServiceConfigService: PmpApiServiceConfigService
   ) {}
 
-  find(): Promise<RepositoryModel[]> {
+  find(): Promise<RepositoryEntity[]> {
     const owner = this.pmpApiServiceConfigService.getRepositoryOwner();
     const title = this.pmpApiServiceConfigService.getRepositoryTitle();
     return this.httpService
@@ -70,9 +72,9 @@ export class RepositoryDataService {
       .toPromise();
   }
 
-  getSingleRepository(id: string): Promise<RepositoryModel> {
+  getSingleRepository(id: string): Promise<RepositoryEntity> {
     return this.httpService
-      .get<RepositoryModel>(this.endpoints.getSingleRepository.url({ id }))
+      .get<RepositoryEntity>(this.endpoints.getSingleRepository.url({ id }))
       .pipe(
         map((res: AxiosResponse) => res.data),
         map(this.repositoryMapper.mapFrom),
@@ -87,7 +89,7 @@ export class RepositoryDataService {
       .toPromise();
   }
 
-  getRepositoryPrs(repositoryFullName: string): Promise<PrModel[]> {
+  getRepositoryPrs(repositoryFullName: string): Promise<PrEntity[]> {
     return this.getRepositoryPrsAsObservable(repositoryFullName).toPromise();
   }
 
@@ -113,18 +115,20 @@ export class RepositoryDataService {
       .toPromise();
   }
 
-  private getRepositoryPrsAsObservable(fullName: string): Observable<PrModel[]> {
+  private getRepositoryPrsAsObservable(fullName: string): Observable<PrEntity[]> {
     return this.httpService
       .get<GithubPrEntity[]>(this.endpoints.getRepositoryPrs.url({ fullName }))
       .pipe(
-        map((res: AxiosResponse<GithubPrEntity[]>) => res.data),
-        map(prs => prs.map(pr => this.prMapper.mapFrom(pr))),
-        catchRequestExceptions()
+        catchRequestExceptions(),
+        map((res: AxiosResponse<GithubPrEntity[]>) => {
+          return res.data;
+        }),
+        switchMap(prs => forkJoin(prs.map(pr => this.prRepository.get(fullName, pr.number))))
       );
   }
 
-  private groupByReviewers(prs: PrModel[]): UserModelWithPr[] {
-    const result: { [id: string]: { reviewer: ReviewerEntity; prs: PrModel[] } } = {};
+  private groupByReviewers(prs: PrEntity[]): UserModelWithPr[] {
+    const result: { [id: string]: { reviewer: ReviewerEntity; prs: PrEntity[] } } = {};
 
     prs.forEach(pr =>
       pr.reviewers.forEach(reviewer => {

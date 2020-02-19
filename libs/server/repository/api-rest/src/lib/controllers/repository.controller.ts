@@ -1,9 +1,9 @@
 import { Controller, Get, Req } from '@nestjs/common';
 import { RepositoryFacade } from '@pimp-my-pr/server/repository/core/application-services';
+import { ReviewerStatisticsReadModel } from '@pimp-my-pr/server/repository/core/domain';
 import { ListRepositoriesResponse, UserStatistics } from '@pimp-my-pr/shared/domain';
 import { Request } from 'express';
 import { ListReviewerStatisticsRequest } from '../requests/list-reviewer-statistics.request';
-import { ReviewerStatisticsReadModel } from '@pimp-my-pr/server/repository/core/domain';
 import { ListSingleRepositoryRequest } from '../requests/list-single-repository.request';
 
 @Controller()

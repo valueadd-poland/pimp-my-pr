@@ -1,17 +1,12 @@
 import { IQueryHandler, QueryBus, QueryHandler } from '@nestjs/cqrs';
-import { ListRepositoryReviewersQuery } from '../list-repository-reviewers.query';
 import { RepositoryUserStatisticsReadModel } from '@pimp-my-pr/server/repository/core/domain';
-import { PrsService } from '../../services/prs.service';
 import { RepositoryDataService } from '@pimp-my-pr/server/repository/infrastructure';
+import { ListRepositoryReviewersQuery } from '../list-repository-reviewers.query';
 
 @QueryHandler(ListRepositoryReviewersQuery)
 export class ListRepositoryReviewersHandler
   implements IQueryHandler<ListRepositoryReviewersQuery, RepositoryUserStatisticsReadModel[]> {
-  constructor(
-    private prsService: PrsService,
-    private queryBus: QueryBus,
-    private repositoryRepository: RepositoryDataService
-  ) {}
+  constructor(private queryBus: QueryBus, private repositoryRepository: RepositoryDataService) {}
 
   async execute(query: ListRepositoryReviewersQuery): Promise<RepositoryUserStatisticsReadModel[]> {
     const repositoryReviewersWithPrs = await this.repositoryRepository.getRepositoryReviewersWithPrs();
@@ -19,13 +14,9 @@ export class ListRepositoryReviewersHandler
     const result = await Promise.all(
       repositories.map(repository =>
         Promise.all(
-          repositoryReviewersWithPrs.map(reviewerWithPrs =>
-            this.prsService
-              .getPrsWithChanges(repository, reviewerWithPrs.prs)
-              .then(
-                prsWithChanges =>
-                  new RepositoryUserStatisticsReadModel(reviewerWithPrs.reviewer, prsWithChanges)
-              )
+          repositoryReviewersWithPrs.map(
+            reviewerWithPrs =>
+              new RepositoryUserStatisticsReadModel(reviewerWithPrs.reviewer, reviewerWithPrs.prs)
           )
         )
       )

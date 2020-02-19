@@ -1,5 +1,5 @@
-import { ConfigService, registerAs } from '@nestjs/config';
 import { Injectable } from '@nestjs/common';
+import { ConfigService, registerAs } from '@nestjs/config';
 
 const CONFIG_NAMESPACE = 'pmp-api-service';
 
