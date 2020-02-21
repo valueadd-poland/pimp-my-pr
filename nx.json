@@ -99,7 +99,7 @@
       "tags": ["platform:server", "scope:repository", "type:application-services"]
     },
     "server-repository-shell": {
-      "tags": ["scope:repository", "type:shell"]
+      "tags": ["platform:server", "scope:repository", "type:shell"]
     },
     "server-repository-infrastructure": {
       "tags": ["platform:server", "scope:repository", "type:infrastructure"]
@@ -112,6 +112,9 @@
     },
     "server-shared-core": {
       "tags": ["platform:server", "scope:shared", "type:core"]
+    },
+    "server-repository-core-domain-services": {
+      "tags": ["platform:server", "scope:repository", "type:domain-services"]
     }
   }
 }

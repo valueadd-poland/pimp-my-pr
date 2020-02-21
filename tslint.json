@@ -70,7 +70,7 @@
           },
           {
             "sourceTag": "type:api",
-            "onlyDependOnLibsWithTags": ["type:application-services", "type:domain"]
+            "onlyDependOnLibsWithTags": ["type:application-services", "type:domain", "type:shell"]
           },
           {
             "sourceTag": "type:application",
@@ -78,7 +78,7 @@
           },
           {
             "sourceTag": "type:application-services",
-            "onlyDependOnLibsWithTags": ["type:domain"]
+            "onlyDependOnLibsWithTags": ["type:domain", "type:domain-services"]
           },
           {
             "sourceTag": "type:core",
@@ -96,6 +96,10 @@
           },
           {
             "sourceTag": "type:domain",
+            "onlyDependOnLibsWithTags": ["type:domain"]
+          },
+          {
+            "sourceTag": "type:domain-services",
             "onlyDependOnLibsWithTags": ["type:domain"]
           },
           {
