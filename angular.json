@@ -1123,6 +1123,31 @@
           }
         }
       }
+    },
+    "server-repository-core-domain-services": {
+      "root": "libs/server/repository/core/domain-services",
+      "sourceRoot": "libs/server/repository/core/domain-services/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/repository/core/domain-services/tsconfig.lib.json",
+              "libs/server/repository/core/domain-services/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/repository/core/domain-services/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/repository/core/domain-services/jest.config.js",
+            "tsConfig": "libs/server/repository/core/domain-services/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {

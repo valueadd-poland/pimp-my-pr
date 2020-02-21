@@ -1,6 +1,8 @@
 import { Controller, Get, Req } from '@nestjs/common';
-import { RepositoryFacade } from '@pimp-my-pr/server/repository/core/application-services';
-import { ReviewerStatisticsReadModel } from '@pimp-my-pr/server/repository/core/domain';
+import {
+  RepositoryFacade,
+  ReviewerStatisticsReadModel
+} from '@pimp-my-pr/server/repository/core/application-services';
 import { ListRepositoriesResponse, UserStatistics } from '@pimp-my-pr/shared/domain';
 import { Request } from 'express';
 import { ListReviewerStatisticsRequest } from '../requests/list-reviewer-statistics.request';
@@ -12,29 +14,24 @@ export class RepositoryController {
 
   @Get('repository')
   list(): Promise<ListRepositoriesResponse> {
-    return this.repositoryFacade.list();
+    return this.repositoryFacade.listRepositoriesStatistics();
   }
 
   @Get('repository/:repositoryId')
   listSingleRepository(@Req() request: Request): Promise<ListRepositoriesResponse> {
-    return this.repositoryFacade.listSingleRepository(
+    return this.repositoryFacade.getRepositoryStatistics(
       new ListSingleRepositoryRequest(request).getParams()
     );
   }
 
-  @Get('contributors')
-  listContributors(): Promise<UserStatistics[]> {
-    return this.repositoryFacade.listContributors();
-  }
-
   @Get('reviewers')
   listReviewers(): Promise<UserStatistics[]> {
-    return this.repositoryFacade.listReviewers();
+    return this.repositoryFacade.listReviewersStatistics();
   }
 
   @Get('reviewers/:username')
   listReviewerStatistics(@Req() request: Request): Promise<ReviewerStatisticsReadModel> {
-    return this.repositoryFacade.listReviewerStatistics(
+    return this.repositoryFacade.getReviewerStatistics(
       new ListReviewerStatisticsRequest(request).getParams()
     );
   }

@@ -88,7 +88,10 @@
       "@pimp-my-pr/server/shared/util-exception": [
         "libs/server/shared/util-exception/src/index.ts"
       ],
-      "@pimp-my-pr/server/shared/core": ["libs/server/shared/core/src/index.ts"]
+      "@pimp-my-pr/server/shared/core": ["libs/server/shared/core/src/index.ts"],
+      "@pimp-my-pr/server/repository/core/domain-services": [
+        "libs/server/repository/core/domain-services/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,25 +1,10 @@
-import { HttpModule, HttpService, Module, OnModuleInit } from '@nestjs/common';
-import { ServerSharedCoreModule } from '@pimp-my-pr/server/shared/core';
-import { AxiosRequestConfig } from 'axios';
-import { GithubAuthInterceptor } from './interceptors/github-auth.interceptor';
-import { PrDataService } from './repositories/pr.data-service';
-import { RepositoryDataService } from './repositories/repository.data-service';
-import { UserDataService } from './repositories/user.data-service';
+import { Module } from '@nestjs/common';
+import { GithubPrRepository } from './github/repositories/github-pr.repository';
+import { GithubRepositoryRepository } from './github/repositories/github-repository.repository';
+import { GithubReviewerRepository } from './github/repositories/github-reviewer.repository';
 
 @Module({
-  imports: [HttpModule, ServerSharedCoreModule],
-  providers: [RepositoryDataService, PrDataService, UserDataService, GithubAuthInterceptor],
-  exports: [RepositoryDataService, PrDataService, UserDataService]
+  providers: [GithubRepositoryRepository, GithubPrRepository, GithubReviewerRepository],
+  exports: [GithubRepositoryRepository, GithubPrRepository, GithubReviewerRepository]
 })
-export class ServerRepositoryInfrastructureModule implements OnModuleInit {
-  constructor(
-    private httpService: HttpService,
-    private githubAuthInterceptor: GithubAuthInterceptor
-  ) {}
-
-  onModuleInit(): void {
-    this.httpService.axiosRef.interceptors.request.use((req: AxiosRequestConfig) =>
-      this.githubAuthInterceptor.intercept(req)
-    );
-  }
-}
+export class ServerRepositoryInfrastructureModule {}

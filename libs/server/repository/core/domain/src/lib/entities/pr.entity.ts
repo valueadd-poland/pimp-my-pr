@@ -1,7 +1,9 @@
 import { ReviewerEntity } from './reviewer.entity';
+import { AuthorEntity } from './author.entity';
 
 export class PrEntity {
   additions: number;
+  author: AuthorEntity;
   changedFiles: number;
   closedAt: Date;
   commentsCount: number;
@@ -14,7 +16,6 @@ export class PrEntity {
   title: string;
   updatedAt: Date;
   url: string;
-  user: ReviewerEntity;
 
   get linesOfCodeToCheck(): number {
     return this.additions + this.deletions;
