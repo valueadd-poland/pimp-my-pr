@@ -1,6 +1,6 @@
 export * from './lib/server-repository-core-application-services.module';
 export * from './lib/repository.facade';
-export * from './lib/queries/get-repository-statistics/repository--statistics.read-model';
+export * from './lib/queries/get-repository-statistics/repository-statistics.read-model';
 export * from './lib/read-models/pr-statistics.read-model';
 export * from './lib/queries/get-reviewer-statistics/reviewer-statistics.read-model';
 export * from './lib/queries/list-reviewers-statistics/reviewers-statistics-item-read.model';

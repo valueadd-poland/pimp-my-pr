@@ -1,6 +1,6 @@
 import { PrEntity, RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
 import { PrStatisticsReadModel } from '../pr-statistics.read-model';
-import { RepositoryStatisticsReadModel } from '../../queries/get-repository-statistics/repository--statistics.read-model';
+import { RepositoryStatisticsReadModel } from '../../queries/get-repository-statistics/repository-statistics.read-model';
 
 export const repositoryPrsStatisticsReadModelFactory = (
   repository: RepositoryEntity,

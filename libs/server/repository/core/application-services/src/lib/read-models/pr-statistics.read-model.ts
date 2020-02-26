@@ -25,6 +25,7 @@ export class PrStatisticsReadModel {
       name: pr.author.name
     };
     this.commentsCount = pr.commentsCount;
+    this.reviewers = pr.reviewers;
     this.reviewCommentsCount = pr.reviewCommentsCount;
     this.url = pr.url;
     this.timeWaiting = this.getTimePrWaiting(pr);

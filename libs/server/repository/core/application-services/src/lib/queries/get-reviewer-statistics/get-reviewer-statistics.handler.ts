@@ -18,7 +18,7 @@ export class GetReviewerStatisticsHandler
   ) {}
 
   async execute(query: GetReviewerStatisticsQuery): Promise<ReviewerStatisticsReadModel> {
-    const repositories = await this.repositoryRepository.find();
+    const repositories = await this.repositoryRepository.findAll();
 
     const reviewer = await this.reviewerRepository.get(query.payload.username);
     const repositoryStatistics = await Promise.all(

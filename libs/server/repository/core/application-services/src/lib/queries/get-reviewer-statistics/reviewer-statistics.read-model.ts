@@ -1,5 +1,5 @@
 import { ReviewerEntity } from '@pimp-my-pr/server/repository/core/domain';
-import { RepositoryStatisticsReadModel } from '../get-repository-statistics/repository--statistics.read-model';
+import { RepositoryStatisticsReadModel } from '../get-repository-statistics/repository-statistics.read-model';
 
 export class ReviewerStatisticsReadModel {
   avatarUrl: string;
