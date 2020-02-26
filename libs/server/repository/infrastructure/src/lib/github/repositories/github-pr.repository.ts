@@ -1,15 +1,14 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { PrEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { PrRepository } from '@pimp-my-pr/server/repository/core/domain-services';
 import { githubConfig } from '@pimp-my-pr/server/shared/core';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
 import { urlFactory } from '@valueadd/typed-urls';
-import { AxiosResponse } from 'axios';
+import { forkJoin } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { GithubPrDetailsEntity } from '../domain/entities/github-pr-details.entity';
-import { GithubPrMapper } from '../mappers/github-pr.mapper';
-import { PrRepository } from '@pimp-my-pr/server/repository/core/domain-services';
 import { GithubPrEntity } from '../domain/entities/github-pr.entity';
-import { forkJoin } from 'rxjs';
+import { mapGithubPr } from '../mappers/map-github-pr';
 
 @Injectable()
 export class GithubPrRepository extends PrRepository {
@@ -21,8 +20,6 @@ export class GithubPrRepository extends PrRepository {
     getRepositoryPrs: urlFactory<'fullName'>(githubConfig.apiUrl + '/repos/:fullName/pulls', true)
   };
 
-  prMapper = new GithubPrMapper();
-
   constructor(private httpService: HttpService) {
     super();
   }
@@ -31,7 +28,8 @@ export class GithubPrRepository extends PrRepository {
     return this.httpService
       .get<GithubPrDetailsEntity>(this.endpoints.getPr.url({ repoFullName, prId }))
       .pipe(
-        map((res: AxiosResponse<GithubPrDetailsEntity>) => this.prMapper.mapFrom(res.data)),
+        map(res => res.data),
+        map(mapGithubPr),
         catchRequestExceptions()
       )
       .toPromise();

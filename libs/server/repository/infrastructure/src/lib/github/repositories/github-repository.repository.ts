@@ -3,6 +3,10 @@ import {
   RepositoryEntity,
   RepositoryNotFoundException
 } from '@pimp-my-pr/server/repository/core/domain';
+import {
+  PrRepository,
+  RepositoryRepository
+} from '@pimp-my-pr/server/repository/core/domain-services';
 import { githubConfig, PmpApiServiceConfigService } from '@pimp-my-pr/server/shared/core';
 import { CoreException, CoreNotFoundException } from '@pimp-my-pr/server/shared/domain';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
@@ -11,11 +15,7 @@ import { AxiosError, AxiosResponse } from 'axios';
 import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { GithubRepositoryEntity } from '../domain/entities/github-repository.entity';
-import { GithubRepositoryMapper } from '../mappers/github-repository.mapper';
-import {
-  PrRepository,
-  RepositoryRepository
-} from '@pimp-my-pr/server/repository/core/domain-services';
+import { mapGithubRepository } from '../mappers/map-github-repository';
 
 @Injectable()
 export class GithubRepositoryRepository extends RepositoryRepository {
@@ -30,7 +30,6 @@ export class GithubRepositoryRepository extends RepositoryRepository {
       true
     )
   };
-  repositoryMapper = new GithubRepositoryMapper();
 
   constructor(
     private httpService: HttpService,
@@ -40,7 +39,7 @@ export class GithubRepositoryRepository extends RepositoryRepository {
     super();
   }
 
-  find(): Promise<RepositoryEntity[]> {
+  findAll(): Promise<RepositoryEntity[]> {
     const owner = this.pmpApiServiceConfigService.getRepositoryOwner();
     const title = this.pmpApiServiceConfigService.getRepositoryTitle();
     return this.httpService
@@ -52,7 +51,7 @@ export class GithubRepositoryRepository extends RepositoryRepository {
       )
       .pipe(
         map((res: AxiosResponse) => res.data),
-        map(this.repositoryMapper.mapFrom),
+        map(mapGithubRepository),
         map(repository => [repository]),
         catchRequestExceptions(),
         catchError((error: AxiosError | CoreException) => {
@@ -70,7 +69,7 @@ export class GithubRepositoryRepository extends RepositoryRepository {
       .get<RepositoryEntity>(this.endpoints.getSingleRepository.url({ id }))
       .pipe(
         map((res: AxiosResponse) => res.data),
-        map(this.repositoryMapper.mapFrom),
+        map(mapGithubRepository),
         catchRequestExceptions(),
         catchError((error: AxiosError | CoreException) => {
           if (error instanceof CoreNotFoundException) {
