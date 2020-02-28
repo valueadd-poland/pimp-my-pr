@@ -7,5 +7,5 @@ export const mapGithubRepository = (repo: GithubRepositoryEntity) =>
     ...repo,
     owner: repo.owner.login,
     fullName: repo.full_name,
-    pictureUrl: repo.organization.avatar_url
+    pictureUrl: repo.owner.avatar_url
   });

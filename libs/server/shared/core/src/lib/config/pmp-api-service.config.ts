@@ -5,8 +5,7 @@ const CONFIG_NAMESPACE = 'pmp-api-service';
 
 export const pmpApiServiceConfig = registerAs(CONFIG_NAMESPACE, () => ({
   githubToken: process.env.PMP_API_SERVICE_GITHUB_TOKEN,
-  repositoryTitle: process.env.PMP_API_SERVICE_REPOSITORY_TITLE,
-  repositoryOwner: process.env.PMP_API_SERVICE_REPOSITORY_OWNER
+  repositories: process.env.PMP_API_SERVICE_REPOSITORIES.split(',')
 }));
 
 @Injectable()
@@ -17,11 +16,7 @@ export class PmpApiServiceConfigService {
     return this.configService.get<string>(CONFIG_NAMESPACE + '.githubToken');
   }
 
-  getRepositoryOwner(): string {
-    return this.configService.get<string>(CONFIG_NAMESPACE + '.repositoryOwner');
-  }
-
-  getRepositoryTitle(): string {
-    return this.configService.get<string>(CONFIG_NAMESPACE + '.repositoryTitle');
+  getRepositories(): string[] {
+    return this.configService.get<string[]>(CONFIG_NAMESPACE + '.repositories');
   }
 }

@@ -36,8 +36,8 @@ A brilliant tool that will pimp your pull requests by collecting and presenting 
 - launch api `npm run run:pmp-api`
 - launch frontend `npm run run:pmp-web`
 
-
 ## Production Server setup
+
 - copy `.env-sample` file as `.env` in project root
 - fill `.env` file
 - run `docker-compose up -d`
