@@ -1,0 +1,40 @@
+version: '3.7'
+services:
+  traefik:
+    image: traefik:v2.1.4
+    restart: always
+    command:
+#      - "--log.level=DEBUG"
+      - "--api.insecure=false"
+      - "--api.dashboard=false"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedByDefault=false"
+      - "--entryPoints.web.address=:80"
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+  ng:
+    build:
+      context: ./
+      dockerfile: apps/pmp-web/Dockerfile
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      # HTTP
+      - "traefik.http.routers.ng.rule=Host(`${DOMAIN:-pmp.local}`)"
+      - "traefik.http.routers.ng.entrypoints=web"
+  api:
+    build:
+      context: ./
+      dockerfile: apps/pmp-api/Dockerfile
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      # HTTP
+      - "traefik.http.routers.api.rule=Host(`${DOMAIN:-pmp.local}`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.api.entrypoints=web"
+    environment:
+      - PMP_API_SERVICE_GITHUB_TOKEN=${PMP_API_SERVICE_GITHUB_TOKEN}
+      - PMP_API_SERVICE_REPOSITORY_OWNER=${PMP_API_SERVICE_REPOSITORY_OWNER}
+      - PMP_API_SERVICE_REPOSITORY_TITLE=${PMP_API_SERVICE_REPOSITORY_TITLE}
