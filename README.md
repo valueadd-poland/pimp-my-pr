@@ -24,14 +24,13 @@ A brilliant tool that will pimp your pull requests by collecting and presenting 
 
 ### Build production
 
-- copy `.env-sample` file as `.env` under `libs/server/shared/core/src/lib/config/` directory, or provide
-  `PMP_API_SERVICE_GITHUB_TOKEN, PMP_API_SERVICE_REPOSITORY_OWNER, PMP_API_SERVICE_REPOSITORY_TITLE`
-  environment variables
 - install dependencies `npm install`
 - build application `npm run build:pmp-api:prod`
 
 ## Start a production sandbox
 
+- copy `.env-sample` file as `.env` under `libs/server/shared/core/src/lib/config/` directory
+- fill `.env` file
 - Build pmp-api and pmp-web as a production
 - launch api `npm run run:pmp-api`
 - launch frontend `npm run run:pmp-web`
