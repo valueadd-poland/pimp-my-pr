@@ -5,12 +5,14 @@ import { ListReviewersStatisticsHandler } from './queries/list-reviewers-statist
 import { GetReviewerStatisticsHandler } from './queries/get-reviewer-statistics/get-reviewer-statistics.handler';
 import { GetRepositoryStatisticsHandler } from './queries/get-repository-statistics/get-repository-statistics.handler';
 import { RepositoryFacade } from './repository.facade';
+import { AddRepositoryHandler } from './commands/add-repository/add-repository.handler';
 
 const QueryHandlers = [
-  ListRepositoriesStatisticsHandler,
+  AddRepositoryHandler,
   GetRepositoryStatisticsHandler,
-  ListReviewersStatisticsHandler,
-  GetReviewerStatisticsHandler
+  GetReviewerStatisticsHandler,
+  ListRepositoriesStatisticsHandler,
+  ListReviewersStatisticsHandler
 ];
 
 @Module({

@@ -2,12 +2,13 @@ import { Global, HttpModule, HttpService, Module, OnModuleInit } from '@nestjs/c
 import { ConfigModule } from './config/config.module';
 import { GithubAuthInterceptor } from './github/interceptors/github-auth.interceptor';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { TypeOrmRootModule } from './type-orm/type-orm-root.module';
 
 @Global()
 @Module({
-  imports: [ConfigModule, HttpModule],
+  imports: [ConfigModule, HttpModule, TypeOrmRootModule],
   providers: [GithubAuthInterceptor],
-  exports: [ConfigModule, HttpModule, GithubAuthInterceptor]
+  exports: [ConfigModule, HttpModule, TypeOrmRootModule, GithubAuthInterceptor]
 })
 export class ServerSharedCoreModule implements OnModuleInit {
   constructor(

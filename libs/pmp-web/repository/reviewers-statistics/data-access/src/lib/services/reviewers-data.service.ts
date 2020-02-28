@@ -9,7 +9,7 @@ import { GetReviewersStatisticsCollectionPayload } from '@pimp-my-pr/pmp-web/rep
 @Injectable()
 export class ReviewersDataService {
   readonly endpoints = {
-    getReviewersStatisticsCollection: urlFactory('/api/reviewers')
+    getReviewersStatisticsCollection: urlFactory('/api/statistics/reviewers')
   };
 
   constructor(private http: HttpClient) {}

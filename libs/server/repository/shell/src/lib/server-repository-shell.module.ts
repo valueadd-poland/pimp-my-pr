@@ -6,24 +6,34 @@ import {
 } from '@pimp-my-pr/server/repository/core/domain-services';
 import {
   GithubPrRepository,
-  GithubRepositoryRepository,
-  GithubReviewerRepository
+  GithubReviewerRepository,
+  RepositoryRepositoryAdapter,
+  ServerRepositoryInfrastructureModule
 } from '@pimp-my-pr/server/repository/infrastructure';
 import { ServerRepositoryCoreApplicationServicesModule } from '@pimp-my-pr/server/repository/core/application-services';
+import { FeatureRepositoryTypeOrmModule } from './feature-repository-type-orm.module';
 
 const providers = [
   { provide: PrRepository, useClass: GithubPrRepository },
   {
     provide: RepositoryRepository,
-    useClass: GithubRepositoryRepository
+    useClass: RepositoryRepositoryAdapter
   },
   { provide: ReviewerRepository, useClass: GithubReviewerRepository }
 ];
 
 @Global()
 @Module({
-  imports: [ServerRepositoryCoreApplicationServicesModule],
+  imports: [
+    FeatureRepositoryTypeOrmModule,
+    ServerRepositoryInfrastructureModule,
+    ServerRepositoryCoreApplicationServicesModule
+  ],
   providers: providers,
-  exports: [...providers, ServerRepositoryCoreApplicationServicesModule]
+  exports: [
+    FeatureRepositoryTypeOrmModule,
+    ...providers,
+    ServerRepositoryCoreApplicationServicesModule
+  ]
 })
 export class ServerRepositoryShellModule {}

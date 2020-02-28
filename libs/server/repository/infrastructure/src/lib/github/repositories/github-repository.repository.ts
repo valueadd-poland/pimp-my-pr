@@ -7,7 +7,7 @@ import {
   PrRepository,
   RepositoryRepository
 } from '@pimp-my-pr/server/repository/core/domain-services';
-import { githubConfig, PmpApiServiceConfigService } from '@pimp-my-pr/server/shared/core';
+import { githubConfig, PmpApiConfigService } from '@pimp-my-pr/server/shared/core';
 import { CoreException, CoreNotFoundException } from '@pimp-my-pr/server/shared/domain';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
 import { urlFactory } from '@valueadd/typed-urls';
@@ -18,7 +18,7 @@ import { GithubRepositoryEntity } from '../domain/entities/github-repository.ent
 import { mapGithubRepository } from '../mappers/map-github-repository';
 
 @Injectable()
-export class GithubRepositoryRepository extends RepositoryRepository {
+export class GithubRepositoryRepository {
   endpoints = {
     getRepository: urlFactory<'fullName'>(githubConfig.apiUrl + '/repos/:fullName', true),
     getSingleRepository: urlFactory<'id'>(githubConfig.apiUrl + '/repositories/:id', true),
@@ -28,20 +28,9 @@ export class GithubRepositoryRepository extends RepositoryRepository {
     )
   };
 
-  constructor(
-    private httpService: HttpService,
-    private prRepository: PrRepository,
-    private pmpApiServiceConfigService: PmpApiServiceConfigService
-  ) {
-    super();
-  }
+  constructor(private httpService: HttpService) {}
 
-  async findAll(): Promise<RepositoryEntity[]> {
-    const repositories = this.pmpApiServiceConfigService.getRepositories();
-    return Promise.all(repositories.map(repoId => this.getSingleRepositoryByName(repoId)));
-  }
-
-  getSingleRepositoryByName(fullName): Promise<RepositoryEntity> {
+  getSingleRepositoryByName(fullName: string): Promise<RepositoryEntity> {
     return this.httpService
       .get<GithubRepositoryEntity>(this.endpoints.getRepository.url({ fullName }))
       .pipe(
