@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { QueryBus } from '@nestjs/cqrs';
+import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import {
   RepositoriesStatisticsItemReadModel,
   ReviewersStatisticsItemReadModel,
@@ -13,10 +13,15 @@ import { ListRepositoriesStatisticsQuery } from './queries/list-repositories-sta
 import { ListReviewersStatisticsQuery } from './queries/list-reviewers-statistics/list-reviewers-statistics.query';
 import { GetReviewerStatisticsQuery } from './queries/get-reviewer-statistics/get-reviewer-statistics.query';
 import { GetRepositoryStatisticsQuery } from './queries/get-repository-statistics/get-repository-statistics.query';
+import { AddRepositoryCommand } from './commands/add-repository/add-repository.command';
 
 @Injectable()
 export class RepositoryFacade {
-  constructor(private queryBus: QueryBus) {}
+  constructor(private commandBus: CommandBus, private queryBus: QueryBus) {}
+
+  addRepository(command: AddRepositoryCommand): Promise<void> {
+    return this.commandBus.execute(command);
+  }
 
   getRepositoryStatistics(
     params: ListSingleRepositoryParams

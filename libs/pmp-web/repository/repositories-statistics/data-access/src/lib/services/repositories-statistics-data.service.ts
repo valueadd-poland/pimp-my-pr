@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class RepositoriesStatisticsDataService {
   readonly endpoints = {
-    getRepositoryStatisticsCollection: urlFactory('/api/repository')
+    getRepositoryStatisticsCollection: urlFactory('/api/statistics/repository')
   };
 
   constructor(private http: HttpClient) {}

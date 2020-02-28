@@ -22,6 +22,7 @@ A brilliant tool that will pimp your pull requests by collecting and presenting 
 
 - copy `.env-sample` file as `.env` under `libs/server/shared/core/src/lib/config/` directory
 - install dependencies with `npm install`
+- (optional) start a database with docker `docker run --name pmp-postgres -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_USER=pmp -p 5432:5432 -d postgres`
 - serve application with `ng serve pmp-api`
 
 ### Build production

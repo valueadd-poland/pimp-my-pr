@@ -9,7 +9,10 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class RepositoryStatisticsDataService {
   readonly endpoints = {
-    getRepositoryStatistics: urlFactory<'repositoryId'>('/api/repository/:repositoryId', true)
+    getRepositoryStatistics: urlFactory<'repositoryId'>(
+      '/api/statistics/repository/:repositoryId',
+      true
+    )
   };
 
   constructor(private http: HttpClient) {}

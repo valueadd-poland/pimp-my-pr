@@ -1,12 +1,12 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { AxiosRequestConfig } from 'axios';
-import { PmpApiServiceConfigService } from '../../config/pmp-api-service.config';
+import { PmpApiConfigService } from '../../config/pmp-api-config.service';
 
 @Injectable()
 export class GithubAuthInterceptor {
   constructor(
     private httpService: HttpService,
-    private pmpApiServiceConfigService: PmpApiServiceConfigService
+    private pmpApiServiceConfigService: PmpApiConfigService
   ) {}
 
   intercept(req: AxiosRequestConfig): AxiosRequestConfig {
