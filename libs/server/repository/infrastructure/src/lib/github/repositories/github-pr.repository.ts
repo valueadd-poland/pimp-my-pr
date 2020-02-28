@@ -4,7 +4,7 @@ import { PrRepository } from '@pimp-my-pr/server/repository/core/domain-services
 import { githubConfig } from '@pimp-my-pr/server/shared/core';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
 import { urlFactory } from '@valueadd/typed-urls';
-import { forkJoin } from 'rxjs';
+import { forkJoin, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { GithubPrDetailsEntity } from '../domain/entities/github-pr-details.entity';
 import { GithubPrEntity } from '../domain/entities/github-pr.entity';
@@ -40,7 +40,10 @@ export class GithubPrRepository extends PrRepository {
       .get<GithubPrEntity[]>(this.endpoints.getRepositoryPrs.url({ fullName: repositoryId }))
       .pipe(
         map(res => res.data),
-        switchMap(prs => forkJoin(prs.map(pr => this.get(repositoryId, pr.number))))
+
+        switchMap(prs =>
+          prs.length ? forkJoin(prs.map(pr => this.get(repositoryId, pr.number))) : of([])
+        )
       )
       .toPromise();
   }

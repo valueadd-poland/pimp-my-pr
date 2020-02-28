@@ -20,10 +20,7 @@ import { mapGithubRepository } from '../mappers/map-github-repository';
 @Injectable()
 export class GithubRepositoryRepository extends RepositoryRepository {
   endpoints = {
-    getRepository: urlFactory<'owner' | 'title'>(
-      githubConfig.apiUrl + '/repos/:owner/:title',
-      true
-    ),
+    getRepository: urlFactory<'fullName'>(githubConfig.apiUrl + '/repos/:fullName', true),
     getSingleRepository: urlFactory<'id'>(githubConfig.apiUrl + '/repositories/:id', true),
     getRepositoryContributors: urlFactory<'owner' | 'title'>(
       githubConfig.apiUrl + '/repos/:owner/:title/contributors',
@@ -39,24 +36,21 @@ export class GithubRepositoryRepository extends RepositoryRepository {
     super();
   }
 
-  findAll(): Promise<RepositoryEntity[]> {
-    const owner = this.pmpApiServiceConfigService.getRepositoryOwner();
-    const title = this.pmpApiServiceConfigService.getRepositoryTitle();
+  async findAll(): Promise<RepositoryEntity[]> {
+    const repositories = this.pmpApiServiceConfigService.getRepositories();
+    return Promise.all(repositories.map(repoId => this.getSingleRepositoryByName(repoId)));
+  }
+
+  getSingleRepositoryByName(fullName): Promise<RepositoryEntity> {
     return this.httpService
-      .get<GithubRepositoryEntity>(
-        this.endpoints.getRepository.url({
-          owner,
-          title
-        })
-      )
+      .get<GithubRepositoryEntity>(this.endpoints.getRepository.url({ fullName }))
       .pipe(
         map((res: AxiosResponse) => res.data),
         map(mapGithubRepository),
-        map(repository => [repository]),
         catchRequestExceptions(),
         catchError((error: AxiosError | CoreException) => {
           if (error instanceof CoreNotFoundException) {
-            return throwError(new RepositoryNotFoundException(`${owner}/${title}`));
+            return throwError(new RepositoryNotFoundException(fullName));
           }
           return throwError(error);
         })
