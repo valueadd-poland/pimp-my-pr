@@ -19,8 +19,6 @@ jobs:
     - name: npm install
       run: |
         npm ci
-    - name: validate branch
-      run: node ./node_modules/@valueadd/dev validate-branch `echo ${GITHUB_REF#refs/heads/}`
     - name: validate commits
       run: node ./node_modules/@valueadd/dev validate-commit origin/master
     - name: validate nx tags
