@@ -36,3 +36,20 @@ jobs:
       run: npm run affected:lint -- --all
       env:
         CI: true
+
+  e2e:
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: use master
+        run: git branch master origin/master #https://github.com/nrwl/nx/issues/1988
+      - name: npm install
+        run: npm ci
+      - name: affected:e2e
+        run: npm run affected:e2e
+    env:
+      CI: true
