@@ -19,7 +19,7 @@ export class ReviewerStatisticsDataService {
   ): Observable<ReviewerStatisticsResponse> {
     return this.http
       .get<IResponse<ReviewerStatisticsResponse, null>>(
-        this.endpoints.getReviewerStatisticsResponse.url({ username: payload.username })
+        this.endpoints.getReviewerStatisticsResponse.url({ username: payload.reviewer })
       )
       .pipe(map((res: IResponse<ReviewerStatisticsResponse, null>) => res.data));
   }

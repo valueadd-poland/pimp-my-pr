@@ -29,7 +29,7 @@ export class LoginPageComponent implements OnInit {
     switch (system) {
       case AvailableSystems.github:
       case AvailableSystems.bitbucket:
-        this.router.navigate(['user']);
+        this.router.navigate(['reviewer']);
         break;
     }
   }

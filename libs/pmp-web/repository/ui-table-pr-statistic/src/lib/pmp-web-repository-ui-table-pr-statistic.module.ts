@@ -5,6 +5,7 @@ import { MatIconModule, MatSortModule, MatTableModule, MatTooltipModule } from '
 import { PmpWebSharedUiPictureLabelModule } from '@pimp-my-pr/pmp-web/shared/ui-picture-label';
 import { PmpWebSharedUiPersonsBarModule } from '@pimp-my-pr/pmp-web/shared/ui-persons-bar';
 import { ContentLoaderModule } from '@ngneat/content-loader';
+import { PmpWebSharedUtilModule } from '@pimp-my-pr/pmp-web/shared/util';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ContentLoaderModule } from '@ngneat/content-loader';
     PmpWebSharedUiPictureLabelModule,
     ContentLoaderModule,
     MatSortModule,
-    PmpWebSharedUiPersonsBarModule
+    PmpWebSharedUiPersonsBarModule,
+    PmpWebSharedUtilModule
   ],
   exports: [TablePrStatisticComponent],
   declarations: [TablePrStatisticComponent]
