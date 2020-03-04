@@ -1,9 +1,6 @@
 name: PMP PR CI
 
-on:
-  push:
-    branches-ignore:
-      - master
+on: pull_request
 
 jobs:
   setup:
