@@ -5,7 +5,7 @@ import { RepositoriesComponent } from './containers/repositories/repositories.co
 
 const routes: Routes = [
   {
-    path: 'user',
+    path: 'reviewer',
     component: UserComponent,
     children: [
       {
@@ -16,7 +16,7 @@ const routes: Routes = [
           )
       },
       {
-        path: ':userName',
+        path: ':reviewerName',
         loadChildren: () =>
           import('@pimp-my-pr/pmp-web/repository/reviewer-statistics/feature').then(
             m => m.PmpWebRepositoryReviewerStatisticsFeatureModule
