@@ -12,9 +12,10 @@ import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { GithubRepositoryEntity } from '../domain/entities/github-repository.entity';
 import { mapGithubRepository } from '../mappers/map-github-repository';
+import { RemoteRepositoryRepository } from '../../repositories/remote-repository.repository';
 
 @Injectable()
-export class GithubRepositoryRepository {
+export class GithubRepositoryRepository extends RemoteRepositoryRepository {
   endpoints = {
     getRepository: urlFactory<'fullName'>(githubConfig.apiUrl + '/repos/:fullName', true),
     getSingleRepository: urlFactory<'id'>(githubConfig.apiUrl + '/repositories/:id', true),
@@ -24,7 +25,9 @@ export class GithubRepositoryRepository {
     )
   };
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService) {
+    super();
+  }
 
   getSingleRepositoryByName(fullName: string): Promise<RepositoryEntity> {
     return this.httpService
@@ -43,7 +46,7 @@ export class GithubRepositoryRepository {
       .toPromise();
   }
 
-  getSingleRepository(id: string): Promise<RepositoryEntity> {
+  getSingleRepositoryById(id: string): Promise<RepositoryEntity> {
     return this.httpService
       .get<RepositoryEntity>(this.endpoints.getSingleRepository.url({ id }))
       .pipe(

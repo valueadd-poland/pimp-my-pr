@@ -9,8 +9,8 @@ export class PrEntity {
   author: AuthorEntity;
   @f
   changedFiles: number;
-  @f
-  closedAt: Date;
+  @f.optional()
+  closedAt?: Date;
   @f
   commentsCount: number;
   @f
@@ -18,9 +18,9 @@ export class PrEntity {
   @f
   deletions: number;
   @f
-  id: number;
-  @f
-  reviewCommentsCount: number;
+  id: string;
+  @f.optional()
+  reviewCommentsCount?: number;
   @f.array(ReviewerEntity)
   reviewers: ReviewerEntity[];
   @f

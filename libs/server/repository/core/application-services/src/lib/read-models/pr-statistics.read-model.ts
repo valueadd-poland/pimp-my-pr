@@ -9,7 +9,7 @@ export class PrStatisticsReadModel {
   @ApiProperty()
   createdAt: Date;
   @ApiProperty()
-  id: number;
+  id: string;
   @ApiProperty()
   linesOfCodeToCheck: number;
   @ApiProperty()

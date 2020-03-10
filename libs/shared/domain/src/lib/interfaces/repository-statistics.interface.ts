@@ -1,7 +1,7 @@
 import { PrStatistics } from '@pimp-my-pr/shared/domain';
 
 export interface RepositoryStatistics {
-  id: number;
+  id: string;
   name: string;
   linesOfCodeToCheck?: number;
   longestPrLinesOfCode?: number;

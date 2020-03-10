@@ -3,7 +3,7 @@ import { PrStatisticsReadModel } from '../../read-models/pr-statistics.read-mode
 
 export class RepositoryStatisticsReadModel {
   @ApiProperty()
-  id: number;
+  id: string;
   @ApiProperty()
   fullName: string;
   @ApiProperty()

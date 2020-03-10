@@ -4,6 +4,7 @@ import { ConfigService, registerAs } from '@nestjs/config';
 const CONFIG_NAMESPACE = 'pmp-api-service';
 
 export const pmpApiConfigService = registerAs(CONFIG_NAMESPACE, () => ({
+  bitbucketToken: process.env.PMP_API_SERVICE_BITBUCKET_TOKEN,
   githubToken: process.env.PMP_API_SERVICE_GITHUB_TOKEN,
   db: {
     host: process.env.PMP_API_SERVICE_DB_HOST,
@@ -16,6 +17,10 @@ export const pmpApiConfigService = registerAs(CONFIG_NAMESPACE, () => ({
 @Injectable()
 export class PmpApiConfigService {
   constructor(private configService: ConfigService) {}
+
+  getBitbucketToken(): string {
+    return this.configService.get<string>(CONFIG_NAMESPACE + '.bitbucketToken');
+  }
 
   getGithubToken(): string {
     return this.configService.get<string>(CONFIG_NAMESPACE + '.githubToken');

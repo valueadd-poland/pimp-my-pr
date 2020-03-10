@@ -7,7 +7,7 @@ import {
 
 export abstract class BaseStatisticsReadModel {
   @ApiProperty()
-  id: number;
+  id: string;
   @ApiProperty()
   linesOfCodeToCheck: number;
   @ApiProperty()

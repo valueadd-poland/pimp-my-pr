@@ -2,7 +2,7 @@ import { PrAuthor } from './pr-author.interface';
 import { PrReviewer } from './pr-reviewer.interface';
 
 export interface PrStatistics {
-  id: number;
+  id: string;
   createdAt: Date;
   title: string;
   timeWaiting: number;

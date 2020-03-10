@@ -1,24 +1,29 @@
 import { Global, HttpModule, HttpService, Module, OnModuleInit } from '@nestjs/common';
 import { AxiosRequestConfig } from 'axios';
 import { ConfigModule } from './config/config.module';
-import { GithubAuthInterceptor } from './github/interceptors/github-auth.interceptor';
+import { AuthInterceptor } from './auth.interceptor';
 import { TypeOrmRootModule } from './type-orm/type-orm-root.module';
+import { PmpApiConfigService } from './config/pmp-api-config.service';
+import { authInterceptorFactory } from './auth.interceptor.factory';
 
 @Global()
 @Module({
   imports: [ConfigModule, HttpModule, TypeOrmRootModule],
-  providers: [GithubAuthInterceptor],
-  exports: [ConfigModule, HttpModule, TypeOrmRootModule, GithubAuthInterceptor]
+  providers: [
+    {
+      provide: AuthInterceptor,
+      useFactory: authInterceptorFactory,
+      inject: [PmpApiConfigService, HttpService]
+    }
+  ],
+  exports: [ConfigModule, HttpModule, AuthInterceptor]
 })
 export class ServerSharedCoreModule implements OnModuleInit {
-  constructor(
-    private httpService: HttpService,
-    private githubAuthInterceptor: GithubAuthInterceptor
-  ) {}
+  constructor(private httpService: HttpService, private interceptor: AuthInterceptor) {}
 
   onModuleInit(): void {
     this.httpService.axiosRef.interceptors.request.use((req: AxiosRequestConfig) =>
-      this.githubAuthInterceptor.intercept(req)
+      this.interceptor.intercept(req)
     );
   }
 }

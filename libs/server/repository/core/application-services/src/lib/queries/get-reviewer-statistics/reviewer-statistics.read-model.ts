@@ -8,7 +8,7 @@ export class ReviewerStatisticsReadModel {
   @ApiProperty()
   contributions: number;
   @ApiProperty()
-  id: number;
+  id: string;
   @ApiProperty()
   name: string;
   @ApiProperty({ type: [RepositoryStatisticsReadModel] })
