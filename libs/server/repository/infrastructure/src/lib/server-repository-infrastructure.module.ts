@@ -1,16 +1,15 @@
 import { Module } from '@nestjs/common';
-import { GithubPrRepository } from './github/repositories/github-pr.repository';
-import { GithubRepositoryRepository } from './github/repositories/github-repository.repository';
-import { GithubReviewerRepository } from './github/repositories/github-reviewer.repository';
 import { RepositoryRepositoryAdapter } from './repositories/repository-repository.adapter';
+import { RemoteRepositoryRepository } from './repositories/remote-repository.repository';
+import { BitbucketRepositoryRepository } from './bitbucket/repositories/bitbucket-repository.repository';
+import { GithubRepositoryRepository } from './github/repositories/github-repository.repository';
 
 @Module({
   providers: [
-    GithubRepositoryRepository,
-    GithubPrRepository,
-    GithubReviewerRepository,
-    RepositoryRepositoryAdapter
+    RepositoryRepositoryAdapter,
+    BitbucketRepositoryRepository,
+    GithubRepositoryRepository
   ],
-  exports: [GithubRepositoryRepository, GithubPrRepository, GithubReviewerRepository]
+  exports: [BitbucketRepositoryRepository, GithubRepositoryRepository]
 })
 export class ServerRepositoryInfrastructureModule {}

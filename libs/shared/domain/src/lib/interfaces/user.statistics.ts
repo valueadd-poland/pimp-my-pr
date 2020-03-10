@@ -1,6 +1,6 @@
 export interface UserStatistics {
   avatarUrl: string;
-  id: number;
+  id: string;
   name: string;
   linesOfCodeToCheck?: number;
   longestPrLinesOfCode?: number;

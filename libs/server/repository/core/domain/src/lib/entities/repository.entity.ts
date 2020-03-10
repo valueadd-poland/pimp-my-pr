@@ -6,7 +6,7 @@ import { PrEntity } from './pr.entity';
 export class RepositoryEntity {
   @f.primary()
   @PrimaryColumn()
-  id: number;
+  id: string;
 
   @Column()
   @f

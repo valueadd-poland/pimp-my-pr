@@ -3,13 +3,13 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
 import { RepositoryRepository } from '@pimp-my-pr/server/repository/core/domain-services';
 import { Repository } from 'typeorm';
-import { GithubRepositoryRepository } from '../github/repositories/github-repository.repository';
+import { RemoteRepositoryRepository } from './remote-repository.repository';
 
 @Injectable()
 export class RepositoryRepositoryAdapter extends RepositoryRepository {
   constructor(
     @InjectRepository(RepositoryEntity) private typeOrmRepository: Repository<RepositoryEntity>,
-    private githubRepository: GithubRepositoryRepository
+    private repository: RemoteRepositoryRepository
   ) {
     super();
   }
@@ -19,11 +19,13 @@ export class RepositoryRepositoryAdapter extends RepositoryRepository {
   }
 
   getSingleRepository(id: string): Promise<RepositoryEntity> {
-    return this.githubRepository.getSingleRepository(id);
+    return this.typeOrmRepository.findOne(id).then(result => {
+      return this.repository.getSingleRepositoryById(id, result ? result.owner : null);
+    });
   }
 
   getSingleRepositoryByName(fullName: string): Promise<RepositoryEntity> {
-    return this.githubRepository.getSingleRepositoryByName(fullName);
+    return this.repository.getSingleRepositoryByName(fullName);
   }
 
   save(repository: RepositoryEntity): Promise<void> {

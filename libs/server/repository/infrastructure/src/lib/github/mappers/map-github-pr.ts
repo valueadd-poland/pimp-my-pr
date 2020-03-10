@@ -12,7 +12,7 @@ export const mapGithubPr = (pr: GithubPrDetailsEntity) =>
     createdAt: pr.created_at,
     deletions: pr.deletions,
     url: pr.html_url,
-    id: pr.number,
+    id: `${pr.number}`,
     reviewers: pr.requested_reviewers.map(mapGithubContributor),
     updatedAt: pr.updated_at,
     author: mapGithubContributor(pr.user),

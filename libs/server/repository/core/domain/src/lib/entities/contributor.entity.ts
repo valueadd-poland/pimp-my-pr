@@ -7,10 +7,10 @@ export abstract class ContributorEntity {
   name: string;
   @ApiProperty()
   @f
-  id: number;
+  id: string;
   @ApiProperty()
   @f
   avatarUrl: string;
   @f
-  contributions: number;
+  contributions?: number;
 }
