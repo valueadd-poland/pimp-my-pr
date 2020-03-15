@@ -29,7 +29,8 @@
     "update:check": "ng update",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "release": "standard-version --tag-prefix=''"
   },
   "private": true,
   "dependencies": {
@@ -91,6 +92,7 @@
     "lint-staged": "^9.2.1",
     "prettier": "1.18.2",
     "semantic-git-commit-cli": "^3.5.0",
+    "standard-version": "^7.1.0",
     "supertest": "latest",
     "ts-jest": "24.0.0",
     "ts-node": "~7.0.0",
