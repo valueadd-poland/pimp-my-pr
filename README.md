@@ -2,6 +2,8 @@
 
 A brilliant tool that will pimp your pull requests by collecting and presenting PR statistics.
 
+![Preview](docs/img/pmp-preview.png)
+
 ## PMP-WEB
 
 ### Development
