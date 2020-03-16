@@ -1,9 +1,9 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { ListRepositoriesStatisticsQuery } from './list-repositories-statistics.query';
 import {
   PrRepository,
   RepositoryRepository
 } from '@pimp-my-pr/server/repository/core/domain-services';
+import { ListRepositoriesStatisticsQuery } from './list-repositories-statistics.query';
 import { RepositoriesStatisticsItemReadModel } from './repositories-statistics-item.read-model';
 
 @QueryHandler(ListRepositoriesStatisticsQuery)

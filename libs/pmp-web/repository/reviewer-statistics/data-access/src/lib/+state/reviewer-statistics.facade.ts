@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import { GetReviewerStatisticsResponseRequestPayload } from '../resources/request-payloads/get-reviewer-statistics-response.request-payload';
+import { fromReviewerStatisticsActions } from './reviewer-statistics.actions';
 import { ReviewerStatisticsPartialState } from './reviewer-statistics.reducer';
 import { reviewerStatisticsQuery } from './reviewer-statistics.selectors';
-import { fromReviewerStatisticsActions } from './reviewer-statistics.actions';
-import { GetReviewerStatisticsResponseRequestPayload } from '../resources/request-payloads/get-reviewer-statistics-response.request-payload';
 
 @Injectable()
 export class ReviewerStatisticsFacade {

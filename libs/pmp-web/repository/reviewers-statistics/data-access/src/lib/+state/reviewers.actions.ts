@@ -1,7 +1,7 @@
-import { Action } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
-import { UserStatistics } from '@pimp-my-pr/shared/domain';
+import { Action } from '@ngrx/store';
 import { GetReviewersStatisticsCollectionPayload } from '@pimp-my-pr/pmp-web/repository/domain';
+import { UserStatistics } from '@pimp-my-pr/shared/domain';
 
 export namespace fromUserActions {
   export enum Types {

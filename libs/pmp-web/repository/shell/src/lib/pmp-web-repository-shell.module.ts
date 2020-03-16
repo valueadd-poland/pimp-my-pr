@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { PmpWebSharedUiNavbarModule } from '@pimp-my-pr/pmp-web/shared/ui-navbar';
 import { PmpWebSharedUiSidebarModule } from '@pimp-my-pr/pmp-web/shared/ui-sidebar';
-import { UserComponent } from './containers/user/user.component';
 import { RepositoriesComponent } from './containers/repositories/repositories.component';
+import { UserComponent } from './containers/user/user.component';
 import { PmpWebRepositoryShellRoutingModule } from './pmp-web-repository-shell-routing.module';
 
 @NgModule({

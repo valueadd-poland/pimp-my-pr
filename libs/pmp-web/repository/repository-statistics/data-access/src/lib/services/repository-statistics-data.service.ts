@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { GetRepositoryStatisticsPayload } from '@pimp-my-pr/pmp-web/repository/domain';
 import { IResponse, RepositoryStatistics } from '@pimp-my-pr/shared/domain';
 import { urlFactory } from '@valueadd/typed-urls';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable()

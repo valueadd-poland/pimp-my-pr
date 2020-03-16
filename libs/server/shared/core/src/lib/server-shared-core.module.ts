@@ -1,7 +1,7 @@
 import { Global, HttpModule, HttpService, Module, OnModuleInit } from '@nestjs/common';
+import { AxiosRequestConfig } from 'axios';
 import { ConfigModule } from './config/config.module';
 import { GithubAuthInterceptor } from './github/interceptors/github-auth.interceptor';
-import { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { TypeOrmRootModule } from './type-orm/type-orm-root.module';
 
 @Global()

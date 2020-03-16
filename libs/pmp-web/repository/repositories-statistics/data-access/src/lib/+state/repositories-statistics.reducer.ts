@@ -1,7 +1,7 @@
-import { fromRepositoriesStatisticsActions } from './repositories-statistics.actions';
 import { HttpErrorResponse } from '@angular/common/http';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { RepositoryStatistics } from '@pimp-my-pr/shared/domain';
+import { fromRepositoriesStatisticsActions } from './repositories-statistics.actions';
 
 export const REPOSITORIES_STATISTICS_FEATURE_KEY = 'repositoriesStatistics';
 

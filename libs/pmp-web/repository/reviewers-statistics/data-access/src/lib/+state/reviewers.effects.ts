@@ -1,11 +1,11 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Effect } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/angular';
+import { map } from 'rxjs/operators';
+import { ReviewersDataService } from '../services/reviewers-data.service';
 import { fromUserActions } from './reviewers.actions';
 import { ReviewersStatisticsPartialState } from './reviewers.reducer';
-import { ReviewersDataService } from '../services/reviewers-data.service';
-import { HttpErrorResponse } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ReviewersEffects {

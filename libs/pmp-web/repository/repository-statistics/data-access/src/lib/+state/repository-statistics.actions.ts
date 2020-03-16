@@ -1,5 +1,5 @@
-import { Action } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Action } from '@ngrx/store';
 import { GetRepositoryStatisticsPayload } from '@pimp-my-pr/pmp-web/repository/domain';
 import { RepositoryStatistics } from '@pimp-my-pr/shared/domain';
 

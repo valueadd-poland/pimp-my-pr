@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { UserStatistics } from '@pimp-my-pr/shared/domain';
-import { ReviewersFacade } from '@pimp-my-pr/pmp-web/repository/reviewers-statistics/data-access';
 import { Router } from '@angular/router';
+import { ReviewersFacade } from '@pimp-my-pr/pmp-web/repository/reviewers-statistics/data-access';
+import { UserStatistics } from '@pimp-my-pr/shared/domain';
 
 @Component({
   selector: 'pmp-users-statistics',

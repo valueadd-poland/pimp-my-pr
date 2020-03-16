@@ -1,6 +1,6 @@
-import { fromReviewerStatisticsActions } from './reviewer-statistics.actions';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ReviewerStatisticsResponse } from '@pimp-my-pr/shared/domain';
+import { fromReviewerStatisticsActions } from './reviewer-statistics.actions';
 
 export const REVIEWERSTATISTICS_FEATURE_KEY = 'ReviewerStatisticsStatistics';
 

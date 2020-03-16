@@ -1,12 +1,12 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { GetReviewerStatisticsQuery } from './get-reviewer-statistics.query';
 import {
   PrRepository,
   RepositoryRepository,
   ReviewerRepository
 } from '@pimp-my-pr/server/repository/core/domain-services';
-import { ReviewerStatisticsReadModel } from './reviewer-statistics.read-model';
 import { repositoryPrsStatisticsReadModelFactory } from '../../read-models/factories/repository-prs-statistics-read-model.factory';
+import { GetReviewerStatisticsQuery } from './get-reviewer-statistics.query';
+import { ReviewerStatisticsReadModel } from './reviewer-statistics.read-model';
 
 @QueryHandler(GetReviewerStatisticsQuery)
 export class GetReviewerStatisticsHandler

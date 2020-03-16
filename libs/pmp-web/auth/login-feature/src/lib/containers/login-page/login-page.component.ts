@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AvailableSystems } from '@pimp-my-pr/pmp-web/shared/domain';
 import { Router } from '@angular/router';
+import { AvailableSystems } from '@pimp-my-pr/pmp-web/shared/domain';
 
 @Component({
   selector: 'pimp-my-pr-login-page',

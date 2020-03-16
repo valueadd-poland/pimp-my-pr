@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { first } from 'rxjs/operators';
 import { RepositoryStatisticsFacade } from '@pimp-my-pr/pmp-web/repository/repository-statistics/data-access';
 import { PrStatistics } from '@pimp-my-pr/shared/domain';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'pimp-my-pr-repository-statistics',

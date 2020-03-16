@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PersonsBarComponent } from './persons-bar/persons-bar.component';
-import { PmpWebSharedUiPictureLabelModule } from '@pimp-my-pr/pmp-web/shared/ui-picture-label';
+import { NgModule } from '@angular/core';
 import { MatTooltipModule } from '@angular/material';
+import { PmpWebSharedUiPictureLabelModule } from '@pimp-my-pr/pmp-web/shared/ui-picture-label';
+import { PersonsBarComponent } from './persons-bar/persons-bar.component';
 
 @NgModule({
   imports: [CommonModule, PmpWebSharedUiPictureLabelModule, MatTooltipModule],

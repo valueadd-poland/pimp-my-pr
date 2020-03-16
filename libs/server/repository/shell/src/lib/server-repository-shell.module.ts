@@ -1,4 +1,5 @@
 import { Global, Module } from '@nestjs/common';
+import { ServerRepositoryCoreApplicationServicesModule } from '@pimp-my-pr/server/repository/core/application-services';
 import {
   PrRepository,
   RepositoryRepository,
@@ -10,7 +11,6 @@ import {
   RepositoryRepositoryAdapter,
   ServerRepositoryInfrastructureModule
 } from '@pimp-my-pr/server/repository/infrastructure';
-import { ServerRepositoryCoreApplicationServicesModule } from '@pimp-my-pr/server/repository/core/application-services';
 import { FeatureRepositoryTypeOrmModule } from './feature-repository-type-orm.module';
 
 const providers = [

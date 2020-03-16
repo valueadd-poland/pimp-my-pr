@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
   PrEntity,
   RepositoryEntity,
@@ -5,11 +6,17 @@ import {
 } from '@pimp-my-pr/server/repository/core/domain';
 
 export abstract class BaseStatisticsReadModel {
+  @ApiProperty()
   id: number;
+  @ApiProperty()
   linesOfCodeToCheck: number;
+  @ApiProperty()
   longestPrLinesOfCode?: number;
+  @ApiProperty()
   name: string;
+  @ApiProperty()
   pendingPrs: number;
+  @ApiProperty()
   sumOfHoursPrsWaiting?: number;
 
   protected constructor(model: RepositoryEntity | ReviewerEntity, prs: PrEntity[]) {

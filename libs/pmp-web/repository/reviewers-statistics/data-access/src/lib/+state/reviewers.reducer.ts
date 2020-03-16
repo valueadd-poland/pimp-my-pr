@@ -1,7 +1,7 @@
-import { fromUserActions } from './reviewers.actions';
 import { HttpErrorResponse } from '@angular/common/http';
-import { UserStatistics } from '@pimp-my-pr/shared/domain';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
+import { UserStatistics } from '@pimp-my-pr/shared/domain';
+import { fromUserActions } from './reviewers.actions';
 
 export const REVIEWERS_FEATURE_KEY = 'reviewers';
 

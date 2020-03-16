@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StatisticsOverviewTableComponent } from './statistics-overview-table/statistics-overview-table.component';
+import { NgModule } from '@angular/core';
 import { MatIconModule, MatSortModule, MatTableModule, MatTooltipModule } from '@angular/material';
-import { PmpWebSharedUtilModule } from '@pimp-my-pr/pmp-web/shared/util';
 import { ContentLoaderModule } from '@ngneat/content-loader';
+import { PmpWebSharedUtilModule } from '@pimp-my-pr/pmp-web/shared/util';
+import { StatisticsOverviewTableComponent } from './statistics-overview-table/statistics-overview-table.component';
 
 @NgModule({
   imports: [
