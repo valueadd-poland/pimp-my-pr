@@ -30,6 +30,10 @@ A brilliant tool that will pimp your pull requests by collecting and presenting 
 - install dependencies `npm install`
 - build application `npm run build:pmp-api:prod`
 
+### SWAGGER
+
+API specification is available in swagger under the `/api` endpoint on the running pmp-api application.
+
 ## Start a production sandbox
 
 - copy `.env-sample` file as `.env` under `libs/server/shared/core/src/lib/config/` directory

@@ -1,17 +1,16 @@
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
-import { NxModule } from '@nrwl/angular';
 import { StoreModule } from '@ngrx/store';
-import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { AppRoutingModule } from './app-routing.module';
+import { NxModule } from '@nrwl/angular';
 import { PmpWebAuthShellModule } from '@pimp-my-pr/pmp-web/auth/shell';
 import { PmpWebRepositoryShellModule } from '@pimp-my-pr/pmp-web/repository/shell';
+import { environment } from '../environments/environment';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],

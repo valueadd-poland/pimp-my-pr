@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { RepositoriesStatisticsFacade } from '@pimp-my-pr/pmp-web/repository/repositories-statistics/data-access';
 import { RepositoryStatistics } from '@pimp-my-pr/shared/domain';
 import { RepositoriesStatisticsPresenter } from './repositories-statistics.presenter';
-import { RepositoriesStatisticsFacade } from '@pimp-my-pr/pmp-web/repository/repositories-statistics/data-access';
 
 @Component({
   selector: 'pmp-repositories-statistics',

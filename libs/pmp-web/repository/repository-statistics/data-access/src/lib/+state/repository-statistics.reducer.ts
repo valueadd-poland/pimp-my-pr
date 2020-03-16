@@ -1,6 +1,6 @@
-import { fromSingleRepositoryStatisticsActions } from './repository-statistics.actions';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RepositoryStatistics } from '@pimp-my-pr/shared/domain';
+import { fromSingleRepositoryStatisticsActions } from './repository-statistics.actions';
 
 export const SINGLEREPOSITORYSTATISTICS_FEATURE_KEY = 'singleRepositoryStatistics';
 

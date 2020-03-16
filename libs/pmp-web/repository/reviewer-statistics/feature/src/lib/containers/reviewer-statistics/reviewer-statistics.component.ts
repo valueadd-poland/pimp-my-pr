@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { first } from 'rxjs/operators';
-import { PrStatistics } from '@pimp-my-pr/shared/domain';
 import { ReviewerStatisticsFacade } from '@pimp-my-pr/pmp-web/repository/reviewer-statistics/data-access';
+import { PrStatistics } from '@pimp-my-pr/shared/domain';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'pmp-reviewer-statistics',

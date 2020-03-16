@@ -1,11 +1,11 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Effect } from '@ngrx/effects';
+import { DataPersistence } from '@nrwl/angular';
+import { map } from 'rxjs/operators';
+import { RepositoryStatisticsDataService } from '../services/repository-statistics-data.service';
 import { fromSingleRepositoryStatisticsActions } from './repository-statistics.actions';
 import { SingleRepositoryStatisticsPartialState } from './repository-statistics.reducer';
-import { RepositoryStatisticsDataService } from '../services/repository-statistics-data.service';
-import { HttpErrorResponse } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { DataPersistence } from '@nrwl/angular';
 
 @Injectable()
 export class RepositoryStatisticsEffects {

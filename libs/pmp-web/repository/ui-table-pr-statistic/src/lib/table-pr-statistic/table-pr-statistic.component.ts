@@ -7,8 +7,8 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
-import { PrStatistics } from '@pimp-my-pr/shared/domain';
 import { MatSort, MatTableDataSource } from '@angular/material';
+import { PrStatistics } from '@pimp-my-pr/shared/domain';
 import { TablePrStatisticsPresenter } from './table-pr-statistics.presenter';
 
 @Component({

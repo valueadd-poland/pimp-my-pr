@@ -3,11 +3,7 @@ import {
   RepositoryEntity,
   RepositoryNotFoundException
 } from '@pimp-my-pr/server/repository/core/domain';
-import {
-  PrRepository,
-  RepositoryRepository
-} from '@pimp-my-pr/server/repository/core/domain-services';
-import { githubConfig, PmpApiConfigService } from '@pimp-my-pr/server/shared/core';
+import { githubConfig } from '@pimp-my-pr/server/shared/core';
 import { CoreException, CoreNotFoundException } from '@pimp-my-pr/server/shared/domain';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
 import { urlFactory } from '@valueadd/typed-urls';

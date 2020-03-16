@@ -1,12 +1,12 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { PrEntity } from '@pimp-my-pr/server/repository/core/domain';
-import { GetRepositoryStatisticsQuery } from './get-repository-statistics.query';
 import {
   PrRepository,
   RepositoryRepository
 } from '@pimp-my-pr/server/repository/core/domain-services';
-import { RepositoryStatisticsReadModel } from './repository-statistics.read-model';
 import { repositoryPrsStatisticsReadModelFactory } from '../../read-models/factories/repository-prs-statistics-read-model.factory';
+import { GetRepositoryStatisticsQuery } from './get-repository-statistics.query';
+import { RepositoryStatisticsReadModel } from './repository-statistics.read-model';
 
 @QueryHandler(GetRepositoryStatisticsQuery)
 export class GetRepositoryStatisticsHandler

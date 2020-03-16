@@ -6,8 +6,8 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
-import { RepositoryStatistics, UserStatistics } from '@pimp-my-pr/shared/domain';
 import { MatSort, MatTableDataSource } from '@angular/material';
+import { RepositoryStatistics, UserStatistics } from '@pimp-my-pr/shared/domain';
 
 @Component({
   selector: 'pmp-statistics-overview-table',

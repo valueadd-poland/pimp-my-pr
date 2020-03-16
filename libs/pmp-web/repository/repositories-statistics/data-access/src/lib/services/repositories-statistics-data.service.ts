@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { urlFactory } from '@valueadd/typed-urls';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { ApiRepositoryStatisticsResponse, RepositoryStatistics } from '@pimp-my-pr/shared/domain';
+import { urlFactory } from '@valueadd/typed-urls';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable()

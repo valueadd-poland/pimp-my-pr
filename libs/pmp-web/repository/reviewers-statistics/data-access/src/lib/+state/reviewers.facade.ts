@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import { GetReviewersStatisticsCollectionPayload } from '@pimp-my-pr/pmp-web/repository/domain';
+import { fromUserActions } from './reviewers.actions';
 import { ReviewersStatisticsPartialState } from './reviewers.reducer';
 import { reviewersStatisticsQuery } from './reviewers.selectors';
-import { fromUserActions } from './reviewers.actions';
-import { GetReviewersStatisticsCollectionPayload } from '@pimp-my-pr/pmp-web/repository/domain';
 
 @Injectable()
 export class ReviewersFacade {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { RepositoriesStatisticsPartialState } from './repositories-statistics.reducer';
 import { fromRepositoriesStatisticsActions } from './repositories-statistics.actions';
+import { RepositoriesStatisticsPartialState } from './repositories-statistics.reducer';
 import { repositoryStatisticsQuery } from './repositories-statistics.selectors';
 
 @Injectable()

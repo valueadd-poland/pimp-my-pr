@@ -1,7 +1,7 @@
-import { Action } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
-import { GetReviewerStatisticsResponseRequestPayload } from '../resources/request-payloads/get-reviewer-statistics-response.request-payload';
+import { Action } from '@ngrx/store';
 import { ReviewerStatisticsResponse } from '@pimp-my-pr/shared/domain';
+import { GetReviewerStatisticsResponseRequestPayload } from '../resources/request-payloads/get-reviewer-statistics-response.request-payload';
 
 export namespace fromReviewerStatisticsActions {
   export enum Types {

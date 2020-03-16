@@ -1,6 +1,6 @@
-import { ReviewerEntity } from './reviewer.entity';
-import { AuthorEntity } from './author.entity';
 import { f } from '@marcj/marshal';
+import { AuthorEntity } from './author.entity';
+import { ReviewerEntity } from './reviewer.entity';
 
 export class PrEntity {
   @f

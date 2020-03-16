@@ -1,17 +1,26 @@
-import { PrEntity } from '@pimp-my-pr/server/repository/core/domain';
-import { PrAuthor } from './interfaces/pr-author.interface';
-import { PrReviewer } from './interfaces/pr-reviewer.interface';
+import { ApiProperty } from '@nestjs/swagger';
+import { AuthorEntity, PrEntity, ReviewerEntity } from '@pimp-my-pr/server/repository/core/domain';
 
 export class PrStatisticsReadModel {
-  author: PrAuthor;
+  @ApiProperty()
+  author: AuthorEntity;
+  @ApiProperty()
   commentsCount: number;
+  @ApiProperty()
   createdAt: Date;
+  @ApiProperty()
   id: number;
+  @ApiProperty()
   linesOfCodeToCheck: number;
+  @ApiProperty()
   reviewCommentsCount: number;
-  reviewers: PrReviewer[];
+  @ApiProperty({ type: [ReviewerEntity] })
+  reviewers: ReviewerEntity[];
+  @ApiProperty()
   timeWaiting: number;
+  @ApiProperty()
   title: string;
+  @ApiProperty()
   url: string;
 
   constructor(pr: PrEntity) {
@@ -19,11 +28,7 @@ export class PrStatisticsReadModel {
     this.linesOfCodeToCheck = pr.linesOfCodeToCheck;
     this.id = pr.id;
     this.title = pr.title;
-    this.author = {
-      avatarUrl: pr.author.avatarUrl,
-      id: pr.author.id,
-      name: pr.author.name
-    };
+    this.author = pr.author;
     this.commentsCount = pr.commentsCount;
     this.reviewers = pr.reviewers;
     this.reviewCommentsCount = pr.reviewCommentsCount;

@@ -1,10 +1,17 @@
-import { PrStatistics } from '@pimp-my-pr/shared/domain';
+import { ApiProperty } from '@nestjs/swagger';
+import { PrStatisticsReadModel } from '../../read-models/pr-statistics.read-model';
 
 export class RepositoryStatisticsReadModel {
+  @ApiProperty()
   id: number;
+  @ApiProperty()
   fullName: string;
+  @ApiProperty()
   name: string;
+  @ApiProperty()
   owner: string;
+  @ApiProperty()
   pictureUrl: string;
-  prsStatistics: PrStatistics[];
+  @ApiProperty({ type: [PrStatisticsReadModel] })
+  prsStatistics: PrStatisticsReadModel[];
 }

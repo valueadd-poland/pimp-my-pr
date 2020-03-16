@@ -1,6 +1,6 @@
 import { f } from '@marcj/marshal';
-import { PrEntity } from './pr.entity';
 import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { PrEntity } from './pr.entity';
 
 @Entity()
 export class RepositoryEntity {

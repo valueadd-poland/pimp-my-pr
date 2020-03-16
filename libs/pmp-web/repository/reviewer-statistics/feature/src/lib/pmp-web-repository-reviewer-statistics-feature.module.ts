@@ -1,14 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PmpWebRepositoryReviewerStatisticsRoutingModule } from './pmp-web-repository-reviewer-statistics-routing.module';
-import { ReviewerStatisticsComponent } from './containers/reviewer-statistics/reviewer-statistics.component';
-import { PmpWebSharedUiPictureLabelModule } from '@pimp-my-pr/pmp-web/shared/ui-picture-label';
+import { NgModule } from '@angular/core';
 import { MatIconModule, MatTableModule } from '@angular/material';
-import { PmpWebRepositoryReviewerStatisticsDataAccessModule } from '@pimp-my-pr/pmp-web/repository/reviewer-statistics/data-access';
-import { PmpWebSharedUiGoBackHeaderModule } from '@pimp-my-pr/pmp-web/shared/ui-go-back-header';
-import { PmpWebRepositoryUiTablePrStatisticModule } from '@pimp-my-pr/pmp-web/repository/ui-table-pr-statistic';
-import { PmpWebSharedUiHeaderContainerModule } from '@pimp-my-pr/pmp-web/shared/ui-header-container';
 import { ContentLoaderModule } from '@ngneat/content-loader';
+import { PmpWebRepositoryReviewerStatisticsDataAccessModule } from '@pimp-my-pr/pmp-web/repository/reviewer-statistics/data-access';
+import { PmpWebRepositoryUiTablePrStatisticModule } from '@pimp-my-pr/pmp-web/repository/ui-table-pr-statistic';
+import { PmpWebSharedUiGoBackHeaderModule } from '@pimp-my-pr/pmp-web/shared/ui-go-back-header';
+import { PmpWebSharedUiHeaderContainerModule } from '@pimp-my-pr/pmp-web/shared/ui-header-container';
+import { PmpWebSharedUiPictureLabelModule } from '@pimp-my-pr/pmp-web/shared/ui-picture-label';
+import { ReviewerStatisticsComponent } from './containers/reviewer-statistics/reviewer-statistics.component';
+import { PmpWebRepositoryReviewerStatisticsRoutingModule } from './pmp-web-repository-reviewer-statistics-routing.module';
 
 @NgModule({
   imports: [
