@@ -14,6 +14,8 @@ import { GetRepositoryStatisticsQuery } from './queries/get-repository-statistic
 import { GetReviewerStatisticsQuery } from './queries/get-reviewer-statistics/get-reviewer-statistics.query';
 import { ListRepositoriesStatisticsQuery } from './queries/list-repositories-statistics/list-repositories-statistics.query';
 import { ListReviewersStatisticsQuery } from './queries/list-reviewers-statistics/list-reviewers-statistics.query';
+import { ListRepositoriesQuery } from './queries/list-repositories/list-repositories.query';
+import { RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
 
 @Injectable()
 export class RepositoryFacade {
@@ -37,6 +39,10 @@ export class RepositoryFacade {
 
   listRepositoriesStatistics(): Promise<RepositoriesStatisticsItemReadModel[]> {
     return this.queryBus.execute(new ListRepositoriesStatisticsQuery());
+  }
+
+  listRepositories(): Promise<RepositoryEntity[]> {
+    return this.queryBus.execute(new ListRepositoriesQuery());
   }
 
   listReviewersStatistics(): Promise<ReviewersStatisticsItemReadModel[]> {
