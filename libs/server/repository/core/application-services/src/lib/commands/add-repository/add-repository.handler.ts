@@ -9,7 +9,11 @@ export class AddRepositoryHandler implements ICommandHandler<AddRepositoryComman
   async execute(command: AddRepositoryCommand): Promise<void> {
     const { repositoryName, maxLines, maxWaitingTime } = command;
 
-    const repository = await this.repositoryRepository.getSingleRepositoryByName(repositoryName);
+    const repository = await this.repositoryRepository.getSingleRepositoryByName(
+      repositoryName,
+      command.token,
+      command.platform
+    );
 
     repository.maxLines = maxLines;
     repository.maxWaitingTime = maxWaitingTime;

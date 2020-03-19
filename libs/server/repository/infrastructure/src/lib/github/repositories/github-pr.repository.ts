@@ -24,9 +24,11 @@ export class GithubPrRepository extends PrRepository {
     super();
   }
 
-  get(repoFullName: string, prId: number): Promise<PrEntity> {
+  get(repoFullName: string, prId: number, token: string): Promise<PrEntity> {
     return this.httpService
-      .get<GithubPrDetailsEntity>(this.endpoints.getPr.url({ repoFullName, prId }))
+      .get<GithubPrDetailsEntity>(this.endpoints.getPr.url({ repoFullName, prId }), {
+        headers: { Authorization: `token ${token}` }
+      })
       .pipe(
         map(res => res.data),
         map(mapGithubPr),
@@ -35,14 +37,16 @@ export class GithubPrRepository extends PrRepository {
       .toPromise();
   }
 
-  findByRepository(repositoryId: string): Promise<PrEntity[]> {
+  findByRepository(repositoryId: string, token: string): Promise<PrEntity[]> {
     return this.httpService
-      .get<GithubPrEntity[]>(this.endpoints.getRepositoryPrs.url({ fullName: repositoryId }))
+      .get<GithubPrEntity[]>(this.endpoints.getRepositoryPrs.url({ fullName: repositoryId }), {
+        headers: { Authorization: `token ${token}` }
+      })
       .pipe(
         map(res => res.data),
 
         switchMap(prs =>
-          prs.length ? forkJoin(prs.map(pr => this.get(repositoryId, pr.number))) : of([])
+          prs.length ? forkJoin(prs.map(pr => this.get(repositoryId, pr.number, token))) : of([])
         )
       )
       .toPromise();

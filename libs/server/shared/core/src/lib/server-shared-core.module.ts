@@ -1,5 +1,6 @@
 import { Global, HttpModule, HttpService, Module, OnModuleInit } from '@nestjs/common';
 import { AxiosRequestConfig } from 'axios';
+
 import { ConfigModule } from './config/config.module';
 import { AuthInterceptor } from './auth.interceptor';
 import { TypeOrmRootModule } from './type-orm/type-orm-root.module';
@@ -22,6 +23,10 @@ export class ServerSharedCoreModule implements OnModuleInit {
   constructor(private httpService: HttpService, private interceptor: AuthInterceptor) {}
 
   onModuleInit(): void {
+    if (!this.interceptor) {
+      return;
+    }
+
     this.httpService.axiosRef.interceptors.request.use((req: AxiosRequestConfig) =>
       this.interceptor.intercept(req)
     );
