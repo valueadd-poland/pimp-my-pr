@@ -115,6 +115,30 @@
     },
     "server-repository-core-domain-services": {
       "tags": ["platform:server", "scope:repository", "type:domain-services"]
+    },
+    "server-auth-shell": {
+      "tags": ["platform:server", "scope:auth", "type:shell"]
+    },
+    "server-auth-api-rest": {
+      "tags": ["platform:server", "scope:auth", "type:api"]
+    },
+    "server-auth-core-application-services": {
+      "tags": ["platform:server", "scope:auth", "type:application-services"]
+    },
+    "server-auth-infrastructure": {
+      "tags": ["platform:server", "scope:auth", "type:infrastructure"]
+    },
+    "server-auth-core-domain-services": {
+      "tags": ["platform:server", "scope:auth", "type:domain-services"]
+    },
+    "server-auth-core-domain": {
+      "tags": ["platform:server", "scope:auth", "type:domain"]
+    },
+    "shared-util-query-string": {
+      "tags": ["platform:any", "scope:shared", "type:util"]
+    },
+    "server-auth-public": {
+      "tags": ["platform:server", "scope:shared", "type:public"]
     }
   }
 }

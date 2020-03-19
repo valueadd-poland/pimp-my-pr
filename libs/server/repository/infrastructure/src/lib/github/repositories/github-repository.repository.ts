@@ -29,9 +29,11 @@ export class GithubRepositoryRepository extends RemoteRepositoryRepository {
     super();
   }
 
-  getSingleRepositoryByName(fullName: string): Promise<RepositoryEntity> {
+  getSingleRepositoryByName(fullName: string, token: string): Promise<RepositoryEntity> {
     return this.httpService
-      .get<GithubRepositoryEntity>(this.endpoints.getRepository.url({ fullName }))
+      .get<GithubRepositoryEntity>(this.endpoints.getRepository.url({ fullName }), {
+        headers: { Authorization: `token ${token}` }
+      })
       .pipe(
         map((res: AxiosResponse) => res.data),
         map(mapGithubRepository),
@@ -46,9 +48,11 @@ export class GithubRepositoryRepository extends RemoteRepositoryRepository {
       .toPromise();
   }
 
-  getSingleRepositoryById(id: string): Promise<RepositoryEntity> {
+  getSingleRepositoryById(id: string, token: string): Promise<RepositoryEntity> {
     return this.httpService
-      .get<RepositoryEntity>(this.endpoints.getSingleRepository.url({ id }))
+      .get<RepositoryEntity>(this.endpoints.getSingleRepository.url({ id }), {
+        headers: { Authorization: `token ${token}` }
+      })
       .pipe(
         map((res: AxiosResponse) => res.data),
         map(mapGithubRepository),

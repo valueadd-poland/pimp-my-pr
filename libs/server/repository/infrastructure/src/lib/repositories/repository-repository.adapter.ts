@@ -1,15 +1,20 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
 import { RepositoryRepository } from '@pimp-my-pr/server/repository/core/domain-services';
 import { Repository } from 'typeorm';
-import { RemoteRepositoryRepository } from './remote-repository.repository';
+import {
+  remoteRepositoryRepositoryFactoryToken,
+  RemoteRepositoryRepository
+} from './remote-repository.repository';
+import { Platform } from '@pimp-my-pr/shared/domain';
 
 @Injectable()
 export class RepositoryRepositoryAdapter extends RepositoryRepository {
   constructor(
     @InjectRepository(RepositoryEntity) private typeOrmRepository: Repository<RepositoryEntity>,
-    private repository: RemoteRepositoryRepository
+    @Inject(remoteRepositoryRepositoryFactoryToken)
+    private repositoryFactory: (platform: Platform) => RemoteRepositoryRepository
   ) {
     super();
   }
@@ -18,17 +23,25 @@ export class RepositoryRepositoryAdapter extends RepositoryRepository {
     return this.typeOrmRepository.find();
   }
 
-  getSingleRepository(id: string): Promise<RepositoryEntity> {
+  getSingleRepository(id: string, token: string, platform: Platform): Promise<RepositoryEntity> {
+    const repository = this.repositoryFactory(platform);
+
     return this.typeOrmRepository.findOne(id).then(result => {
-      return this.repository.getSingleRepositoryById(id, result ? result.owner : null);
+      return repository.getSingleRepositoryById(id, token, result ? result.owner : null);
     });
   }
 
-  getSingleRepositoryByName(fullName: string): Promise<RepositoryEntity> {
-    return this.repository.getSingleRepositoryByName(fullName);
+  getSingleRepositoryByName(
+    fullName: string,
+    token: string,
+    platform: Platform
+  ): Promise<RepositoryEntity> {
+    const repository = this.repositoryFactory(platform);
+
+    return repository.getSingleRepositoryByName(fullName, token);
   }
 
-  save(repository: RepositoryEntity): Promise<void> {
-    return this.typeOrmRepository.save(repository).then();
+  async save(repository: RepositoryEntity): Promise<void> {
+    await this.typeOrmRepository.save(repository);
   }
 }
