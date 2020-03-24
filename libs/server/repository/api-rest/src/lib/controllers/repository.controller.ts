@@ -20,7 +20,11 @@ export class RepositoryController {
   @Post()
   addRepository(@Body() addRepositoryDto: AddRepositoryDto): Promise<void> {
     return this.repositoryFacade.addRepository(
-      new AddRepositoryCommand(addRepositoryDto.repositoryName)
+      new AddRepositoryCommand(
+        addRepositoryDto.repositoryName,
+        addRepositoryDto.maxLines,
+        addRepositoryDto.maxWaitingTime
+      )
     );
   }
 }
