@@ -24,6 +24,14 @@ export class RepositoryEntity {
   @f
   pictureUrl: string;
 
+  @Column({ nullable: true })
+  @f.optional()
+  maxLines?: number;
+
+  @Column({ nullable: true })
+  @f.optional()
+  maxWaitingTime?: number;
+
   @f.array(PrEntity)
   prs: PrEntity[] = [];
 }
