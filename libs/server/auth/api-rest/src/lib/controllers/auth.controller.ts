@@ -12,6 +12,10 @@ export class AuthController {
   @Post('access-token')
   getJwtToken(@Body() body: AccessTokenBodyDto): Promise<AuthResponse> {
     switch (body.platform) {
+      case Platform.bitbucket: {
+        return this.authFacade.getBitbucketAccessToken(body.code);
+      }
+
       case Platform.github: {
         return this.authFacade.getGithubAccessToken(body.code);
       }
