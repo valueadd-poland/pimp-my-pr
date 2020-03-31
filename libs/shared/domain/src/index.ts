@@ -13,3 +13,5 @@ export * from './lib/interfaces/pr-reviewer.interface';
 export * from './lib/interfaces/pr-author.interface';
 export * from './lib/enums/platform.enum';
 export * from './lib/responses/auth.response';
+export * from './lib/interfaces/login-success-payload';
+export * from './lib/responses/login-success.response';
