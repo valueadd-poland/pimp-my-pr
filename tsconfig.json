@@ -103,7 +103,11 @@
       ],
       "@pimp-my-pr/server/auth/core/domain": ["libs/server/auth/core/domain/src/index.ts"],
       "@pimp-my-pr/shared/util-query-string": ["libs/shared/util-query-string/src/index.ts"],
-      "@pimp-my-pr/server/auth/public": ["libs/server/auth/public/src/index.ts"]
+      "@pimp-my-pr/server/auth/public": ["libs/server/auth/public/src/index.ts"],
+      "@pimp-my-pr/pmp-web/auth/data-access": ["libs/pmp-web/auth/data-access/src/index.ts"],
+      "@pimp-my-pr/pmp-web/auth/domain": ["libs/pmp-web/auth/domain/src/index.ts"],
+      "@pimp-my-pr/pmp-web/shared/core": ["libs/pmp-web/shared/core/src/index.ts"],
+      "@pimp-my-pr/pmp-web/auth/auth-feature": ["libs/pmp-web/auth/auth-feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

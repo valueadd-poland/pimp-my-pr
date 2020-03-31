@@ -1348,6 +1348,130 @@
           }
         }
       }
+    },
+    "pmp-web-auth-data-access": {
+      "projectType": "library",
+      "root": "libs/pmp-web/auth/data-access",
+      "sourceRoot": "libs/pmp-web/auth/data-access/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/auth/data-access/tsconfig.lib.json",
+              "libs/pmp-web/auth/data-access/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/data-access/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/auth/data-access/jest.config.js",
+            "tsConfig": "libs/pmp-web/auth/data-access/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/auth/data-access/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-auth-domain": {
+      "projectType": "library",
+      "root": "libs/pmp-web/auth/domain",
+      "sourceRoot": "libs/pmp-web/auth/domain/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/auth/domain/tsconfig.lib.json",
+              "libs/pmp-web/auth/domain/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/domain/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/auth/domain/jest.config.js",
+            "tsConfig": "libs/pmp-web/auth/domain/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/auth/domain/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-shared-core": {
+      "projectType": "library",
+      "root": "libs/pmp-web/shared/core",
+      "sourceRoot": "libs/pmp-web/shared/core/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shared/core/tsconfig.lib.json",
+              "libs/pmp-web/shared/core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/core/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shared/core/jest.config.js",
+            "tsConfig": "libs/pmp-web/shared/core/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/shared/core/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-auth-auth-feature": {
+      "projectType": "library",
+      "root": "libs/pmp-web/auth/auth-feature",
+      "sourceRoot": "libs/pmp-web/auth/auth-feature/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/auth/auth-feature/tsconfig.lib.json",
+              "libs/pmp-web/auth/auth-feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/auth-feature/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/auth/auth-feature/jest.config.js",
+            "tsConfig": "libs/pmp-web/auth/auth-feature/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/auth/auth-feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

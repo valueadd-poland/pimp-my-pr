@@ -139,6 +139,18 @@
     },
     "server-auth-public": {
       "tags": ["platform:server", "scope:shared", "type:public"]
+    },
+    "pmp-web-auth-data-access": {
+      "tags": ["platform:web", "scope:auth", "type:data-access"]
+    },
+    "pmp-web-auth-domain": {
+      "tags": ["platform:web", "scope:auth", "type:domain"]
+    },
+    "pmp-web-shared-core": {
+      "tags": ["platform:web", "scope:shared", "type:core"]
+    },
+    "pmp-web-auth-auth-feature": {
+      "tags": ["platform:web", "scope:auth", "type:feature"]
     }
   }
 }
