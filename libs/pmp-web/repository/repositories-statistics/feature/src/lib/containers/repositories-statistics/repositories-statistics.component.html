@@ -1,10 +1,8 @@
-<div class="page__content">
-  <h1 class="page__title">Projects with PRs pending</h1>
+<h1 class="page__title">Projects with PRs pending</h1>
 
-  <pmp-statistics-overview-table
-    (navigateToItem)="onNavigateToRepository($event)"
-    [data]="repositoryStatisticsCollection$ | async"
-    [isLoading]="repositoryStatisticsCollectionLoading$ | async"
-    class="repositories-table"
-  ></pmp-statistics-overview-table>
-</div>
+<pmp-statistics-overview-table
+  (navigateToItem)="onNavigateToRepository($event)"
+  [data]="repositoryStatisticsCollection$ | async"
+  [isLoading]="repositoryStatisticsCollectionLoading$ | async"
+  class="repositories-table"
+></pmp-statistics-overview-table>
