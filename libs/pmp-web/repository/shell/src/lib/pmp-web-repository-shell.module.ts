@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { PmpWebSharedUiNavbarModule } from '@pimp-my-pr/pmp-web/shared/ui-navbar';
 import { PmpWebSharedUiSidebarModule } from '@pimp-my-pr/pmp-web/shared/ui-sidebar';
 import { RepositoriesComponent } from './containers/repositories/repositories.component';
-import { UserComponent } from './containers/user/user.component';
 import { PmpWebRepositoryShellRoutingModule } from './pmp-web-repository-shell-routing.module';
 
 @NgModule({
@@ -14,6 +13,6 @@ import { PmpWebRepositoryShellRoutingModule } from './pmp-web-repository-shell-r
     PmpWebSharedUiSidebarModule
   ],
   exports: [PmpWebRepositoryShellRoutingModule],
-  declarations: [UserComponent, RepositoriesComponent]
+  declarations: [RepositoriesComponent]
 })
 export class PmpWebRepositoryShellModule {}
