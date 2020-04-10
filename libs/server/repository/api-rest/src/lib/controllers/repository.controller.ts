@@ -1,12 +1,11 @@
-import { Body, Controller, Get, Post, Res, UseGuards } from '@nestjs/common';
-import { Response } from 'express';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
 import {
   AddRepositoryCommand,
   RepositoryFacade
 } from '@pimp-my-pr/server/repository/core/application-services';
-import { AuthGuard } from '@pimp-my-pr/server/auth/public';
+import { AuthGuard, Credentials, RequestCredentials } from '@pimp-my-pr/server/auth/public';
 import { AddRepositoryDto } from '../dtos/add-repository.dto';
 import { RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
 
@@ -22,12 +21,15 @@ export class RepositoryController {
   }
 
   @Post()
-  addRepository(@Body() addRepositoryDto: AddRepositoryDto, @Res() res: Response): Promise<void> {
+  addRepository(
+    @Body() addRepositoryDto: AddRepositoryDto,
+    @Credentials() credentials: RequestCredentials
+  ): Promise<void> {
     return this.repositoryFacade.addRepository(
       new AddRepositoryCommand(
         addRepositoryDto.repositoryName,
-        res.locals.token,
-        res.locals.platform,
+        credentials.token,
+        credentials.platform,
         addRepositoryDto.maxLines,
         addRepositoryDto.maxWaitingTime
       )

@@ -1,6 +1,5 @@
-import { Controller, Get, Param, UseGuards, Res } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { Response } from 'express';
 import {
   RepositoriesStatisticsItemReadModel,
   RepositoryFacade,
@@ -8,7 +7,7 @@ import {
   ReviewerStatisticsReadModel
 } from '@pimp-my-pr/server/repository/core/application-services';
 import { ListRepositoriesResponse, UserStatistics } from '@pimp-my-pr/shared/domain';
-import { AuthGuard } from '@pimp-my-pr/server/auth/public';
+import { AuthGuard, Credentials, RequestCredentials } from '@pimp-my-pr/server/auth/public';
 
 @ApiTags('statistics')
 @Controller('statistics')
@@ -18,39 +17,42 @@ export class StatisticsController {
 
   @ApiOkResponse({ type: [RepositoriesStatisticsItemReadModel] })
   @Get('repository')
-  list(@Res() res: Response): Promise<ListRepositoriesResponse> {
-    return this.repositoryFacade.listRepositoriesStatistics(res.locals.token, res.locals.platform);
+  list(@Credentials() credentials: RequestCredentials): Promise<ListRepositoriesResponse> {
+    return this.repositoryFacade.listRepositoriesStatistics(
+      credentials.token,
+      credentials.platform
+    );
   }
 
   @ApiOkResponse({ type: [RepositoriesStatisticsItemReadModel] })
   @Get('repository/:repositoryId')
   listSingleRepository(
     @Param('repositoryId') repositoryId: string,
-    @Res() res: Response
+    @Credentials() credentials: RequestCredentials
   ): Promise<ListRepositoriesResponse> {
     return this.repositoryFacade.getRepositoryStatistics(
       repositoryId,
-      res.locals.token,
-      res.locals.platform
+      credentials.token,
+      credentials.platform
     );
   }
 
   @ApiOkResponse({ type: [ReviewersStatisticsItemReadModel] })
   @Get('reviewers')
-  listReviewers(@Res() res: Response): Promise<UserStatistics[]> {
-    return this.repositoryFacade.listReviewersStatistics(res.locals.token, res.locals.platform);
+  listReviewers(@Credentials() credentials: RequestCredentials): Promise<UserStatistics[]> {
+    return this.repositoryFacade.listReviewersStatistics(credentials.token, credentials.platform);
   }
 
   @ApiOkResponse({ type: [ReviewerStatisticsReadModel] })
   @Get('reviewers/:username')
   listReviewerStatistics(
     @Param('username') username: string,
-    @Res() res: Response
+    @Credentials() credentials: RequestCredentials
   ): Promise<ReviewerStatisticsReadModel> {
     return this.repositoryFacade.getReviewerStatistics(
       username,
-      res.locals.token,
-      res.locals.platform
+      credentials.token,
+      credentials.platform
     );
   }
 }
