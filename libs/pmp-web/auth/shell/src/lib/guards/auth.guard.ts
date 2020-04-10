@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
       return this.authFacade.login(authCode, platform).pipe(first());
     } else {
       if (!!this.authFacade.getSavedToken()) {
-        return from(this.router.navigate(['/user']));
+        return from(this.router.navigate(['/reviewer']));
       }
       return of(true);
     }
