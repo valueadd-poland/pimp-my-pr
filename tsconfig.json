@@ -94,6 +94,9 @@
       ],
       "@pimp-my-pr/pmp-web/repository/repository-settings/feature": [
         "libs/pmp-web/repository/repository-settings/feature/src/index.ts"
+      ],
+      "@pimp-my-pr/server/shared/util-repository": [
+        "libs/server/shared/util-repository/src/index.ts"
       ]
     }
   },
