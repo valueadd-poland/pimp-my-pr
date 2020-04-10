@@ -1,8 +1,8 @@
-<pmp-go-back-header link="/user">Projects with PRs pending</pmp-go-back-header>
+<pmp-go-back-header link="/reviewer">Projects with PRs pending</pmp-go-back-header>
 
 <div class="user-statistics__container">
   <pmp-header-container
-    [avatarLabel]="userName || (userStatistics$ | async)?.name"
+    [avatarLabel]="reviewerName || (userStatistics$ | async)?.name"
     [avatarUrl]="userAvatarUrl || (userStatistics$ | async)?.avatarUrl"
     label="Pull requests pending"
   ></pmp-header-container>

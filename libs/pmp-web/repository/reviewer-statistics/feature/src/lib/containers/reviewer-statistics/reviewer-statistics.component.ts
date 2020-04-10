@@ -11,7 +11,7 @@ import { first } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ReviewerStatisticsComponent implements OnInit {
-  userName: string | null = null;
+  reviewerName: string | null = null;
   userAvatarUrl: string | null = null;
   userStatistics$ = this.facade.reviewerStatistics$;
   userStatisticsLoading$ = this.facade.reviewerStatisticsResponseLoading$;
@@ -34,8 +34,8 @@ export class ReviewerStatisticsComponent implements OnInit {
 
   private initGetUserStatistics(): void {
     this.route.params.pipe(first()).subscribe(params => {
-      this.userName = params.userName;
-      this.facade.getReviewerStatisticsResponse({ username: this.userName });
+      this.reviewerName = params.reviewerName;
+      this.facade.getReviewerStatisticsResponse({ reviewer: this.reviewerName });
     });
   }
 

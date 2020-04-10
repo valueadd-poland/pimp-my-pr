@@ -5,6 +5,7 @@ import { ContentLoaderModule } from '@ngneat/content-loader';
 import { PmpWebSharedUiPersonsBarModule } from '@pimp-my-pr/pmp-web/shared/ui-persons-bar';
 import { PmpWebSharedUiPictureLabelModule } from '@pimp-my-pr/pmp-web/shared/ui-picture-label';
 import { TablePrStatisticComponent } from './table-pr-statistic/table-pr-statistic.component';
+import { PmpWebSharedUtilModule } from '@pimp-my-pr/pmp-web/shared/util';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { TablePrStatisticComponent } from './table-pr-statistic/table-pr-statist
     PmpWebSharedUiPictureLabelModule,
     ContentLoaderModule,
     MatSortModule,
-    PmpWebSharedUiPersonsBarModule
+    PmpWebSharedUiPersonsBarModule,
+    PmpWebSharedUtilModule
   ],
   exports: [TablePrStatisticComponent],
   declarations: [TablePrStatisticComponent]

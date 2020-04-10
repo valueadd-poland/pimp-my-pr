@@ -9,7 +9,7 @@ const routes: Routes = [
     canActivate: [AuthPublicGuard],
     children: [
       {
-        path: 'user',
+        path: 'reviewer',
         component: RepositoriesComponent,
         children: [
           {
@@ -20,7 +20,7 @@ const routes: Routes = [
               )
           },
           {
-            path: ':userName',
+            path: ':reviewerName',
             loadChildren: () =>
               import('@pimp-my-pr/pmp-web/repository/reviewer-statistics/feature').then(
                 m => m.PmpWebRepositoryReviewerStatisticsFeatureModule

@@ -10,7 +10,7 @@ export class AuthFeatureEffects {
   loginSuccess$ = this.actions$.pipe(
     ofType(fromAuthActions.Types.LoginSuccess),
     tap(() => {
-      this.router.navigate(['/user']);
+      this.router.navigate(['/reviewer']);
     })
   );
 
