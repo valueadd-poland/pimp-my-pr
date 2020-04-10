@@ -1182,6 +1182,32 @@
           "styleext": "scss"
         }
       }
+    },
+    "server-shared-util-repository": {
+      "projectType": "library",
+      "root": "libs/server/shared/util-repository",
+      "sourceRoot": "libs/server/shared/util-repository/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/shared/util-repository/tsconfig.lib.json",
+              "libs/server/shared/util-repository/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/shared/util-repository/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/shared/util-repository/jest.config.js",
+            "tsConfig": "libs/server/shared/util-repository/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

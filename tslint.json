@@ -70,7 +70,12 @@
           },
           {
             "sourceTag": "type:api",
-            "onlyDependOnLibsWithTags": ["type:application-services", "type:domain", "type:shell"]
+            "onlyDependOnLibsWithTags": [
+              "type:application-services",
+              "type:domain",
+              "type:shell",
+              "type:util"
+            ]
           },
           {
             "sourceTag": "type:application",

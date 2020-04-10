@@ -118,6 +118,9 @@
     },
     "server-repository-core-domain-services": {
       "tags": ["platform:server", "scope:repository", "type:domain-services"]
+    },
+    "server-shared-util-repository": {
+      "tags": ["platform:server", "scope:shared", "type:util"]
     }
   }
 }

@@ -6,6 +6,7 @@ import {
 } from '@pimp-my-pr/server/repository/core/application-services';
 import { AddRepositoryDto } from '../dtos/add-repository.dto';
 import { RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { extractFullName } from '@pimp-my-pr/server/shared/util-repository';
 
 @ApiTags('repository')
 @Controller('repository')
@@ -21,7 +22,7 @@ export class RepositoryController {
   addRepository(@Body() addRepositoryDto: AddRepositoryDto): Promise<void> {
     return this.repositoryFacade.addRepository(
       new AddRepositoryCommand(
-        addRepositoryDto.repositoryName,
+        extractFullName(addRepositoryDto.repositoryUrl),
         addRepositoryDto.maxLines,
         addRepositoryDto.maxWaitingTime
       )
