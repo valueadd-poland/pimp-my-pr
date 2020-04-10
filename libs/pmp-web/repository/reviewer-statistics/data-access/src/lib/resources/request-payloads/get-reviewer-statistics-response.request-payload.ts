@@ -1,4 +1,4 @@
 export interface GetReviewerStatisticsResponseRequestPayload {
-  reviewer: string;
+  reviewerName: string;
   id?: string;
 }

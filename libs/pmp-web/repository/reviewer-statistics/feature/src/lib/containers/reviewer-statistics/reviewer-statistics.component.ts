@@ -35,7 +35,7 @@ export class ReviewerStatisticsComponent implements OnInit {
   private initGetUserStatistics(): void {
     this.route.params.pipe(first()).subscribe(params => {
       this.reviewerName = params.reviewerName;
-      this.facade.getReviewerStatisticsResponse({ reviewer: this.reviewerName });
+      this.facade.getReviewerStatisticsResponse({ reviewerName: this.reviewerName });
     });
   }
 

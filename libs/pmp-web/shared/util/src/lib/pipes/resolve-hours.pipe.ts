@@ -5,13 +5,35 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ResolveHoursPipe implements PipeTransform {
   transform(value: number): string {
-    if (value === 0) return `less than an hour`;
+    const timeValues: { hrsInThatPeriod: number; name: string }[] = [
+      { hrsInThatPeriod: 8760, name: 'year' },
+      { hrsInThatPeriod: 730, name: 'month' },
+      { hrsInThatPeriod: 168, name: 'week' },
+      { hrsInThatPeriod: 24, name: 'day' },
+      { hrsInThatPeriod: 1, name: 'hour' }
+    ];
 
-    const days: number = Math.floor(value / 24);
-    const hours: number = value % 24;
-    const daysLabel = days !== 0 ? (days > 1 ? `${days} days` : `${days} day`) : '';
-    const hoursLabel = hours !== 0 ? (hours > 1 ? `${hours} hours` : `${hours} hour`) : '';
+    let timeLabel: string,
+      incr = 0;
 
-    return `${daysLabel} ${hoursLabel}`.trim();
+    while (!timeLabel) {
+      if (!timeValues[incr]) break;
+
+      const numOfGivenTimePeriodUnitsInGivenHoursValue = Math.floor(
+        value / timeValues[incr].hrsInThatPeriod
+      );
+
+      if (numOfGivenTimePeriodUnitsInGivenHoursValue > 1) {
+        timeLabel = `${numOfGivenTimePeriodUnitsInGivenHoursValue} ${timeValues[incr].name}s`;
+        break;
+      }
+
+      if (numOfGivenTimePeriodUnitsInGivenHoursValue > 0)
+        timeLabel = `${numOfGivenTimePeriodUnitsInGivenHoursValue} ${timeValues[incr].name}`;
+
+      incr++;
+    }
+
+    return timeLabel || `less than an hour`;
   }
 }
