@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'pimp-my-pr-repository-settings',
@@ -6,6 +6,4 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./repository-settings.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RepositorySettingsComponent {
-  constructor() {}
-}
+export class RepositorySettingsComponent {}
