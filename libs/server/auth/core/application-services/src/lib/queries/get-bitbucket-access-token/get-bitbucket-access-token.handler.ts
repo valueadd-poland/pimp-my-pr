@@ -1,14 +1,14 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { GetBitbucketAccessTokenQuery } from './get-bitbucket-access-token.query';
-import { AuthTokenReadModel } from '../../read-models/auth-token.read-model';
-import { BaseAuthRepository } from '@pimp-my-pr/server/auth/core/domain-services';
 import { JwtService } from '@nestjs/jwt';
+import { AuthTokenRepository } from '@pimp-my-pr/server/auth/core/domain-services';
 import { Platform } from '@pimp-my-pr/shared/domain';
+import { AuthTokenReadModel } from '../../read-models/auth-token.read-model';
+import { GetBitbucketAccessTokenQuery } from './get-bitbucket-access-token.query';
 
 @QueryHandler(GetBitbucketAccessTokenQuery)
 export class GetBitbucketAccessTokenHandler
   implements IQueryHandler<GetBitbucketAccessTokenQuery, AuthTokenReadModel> {
-  constructor(private authRepository: BaseAuthRepository, private jwtService: JwtService) {}
+  constructor(private authRepository: AuthTokenRepository, private jwtService: JwtService) {}
 
   async execute(query: GetBitbucketAccessTokenQuery): Promise<AuthTokenReadModel> {
     const { token } = await this.authRepository.getBitbucketAccessToken(query.bitbucketCode);

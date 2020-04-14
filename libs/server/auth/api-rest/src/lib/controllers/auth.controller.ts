@@ -1,8 +1,8 @@
 import { Body, Controller, NotImplementedException, Post } from '@nestjs/common';
-import { AccessTokenBodyDto } from '../dto/access-token-body.dto';
-import { AuthResponse, Platform } from '@pimp-my-pr/shared/domain';
-import { AuthFacade } from '@pimp-my-pr/server/auth/core/application-services';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthFacade } from '@pimp-my-pr/server/auth/core/application-services';
+import { AuthResponse, Platform } from '@pimp-my-pr/shared/domain';
+import { AccessTokenBodyDto } from '../dto/access-token-body.dto';
 
 @ApiTags('auth')
 @Controller('auth')

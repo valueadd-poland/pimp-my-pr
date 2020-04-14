@@ -1,1 +1,1 @@
-export * from './lib/repositories/base-auth.repository';
+export * from './lib/repositories/auth-token.repository';

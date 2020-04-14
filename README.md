@@ -24,12 +24,11 @@ A brilliant tool that will pimp your pull requests by collecting and presenting 
 - (for Github) register application at https://github.com/settings/applications/new
 - (for Github) fill Client ID as `PMP_SERVER_GITHUB_CLIENT_ID` and Client Secret as `PMP_SERVER_GITHUB_CLIENT_SECRET`
 - (for Bitbucket) register application:
-    1. Go to account settings
-    2. Find "Access management" group
-    3. Go to "OAuth"
-    4. Add OAuth consumer with "Add consumer" button
-    
-    You can find out more at https://confluence.atlassian.com/x/pwIwDg
+  1. Go to account settings
+  2. Find "Access management" group
+  3. Go to "OAuth"
+  4. Add OAuth consumer with "Add consumer" button
+     You can find out more at https://confluence.atlassian.com/x/pwIwDg
 - (for Bitbucket) fill Client ID as `PMP_SERVER_BITBUCKET_CLIENT_ID` and Client Secret as `PMP_SERVER_BITBUCKET_CLIENT_SECRET`
 - install dependencies with `npm install`
 - (optional) start a database with docker `docker run --name pmp-postgres -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_USER=pmp -p 5432:5432 -d postgres`

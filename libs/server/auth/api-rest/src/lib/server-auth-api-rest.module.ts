@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { AuthController } from './controllers/auth.controller';
 import { ServerAuthShellModule } from '@pimp-my-pr/server/auth/shell';
+import { AuthController } from './controllers/auth.controller';
 
 @Module({
   imports: [ServerAuthShellModule],
