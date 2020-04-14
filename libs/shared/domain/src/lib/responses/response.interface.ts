@@ -1,4 +1,4 @@
-export interface IResponse<T, E> {
+export interface IResponse<T = any, E = any> {
   data: T;
   error: E;
 }

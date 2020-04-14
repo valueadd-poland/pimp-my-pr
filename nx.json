@@ -59,6 +59,9 @@
     "pmp-web-repository-ui-table-pr-statistic": {
       "tags": ["platform:web", "scope:shared", "type:ui"]
     },
+    "pmp-web-repository-data-access": {
+      "tags": ["platform:web", "scope:repository", "type:data-access"]
+    },
     "pmp-web-repository-repository-statistics-feature": {
       "tags": ["platform:web", "scope:repository", "type:feature"]
     },
