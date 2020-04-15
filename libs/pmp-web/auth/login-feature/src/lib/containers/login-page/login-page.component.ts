@@ -27,7 +27,11 @@ export class LoginPageComponent implements OnInit {
     }
   ];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (!!this.authFacade.getSavedToken()) {
+      this.router.navigate(['/user']);
+    }
+  }
 
   login(system: string): void {
     switch (system) {

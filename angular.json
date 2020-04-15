@@ -1442,28 +1442,59 @@
         }
       }
     },
-    "pmp-web-auth-auth-feature": {
+    "pmp-web-auth-public": {
       "projectType": "library",
-      "root": "libs/pmp-web/auth/auth-feature",
-      "sourceRoot": "libs/pmp-web/auth/auth-feature/src",
+      "root": "libs/pmp-web/auth/public",
+      "sourceRoot": "libs/pmp-web/auth/public/src",
       "prefix": "pimp-my-pr",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/pmp-web/auth/auth-feature/tsconfig.lib.json",
-              "libs/pmp-web/auth/auth-feature/tsconfig.spec.json"
+              "libs/pmp-web/auth/public/tsconfig.lib.json",
+              "libs/pmp-web/auth/public/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/auth-feature/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/public/**"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/pmp-web/auth/auth-feature/jest.config.js",
-            "tsConfig": "libs/pmp-web/auth/auth-feature/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/auth/auth-feature/src/test-setup.ts"
+            "jestConfig": "libs/pmp-web/auth/public/jest.config.js",
+            "tsConfig": "libs/pmp-web/auth/public/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/auth/public/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-auth-feature": {
+      "projectType": "library",
+      "root": "libs/pmp-web/auth/feature",
+      "sourceRoot": "libs/pmp-web/auth/feature/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/auth/feature/tsconfig.lib.json",
+              "libs/pmp-web/auth/feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/feature/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/auth/feature/jest.config.js",
+            "tsConfig": "libs/pmp-web/auth/feature/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/auth/feature/src/test-setup.ts"
           }
         }
       },

@@ -8,7 +8,7 @@ export namespace fromAuthActions {
     Login = '[Auth] Login',
     LoginFail = '[Auth] Login Fail',
     LoginSuccess = '[Auth] Login Success',
-    SetTokenFromStorage = '[Auth] Set Token From Storage'
+    Logout = '[Auth] Logout'
   }
 
   export class Login implements Action {
@@ -29,11 +29,9 @@ export namespace fromAuthActions {
     constructor(public payload: LoginSuccessPayload) {}
   }
 
-  export class SetTokenFromStorage implements Action {
-    readonly type = Types.SetTokenFromStorage;
-
-    constructor(public payload: string) {}
+  export class Logout implements Action {
+    readonly type = Types.Logout;
   }
 
-  export type CollectiveType = Login | LoginFail | LoginSuccess | SetTokenFromStorage;
+  export type CollectiveType = Login | LoginFail | LoginSuccess | Logout;
 }

@@ -107,7 +107,8 @@
       "@pimp-my-pr/pmp-web/auth/data-access": ["libs/pmp-web/auth/data-access/src/index.ts"],
       "@pimp-my-pr/pmp-web/auth/domain": ["libs/pmp-web/auth/domain/src/index.ts"],
       "@pimp-my-pr/pmp-web/shared/core": ["libs/pmp-web/shared/core/src/index.ts"],
-      "@pimp-my-pr/pmp-web/auth/auth-feature": ["libs/pmp-web/auth/auth-feature/src/index.ts"]
+      "@pimp-my-pr/pmp-web/auth/public": ["libs/pmp-web/auth/public/src/index.ts"],
+      "@pimp-my-pr/pmp-web/auth/feature": ["libs/pmp-web/auth/feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
