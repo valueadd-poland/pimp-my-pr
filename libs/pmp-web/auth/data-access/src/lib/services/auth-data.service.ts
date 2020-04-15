@@ -16,6 +16,10 @@ export class AuthDataService {
 
   constructor(private http: HttpClient) {}
 
+  clearSavedToken(): void {
+    localStorage.removeItem(this.TOKEN_KEY);
+  }
+
   login(payload: LoginPayload): Observable<LoginSuccessPayload> {
     return this.http
       .post<LoginSuccessResponse>(this.endpoints.getAccessToken.url(), {
@@ -26,11 +30,7 @@ export class AuthDataService {
   }
 
   getToken(): string {
-    return localStorage.getItem(this.TOKEN_KEY);
-  }
-
-  removeToken(): void {
-    localStorage.removeItem(this.TOKEN_KEY);
+    return JSON.parse(localStorage.getItem(this.TOKEN_KEY));
   }
 
   saveToken(authToken: string): void {

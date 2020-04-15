@@ -149,7 +149,10 @@
     "pmp-web-shared-core": {
       "tags": ["platform:web", "scope:shared", "type:core"]
     },
-    "pmp-web-auth-auth-feature": {
+    "pmp-web-auth-public": {
+      "tags": ["platform:web", "scope:auth", "name:auth-public", "type:public"]
+    },
+    "pmp-web-auth-feature": {
       "tags": ["platform:web", "scope:auth", "type:feature"]
     }
   }

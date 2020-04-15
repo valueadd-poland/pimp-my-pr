@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/angular';
 import { AuthPartialState } from './auth.reducer';
 import { fromAuthActions } from './auth.actions';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthDataService } from '../services/auth-data.service';
 import { of } from 'rxjs';
@@ -25,6 +25,14 @@ export class AuthEffects {
       return new fromAuthActions.LoginFail(error);
     }
   });
+
+  @Effect({ dispatch: false })
+  logout$ = this.actions$.pipe(
+    ofType(fromAuthActions.Types.Logout),
+    tap(() => {
+      this.authDataService.clearSavedToken();
+    })
+  );
 
   constructor(
     private dp: DataPersistence<AuthPartialState>,

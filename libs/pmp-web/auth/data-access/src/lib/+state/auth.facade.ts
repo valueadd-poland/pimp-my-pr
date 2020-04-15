@@ -18,6 +18,10 @@ export class AuthFacade {
     private actionStatusResolverService: ActionStatusResolverService
   ) {}
 
+  applyToken(token: string): void {
+    this.store.dispatch(new fromAuthActions.LoginSuccess({ token }));
+  }
+
   login(authCode: string): Observable<boolean> {
     return this.actionStatusResolverService.resolve(
       new fromAuthActions.Login({ code: authCode, platform: 'github' }),
@@ -26,8 +30,8 @@ export class AuthFacade {
     );
   }
 
-  setTokenFromStorage(): void {
-    this.store.dispatch(new fromAuthActions.SetTokenFromStorage(this.getSavedToken()));
+  logout(): void {
+    this.store.dispatch(new fromAuthActions.Logout());
   }
 
   getSavedToken(): string {

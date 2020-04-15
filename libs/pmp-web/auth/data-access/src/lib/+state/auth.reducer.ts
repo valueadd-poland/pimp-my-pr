@@ -46,10 +46,10 @@ export function authReducer(
       break;
     }
 
-    case fromAuthActions.Types.SetTokenFromStorage: {
+    case fromAuthActions.Types.Logout: {
       state = {
         ...state,
-        authToken: action.payload
+        authToken: null
       };
       break;
     }
