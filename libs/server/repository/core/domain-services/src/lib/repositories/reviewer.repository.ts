@@ -1,5 +1,4 @@
 import { ReviewerEntity } from '@pimp-my-pr/server/repository/core/domain';
-import { Platform } from '@pimp-my-pr/shared/domain';
 
 export const reviewerRepositoryFactoryToken = Symbol('reviewerRepositoryFactory');
 

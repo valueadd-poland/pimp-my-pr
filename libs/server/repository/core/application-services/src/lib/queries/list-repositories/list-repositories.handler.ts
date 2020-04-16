@@ -1,10 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import {
-  PrRepository,
-  RepositoryRepository
-} from '@pimp-my-pr/server/repository/core/domain-services';
-import { ListRepositoriesQuery } from './list-repositories.query';
 import { RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { RepositoryRepository } from '@pimp-my-pr/server/repository/core/domain-services';
+import { ListRepositoriesQuery } from './list-repositories.query';
 
 @QueryHandler(ListRepositoriesQuery)
 export class ListRepositoriesHandler

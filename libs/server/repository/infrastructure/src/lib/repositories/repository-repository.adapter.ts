@@ -1,18 +1,20 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
 import { RepositoryRepository } from '@pimp-my-pr/server/repository/core/domain-services';
-import { Repository } from 'typeorm';
-import {
-  remoteRepositoryRepositoryFactoryToken,
-  RemoteRepositoryRepository
-} from './remote-repository.repository';
 import { Platform } from '@pimp-my-pr/shared/domain';
+import { Repository } from 'typeorm';
+import { RepositorySchema } from '../typeorm/schema/repository.schema';
+import {
+  RemoteRepositoryRepository,
+  remoteRepositoryRepositoryFactoryToken
+} from './remote-repository.repository';
 
 @Injectable()
 export class RepositoryRepositoryAdapter extends RepositoryRepository {
   constructor(
-    @InjectRepository(RepositoryEntity) private typeOrmRepository: Repository<RepositoryEntity>,
+    @InjectRepository(RepositorySchema as any)
+    private typeOrmRepository: Repository<RepositoryEntity>,
     @Inject(remoteRepositoryRepositoryFactoryToken)
     private repositoryFactory: (platform: Platform) => RemoteRepositoryRepository
   ) {
@@ -23,15 +25,15 @@ export class RepositoryRepositoryAdapter extends RepositoryRepository {
     return this.typeOrmRepository.find();
   }
 
-  getSingleRepository(id: string, token: string, platform: Platform): Promise<RepositoryEntity> {
-    const repository = this.repositoryFactory(platform);
-
-    return this.typeOrmRepository.findOne(id).then(result => {
-      return repository.getSingleRepositoryById(id, token, result ? result.owner : null);
-    });
+  findByUserId(userId: string): Promise<RepositoryEntity[]> {
+    return this.typeOrmRepository.find({ userId });
   }
 
-  getSingleRepositoryByName(
+  getById(id: string): Promise<RepositoryEntity> {
+    return this.typeOrmRepository.findOneOrFail(id);
+  }
+
+  loadRepositoryByName(
     fullName: string,
     token: string,
     platform: Platform

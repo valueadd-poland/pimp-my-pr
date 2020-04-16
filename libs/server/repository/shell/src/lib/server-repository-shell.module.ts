@@ -2,22 +2,21 @@ import { Global, Module } from '@nestjs/common';
 
 import { ServerRepositoryCoreApplicationServicesModule } from '@pimp-my-pr/server/repository/core/application-services';
 import {
-  RepositoryRepository,
   prRepositoryFactoryToken,
+  RepositoryRepository,
   reviewerRepositoryFactoryToken
 } from '@pimp-my-pr/server/repository/core/domain-services';
 import {
-  RepositoryRepositoryAdapter,
-  ServerRepositoryInfrastructureModule,
-  remoteRepositoryRepositoryFactoryToken,
-  GithubPrRepository,
   BitbucketPrRepository,
-  GithubRepositoryRepository,
   BitbucketRepositoryRepository,
+  BitbucketReviewerRepository,
+  GithubPrRepository,
+  GithubRepositoryRepository,
   GithubReviewerRepository,
-  BitbucketReviewerRepository
+  remoteRepositoryRepositoryFactoryToken,
+  RepositoryRepositoryAdapter,
+  ServerRepositoryInfrastructureModule
 } from '@pimp-my-pr/server/repository/infrastructure';
-import { FeatureRepositoryTypeOrmModule } from './feature-repository-type-orm.module';
 import { prRepositoryFactoryFactory } from './factories/pr-repository.factory';
 import { remoteRepositoryRepositoryFactoryFactory } from './factories/remote-repository-repository.factory';
 import { reviewerRepositoryFactoryFactory } from './factories/reviewer-repository.factory';
@@ -53,16 +52,8 @@ const providers = [
 
 @Global()
 @Module({
-  imports: [
-    FeatureRepositoryTypeOrmModule,
-    ServerRepositoryInfrastructureModule,
-    ServerRepositoryCoreApplicationServicesModule
-  ],
+  imports: [ServerRepositoryInfrastructureModule, ServerRepositoryCoreApplicationServicesModule],
   providers: providers,
-  exports: [
-    FeatureRepositoryTypeOrmModule,
-    ...providers,
-    ServerRepositoryCoreApplicationServicesModule
-  ]
+  exports: [...providers, ServerRepositoryCoreApplicationServicesModule]
 })
 export class ServerRepositoryShellModule {}

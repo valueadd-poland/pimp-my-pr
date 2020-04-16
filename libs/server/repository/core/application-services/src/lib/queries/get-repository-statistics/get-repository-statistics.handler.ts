@@ -1,16 +1,16 @@
-import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { Inject } from '@nestjs/common';
+import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 
 import { PrEntity } from '@pimp-my-pr/server/repository/core/domain';
 import {
   PrRepository,
-  RepositoryRepository,
-  prRepositoryFactoryToken
+  prRepositoryFactoryToken,
+  RepositoryRepository
 } from '@pimp-my-pr/server/repository/core/domain-services';
+import { Platform } from '@pimp-my-pr/shared/domain';
 import { repositoryPrsStatisticsReadModelFactory } from '../../read-models/factories/repository-prs-statistics-read-model.factory';
 import { GetRepositoryStatisticsQuery } from './get-repository-statistics.query';
 import { RepositoryStatisticsReadModel } from './repository-statistics.read-model';
-import { Platform } from '@pimp-my-pr/shared/domain';
 
 @QueryHandler(GetRepositoryStatisticsQuery)
 export class GetRepositoryStatisticsHandler
@@ -22,11 +22,7 @@ export class GetRepositoryStatisticsHandler
   ) {}
 
   async execute(query: GetRepositoryStatisticsQuery): Promise<RepositoryStatisticsReadModel> {
-    const repository = await this.repositoryRepository.getSingleRepository(
-      query.repositoryId,
-      query.token,
-      query.platform
-    );
+    const repository = await this.repositoryRepository.getById(query.repositoryId);
 
     const prRepository = this.prRepositoryFactory(query.platform);
 

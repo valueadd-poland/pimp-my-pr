@@ -1,6 +1,6 @@
+import { plainToClass } from '@marcj/marshal';
 import { ReviewerEntity } from '@pimp-my-pr/server/repository/core/domain';
 import { BitbucketParticipantUserEntity } from '../domain/entities/bitbucket-participant-user.entity';
-import { plainToClass } from '@marcj/marshal';
 import { BitbucketUuidUtil } from '../utils/bitbucket-uuid.util';
 
 export const mapBitbucketParticipantUser = (

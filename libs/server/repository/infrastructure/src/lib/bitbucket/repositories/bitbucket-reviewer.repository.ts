@@ -1,10 +1,10 @@
 import { HttpService, Injectable } from '@nestjs/common';
-import { ReviewerRepository } from '@pimp-my-pr/server/repository/core/domain-services';
-import { urlFactory } from '@valueadd/typed-urls';
-import { bitbucketConfig } from '@pimp-my-pr/server/shared/core';
 import { ReviewerEntity } from '@pimp-my-pr/server/repository/core/domain';
-import { map } from 'rxjs/operators';
+import { ReviewerRepository } from '@pimp-my-pr/server/repository/core/domain-services';
+import { bitbucketConfig } from '@pimp-my-pr/server/shared/core';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
+import { urlFactory } from '@valueadd/typed-urls';
+import { map } from 'rxjs/operators';
 import { BitbucketUserEntity } from '../domain/entities/bitbucket-user.entity';
 import { mapBitbucketUser } from '../mappers/map-bitbucket-user';
 import { BitbucketUuidUtil } from '../utils/bitbucket-uuid.util';
