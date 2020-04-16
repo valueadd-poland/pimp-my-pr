@@ -1,17 +1,23 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import {
+  AuthGuard,
+  Credentials,
+  CurrentUserId,
+  RequestCredentials
+} from '@pimp-my-pr/server/auth/public';
 
 import {
   AddRepositoryCommand,
   RepositoryFacade
 } from '@pimp-my-pr/server/repository/core/application-services';
-import { AuthGuard, Credentials, RequestCredentials } from '@pimp-my-pr/server/auth/public';
-import { AddRepositoryDto } from '../dtos/add-repository.dto';
 import { RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { AddRepositoryDto } from '../dtos/add-repository.dto';
 
 @ApiTags('repository')
-@Controller('repository')
+@ApiBearerAuth()
 @UseGuards(AuthGuard)
+@Controller('repository')
 export class RepositoryController {
   constructor(private repositoryFacade: RepositoryFacade) {}
 
@@ -23,11 +29,13 @@ export class RepositoryController {
   @Post()
   addRepository(
     @Body() addRepositoryDto: AddRepositoryDto,
-    @Credentials() credentials: RequestCredentials
+    @Credentials() credentials: RequestCredentials,
+    @CurrentUserId() userId: string
   ): Promise<void> {
     return this.repositoryFacade.addRepository(
       new AddRepositoryCommand(
         addRepositoryDto.repositoryName,
+        userId,
         credentials.token,
         credentials.platform,
         addRepositoryDto.maxLines,

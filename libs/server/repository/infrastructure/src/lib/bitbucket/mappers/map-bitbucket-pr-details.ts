@@ -1,10 +1,10 @@
 import { plainToClass } from '@marcj/marshal';
 import { PrEntity } from '@pimp-my-pr/server/repository/core/domain';
 import { BitbucketPrDetailsEntity } from '../domain/entities/bitbucket-pr-details.entity';
+import { BitbucketPrDiffEntity } from '../domain/entities/bitbucket-pr-diff.entity';
+import { BitbucketUuidUtil } from '../utils/bitbucket-uuid.util';
 import { mapBitbucketAccount } from './map-bitbucket-account';
 import { mapBitbucketParticipantUser } from './map-bitbucket-participant-user';
-import { BitbucketUuidUtil } from '../utils/bitbucket-uuid.util';
-import { BitbucketPrDiffEntity } from '../domain/entities/bitbucket-pr-diff.entity';
 
 export const mapBitbucketPrDetails = (pr: BitbucketPrDetailsEntity): PrEntity => {
   const { additions, deletions } = calculatePrStats(pr.diff);

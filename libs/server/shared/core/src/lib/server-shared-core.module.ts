@@ -1,11 +1,11 @@
 import { Global, HttpModule, HttpService, Module, OnModuleInit } from '@nestjs/common';
 import { AxiosRequestConfig } from 'axios';
+import { AuthInterceptor } from './auth.interceptor';
+import { authInterceptorFactory } from './auth.interceptor.factory';
 
 import { ConfigModule } from './config/config.module';
-import { AuthInterceptor } from './auth.interceptor';
-import { TypeOrmRootModule } from './type-orm/type-orm-root.module';
 import { PmpApiConfigService } from './config/pmp-api-config.service';
-import { authInterceptorFactory } from './auth.interceptor.factory';
+import { TypeOrmRootModule } from './type-orm/type-orm-root.module';
 
 @Global()
 @Module({
@@ -22,6 +22,7 @@ import { authInterceptorFactory } from './auth.interceptor.factory';
 export class ServerSharedCoreModule implements OnModuleInit {
   constructor(private httpService: HttpService, private interceptor: AuthInterceptor) {}
 
+  // @ToDo to remove
   onModuleInit(): void {
     if (!this.interceptor) {
       return;

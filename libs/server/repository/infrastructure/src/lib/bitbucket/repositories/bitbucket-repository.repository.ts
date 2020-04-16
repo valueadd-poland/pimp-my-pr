@@ -1,19 +1,19 @@
 import { HttpService, Injectable } from '@nestjs/common';
-import { urlFactory } from '@valueadd/typed-urls';
-import { bitbucketConfig } from '@pimp-my-pr/server/shared/core';
 import {
   RepositoryEntity,
   RepositoryNotFoundException
 } from '@pimp-my-pr/server/repository/core/domain';
-import { catchError, map } from 'rxjs/operators';
-import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
+import { bitbucketConfig } from '@pimp-my-pr/server/shared/core';
 import { CoreException, CoreNotFoundException } from '@pimp-my-pr/server/shared/domain';
-import { throwError } from 'rxjs';
+import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
+import { urlFactory } from '@valueadd/typed-urls';
 import { AxiosError, AxiosResponse } from 'axios';
-import { mapBitbucketRepository } from '../mappers/map-bitbucket-repository';
-import { BitbucketRepositoryEnity } from '../domain/entities/bitbucket-repository.enity';
-import { BitbucketUuidUtil } from '../utils/bitbucket-uuid.util';
+import { throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { RemoteRepositoryRepository } from '../../repositories/remote-repository.repository';
+import { BitbucketRepositoryEnity } from '../domain/entities/bitbucket-repository.enity';
+import { mapBitbucketRepository } from '../mappers/map-bitbucket-repository';
+import { BitbucketUuidUtil } from '../utils/bitbucket-uuid.util';
 
 @Injectable()
 export class BitbucketRepositoryRepository extends RemoteRepositoryRepository {

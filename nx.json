@@ -154,6 +154,24 @@
     },
     "pmp-web-auth-feature": {
       "tags": ["platform:web", "scope:auth", "type:feature"]
+    },
+    "server-user-core-domain": {
+      "tags": ["platform:server", "scope:user", "type:domain"]
+    },
+    "server-user-core-domain-services": {
+      "tags": ["platform:server", "scope:user", "type:domain-services"]
+    },
+    "server-user-core-application-services": {
+      "tags": ["platform:server", "scope:user", "type:application-services"]
+    },
+    "server-user-shell": {
+      "tags": ["platform:server", "scope:user", "type:shell"]
+    },
+    "server-user-infrastructure": {
+      "tags": ["platform:server", "scope:user", "type:infrastructure"]
+    },
+    "server-user-public": {
+      "tags": ["name:user-public", "platform:server", "scope:user", "type:public"]
     }
   }
 }

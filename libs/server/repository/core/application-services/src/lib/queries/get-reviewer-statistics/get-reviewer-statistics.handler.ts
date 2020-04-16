@@ -1,16 +1,16 @@
+import { Inject } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import {
   PrRepository,
+  prRepositoryFactoryToken,
   RepositoryRepository,
   ReviewerRepository,
-  prRepositoryFactoryToken,
   reviewerRepositoryFactoryToken
 } from '@pimp-my-pr/server/repository/core/domain-services';
+import { Platform } from '@pimp-my-pr/shared/domain';
 import { repositoryPrsStatisticsReadModelFactory } from '../../read-models/factories/repository-prs-statistics-read-model.factory';
 import { GetReviewerStatisticsQuery } from './get-reviewer-statistics.query';
 import { ReviewerStatisticsReadModel } from './reviewer-statistics.read-model';
-import { Inject } from '@nestjs/common';
-import { Platform } from '@pimp-my-pr/shared/domain';
 
 @QueryHandler(GetReviewerStatisticsQuery)
 export class GetReviewerStatisticsHandler
@@ -27,7 +27,7 @@ export class GetReviewerStatisticsHandler
     const prRepository = this.prRepositoryFactory(query.platform);
     const reviewerRepository = this.reviewerRepositoryFactory(query.platform);
 
-    const repositories = await this.repositoryRepository.findAll();
+    const repositories = await this.repositoryRepository.findByUserId(query.userId);
     const reviewer = await reviewerRepository.get(query.username, query.token);
 
     const repositoryStatistics = await Promise.all(

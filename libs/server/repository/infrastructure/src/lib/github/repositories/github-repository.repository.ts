@@ -10,9 +10,9 @@ import { urlFactory } from '@valueadd/typed-urls';
 import { AxiosError, AxiosResponse } from 'axios';
 import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { RemoteRepositoryRepository } from '../../repositories/remote-repository.repository';
 import { GithubRepositoryEntity } from '../domain/entities/github-repository.entity';
 import { mapGithubRepository } from '../mappers/map-github-repository';
-import { RemoteRepositoryRepository } from '../../repositories/remote-repository.repository';
 
 @Injectable()
 export class GithubRepositoryRepository extends RemoteRepositoryRepository {

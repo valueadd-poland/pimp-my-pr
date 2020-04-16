@@ -6,14 +6,14 @@ import {
   ReviewersStatisticsItemReadModel,
   ReviewerStatisticsReadModel
 } from '@pimp-my-pr/server/repository/core/application-services';
+import { RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
 import { Platform } from '@pimp-my-pr/shared/domain';
 import { AddRepositoryCommand } from './commands/add-repository/add-repository.command';
 import { GetRepositoryStatisticsQuery } from './queries/get-repository-statistics/get-repository-statistics.query';
 import { GetReviewerStatisticsQuery } from './queries/get-reviewer-statistics/get-reviewer-statistics.query';
 import { ListRepositoriesStatisticsQuery } from './queries/list-repositories-statistics/list-repositories-statistics.query';
-import { ListReviewersStatisticsQuery } from './queries/list-reviewers-statistics/list-reviewers-statistics.query';
 import { ListRepositoriesQuery } from './queries/list-repositories/list-repositories.query';
-import { RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { ListReviewersStatisticsQuery } from './queries/list-reviewers-statistics/list-reviewers-statistics.query';
 
 @Injectable()
 export class RepositoryFacade {
@@ -34,16 +34,18 @@ export class RepositoryFacade {
   getReviewerStatistics(
     username: string,
     token: string,
-    platform: Platform
+    platform: Platform,
+    userId: string
   ): Promise<ReviewerStatisticsReadModel> {
-    return this.queryBus.execute(new GetReviewerStatisticsQuery(username, token, platform));
+    return this.queryBus.execute(new GetReviewerStatisticsQuery(username, token, platform, userId));
   }
 
   listRepositoriesStatistics(
     token: string,
-    platform: Platform
+    platform: Platform,
+    userId: string
   ): Promise<RepositoriesStatisticsItemReadModel[]> {
-    return this.queryBus.execute(new ListRepositoriesStatisticsQuery(token, platform));
+    return this.queryBus.execute(new ListRepositoriesStatisticsQuery(token, platform, userId));
   }
 
   listRepositories(): Promise<RepositoryEntity[]> {
@@ -52,8 +54,9 @@ export class RepositoryFacade {
 
   listReviewersStatistics(
     token: string,
-    platform: Platform
+    platform: Platform,
+    userId: string
   ): Promise<ReviewersStatisticsItemReadModel[]> {
-    return this.queryBus.execute(new ListReviewersStatisticsQuery(token, platform));
+    return this.queryBus.execute(new ListReviewersStatisticsQuery(token, platform, userId));
   }
 }

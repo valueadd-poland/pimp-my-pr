@@ -1,5 +1,5 @@
-import { ReviewerEntity } from '@pimp-my-pr/server/repository/core/domain';
 import { plainToClass } from '@marcj/marshal';
+import { ReviewerEntity } from '@pimp-my-pr/server/repository/core/domain';
 import { BitbucketAccountEntity } from '../domain/entities/bitbucket-account.entity';
 import { BitbucketUuidUtil } from '../utils/bitbucket-uuid.util';
 
