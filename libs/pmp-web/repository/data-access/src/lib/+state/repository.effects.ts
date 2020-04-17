@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { DataPersistence } from '@nrwl/angular';
-import { RepositoryPartialState } from './repository.reducer';
-import { RepositoryDataService } from '../services/repository-data.service';
-import { Actions, Effect, ofType } from '@ngrx/effects';
-import { map } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { DataPersistence } from '@nrwl/angular';
+import { map } from 'rxjs/operators';
+import { RepositoryDataService } from '../services/repository-data.service';
 import { fromRepositoryActions } from './repository.actions';
+import { RepositoryPartialState } from './repository.reducer';
 
 @Injectable()
 export class RepositoryEffects {

@@ -1,20 +1,21 @@
-import { PmpApiConfigService } from '@pimp-my-pr/server/shared/core';
-import { HttpService } from '@nestjs/common';
 import {
   BitbucketReviewerRepository,
   GithubReviewerRepository
 } from '@pimp-my-pr/server/repository/infrastructure';
+import { Platform } from '@pimp-my-pr/shared/domain';
 
-export const reviewerRepositoryFactory = (
-  configService: PmpApiConfigService,
-  httpService: HttpService
-) => {
-  if (configService.getBitbucketToken()) {
-    return new BitbucketReviewerRepository(httpService);
-  }
-  if (configService.getGithubToken()) {
-    return new GithubReviewerRepository(httpService);
-  }
+export const reviewerRepositoryFactoryFactory = (
+  githubReviewerRepository: GithubReviewerRepository,
+  bitbucketReviewerRepository: BitbucketReviewerRepository
+) => (platform: Platform) => {
+  switch (platform) {
+    case Platform.github:
+      return githubReviewerRepository;
 
-  throw new Error('No Reviewer repository initialized');
+    case Platform.bitbucket:
+      return bitbucketReviewerRepository;
+
+    default:
+      throw new Error('No reviewer repository initialized');
+  }
 };

@@ -29,8 +29,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/pmp-web/src/environments/environment.ts",
-                  "with": "apps/pmp-web/src/environments/environment.prod.ts"
+                  "replace": "libs/pmp-web/core/src/lib/environment/environment.ts",
+                  "with": "libs/pmp-web/core/src/lib/environment/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -1262,6 +1262,511 @@
             "jestConfig": "libs/pmp-web/core/jest.config.js",
             "tsConfig": "libs/pmp-web/core/tsconfig.spec.json",
             "setupFile": "libs/pmp-web/core/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "server-auth-shell": {
+      "root": "libs/server/auth/shell",
+      "sourceRoot": "libs/server/auth/shell/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/auth/shell/tsconfig.lib.json",
+              "libs/server/auth/shell/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/auth/shell/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/auth/shell/jest.config.js",
+            "tsConfig": "libs/server/auth/shell/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-auth-api-rest": {
+      "root": "libs/server/auth/api-rest",
+      "sourceRoot": "libs/server/auth/api-rest/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/auth/api-rest/tsconfig.lib.json",
+              "libs/server/auth/api-rest/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/auth/api-rest/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/auth/api-rest/jest.config.js",
+            "tsConfig": "libs/server/auth/api-rest/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-auth-core-application-services": {
+      "root": "libs/server/auth/core/application-services",
+      "sourceRoot": "libs/server/auth/core/application-services/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/auth/core/application-services/tsconfig.lib.json",
+              "libs/server/auth/core/application-services/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/auth/core/application-services/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/auth/core/application-services/jest.config.js",
+            "tsConfig": "libs/server/auth/core/application-services/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-auth-infrastructure": {
+      "root": "libs/server/auth/infrastructure",
+      "sourceRoot": "libs/server/auth/infrastructure/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/auth/infrastructure/tsconfig.lib.json",
+              "libs/server/auth/infrastructure/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/auth/infrastructure/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/auth/infrastructure/jest.config.js",
+            "tsConfig": "libs/server/auth/infrastructure/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-auth-core-domain-services": {
+      "root": "libs/server/auth/core/domain-services",
+      "sourceRoot": "libs/server/auth/core/domain-services/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/auth/core/domain-services/tsconfig.lib.json",
+              "libs/server/auth/core/domain-services/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/auth/core/domain-services/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/auth/core/domain-services/jest.config.js",
+            "tsConfig": "libs/server/auth/core/domain-services/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-auth-core-domain": {
+      "root": "libs/server/auth/core/domain",
+      "sourceRoot": "libs/server/auth/core/domain/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/auth/core/domain/tsconfig.lib.json",
+              "libs/server/auth/core/domain/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/auth/core/domain/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/auth/core/domain/jest.config.js",
+            "tsConfig": "libs/server/auth/core/domain/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "shared-util-query-string": {
+      "root": "libs/shared/util-query-string",
+      "sourceRoot": "libs/shared/util-query-string/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/util-query-string/tsconfig.lib.json",
+              "libs/shared/util-query-string/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/util-query-string/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/util-query-string/jest.config.js",
+            "tsConfig": "libs/shared/util-query-string/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-auth-public": {
+      "root": "libs/server/auth/public",
+      "sourceRoot": "libs/server/auth/public/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/auth/public/tsconfig.lib.json",
+              "libs/server/auth/public/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/auth/public/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/auth/public/jest.config.js",
+            "tsConfig": "libs/server/auth/public/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "pmp-web-auth-data-access": {
+      "projectType": "library",
+      "root": "libs/pmp-web/auth/data-access",
+      "sourceRoot": "libs/pmp-web/auth/data-access/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/auth/data-access/tsconfig.lib.json",
+              "libs/pmp-web/auth/data-access/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/data-access/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/auth/data-access/jest.config.js",
+            "tsConfig": "libs/pmp-web/auth/data-access/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/auth/data-access/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-auth-domain": {
+      "projectType": "library",
+      "root": "libs/pmp-web/auth/domain",
+      "sourceRoot": "libs/pmp-web/auth/domain/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/auth/domain/tsconfig.lib.json",
+              "libs/pmp-web/auth/domain/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/domain/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/auth/domain/jest.config.js",
+            "tsConfig": "libs/pmp-web/auth/domain/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/auth/domain/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-auth-public": {
+      "projectType": "library",
+      "root": "libs/pmp-web/auth/public",
+      "sourceRoot": "libs/pmp-web/auth/public/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/auth/public/tsconfig.lib.json",
+              "libs/pmp-web/auth/public/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/public/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/auth/public/jest.config.js",
+            "tsConfig": "libs/pmp-web/auth/public/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/auth/public/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-auth-feature": {
+      "projectType": "library",
+      "root": "libs/pmp-web/auth/feature",
+      "sourceRoot": "libs/pmp-web/auth/feature/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/auth/feature/tsconfig.lib.json",
+              "libs/pmp-web/auth/feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/feature/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/auth/feature/jest.config.js",
+            "tsConfig": "libs/pmp-web/auth/feature/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/auth/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "server-user-core-domain": {
+      "root": "libs/server/user/core/domain",
+      "sourceRoot": "libs/server/user/core/domain/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/user/core/domain/tsconfig.lib.json",
+              "libs/server/user/core/domain/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/user/core/domain/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/user/core/domain/jest.config.js",
+            "tsConfig": "libs/server/user/core/domain/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-user-core-domain-services": {
+      "root": "libs/server/user/core/domain-services",
+      "sourceRoot": "libs/server/user/core/domain-services/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/user/core/domain-services/tsconfig.lib.json",
+              "libs/server/user/core/domain-services/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/user/core/domain-services/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/user/core/domain-services/jest.config.js",
+            "tsConfig": "libs/server/user/core/domain-services/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-user-core-application-services": {
+      "root": "libs/server/user/core/application-services",
+      "sourceRoot": "libs/server/user/core/application-services/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/user/core/application-services/tsconfig.lib.json",
+              "libs/server/user/core/application-services/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/user/core/application-services/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/user/core/application-services/jest.config.js",
+            "tsConfig": "libs/server/user/core/application-services/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-user-shell": {
+      "root": "libs/server/user/shell",
+      "sourceRoot": "libs/server/user/shell/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/user/shell/tsconfig.lib.json",
+              "libs/server/user/shell/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/user/shell/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/user/shell/jest.config.js",
+            "tsConfig": "libs/server/user/shell/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-user-infrastructure": {
+      "root": "libs/server/user/infrastructure",
+      "sourceRoot": "libs/server/user/infrastructure/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/user/infrastructure/tsconfig.lib.json",
+              "libs/server/user/infrastructure/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/user/infrastructure/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/user/infrastructure/jest.config.js",
+            "tsConfig": "libs/server/user/infrastructure/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-user-public": {
+      "root": "libs/server/user/public",
+      "sourceRoot": "libs/server/user/public/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/user/public/tsconfig.lib.json",
+              "libs/server/user/public/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/user/public/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/user/public/jest.config.js",
+            "tsConfig": "libs/server/user/public/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "pmp-web-shared-util-ngrx": {
+      "projectType": "library",
+      "root": "libs/pmp-web/shared/util-ngrx",
+      "sourceRoot": "libs/pmp-web/shared/util-ngrx/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shared/util-ngrx/tsconfig.lib.json",
+              "libs/pmp-web/shared/util-ngrx/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/util-ngrx/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shared/util-ngrx/jest.config.js",
+            "tsConfig": "libs/pmp-web/shared/util-ngrx/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/shared/util-ngrx/src/test-setup.ts"
           }
         }
       },

@@ -1,7 +1,7 @@
-import { fromRepositoryActions } from './repository.actions';
+import { HttpErrorResponse } from '@angular/common/http';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Repository } from '@pimp-my-pr/pmp-web/repository/domain';
-import { HttpErrorResponse } from '@angular/common/http';
+import { fromRepositoryActions } from './repository.actions';
 
 export const REPOSITORY_FEATURE_KEY = 'repository';
 

@@ -4,9 +4,9 @@ import { AddRepositoryHandler } from './commands/add-repository/add-repository.h
 import { GetRepositoryStatisticsHandler } from './queries/get-repository-statistics/get-repository-statistics.handler';
 import { GetReviewerStatisticsHandler } from './queries/get-reviewer-statistics/get-reviewer-statistics.handler';
 import { ListRepositoriesStatisticsHandler } from './queries/list-repositories-statistics/list-repositories-statistics.handler';
+import { ListRepositoriesHandler } from './queries/list-repositories/list-repositories.handler';
 import { ListReviewersStatisticsHandler } from './queries/list-reviewers-statistics/list-reviewers-statistics.handler';
 import { RepositoryFacade } from './repository.facade';
-import { ListRepositoriesHandler } from './queries/list-repositories/list-repositories.handler';
 
 const QueryHandlers = [
   AddRepositoryHandler,

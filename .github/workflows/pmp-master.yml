@@ -22,8 +22,9 @@ jobs:
     - name: use master
       run: git branch master origin/master #https://github.com/nrwl/nx/issues/1988
     - name: npm install
-      run: |
-        npm ci
+      run: npm ci
+    - name: init configs
+      run: cp .env-sample .env && npm run init
     - name: validate nx tags
       run: node ./node_modules/@valueadd/dev validate-nx-tags
     - name: prettier check
@@ -49,6 +50,8 @@ jobs:
         run: git branch master origin/master #https://github.com/nrwl/nx/issues/1988
       - name: npm install
         run: npm ci
+      - name: init configs
+        run: cp .env-sample .env && npm run init
       - name: affected:e2e
         run: npm run affected:e2e
     env:

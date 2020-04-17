@@ -1,9 +1,13 @@
+import { Inject } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
+
 import { PrEntity, ReviewerEntity } from '@pimp-my-pr/server/repository/core/domain';
 import {
   PrRepository,
+  prRepositoryFactoryToken,
   RepositoryRepository
 } from '@pimp-my-pr/server/repository/core/domain-services';
+import { Platform } from '@pimp-my-pr/shared/domain';
 import { ReviewerModelWithPr } from '../../read-models/reviewer-model-with-pr.interface';
 import { ListReviewersStatisticsQuery } from './list-reviewers-statistics.query';
 import { ReviewersStatisticsItemReadModel } from './reviewers-statistics-item-read.model';
@@ -12,16 +16,19 @@ import { ReviewersStatisticsItemReadModel } from './reviewers-statistics-item-re
 export class ListReviewersStatisticsHandler
   implements IQueryHandler<ListReviewersStatisticsQuery, ReviewersStatisticsItemReadModel[]> {
   constructor(
-    private prRepository: PrRepository,
+    @Inject(prRepositoryFactoryToken)
+    private prRepositoryFactory: (platform: Platform) => PrRepository,
     private repositoryRepository: RepositoryRepository
   ) {}
 
   async execute(query: ListReviewersStatisticsQuery): Promise<ReviewersStatisticsItemReadModel[]> {
-    const repositories = await this.repositoryRepository.findAll();
+    const prRepository = this.prRepositoryFactory(query.platform);
+
+    const repositories = await this.repositoryRepository.findByUserId(query.userId);
     const result = await Promise.all(
       repositories.map(repository =>
-        this.prRepository
-          .findByRepository(repository.fullName)
+        prRepository
+          .findByRepository(repository.fullName, query.token)
           .then(prs => this.groupByReviewers(prs))
           .then(repositoryReviewersWithPrs =>
             repositoryReviewersWithPrs.map(

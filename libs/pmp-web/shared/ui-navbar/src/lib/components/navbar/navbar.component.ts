@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'pmp-navbar',
@@ -8,9 +7,10 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent {
-  constructor(private router: Router) {}
+  @Output()
+  logout = new EventEmitter<void>();
 
-  logout(): void {
-    this.router.navigate(['login']);
+  onLogout(): void {
+    this.logout.emit();
   }
 }

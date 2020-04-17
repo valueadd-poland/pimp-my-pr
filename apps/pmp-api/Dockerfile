@@ -16,8 +16,6 @@ COPY ./libs/shared /app/libs/shared
 COPY ./libs/server /app/libs/server
 COPY ./apps/pmp-api /app/apps/pmp-api
 
-RUN cp libs/server/shared/core/src/lib/config/.env-sample libs/server/shared/core/src/lib/config/.env
-
 RUN npm run build:pmp-api:prod
 
 EXPOSE 3333

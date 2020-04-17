@@ -1,8 +1,12 @@
+import { Inject } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
+
 import {
   PrRepository,
+  prRepositoryFactoryToken,
   RepositoryRepository
 } from '@pimp-my-pr/server/repository/core/domain-services';
+import { Platform } from '@pimp-my-pr/shared/domain';
 import { ListRepositoriesStatisticsQuery } from './list-repositories-statistics.query';
 import { RepositoriesStatisticsItemReadModel } from './repositories-statistics-item.read-model';
 
@@ -10,18 +14,22 @@ import { RepositoriesStatisticsItemReadModel } from './repositories-statistics-i
 export class ListRepositoriesStatisticsHandler
   implements IQueryHandler<ListRepositoriesStatisticsQuery, RepositoriesStatisticsItemReadModel[]> {
   constructor(
-    private prRepository: PrRepository,
+    @Inject(prRepositoryFactoryToken)
+    private prRepositoryFactory: (platform: Platform) => PrRepository,
     private repositoryRepository: RepositoryRepository
   ) {}
 
   async execute(
     query: ListRepositoriesStatisticsQuery
   ): Promise<RepositoriesStatisticsItemReadModel[]> {
+    const prRepository = this.prRepositoryFactory(query.platform);
     const result: Promise<RepositoriesStatisticsItemReadModel>[] = [];
-    const repositories = await this.repositoryRepository.findAll();
+
+    const repositories = await this.repositoryRepository.findByUserId(query.userId);
+
     for (const repository of repositories) {
-      const repositoryStatisticsPromise = this.prRepository
-        .findByRepository(repository.fullName)
+      const repositoryStatisticsPromise = prRepository
+        .findByRepository(repository.fullName, query.token)
         .then(prs => new RepositoriesStatisticsItemReadModel(repository, prs));
 
       result.push(repositoryStatisticsPromise);

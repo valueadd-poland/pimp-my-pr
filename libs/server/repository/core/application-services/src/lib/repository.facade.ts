@@ -1,21 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
+
 import {
   RepositoriesStatisticsItemReadModel,
   ReviewersStatisticsItemReadModel,
   ReviewerStatisticsReadModel
 } from '@pimp-my-pr/server/repository/core/application-services';
-import {
-  ListReviewerStatisticsParams,
-  ListSingleRepositoryParams
-} from '@pimp-my-pr/shared/domain';
+import { RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { Platform } from '@pimp-my-pr/shared/domain';
 import { AddRepositoryCommand } from './commands/add-repository/add-repository.command';
 import { GetRepositoryStatisticsQuery } from './queries/get-repository-statistics/get-repository-statistics.query';
 import { GetReviewerStatisticsQuery } from './queries/get-reviewer-statistics/get-reviewer-statistics.query';
 import { ListRepositoriesStatisticsQuery } from './queries/list-repositories-statistics/list-repositories-statistics.query';
-import { ListReviewersStatisticsQuery } from './queries/list-reviewers-statistics/list-reviewers-statistics.query';
 import { ListRepositoriesQuery } from './queries/list-repositories/list-repositories.query';
-import { RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { ListReviewersStatisticsQuery } from './queries/list-reviewers-statistics/list-reviewers-statistics.query';
 
 @Injectable()
 export class RepositoryFacade {
@@ -26,26 +24,39 @@ export class RepositoryFacade {
   }
 
   getRepositoryStatistics(
-    params: ListSingleRepositoryParams
+    repositoryId: string,
+    token: string,
+    platform: Platform
   ): Promise<RepositoriesStatisticsItemReadModel[]> {
-    return this.queryBus.execute(new GetRepositoryStatisticsQuery(params.repositoryId));
+    return this.queryBus.execute(new GetRepositoryStatisticsQuery(repositoryId, token, platform));
   }
 
   getReviewerStatistics(
-    params: ListReviewerStatisticsParams
+    username: string,
+    token: string,
+    platform: Platform,
+    userId: string
   ): Promise<ReviewerStatisticsReadModel> {
-    return this.queryBus.execute(new GetReviewerStatisticsQuery(params));
+    return this.queryBus.execute(new GetReviewerStatisticsQuery(username, token, platform, userId));
   }
 
-  listRepositoriesStatistics(): Promise<RepositoriesStatisticsItemReadModel[]> {
-    return this.queryBus.execute(new ListRepositoriesStatisticsQuery());
+  listRepositoriesStatistics(
+    token: string,
+    platform: Platform,
+    userId: string
+  ): Promise<RepositoriesStatisticsItemReadModel[]> {
+    return this.queryBus.execute(new ListRepositoriesStatisticsQuery(token, platform, userId));
   }
 
   listRepositories(): Promise<RepositoryEntity[]> {
     return this.queryBus.execute(new ListRepositoriesQuery());
   }
 
-  listReviewersStatistics(): Promise<ReviewersStatisticsItemReadModel[]> {
-    return this.queryBus.execute(new ListReviewersStatisticsQuery());
+  listReviewersStatistics(
+    token: string,
+    platform: Platform,
+    userId: string
+  ): Promise<ReviewersStatisticsItemReadModel[]> {
+    return this.queryBus.execute(new ListReviewersStatisticsQuery(token, platform, userId));
   }
 }

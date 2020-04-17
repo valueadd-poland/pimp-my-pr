@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { REPOSITORY_FEATURE_KEY, RepositoryState } from './repository.reducer';
 import { selectAll } from '@pimp-my-pr/pmp-web/repository/repositories-statistics/data-access';
+import { REPOSITORY_FEATURE_KEY, RepositoryState } from './repository.reducer';
 
 // Lookup the 'RepositorySettings' feature state managed by NgRx
 const getRepositoryState = createFeatureSelector<RepositoryState>(REPOSITORY_FEATURE_KEY);

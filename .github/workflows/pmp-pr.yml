@@ -11,28 +11,29 @@ jobs:
         node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: npm install
-      run: |
-        npm ci
-    - name: validate commits
-      run: node ./node_modules/@valueadd/dev validate-commit origin/master
-    - name: validate nx tags
-      run: node ./node_modules/@valueadd/dev validate-nx-tags
-    - name: prettier check
-      run: node ./node_modules/@valueadd/dev prettier-check `git diff origin/master  --cached --name-only --diff-filter=AM | tr '\r\n' ','`
-    - name: affected:build
-      run: npm run affected:build -- --base origin/master
-    - name: affected:test
-      run: npm run affected:test -- --base origin/master
-    - name: affected:lint
-      run: npm run affected:lint -- --base origin/master
-      env:
-        CI: true
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: init configs
+        run: cp .env-sample .env && npm run init
+      - name: validate commits
+        run: node ./node_modules/@valueadd/dev validate-commit origin/master
+      - name: validate nx tags
+        run: node ./node_modules/@valueadd/dev validate-nx-tags
+      - name: prettier check
+        run: node ./node_modules/@valueadd/dev prettier-check `git diff origin/master  --cached --name-only --diff-filter=AM | tr '\r\n' ','`
+      - name: affected:build
+        run: npm run affected:build -- --base origin/master
+      - name: affected:test
+        run: npm run affected:test -- --base origin/master
+      - name: affected:lint
+        run: npm run affected:lint -- --base origin/master
+        env:
+          CI: true
 
   e2e:
     runs-on: ubuntu-16.04
@@ -46,6 +47,8 @@ jobs:
         run: git branch master origin/master #https://github.com/nrwl/nx/issues/1988
       - name: npm install
         run: npm ci
+      - name: init configs
+        run: cp .env-sample .env && npm run init
       - name: affected:e2e
         run: npm run affected:e2e
     env:

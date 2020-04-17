@@ -1,20 +1,21 @@
-import { PmpApiConfigService } from '@pimp-my-pr/server/shared/core';
-import { HttpService } from '@nestjs/common';
 import {
   BitbucketPrRepository,
   GithubPrRepository
 } from '@pimp-my-pr/server/repository/infrastructure';
+import { Platform } from '@pimp-my-pr/shared/domain';
 
-export const prRepositoryFactory = (
-  configService: PmpApiConfigService,
-  httpService: HttpService
-) => {
-  if (configService.getBitbucketToken()) {
-    return new BitbucketPrRepository(httpService);
-  }
-  if (configService.getGithubToken()) {
-    return new GithubPrRepository(httpService);
-  }
+export const prRepositoryFactoryFactory = (
+  githubPrRepository: GithubPrRepository,
+  bitbucketPrRepository: BitbucketPrRepository
+) => (platform: Platform) => {
+  switch (platform) {
+    case Platform.github:
+      return githubPrRepository;
 
-  throw new Error('No PR repository initialized');
+    case Platform.bitbucket:
+      return bitbucketPrRepository;
+
+    default:
+      throw new Error('No PR repository initialized');
+  }
 };

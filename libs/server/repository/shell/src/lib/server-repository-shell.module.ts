@@ -1,55 +1,59 @@
-import { Global, HttpService, Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
+
 import { ServerRepositoryCoreApplicationServicesModule } from '@pimp-my-pr/server/repository/core/application-services';
 import {
-  PrRepository,
+  prRepositoryFactoryToken,
   RepositoryRepository,
-  ReviewerRepository
+  reviewerRepositoryFactoryToken
 } from '@pimp-my-pr/server/repository/core/domain-services';
 import {
-  RemoteRepositoryRepository,
+  BitbucketPrRepository,
+  BitbucketRepositoryRepository,
+  BitbucketReviewerRepository,
+  GithubPrRepository,
+  GithubRepositoryRepository,
+  GithubReviewerRepository,
+  remoteRepositoryRepositoryFactoryToken,
   RepositoryRepositoryAdapter,
   ServerRepositoryInfrastructureModule
 } from '@pimp-my-pr/server/repository/infrastructure';
-import { FeatureRepositoryTypeOrmModule } from './feature-repository-type-orm.module';
-import { PmpApiConfigService } from '@pimp-my-pr/server/shared/core';
-import { prRepositoryFactory } from './factories/pr-repository.factory';
-import { remoteRepositoryRepositoryFactory } from './factories/remote-repository-repository.factory';
-import { reviewerRepositoryFactory } from './factories/reviewer-repository.factory';
+import { prRepositoryFactoryFactory } from './factories/pr-repository.factory';
+import { remoteRepositoryRepositoryFactoryFactory } from './factories/remote-repository-repository.factory';
+import { reviewerRepositoryFactoryFactory } from './factories/reviewer-repository.factory';
 
 const providers = [
   {
-    provide: PrRepository,
-    useFactory: prRepositoryFactory,
-    inject: [PmpApiConfigService, HttpService]
+    provide: prRepositoryFactoryToken,
+    useFactory: prRepositoryFactoryFactory,
+    inject: [GithubPrRepository, BitbucketPrRepository]
   },
   {
-    provide: RemoteRepositoryRepository,
-    useFactory: remoteRepositoryRepositoryFactory,
-    inject: [PmpApiConfigService, HttpService]
+    provide: remoteRepositoryRepositoryFactoryToken,
+    useFactory: remoteRepositoryRepositoryFactoryFactory,
+    inject: [GithubRepositoryRepository, BitbucketRepositoryRepository]
   },
   {
-    provide: ReviewerRepository,
-    useFactory: reviewerRepositoryFactory,
-    inject: [PmpApiConfigService, HttpService]
+    provide: reviewerRepositoryFactoryToken,
+    useFactory: reviewerRepositoryFactoryFactory,
+    inject: [GithubReviewerRepository, BitbucketReviewerRepository]
   },
   {
     provide: RepositoryRepository,
     useClass: RepositoryRepositoryAdapter
-  }
+  },
+
+  GithubPrRepository,
+  BitbucketPrRepository,
+  GithubRepositoryRepository,
+  BitbucketRepositoryRepository,
+  GithubReviewerRepository,
+  BitbucketReviewerRepository
 ];
 
 @Global()
 @Module({
-  imports: [
-    FeatureRepositoryTypeOrmModule,
-    ServerRepositoryInfrastructureModule,
-    ServerRepositoryCoreApplicationServicesModule
-  ],
+  imports: [ServerRepositoryInfrastructureModule, ServerRepositoryCoreApplicationServicesModule],
   providers: providers,
-  exports: [
-    FeatureRepositoryTypeOrmModule,
-    ...providers,
-    ServerRepositoryCoreApplicationServicesModule
-  ]
+  exports: [...providers, ServerRepositoryCoreApplicationServicesModule]
 })
 export class ServerRepositoryShellModule {}

@@ -1,37 +1,53 @@
 import { f } from '@marcj/marshal';
-import { Column, Entity, PrimaryColumn } from 'typeorm';
 import { PrEntity } from './pr.entity';
 
-@Entity()
 export class RepositoryEntity {
   @f.primary()
-  @PrimaryColumn()
   id: string;
 
-  @Column()
-  @f
-  fullName: string;
-
-  @Column()
-  @f
-  name: string;
-
-  @Column()
-  @f
-  owner: string;
-
-  @Column()
-  @f
-  pictureUrl: string;
-
-  @Column({ nullable: true })
   @f.optional()
   maxLines?: number;
 
-  @Column({ nullable: true })
   @f.optional()
   maxWaitingTime?: number;
 
+  @f
+  name: string;
+
+  @f
+  owner: string;
+
+  @f
+  pictureUrl: string;
+
   @f.array(PrEntity)
   prs: PrEntity[] = [];
+
+  @f
+  repositoryId: string;
+
+  userId: string;
+
+  get fullName(): string {
+    return `${this.owner}/${this.name}`;
+  }
+
+  constructor(
+    repositoryId: string,
+    name: string,
+    owner: string,
+    pictureUrl: string,
+    userId: string,
+    maxLines?: number,
+    maxWaitingTime?: number
+  ) {
+    this.id = repositoryId + userId;
+    this.repositoryId = repositoryId;
+    this.name = name;
+    this.owner = owner;
+    this.pictureUrl = pictureUrl;
+    this.userId = userId;
+    this.maxWaitingTime = maxWaitingTime;
+    this.maxLines = maxLines;
+  }
 }

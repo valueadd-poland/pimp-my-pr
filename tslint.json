@@ -58,21 +58,36 @@
           },
           {
             "sourceTag": "scope:auth",
-            "onlyDependOnLibsWithTags": ["scope:shared", "scope:shared"]
+            "onlyDependOnLibsWithTags": ["name:user-public", "scope:shared", "scope:auth"]
           },
           {
             "sourceTag": "scope:repository",
-            "onlyDependOnLibsWithTags": ["scope:repository", "scope:shared"]
+            "onlyDependOnLibsWithTags": [
+              "name:user-public",
+              "scope:repository",
+              "scope:shared",
+              "name:auth-public"
+            ]
           },
           {
             "sourceTag": "scope:shared",
             "onlyDependOnLibsWithTags": ["scope:shared"]
           },
           {
+            "sourceTag": "scope:user",
+            "onlyDependOnLibsWithTags": ["scope:user", "scope:shared"]
+          },
+          {
+            "sourceTag": "type:public",
+            "onlyDependOnLibsWithTags": ["*"]
+          },
+          {
             "sourceTag": "type:api",
             "onlyDependOnLibsWithTags": [
               "type:application-services",
               "type:domain",
+              "type:domain-services",
+              "type:public",
               "type:shell",
               "type:util"
             ]
@@ -83,7 +98,7 @@
           },
           {
             "sourceTag": "type:application-services",
-            "onlyDependOnLibsWithTags": ["type:domain", "type:domain-services"]
+            "onlyDependOnLibsWithTags": ["type:domain", "type:domain-services", "type:public"]
           },
           {
             "sourceTag": "type:core",

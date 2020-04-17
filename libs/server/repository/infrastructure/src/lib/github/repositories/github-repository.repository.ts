@@ -10,9 +10,9 @@ import { urlFactory } from '@valueadd/typed-urls';
 import { AxiosError, AxiosResponse } from 'axios';
 import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { RemoteRepositoryRepository } from '../../repositories/remote-repository.repository';
 import { GithubRepositoryEntity } from '../domain/entities/github-repository.entity';
 import { mapGithubRepository } from '../mappers/map-github-repository';
-import { RemoteRepositoryRepository } from '../../repositories/remote-repository.repository';
 
 @Injectable()
 export class GithubRepositoryRepository extends RemoteRepositoryRepository {
@@ -29,9 +29,11 @@ export class GithubRepositoryRepository extends RemoteRepositoryRepository {
     super();
   }
 
-  getSingleRepositoryByName(fullName: string): Promise<RepositoryEntity> {
+  getSingleRepositoryByName(fullName: string, token: string): Promise<RepositoryEntity> {
     return this.httpService
-      .get<GithubRepositoryEntity>(this.endpoints.getRepository.url({ fullName }))
+      .get<GithubRepositoryEntity>(this.endpoints.getRepository.url({ fullName }), {
+        headers: { Authorization: `token ${token}` }
+      })
       .pipe(
         map((res: AxiosResponse) => res.data),
         map(mapGithubRepository),
@@ -46,9 +48,11 @@ export class GithubRepositoryRepository extends RemoteRepositoryRepository {
       .toPromise();
   }
 
-  getSingleRepositoryById(id: string): Promise<RepositoryEntity> {
+  getSingleRepositoryById(id: string, token: string): Promise<RepositoryEntity> {
     return this.httpService
-      .get<RepositoryEntity>(this.endpoints.getSingleRepository.url({ id }))
+      .get<RepositoryEntity>(this.endpoints.getSingleRepository.url({ id }), {
+        headers: { Authorization: `token ${token}` }
+      })
       .pipe(
         map((res: AxiosResponse) => res.data),
         map(mapGithubRepository),

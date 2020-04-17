@@ -1,17 +1,17 @@
 import { HttpService, Injectable } from '@nestjs/common';
-import { PrRepository } from '@pimp-my-pr/server/repository/core/domain-services';
 import { PrEntity } from '@pimp-my-pr/server/repository/core/domain';
-import { urlFactory } from '@valueadd/typed-urls';
-import { flatMap, map, switchMap } from 'rxjs/operators';
-import { forkJoin, Observable, of } from 'rxjs';
+import { PrRepository } from '@pimp-my-pr/server/repository/core/domain-services';
 import { bitbucketConfig } from '@pimp-my-pr/server/shared/core';
-import { BitbucketPrEntity } from '../domain/entities/bitbucket-pr.entity';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
-import { mapBitbucketPrDetails } from '../mappers/map-bitbucket-pr-details';
-import { BitbucketPrDiffEntity } from '../domain/entities/bitbucket-pr-diff.entity';
-import { BitbucketPaginatedResponse } from '../domain/interfaces/bitbucket-paginated-response.interface';
-import { BitbucketParticipantEntity } from '../domain/entities/bitbucket-participant.entity';
+import { urlFactory } from '@valueadd/typed-urls';
+import { forkJoin, Observable, of } from 'rxjs';
+import { flatMap, map, switchMap } from 'rxjs/operators';
 import { BitbucketParticipantUserEntity } from '../domain/entities/bitbucket-participant-user.entity';
+import { BitbucketParticipantEntity } from '../domain/entities/bitbucket-participant.entity';
+import { BitbucketPrDiffEntity } from '../domain/entities/bitbucket-pr-diff.entity';
+import { BitbucketPrEntity } from '../domain/entities/bitbucket-pr.entity';
+import { BitbucketPaginatedResponse } from '../domain/interfaces/bitbucket-paginated-response.interface';
+import { mapBitbucketPrDetails } from '../mappers/map-bitbucket-pr-details';
 
 @Injectable()
 export class BitbucketPrRepository extends PrRepository {

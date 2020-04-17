@@ -1,21 +1,21 @@
-import { PmpApiConfigService } from '@pimp-my-pr/server/shared/core';
-import { HttpService } from '@nestjs/common';
 import {
   BitbucketRepositoryRepository,
-  GithubRepositoryRepository,
-  RemoteRepositoryRepository
+  GithubRepositoryRepository
 } from '@pimp-my-pr/server/repository/infrastructure';
+import { Platform } from '@pimp-my-pr/shared/domain';
 
-export const remoteRepositoryRepositoryFactory = (
-  configService: PmpApiConfigService,
-  httpService: HttpService
-): RemoteRepositoryRepository => {
-  if (configService.getBitbucketToken()) {
-    return new BitbucketRepositoryRepository(httpService);
-  }
-  if (configService.getGithubToken()) {
-    return new GithubRepositoryRepository(httpService);
-  }
+export const remoteRepositoryRepositoryFactoryFactory = (
+  githubRepositoryRepository: GithubRepositoryRepository,
+  bitbucketRepositoryRepository: BitbucketRepositoryRepository
+) => (platform: Platform) => {
+  switch (platform) {
+    case Platform.github:
+      return githubRepositoryRepository;
 
-  throw new Error('No remote repository repository initialized');
+    case Platform.bitbucket:
+      return bitbucketRepositoryRepository;
+
+    default:
+      throw new Error('No remote repository repository initialized');
+  }
 };

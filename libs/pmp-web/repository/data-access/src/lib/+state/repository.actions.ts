@@ -1,7 +1,6 @@
-import { Action } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Repository } from '@pimp-my-pr/pmp-web/repository/domain';
-import { AddRepositoryPayload } from '@pimp-my-pr/pmp-web/repository/domain';
+import { Action } from '@ngrx/store';
+import { AddRepositoryPayload, Repository } from '@pimp-my-pr/pmp-web/repository/domain';
 
 export namespace fromRepositoryActions {
   export enum Types {

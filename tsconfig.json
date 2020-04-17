@@ -72,7 +72,6 @@
       "@pimp-my-pr/pmp-web/repository/reviewers-statistics/data-access": [
         "libs/pmp-web/repository/reviewers-statistics/data-access/src/index.ts"
       ],
-      "@pimp-my-pr/pmp-web/repository/domain": ["libs/pmp-web/repository/domain/src/index.ts"],
       "@pimp-my-pr/server/repository/api-rest": ["libs/server/repository/api-rest/src/index.ts"],
       "@pimp-my-pr/server/repository/core/domain": [
         "libs/server/repository/core/domain/src/index.ts"
@@ -101,7 +100,35 @@
       "@pimp-my-pr/pmp-web/repository/data-access": [
         "libs/pmp-web/repository/data-access/src/index.ts"
       ],
-      "@pimp-my-pr/pmp-web/core": ["libs/pmp-web/core/src/index.ts"]
+      "@pimp-my-pr/pmp-web/core": ["libs/pmp-web/core/src/index.ts"],
+      "@pimp-my-pr/pmp-web/repository/domain": ["libs/pmp-web/repository/domain/src/index.ts"],
+      "@pimp-my-pr/server/auth/shell": ["libs/server/auth/shell/src/index.ts"],
+      "@pimp-my-pr/server/auth/api-rest": ["libs/server/auth/api-rest/src/index.ts"],
+      "@pimp-my-pr/server/auth/core/application-services": [
+        "libs/server/auth/core/application-services/src/index.ts"
+      ],
+      "@pimp-my-pr/server/auth/infrastructure": ["libs/server/auth/infrastructure/src/index.ts"],
+      "@pimp-my-pr/server/auth/core/domain-services": [
+        "libs/server/auth/core/domain-services/src/index.ts"
+      ],
+      "@pimp-my-pr/server/auth/core/domain": ["libs/server/auth/core/domain/src/index.ts"],
+      "@pimp-my-pr/shared/util-query-string": ["libs/shared/util-query-string/src/index.ts"],
+      "@pimp-my-pr/server/auth/public": ["libs/server/auth/public/src/index.ts"],
+      "@pimp-my-pr/pmp-web/auth/data-access": ["libs/pmp-web/auth/data-access/src/index.ts"],
+      "@pimp-my-pr/pmp-web/auth/domain": ["libs/pmp-web/auth/domain/src/index.ts"],
+      "@pimp-my-pr/pmp-web/auth/public": ["libs/pmp-web/auth/public/src/index.ts"],
+      "@pimp-my-pr/pmp-web/auth/feature": ["libs/pmp-web/auth/feature/src/index.ts"],
+      "@pimp-my-pr/server/user/core/domain": ["libs/server/user/core/domain/src/index.ts"],
+      "@pimp-my-pr/server/user/core/domain-services": [
+        "libs/server/user/core/domain-services/src/index.ts"
+      ],
+      "@pimp-my-pr/server/user/core/application-services": [
+        "libs/server/user/core/application-services/src/index.ts"
+      ],
+      "@pimp-my-pr/server/user/shell": ["libs/server/user/shell/src/index.ts"],
+      "@pimp-my-pr/server/user/infrastructure": ["libs/server/user/infrastructure/src/index.ts"],
+      "@pimp-my-pr/server/user/public": ["libs/server/user/public/src/index.ts"],
+      "@pimp-my-pr/pmp-web/shared/util-ngrx": ["libs/pmp-web/shared/util-ngrx/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

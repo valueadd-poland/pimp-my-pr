@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import { AddRepositoryPayload } from '@pimp-my-pr/pmp-web/repository/domain';
+import { fromRepositoryActions } from './repository.actions';
 import { RepositoryPartialState } from './repository.reducer';
 import { repositoryQuery } from './repository.selectors';
-import { fromRepositoryActions } from './repository.actions';
-import { AddRepositoryPayload } from '@pimp-my-pr/pmp-web/repository/domain';
 
 @Injectable()
 export class RepositoryFacade {

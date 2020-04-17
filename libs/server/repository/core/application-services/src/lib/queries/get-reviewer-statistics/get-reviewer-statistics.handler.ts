@@ -1,9 +1,13 @@
+import { Inject } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import {
   PrRepository,
+  prRepositoryFactoryToken,
   RepositoryRepository,
-  ReviewerRepository
+  ReviewerRepository,
+  reviewerRepositoryFactoryToken
 } from '@pimp-my-pr/server/repository/core/domain-services';
+import { Platform } from '@pimp-my-pr/shared/domain';
 import { repositoryPrsStatisticsReadModelFactory } from '../../read-models/factories/repository-prs-statistics-read-model.factory';
 import { GetReviewerStatisticsQuery } from './get-reviewer-statistics.query';
 import { ReviewerStatisticsReadModel } from './reviewer-statistics.read-model';
@@ -12,22 +16,27 @@ import { ReviewerStatisticsReadModel } from './reviewer-statistics.read-model';
 export class GetReviewerStatisticsHandler
   implements IQueryHandler<GetReviewerStatisticsQuery, ReviewerStatisticsReadModel> {
   constructor(
-    private prRepository: PrRepository,
-    private repositoryRepository: RepositoryRepository,
-    private reviewerRepository: ReviewerRepository
+    @Inject(prRepositoryFactoryToken)
+    private prRepositoryFactory: (platform: Platform) => PrRepository,
+    @Inject(reviewerRepositoryFactoryToken)
+    private reviewerRepositoryFactory: (platform: Platform) => ReviewerRepository,
+    private repositoryRepository: RepositoryRepository
   ) {}
 
   async execute(query: GetReviewerStatisticsQuery): Promise<ReviewerStatisticsReadModel> {
-    const repositories = await this.repositoryRepository.findAll();
+    const prRepository = this.prRepositoryFactory(query.platform);
+    const reviewerRepository = this.reviewerRepositoryFactory(query.platform);
 
-    const reviewer = await this.reviewerRepository.get(query.payload.username);
+    const repositories = await this.repositoryRepository.findByUserId(query.userId);
+    const reviewer = await reviewerRepository.get(query.username, query.token);
+
     const repositoryStatistics = await Promise.all(
       repositories.map(repository =>
-        this.prRepository
-          .findByRepository(repository.fullName)
+        prRepository
+          .findByRepository(repository.fullName, query.token)
           .then(prs => {
             return Promise.all(
-              prs.filter(pr => pr.reviewers.some(rev => rev.name === query.payload.username))
+              prs.filter(pr => pr.reviewers.some(rev => rev.name === query.username))
             );
           })
           .then(pr => repositoryPrsStatisticsReadModelFactory(repository, pr))
