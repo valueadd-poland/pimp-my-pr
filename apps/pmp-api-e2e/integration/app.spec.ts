@@ -1,9 +1,5 @@
-import * as request from 'supertest';
-import { Test } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
 //  TODO to remove, disable only to show proposal of usage
 //  tslint:disable-next-line
-import { AppModule } from '../../pmp-api/src/app/app.module';
 
 describe('Mockup', () => {
   it('empty test', () => {

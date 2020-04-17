@@ -1,6 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Action } from '@ngrx/store';
 import { LoginPayload } from '@pimp-my-pr/pmp-web/auth/domain';
-import { HttpErrorResponse } from '@angular/common/http';
 import { LoginSuccessPayload } from '@pimp-my-pr/shared/domain';
 
 export namespace fromAuthActions {

@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AvailableSystems } from '@pimp-my-pr/pmp-web/shared/domain';
 import { AuthFacade } from '@pimp-my-pr/pmp-web/auth/data-access';
-import { githubAuthConfig } from '@pimp-my-pr/pmp-web/shared/core';
+import {
+  AvailableSystems,
+  ENVIRONMENT_ADAPTER,
+  EnvironmentAdapter,
+  githubAuthConfig
+} from '@pimp-my-pr/pmp-web/shared/domain';
 
 @Component({
   selector: 'pimp-my-pr-login-page',
@@ -12,7 +16,11 @@ import { githubAuthConfig } from '@pimp-my-pr/pmp-web/shared/core';
 export class LoginPageComponent implements OnInit {
   loginInProgress$ = this.authFacade.loginInProgress$;
 
-  constructor(private router: Router, private authFacade: AuthFacade) {}
+  constructor(
+    @Inject(ENVIRONMENT_ADAPTER) private environment: EnvironmentAdapter,
+    private router: Router,
+    private authFacade: AuthFacade
+  ) {}
 
   systems = [
     {
@@ -36,7 +44,7 @@ export class LoginPageComponent implements OnInit {
   login(system: string): void {
     switch (system) {
       case AvailableSystems.github:
-        window.location.href = `${githubAuthConfig.authLink}?client_id=${githubAuthConfig.clientId}`;
+        window.location.href = `${githubAuthConfig.authLink}?client_id=${this.environment.githubClientId}`;
         break;
       case AvailableSystems.bitbucket:
         this.router.navigate(['user']);

@@ -59,6 +59,9 @@
     "pmp-web-repository-ui-table-pr-statistic": {
       "tags": ["platform:web", "scope:shared", "type:ui"]
     },
+    "pmp-web-repository-data-access": {
+      "tags": ["platform:web", "scope:repository", "type:data-access"]
+    },
     "pmp-web-repository-repository-statistics-feature": {
       "tags": ["platform:web", "scope:repository", "type:feature"]
     },
@@ -89,6 +92,9 @@
     "pmp-web-repository-shell": {
       "tags": ["platform:web", "scope:repository", "type:shell"]
     },
+    "pmp-web-repository-repository-settings-feature": {
+      "tags": ["platform:web", "scope:repository", "type:feature"]
+    },
     "server-repository-api-rest": {
       "tags": ["platform:server", "scope:repository", "type:api"]
     },
@@ -115,6 +121,12 @@
     },
     "server-repository-core-domain-services": {
       "tags": ["platform:server", "scope:repository", "type:domain-services"]
+    },
+    "server-shared-util-repository": {
+      "tags": ["platform:server", "scope:shared", "type:util"]
+    },
+    "pmp-web-core": {
+      "tags": ["platform:web", "type:core"]
     },
     "server-auth-shell": {
       "tags": ["platform:server", "scope:auth", "type:shell"]
@@ -146,9 +158,6 @@
     "pmp-web-auth-domain": {
       "tags": ["platform:web", "scope:auth", "type:domain"]
     },
-    "pmp-web-shared-core": {
-      "tags": ["platform:web", "scope:shared", "type:core"]
-    },
     "pmp-web-auth-public": {
       "tags": ["platform:web", "scope:auth", "name:auth-public", "type:public"]
     },
@@ -172,6 +181,9 @@
     },
     "server-user-public": {
       "tags": ["name:user-public", "platform:server", "scope:user", "type:public"]
+    },
+    "pmp-web-shared-util-ngrx": {
+      "tags": ["platform:web", "scope:shared", "type:util"]
     }
   }
 }

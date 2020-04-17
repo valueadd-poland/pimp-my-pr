@@ -34,10 +34,5 @@ services:
       # HTTP
       - "traefik.http.routers.api.rule=Host(`${DOMAIN:-pmp.local}`) && PathPrefix(`/api`)"
       - "traefik.http.routers.api.entrypoints=web"
-    environment:
-      - PMP_API_SERVICE_GITHUB_TOKEN=${PMP_API_SERVICE_GITHUB_TOKEN}
-      - PMP_API_SERVICE_REPOSITORIES=${PMP_API_SERVICE_REPOSITORIES}
-      - PMP_API_SERVICE_DB_HOST=${PMP_API_SERVICE_DB_HOST}
-      - PMP_API_SERVICE_DB_NAME=${PMP_API_SERVICE_DB_NAME}
-      - PMP_API_SERVICE_DB_PASSWORD=${PMP_API_SERVICE_DB_PASSWORD}
-      - PMP_API_SERVICE_DB_USER=${PMP_API_SERVICE_DB_USER}
+    env_file:
+      - .env

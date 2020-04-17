@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { AuthPartialState } from './auth.reducer';
-import { fromAuthActions } from './auth.actions';
+import { ActionStatusResolverService } from '@pimp-my-pr/pmp-web/shared/util-ngrx';
 import { Observable } from 'rxjs';
-import { authQuery } from './auth.selectors';
 import { AuthDataService } from '../services/auth-data.service';
-import { ActionStatusResolverService } from '@pimp-my-pr/pmp-web/shared/core';
+import { fromAuthActions } from './auth.actions';
+import { AuthPartialState } from './auth.reducer';
+import { authQuery } from './auth.selectors';
 
 @Injectable()
 export class AuthFacade {

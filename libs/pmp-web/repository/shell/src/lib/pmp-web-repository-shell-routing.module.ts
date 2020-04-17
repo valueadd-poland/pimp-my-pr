@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RepositoriesComponent } from './containers/repositories/repositories.component';
-import { UserComponent } from './containers/user/user.component';
 import { AuthPublicGuard } from '@pimp-my-pr/pmp-web/auth/public';
+import { RepositoriesComponent } from './containers/repositories/repositories.component';
 
 const routes: Routes = [
   {
@@ -11,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: 'user',
-        component: UserComponent,
+        component: RepositoriesComponent,
         children: [
           {
             path: '',
@@ -48,6 +47,19 @@ const routes: Routes = [
               )
           }
         ]
+      }
+    ]
+  },
+  {
+    path: 'repository-settings',
+    component: RepositoriesComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('@pimp-my-pr/pmp-web/repository/repository-settings/feature').then(
+            m => m.PmpWebRepositoryRepositorySettingsFeatureModule
+          )
       }
     ]
   }

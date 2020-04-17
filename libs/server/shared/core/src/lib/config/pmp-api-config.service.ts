@@ -4,19 +4,19 @@ import { ConfigService, registerAs } from '@nestjs/config';
 const CONFIG_NAMESPACE = 'pmp-api-service';
 
 export const pmpApiConfigService = registerAs(CONFIG_NAMESPACE, () => ({
-  bitbucketClientId: process.env.PMP_SERVER_BITBUCKET_CLIENT_ID,
-  bitbucketClientSecret: process.env.PMP_SERVER_BITBUCKET_CLIENT_SECRET,
-  bitbucketToken: process.env.PMP_API_SERVICE_BITBUCKET_TOKEN,
-  githubToken: process.env.PMP_API_SERVICE_GITHUB_TOKEN,
+  bitbucketClientId: process.env.BITBUCKET_CLIENT_ID,
+  bitbucketClientSecret: process.env.BITBUCKET_CLIENT_SECRET,
+  bitbucketToken: process.env.PMP_SERVER_BITBUCKET_TOKEN,
+  githubToken: process.env.PMP_SERVER_GITHUB_TOKEN,
   db: {
-    host: process.env.PMP_API_SERVICE_DB_HOST,
-    name: process.env.PMP_API_SERVICE_DB_NAME,
-    password: process.env.PMP_API_SERVICE_DB_PASSWORD,
-    user: process.env.PMP_API_SERVICE_DB_USER
+    host: process.env.PMP_SERVER_DB_HOST,
+    name: process.env.PMP_SERVER_DB_NAME,
+    password: process.env.PMP_SERVER_DB_PASSWORD,
+    user: process.env.PMP_SERVER_DB_USER
   },
-  githubClientId: process.env.PMP_SERVER_GITHUB_CLIENT_ID,
-  githubClientSecret: process.env.PMP_SERVER_GITHUB_CLIENT_SECRET,
-  jwtSecret: process.env.PMP_SERVER_GITHUB_JWT_SECRET
+  githubClientId: process.env.GITHUB_CLIENT_ID,
+  githubClientSecret: process.env.GITHUB_CLIENT_SECRET,
+  jwtSecret: process.env.PMP_SERVER_JWT_SECRET
 }));
 
 @Injectable()
