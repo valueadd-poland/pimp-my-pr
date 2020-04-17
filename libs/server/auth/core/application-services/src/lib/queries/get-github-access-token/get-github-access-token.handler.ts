@@ -5,12 +5,7 @@ import {
   AuthTokenRepository,
   authTokenRepositoryFactoryToken
 } from '@pimp-my-pr/server/auth/core/domain-services';
-import {
-  AddUserCommand,
-  User,
-  UserPublicFacade,
-  UserRepository
-} from '@pimp-my-pr/server/user/public';
+import { AddUserCommand, UserPublicFacade, UserRepository } from '@pimp-my-pr/server/user/public';
 import { Platform } from '@pimp-my-pr/shared/domain';
 import { AuthTokenReadModel } from '../../read-models/auth-token/auth-token.read-model';
 import { GetGithubAccessTokenQuery } from './get-github-access-token.query';

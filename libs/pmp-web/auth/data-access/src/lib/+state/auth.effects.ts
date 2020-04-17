@@ -1,14 +1,14 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/angular';
-import { AuthPartialState } from './auth.reducer';
-import { fromAuthActions } from './auth.actions';
-import { switchMap, tap } from 'rxjs/operators';
-import { Router } from '@angular/router';
-import { AuthDataService } from '../services/auth-data.service';
-import { of } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
 import { LoginSuccessPayload } from '@pimp-my-pr/shared/domain';
+import { of } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
+import { AuthDataService } from '../services/auth-data.service';
+import { fromAuthActions } from './auth.actions';
+import { AuthPartialState } from './auth.reducer';
 
 @Injectable()
 export class AuthEffects {

@@ -42,7 +42,7 @@ mat-sidenav {
     margin-top: 84px;
   }
 
-  &:last-of-type {
+  &:not(first-of-type) {
     margin-top: 20px;
   }
 

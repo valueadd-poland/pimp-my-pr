@@ -6,7 +6,6 @@ import { pmpApiConfigService, PmpApiConfigService } from './pmp-api-config.servi
 @Module({
   imports: [
     NestConfigModule.forRoot({
-      envFilePath: 'libs/server/shared/core/src/lib/config/.env',
       load: [pmpApiConfigService],
       isGlobal: true
     })

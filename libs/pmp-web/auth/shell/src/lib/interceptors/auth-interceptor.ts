@@ -1,7 +1,7 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AuthFacade } from '@pimp-my-pr/pmp-web/auth/data-access';
+import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 @Injectable()

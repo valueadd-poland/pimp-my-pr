@@ -1,10 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginPayload } from '@pimp-my-pr/pmp-web/auth/domain';
-import { Observable } from 'rxjs';
-import { urlFactory } from '@valueadd/typed-urls';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { LoginSuccessPayload, LoginSuccessResponse } from '@pimp-my-pr/shared/domain';
+import { urlFactory } from '@valueadd/typed-urls';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthDataService {

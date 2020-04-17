@@ -12,6 +12,7 @@ import {
   RepositoryFacade
 } from '@pimp-my-pr/server/repository/core/application-services';
 import { RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { extractFullName } from '@pimp-my-pr/server/shared/util-repository';
 import { AddRepositoryDto } from '../dtos/add-repository.dto';
 
 @ApiTags('repository')
@@ -34,7 +35,7 @@ export class RepositoryController {
   ): Promise<void> {
     return this.repositoryFacade.addRepository(
       new AddRepositoryCommand(
-        addRepositoryDto.repositoryName,
+        extractFullName(addRepositoryDto.repositoryUrl),
         userId,
         credentials.token,
         credentials.platform,

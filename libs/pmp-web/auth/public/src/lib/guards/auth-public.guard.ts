@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
 import { AuthFacade } from '@pimp-my-pr/pmp-web/auth/data-access';
-import { first, map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { first, map, tap } from 'rxjs/operators';
 import { AuthPublicFacade } from '../+state/auth-public.facade';
 
 @Injectable({

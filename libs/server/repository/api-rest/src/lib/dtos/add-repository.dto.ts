@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class AddRepositoryDto {
   @ApiProperty()
-  repositoryName: string;
+  repositoryUrl: string;
 
   @ApiProperty()
   maxLines?: number;
