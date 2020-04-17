@@ -128,7 +128,13 @@
       "@pimp-my-pr/server/user/shell": ["libs/server/user/shell/src/index.ts"],
       "@pimp-my-pr/server/user/infrastructure": ["libs/server/user/infrastructure/src/index.ts"],
       "@pimp-my-pr/server/user/public": ["libs/server/user/public/src/index.ts"],
-      "@pimp-my-pr/pmp-web/shared/util-ngrx": ["libs/pmp-web/shared/util-ngrx/src/index.ts"]
+      "@pimp-my-pr/pmp-web/shared/util-ngrx": ["libs/pmp-web/shared/util-ngrx/src/index.ts"],
+      "@pimp-my-pr/server/shared/util-bitbucket": [
+        "libs/server/shared/util-bitbucket/src/index.ts"
+      ],
+      "@pimp-my-pr/server/shared/util-typescript": [
+        "libs/server/shared/util-typescript/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

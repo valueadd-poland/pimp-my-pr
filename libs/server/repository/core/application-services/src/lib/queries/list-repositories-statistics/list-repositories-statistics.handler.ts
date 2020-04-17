@@ -29,7 +29,7 @@ export class ListRepositoriesStatisticsHandler
 
     for (const repository of repositories) {
       const repositoryStatisticsPromise = prRepository
-        .findByRepository(repository.fullName, query.token)
+        .findByRepositoryId(repository.fullName, query.token)
         .then(prs => new RepositoriesStatisticsItemReadModel(repository, prs));
 
       result.push(repositoryStatisticsPromise);

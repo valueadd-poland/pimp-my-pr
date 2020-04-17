@@ -3,10 +3,11 @@ import { BitbucketRepositoryOwnerEntity } from './bitbucket-repository-owner.ent
 
 export interface BitbucketRepositoryEnity
   extends HalResource<{}, 'avatar' | 'pullrequests' | 'commits'> {
-  uuid: string;
-  name: string;
   description: string;
   full_name: string;
   is_private: boolean;
+  name: string;
   owner: BitbucketRepositoryOwnerEntity;
+  slug: string;
+  uuid: string;
 }

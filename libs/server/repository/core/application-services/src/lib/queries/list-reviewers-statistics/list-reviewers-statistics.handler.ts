@@ -28,7 +28,7 @@ export class ListReviewersStatisticsHandler
     const result = await Promise.all(
       repositories.map(repository =>
         prRepository
-          .findByRepository(repository.fullName, query.token)
+          .findByRepositoryId(repository.fullName, query.token)
           .then(prs => this.groupByReviewers(prs))
           .then(repositoryReviewersWithPrs =>
             repositoryReviewersWithPrs.map(

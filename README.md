@@ -1,4 +1,5 @@
 # Pimp My PR
+![build](https://github.com/valueadd-poland/pimp-my-pr/workflows/PMP%20MASTER%20CI/badge.svg)
 
 A brilliant tool that will pimp your pull requests by collecting and presenting PR statistics.
 
@@ -17,16 +18,19 @@ Generate repository platform client credentials:
 #### Github
 
 - register application at https://github.com/settings/applications/new
+- Set callback URL as `http://your.pmp.domain/login?platform=github`
 
 #### Bitbucket
 
 Register application:
 
-1. Go to account settings
-2. Find "Access management" group
-3. Go to "OAuth"
-4. Add OAuth consumer with "Add consumer" button
-   You can find out more at https://confluence.atlassian.com/x/pwIwDg
+- Go to account settings
+- Find "Access management" group
+- Go to "OAuth"
+- Add OAuth consumer with "Add consumer" button
+  You can find out more at https://confluence.atlassian.com/x/pwIwDg
+- Set callback URL as `http://your.pmp.domain/login?platform=bitbucket`
+- Add Permissions to `Account:read`, `Repositories:read` and `Pull requests:read`
 
 ## Development
 

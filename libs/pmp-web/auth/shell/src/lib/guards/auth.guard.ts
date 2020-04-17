@@ -11,9 +11,10 @@ export class AuthGuard implements CanActivate {
   constructor(private authFacade: AuthFacade) {}
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    if (!!next.queryParams['code']) {
+    if (!!next.queryParams['code'] && !!next.queryParams['platform']) {
       const authCode = next.queryParams['code'];
-      return this.authFacade.login(authCode).pipe(first());
+      const platform = next.queryParams['platform'];
+      return this.authFacade.login(authCode, platform).pipe(first());
     } else {
       return of(true);
     }

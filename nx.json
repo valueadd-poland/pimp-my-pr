@@ -184,6 +184,12 @@
     },
     "pmp-web-shared-util-ngrx": {
       "tags": ["platform:web", "scope:shared", "type:util"]
+    },
+    "server-shared-util-bitbucket": {
+      "tags": ["platform:server", "scope:shared", "type:util"]
+    },
+    "server-shared-util-typescript": {
+      "tags": ["platform:server", "scope:shared", "type:util"]
     }
   }
 }

@@ -29,9 +29,9 @@ jobs:
       - name: affected:build
         run: npm run affected:build -- --base origin/master
       - name: affected:test
-        run: npm run affected:test -- --base origin/master
+        run: npm run affected:test -- --parallel --base origin/master
       - name: affected:lint
-        run: npm run affected:lint -- --base origin/master
+        run: npm run affected:lint -- --parallel --base origin/master
         env:
           CI: true
 

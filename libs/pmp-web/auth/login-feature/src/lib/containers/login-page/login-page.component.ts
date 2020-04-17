@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthFacade } from '@pimp-my-pr/pmp-web/auth/data-access';
 import {
   AvailableSystems,
+  bitbucketAuthConfig,
   ENVIRONMENT_ADAPTER,
   EnvironmentAdapter,
   githubAuthConfig
@@ -47,7 +48,7 @@ export class LoginPageComponent implements OnInit {
         window.location.href = `${githubAuthConfig.authLink}?client_id=${this.environment.githubClientId}`;
         break;
       case AvailableSystems.bitbucket:
-        this.router.navigate(['user']);
+        window.location.href = `${bitbucketAuthConfig.authLink}?client_id=${this.environment.bitbucketClientId}&response_type=code`;
         break;
     }
   }

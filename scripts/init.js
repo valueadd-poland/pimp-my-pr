@@ -3,7 +3,9 @@ exports.__esModule = true;
 var dotenv_1 = require('dotenv');
 var fs = require('fs');
 dotenv_1.config();
-var PMP_SERVER_GITHUB_CLIENT_ID = process.env.PMP_SERVER_GITHUB_CLIENT_ID;
+var _a = process.env,
+  GITHUB_CLIENT_ID = _a.GITHUB_CLIENT_ID,
+  BITBUCKET_CLIENT_ID = _a.BITBUCKET_CLIENT_ID;
 function initPmpWebEnvironment() {
   var devEnvironmentFile = 'libs/pmp-web/core/src/lib/environment/environment.ts';
   var prodEnvironmentFile = 'libs/pmp-web/core/src/lib/environment/environment.prod.ts';
@@ -15,12 +17,18 @@ function initPmpWebEnvironment() {
     'libs/pmp-web/core/src/lib/environment/environment.prod.sample.ts',
     prodEnvironmentFile
   );
-  replaceInFile('{{githubClientId}}', PMP_SERVER_GITHUB_CLIENT_ID, devEnvironmentFile);
-  replaceInFile('{{githubClientId}}', PMP_SERVER_GITHUB_CLIENT_ID, prodEnvironmentFile);
+  replaceInFiles('{{githubClientId}}', GITHUB_CLIENT_ID, [devEnvironmentFile, prodEnvironmentFile]);
+  replaceInFiles('{{bitbucketClientId}}', BITBUCKET_CLIENT_ID, [
+    devEnvironmentFile,
+    prodEnvironmentFile
+  ]);
 }
-function replaceInFile(from, to, file) {
-  var fileContent = fs.readFileSync(file, 'utf8');
-  var newContent = fileContent.replace(from, to);
-  fs.writeFileSync(file, newContent, 'utf8');
+function replaceInFiles(from, to, files) {
+  for (var _i = 0, files_1 = files; _i < files_1.length; _i++) {
+    var file = files_1[_i];
+    var fileContent = fs.readFileSync(file, 'utf8');
+    var newContent = fileContent.replace(from, to);
+    fs.writeFileSync(file, newContent, 'utf8');
+  }
 }
 initPmpWebEnvironment();

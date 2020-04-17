@@ -1,5 +1,5 @@
 import { Platform } from '@pimp-my-pr/shared/domain';
-import { BitbucketUserRepository } from './bitbucket-user.repository';
+import { BitbucketUserRepository } from './bitbucket/bitbucket-user.repository';
 import { GithubUserRepository } from './github/github-user.repository';
 
 export const remoteUserRepositoryFactoryToken = Symbol('RemoteUserRepositoryFactoryToken');

@@ -1775,6 +1775,56 @@
           "styleext": "scss"
         }
       }
+    },
+    "server-shared-util-bitbucket": {
+      "root": "libs/server/shared/util-bitbucket",
+      "sourceRoot": "libs/server/shared/util-bitbucket/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/shared/util-bitbucket/tsconfig.lib.json",
+              "libs/server/shared/util-bitbucket/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/shared/util-bitbucket/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/shared/util-bitbucket/jest.config.js",
+            "tsConfig": "libs/server/shared/util-bitbucket/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-shared-util-typescript": {
+      "root": "libs/server/shared/util-typescript",
+      "sourceRoot": "libs/server/shared/util-typescript/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/shared/util-typescript/tsconfig.lib.json",
+              "libs/server/shared/util-typescript/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/shared/util-typescript/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/shared/util-typescript/jest.config.js",
+            "tsConfig": "libs/server/shared/util-typescript/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {

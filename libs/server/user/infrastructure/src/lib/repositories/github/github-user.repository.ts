@@ -3,7 +3,7 @@ import { githubConfig } from '@pimp-my-pr/server/shared/core';
 import { User } from '@pimp-my-pr/server/user/core/domain';
 import { urlFactory } from '@valueadd/typed-urls';
 import { map } from 'rxjs/operators';
-import { mapGithubUser } from '../../mappers/map-github-user';
+import { mapGithubUser } from './map-github-user';
 import { RemoteUserRepository } from '../remote-user.repository';
 import { GithubUser } from './github-user.entity';
 

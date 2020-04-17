@@ -13,7 +13,6 @@ import { catchError, map } from 'rxjs/operators';
 import { RemoteRepositoryRepository } from '../../repositories/remote-repository.repository';
 import { BitbucketRepositoryEnity } from '../domain/entities/bitbucket-repository.enity';
 import { mapBitbucketRepository } from '../mappers/map-bitbucket-repository';
-import { BitbucketUuidUtil } from '../utils/bitbucket-uuid.util';
 
 @Injectable()
 export class BitbucketRepositoryRepository extends RemoteRepositoryRepository {
@@ -29,9 +28,11 @@ export class BitbucketRepositoryRepository extends RemoteRepositoryRepository {
     super();
   }
 
-  getSingleRepositoryByName(fullName): Promise<RepositoryEntity> {
+  getSingleRepositoryByName(fullName, token: string): Promise<RepositoryEntity> {
     return this.httpService
-      .get<BitbucketRepositoryEnity>(this.endpoints.getRepository.url({ fullName }))
+      .get<BitbucketRepositoryEnity>(this.endpoints.getRepository.url({ fullName }), {
+        headers: { Authorization: `Bearer ${token}` }
+      })
       .pipe(
         map((res: AxiosResponse) => res.data),
         map(mapBitbucketRepository),
@@ -39,28 +40,6 @@ export class BitbucketRepositoryRepository extends RemoteRepositoryRepository {
         catchError((error: AxiosError | CoreException) => {
           if (error instanceof CoreNotFoundException) {
             return throwError(new RepositoryNotFoundException(fullName));
-          }
-          return throwError(error);
-        })
-      )
-      .toPromise();
-  }
-
-  getSingleRepositoryById(id: string, workspace: string): Promise<RepositoryEntity> {
-    return this.httpService
-      .get<BitbucketRepositoryEnity>(
-        this.endpoints.getRepositoryById.url({
-          repositoryId: BitbucketUuidUtil.parseTo(id),
-          workspace
-        })
-      )
-      .pipe(
-        map(res => res.data),
-        map(mapBitbucketRepository),
-        catchRequestExceptions(),
-        catchError((error: AxiosError | CoreException) => {
-          if (error instanceof CoreNotFoundException) {
-            return throwError(new RepositoryNotFoundException(`${id}`));
           }
           return throwError(error);
         })

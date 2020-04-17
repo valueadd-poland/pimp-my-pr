@@ -27,7 +27,7 @@ export class GetRepositoryStatisticsHandler
     const prRepository = this.prRepositoryFactory(query.platform);
 
     return await prRepository
-      .findByRepository(repository.fullName, query.token)
+      .findByRepositoryId(repository.fullName, query.token)
       .then((prs: PrEntity[]) => repositoryPrsStatisticsReadModelFactory(repository, prs));
   }
 }
