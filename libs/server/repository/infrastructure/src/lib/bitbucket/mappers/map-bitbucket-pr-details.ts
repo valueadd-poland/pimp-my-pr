@@ -1,8 +1,8 @@
 import { plainToClass } from '@marcj/marshal';
 import { PrEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { BitbucketUuidUtil } from '@pimp-my-pr/server/shared/util-bitbucket';
 import { BitbucketPrDetailsEntity } from '../domain/entities/bitbucket-pr-details.entity';
 import { BitbucketPrDiffEntity } from '../domain/entities/bitbucket-pr-diff.entity';
-import { BitbucketUuidUtil } from '../utils/bitbucket-uuid.util';
 import { mapBitbucketAccount } from './map-bitbucket-account';
 import { mapBitbucketParticipantUser } from './map-bitbucket-participant-user';
 

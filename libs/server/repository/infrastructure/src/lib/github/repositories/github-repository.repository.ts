@@ -47,23 +47,4 @@ export class GithubRepositoryRepository extends RemoteRepositoryRepository {
       )
       .toPromise();
   }
-
-  getSingleRepositoryById(id: string, token: string): Promise<RepositoryEntity> {
-    return this.httpService
-      .get<RepositoryEntity>(this.endpoints.getSingleRepository.url({ id }), {
-        headers: { Authorization: `token ${token}` }
-      })
-      .pipe(
-        map((res: AxiosResponse) => res.data),
-        map(mapGithubRepository),
-        catchRequestExceptions(),
-        catchError((error: AxiosError | CoreException) => {
-          if (error instanceof CoreNotFoundException) {
-            return throwError(new RepositoryNotFoundException(`${id}`));
-          }
-          return throwError(error);
-        })
-      )
-      .toPromise();
-  }
 }

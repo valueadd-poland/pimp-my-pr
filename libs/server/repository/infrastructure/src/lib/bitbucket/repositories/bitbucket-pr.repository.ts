@@ -26,32 +26,38 @@ export class BitbucketPrRepository extends PrRepository {
     super();
   }
 
-  findByRepository(repositoryId: string): Promise<PrEntity[]> {
+  findByRepositoryId(repositoryId: string, token: string): Promise<PrEntity[]> {
     return this.getDataFromAllPages(
       this.httpService
         .get<BitbucketPaginatedResponse<BitbucketPrEntity[]>>(
-          this.endpoints.getRepositoryPrs.url({ repositoryId })
+          this.endpoints.getRepositoryPrs.url({ repositoryId }),
+          { headers: { Authorization: `Bearer ${token}` } }
         )
         .pipe(map(res => res.data)),
-      this.getPrsFromNextPage
+      this.getPrsFromNextPage(token)
     )
-      .pipe(switchMap(prs => forkJoin(prs.map(pr => this.getPrDetails(pr)))))
+      .pipe(switchMap(prs => forkJoin(prs.map(pr => this.getPrDetails(pr, token)))))
       .toPromise();
   }
 
-  private getPrsFromNextPage(nextPageUrl: string): Observable<BitbucketPrEntity[]> {
-    return this.getDataFromAllPages(
-      this.httpService
-        .get<BitbucketPaginatedResponse<BitbucketPrEntity[]>>(nextPageUrl)
-        .pipe(map(res => res.data)),
-      this.getPrsFromNextPage
-    );
+  private getPrsFromNextPage(
+    token: string
+  ): (nextPageUrl: string) => Observable<BitbucketPrEntity[]> {
+    return (nextPageUrl: string) =>
+      this.getDataFromAllPages(
+        this.httpService
+          .get<BitbucketPaginatedResponse<BitbucketPrEntity[]>>(nextPageUrl, {
+            headers: { Authorization: `Bearer ${token}` }
+          })
+          .pipe(map(res => res.data)),
+        this.getPrsFromNextPage(token)
+      );
   }
 
-  private getPrDetails(pr: BitbucketPrEntity): Promise<PrEntity> {
+  private getPrDetails(pr: BitbucketPrEntity, token: string): Promise<PrEntity> {
     return forkJoin([
-      this.getPrDiff(pr.links.diffstat.href),
-      this.getPrParticipants(pr.links.self.href)
+      this.getPrDiff(token)(pr.links.diffstat.href),
+      this.getPrParticipants(pr.links.self.href, token)
     ])
       .pipe(
         map(([diff, participants]) => {
@@ -67,20 +73,26 @@ export class BitbucketPrRepository extends PrRepository {
       .toPromise();
   }
 
-  private getPrDiff(prDiffUrl: string): Observable<BitbucketPrDiffEntity[]> {
-    return this.getDataFromAllPages<BitbucketPrDiffEntity>(
-      this.httpService
-        .get<BitbucketPaginatedResponse<BitbucketPrDiffEntity[]>>(prDiffUrl)
-        .pipe(map(res => res.data)),
-      this.getPrDiff
-    );
+  private getPrDiff(token: string): (prDiffUrl: string) => Observable<BitbucketPrDiffEntity[]> {
+    return (prDiffUrl: string) =>
+      this.getDataFromAllPages<BitbucketPrDiffEntity>(
+        this.httpService
+          .get<BitbucketPaginatedResponse<BitbucketPrDiffEntity[]>>(prDiffUrl, {
+            headers: { Authorization: `Bearer ${token}` }
+          })
+          .pipe(map(res => res.data)),
+        this.getPrDiff(token)
+      );
   }
 
   private getPrParticipants(
-    prParticipantsUrl: string
+    prParticipantsUrl: string,
+    token: string
   ): Observable<BitbucketParticipantUserEntity[]> {
     return this.httpService
-      .get<{ participants: BitbucketParticipantEntity[] }>(prParticipantsUrl)
+      .get<{ participants: BitbucketParticipantEntity[] }>(prParticipantsUrl, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
       .pipe(
         map(res => res.data.participants.map(participant => participant.user)),
         catchRequestExceptions()

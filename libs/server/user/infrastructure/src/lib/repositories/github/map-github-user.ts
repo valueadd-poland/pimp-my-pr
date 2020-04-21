@@ -1,6 +1,6 @@
 import { plainToClass } from '@marcj/marshal';
 import { User } from '@pimp-my-pr/server/user/core/domain';
-import { GithubUser } from '../repositories/github/github-user.entity';
+import { GithubUser } from './github-user.entity';
 
 export function mapGithubUser(githubUser: GithubUser): User {
   return plainToClass(User, {

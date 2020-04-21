@@ -33,7 +33,7 @@ export class GetReviewerStatisticsHandler
     const repositoryStatistics = await Promise.all(
       repositories.map(repository =>
         prRepository
-          .findByRepository(repository.fullName, query.token)
+          .findByRepositoryId(repository.fullName, query.token)
           .then(prs => {
             return Promise.all(
               prs.filter(pr => pr.reviewers.some(rev => rev.name === query.username))

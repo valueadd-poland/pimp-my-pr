@@ -37,7 +37,7 @@ export class GithubPrRepository extends PrRepository {
       .toPromise();
   }
 
-  findByRepository(repositoryId: string, token: string): Promise<PrEntity[]> {
+  findByRepositoryId(repositoryId: string, token: string): Promise<PrEntity[]> {
     return this.httpService
       .get<GithubPrEntity[]>(this.endpoints.getRepositoryPrs.url({ fullName: repositoryId }), {
         headers: { Authorization: `token ${token}` }
