@@ -1,4 +1,5 @@
 # Pimp My PR
+![build](https://github.com/valueadd-poland/pimp-my-pr/workflows/PMP%20MASTER%20CI/badge.svg)
 
 A brilliant tool that will pimp your pull requests by collecting and presenting PR statistics.
 

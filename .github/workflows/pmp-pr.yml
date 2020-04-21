@@ -16,6 +16,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Cache node modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ./node_modules
+          key: ${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
       - name: npm install
         run: npm ci
       - name: init configs
@@ -45,6 +52,13 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: use master
         run: git branch master origin/master #https://github.com/nrwl/nx/issues/1988
+      - name: Cache node modules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
       - name: npm install
         run: npm ci
       - name: init configs
