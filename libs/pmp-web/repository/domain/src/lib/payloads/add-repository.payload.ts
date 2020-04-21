@@ -1,5 +1,5 @@
 export interface AddRepositoryPayload {
-  repositoryName: string;
+  repositoryUrl: string;
   maxLines?: number;
   maxWaitingTime?: number;
 }

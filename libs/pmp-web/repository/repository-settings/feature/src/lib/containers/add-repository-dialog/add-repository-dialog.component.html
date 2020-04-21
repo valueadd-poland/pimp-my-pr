@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Add repository</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" class="form--container">
+    <mat-form-field>
+      <mat-label>Repository Url</mat-label>
+      <input formControlName="repositoryUrl" matInput />
+      <mat-error>
+        <va-validation-messages [control]="form.controls.repositoryUrl"></va-validation-messages>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Max pull request lines</mat-label>
+      <input min="1" type="number" formControlName="maxLines" matInput />
+    </mat-form-field>
+    <div class="form-fields--container" [formGroup]="form.controls.maxWaitingTimeDefinition">
+      <mat-form-field>
+        <mat-label>Max waiting time</mat-label>
+        <input min="1" type="number" formControlName="maxWaitingTime" matInput />
+      </mat-form-field>
+      <mat-form-field class="time-format--selector">
+        <mat-label>Unit</mat-label>
+        <mat-select formControlName="timeUnit">
+          <mat-option [value]="unit.value" *ngFor="let unit of TimeUnit | keyvalue">{{
+            unit.key
+          }}</mat-option>
+        </mat-select>
+        <mat-error>
+          <va-validation-messages [control]="timeUnitFormControl"></va-validation-messages>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button color="primary" type="submit" [disabled]="form.invalid" (click)="submit()">
+    Add
+  </button>
+</div>

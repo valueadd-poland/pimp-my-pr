@@ -1,0 +1,49 @@
+<div class="table-action__button">
+  <ng-content select="[tableAction]"></ng-content>
+</div>
+<mat-table matSort [dataSource]="dataSource">
+  <!-- Avatar Column -->
+  <ng-container matColumnDef="avatar">
+    <mat-header-cell *matHeaderCellDef class="avatar-column"></mat-header-cell>
+    <mat-cell *matCellDef="let element" class="avatar-column">
+      <img [src]="element.avatarUrl || element.pictureUrl" class="avatar-column__empty-space" />
+    </mat-cell>
+  </ng-container>
+
+  <!-- Repo name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      <span>Name</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.name }}
+    </mat-cell>
+  </ng-container>
+
+  <!-- Max PR lines Column -->
+  <ng-container matColumnDef="maxLines">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      <span>Max lines</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.maxLines }}
+    </mat-cell>
+  </ng-container>
+
+  <!-- Max waiting time Column -->
+  <ng-container matColumnDef="maxWaitingTime">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      <span>Max waiting time</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.maxWaitingTime | resolveHours }}
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayColumns"></mat-row>
+</mat-table>
+
+<div *ngIf="isLoading" class="content-loader">
+  <list-content-loader></list-content-loader>
+</div>

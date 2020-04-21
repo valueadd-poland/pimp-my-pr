@@ -136,7 +136,10 @@
       ],
       "@pimp-my-pr/server/shared/config": ["libs/server/shared/config/src/index.ts"],
       "@pimp-my-pr/pmp-web/shared/config": ["libs/pmp-web/shared/config/src/index.ts"],
-      "@pimp-my-pr/pmp-web/shared/core": ["libs/pmp-web/shared/core/src/index.ts"]
+      "@pimp-my-pr/pmp-web/shared/core": ["libs/pmp-web/shared/core/src/index.ts"],
+      "@pimp-my-pr/pmp-web/repository/repository-settings/ui": [
+        "libs/pmp-web/repository/repository-settings/ui/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
