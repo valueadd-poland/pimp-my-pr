@@ -95,6 +95,9 @@
     "pmp-web-repository-repository-settings-feature": {
       "tags": ["platform:web", "scope:repository", "type:feature"]
     },
+    "pmp-web-repository-repository-settings-ui": {
+      "tags": ["platform:web", "scope:repository", "type:ui"]
+    },
     "server-repository-api-rest": {
       "tags": ["platform:server", "scope:repository", "type:api"]
     },

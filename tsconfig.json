@@ -134,6 +134,9 @@
       ],
       "@pimp-my-pr/server/shared/util-typescript": [
         "libs/server/shared/util-typescript/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/repository/repository-settings/ui": [
+        "libs/pmp-web/repository/repository-settings/ui/src/index.ts"
       ]
     }
   },
