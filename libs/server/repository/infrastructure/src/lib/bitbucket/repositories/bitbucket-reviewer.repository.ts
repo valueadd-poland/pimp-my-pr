@@ -2,7 +2,7 @@ import { plainToClass } from '@marcj/marshal';
 import { HttpService, Injectable } from '@nestjs/common';
 import { ReviewerEntity } from '@pimp-my-pr/server/repository/core/domain';
 import { ReviewerRepository } from '@pimp-my-pr/server/repository/core/domain-services';
-import { bitbucketConfig } from '@pimp-my-pr/server/shared/core';
+import { bitbucketConfig } from '@pimp-my-pr/server/shared/config';
 import {
   BitbucketUserEntity,
   BitbucketUuidUtil,

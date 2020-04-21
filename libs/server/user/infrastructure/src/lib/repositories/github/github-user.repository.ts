@@ -1,5 +1,5 @@
 import { HttpService, Injectable } from '@nestjs/common';
-import { githubConfig } from '@pimp-my-pr/server/shared/core';
+import { githubConfig } from '@pimp-my-pr/server/shared/config';
 import { User } from '@pimp-my-pr/server/user/core/domain';
 import { urlFactory } from '@valueadd/typed-urls';
 import { map } from 'rxjs/operators';

@@ -3,7 +3,7 @@ import {
   RepositoryEntity,
   RepositoryNotFoundException
 } from '@pimp-my-pr/server/repository/core/domain';
-import { bitbucketConfig } from '@pimp-my-pr/server/shared/core';
+import { bitbucketConfig } from '@pimp-my-pr/server/shared/config';
 import { CoreException, CoreNotFoundException } from '@pimp-my-pr/server/shared/domain';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
 import { urlFactory } from '@valueadd/typed-urls';

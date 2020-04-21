@@ -1,7 +1,7 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { ReviewerEntity } from '@pimp-my-pr/server/repository/core/domain';
 import { ReviewerRepository } from '@pimp-my-pr/server/repository/core/domain-services';
-import { githubConfig } from '@pimp-my-pr/server/shared/core';
+import { githubConfig } from '@pimp-my-pr/server/shared/config';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
 import { urlFactory } from '@valueadd/typed-urls';
 import { map } from 'rxjs/operators';

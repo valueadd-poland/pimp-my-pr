@@ -1,6 +1,6 @@
 import { plainToClass } from '@marcj/marshal';
 import { HttpService, Injectable } from '@nestjs/common';
-import { bitbucketConfig } from '@pimp-my-pr/server/shared/core';
+import { bitbucketConfig } from '@pimp-my-pr/server/shared/config';
 import { BitbucketUserEntity, mapBitbucketUser } from '@pimp-my-pr/server/shared/util-bitbucket';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
 import { User } from '@pimp-my-pr/server/user/core/domain';

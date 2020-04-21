@@ -100,7 +100,6 @@
       "@pimp-my-pr/pmp-web/repository/data-access": [
         "libs/pmp-web/repository/data-access/src/index.ts"
       ],
-      "@pimp-my-pr/pmp-web/core": ["libs/pmp-web/core/src/index.ts"],
       "@pimp-my-pr/pmp-web/repository/domain": ["libs/pmp-web/repository/domain/src/index.ts"],
       "@pimp-my-pr/server/auth/shell": ["libs/server/auth/shell/src/index.ts"],
       "@pimp-my-pr/server/auth/api-rest": ["libs/server/auth/api-rest/src/index.ts"],
@@ -134,7 +133,10 @@
       ],
       "@pimp-my-pr/server/shared/util-typescript": [
         "libs/server/shared/util-typescript/src/index.ts"
-      ]
+      ],
+      "@pimp-my-pr/server/shared/config": ["libs/server/shared/config/src/index.ts"],
+      "@pimp-my-pr/pmp-web/shared/config": ["libs/pmp-web/shared/config/src/index.ts"],
+      "@pimp-my-pr/pmp-web/shared/core": ["libs/pmp-web/shared/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

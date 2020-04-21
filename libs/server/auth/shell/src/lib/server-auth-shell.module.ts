@@ -8,7 +8,7 @@ import {
   GithubAuthTokenRepository,
   ServerAuthInfrastructureModule
 } from '@pimp-my-pr/server/auth/infrastructure';
-import { PmpApiConfigService, ServerSharedCoreModule } from '@pimp-my-pr/server/shared/core';
+import { PmpApiConfigService } from '@pimp-my-pr/server/shared/config';
 import { ServerUserShellModule } from '@pimp-my-pr/server/user/public';
 
 const providers = [
@@ -23,7 +23,6 @@ const providers = [
 @Module({
   imports: [
     JwtModule.registerAsync({
-      imports: [ServerSharedCoreModule],
       inject: [PmpApiConfigService],
       useFactory: (configService: PmpApiConfigService) => ({
         secret: configService.getJwtSecret()

@@ -1,7 +1,7 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { PrEntity } from '@pimp-my-pr/server/repository/core/domain';
 import { PrRepository } from '@pimp-my-pr/server/repository/core/domain-services';
-import { bitbucketConfig } from '@pimp-my-pr/server/shared/core';
+import { bitbucketConfig } from '@pimp-my-pr/server/shared/config';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
 import { urlFactory } from '@valueadd/typed-urls';
 import { forkJoin, Observable, of } from 'rxjs';

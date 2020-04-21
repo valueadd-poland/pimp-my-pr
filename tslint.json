@@ -101,8 +101,12 @@
             "onlyDependOnLibsWithTags": ["type:domain", "type:domain-services", "type:public"]
           },
           {
-            "sourceTag": "type:core",
+            "sourceTag": "type:config",
             "onlyDependOnLibsWithTags": ["type:util", "type:domain"]
+          },
+          {
+            "sourceTag": "type:core",
+            "onlyDependOnLibsWithTags": ["type:config"]
           },
           {
             "sourceTag": "type:data-access",
@@ -110,7 +114,6 @@
               "type:data-access",
               "type:util",
               "type:domain",
-              "type:core",
               "type:config"
             ]
           },

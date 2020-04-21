@@ -1,7 +1,7 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { AuthTokenEntity } from '@pimp-my-pr/server/auth/core/domain';
 import { AuthTokenRepository } from '@pimp-my-pr/server/auth/core/domain-services';
-import { bitbucketConfig, PmpApiConfigService } from '@pimp-my-pr/server/shared/core';
+import { bitbucketConfig, PmpApiConfigService } from '@pimp-my-pr/server/shared/config';
 import { CoreUnauthorizedFoundException } from '@pimp-my-pr/server/shared/domain';
 import { urlFactory } from '@valueadd/typed-urls';
 import { map, tap } from 'rxjs/operators';
