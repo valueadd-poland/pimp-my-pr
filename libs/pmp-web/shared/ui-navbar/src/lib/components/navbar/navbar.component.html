@@ -5,8 +5,10 @@
     </span>
   </div>
   <div class="navbar__user-info">
-    <div class="navbar__empty-line"></div>
-    <span>{{ 'Essie Vasquez' }}</span>
+    <div class="avatar-column">
+      <img [src]="avatar" class="avatar-column__empty-space" />
+    </div>
+    <span>{{ name }}</span>
     <!-- @TODO translate -->
     <button (click)="onLogout()" [matTooltip]="'Logout'" mat-icon-button>
       <mat-icon>input</mat-icon>

@@ -8,6 +8,10 @@ import { AuthPublicFacade } from '@pimp-my-pr/pmp-web/auth/public';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RepositoriesComponent {
+  id = '1223';
+  name = 'Artix1500';
+  avatar = 'https://avatars1.githubusercontent.com/u/38567097?s=460&v=4';
+
   constructor(private authPublicFacade: AuthPublicFacade) {}
 
   onLogout(): void {

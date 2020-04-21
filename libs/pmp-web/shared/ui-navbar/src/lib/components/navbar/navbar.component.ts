@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'pmp-navbar',
@@ -7,6 +7,10 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent {
+  @Input()
+  name: string;
+  @Input()
+  avatar: string;
   @Output()
   logout = new EventEmitter<void>();
 

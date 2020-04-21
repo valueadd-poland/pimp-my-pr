@@ -32,7 +32,12 @@
   }
 }
 
-.navbar__empty-line {
+.avatar-column {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-column__empty-space {
   width: 32px;
   height: 32px;
   background: gray;
