@@ -6,15 +6,15 @@ config();
 const { GITHUB_CLIENT_ID, BITBUCKET_CLIENT_ID } = process.env;
 
 function initPmpWebEnvironment(): void {
-  const devEnvironmentFile = 'libs/pmp-web/core/src/lib/environment/environment.ts';
-  const prodEnvironmentFile = 'libs/pmp-web/core/src/lib/environment/environment.prod.ts';
+  const devEnvironmentFile = 'libs/pmp-web/shared/config/src/lib/environment/environment.ts';
+  const prodEnvironmentFile = 'libs/pmp-web/shared/config/src/lib/environment/environment.prod.ts';
 
   fs.copyFileSync(
-    'libs/pmp-web/core/src/lib/environment/environment.sample.ts',
+    'libs/pmp-web/shared/config/src/lib/environment/environment.sample.ts',
     devEnvironmentFile
   );
   fs.copyFileSync(
-    'libs/pmp-web/core/src/lib/environment/environment.prod.sample.ts',
+    'libs/pmp-web/shared/config/src/lib/environment/environment.prod.sample.ts',
     prodEnvironmentFile
   );
 

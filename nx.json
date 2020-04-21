@@ -125,9 +125,6 @@
     "server-shared-util-repository": {
       "tags": ["platform:server", "scope:shared", "type:util"]
     },
-    "pmp-web-core": {
-      "tags": ["platform:web", "type:core"]
-    },
     "server-auth-shell": {
       "tags": ["platform:server", "scope:auth", "type:shell"]
     },
@@ -190,6 +187,15 @@
     },
     "server-shared-util-typescript": {
       "tags": ["platform:server", "scope:shared", "type:util"]
+    },
+    "server-shared-config": {
+      "tags": ["platform:server", "scope:shared", "type:config"]
+    },
+    "pmp-web-shared-config": {
+      "tags": ["platform:web", "scope:shared", "type:config"]
+    },
+    "pmp-web-shared-core": {
+      "tags": ["platform:web", "type:core"]
     }
   }
 }

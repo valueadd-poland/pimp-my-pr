@@ -7,14 +7,14 @@ var _a = process.env,
   GITHUB_CLIENT_ID = _a.GITHUB_CLIENT_ID,
   BITBUCKET_CLIENT_ID = _a.BITBUCKET_CLIENT_ID;
 function initPmpWebEnvironment() {
-  var devEnvironmentFile = 'libs/pmp-web/core/src/lib/environment/environment.ts';
-  var prodEnvironmentFile = 'libs/pmp-web/core/src/lib/environment/environment.prod.ts';
+  var devEnvironmentFile = 'libs/pmp-web/shared/config/src/lib/environment/environment.ts';
+  var prodEnvironmentFile = 'libs/pmp-web/shared/config/src/lib/environment/environment.prod.ts';
   fs.copyFileSync(
-    'libs/pmp-web/core/src/lib/environment/environment.sample.ts',
+    'libs/pmp-web/shared/config/src/lib/environment/environment.sample.ts',
     devEnvironmentFile
   );
   fs.copyFileSync(
-    'libs/pmp-web/core/src/lib/environment/environment.prod.sample.ts',
+    'libs/pmp-web/shared/config/src/lib/environment/environment.prod.sample.ts',
     prodEnvironmentFile
   );
   replaceInFiles('{{githubClientId}}', GITHUB_CLIENT_ID, [devEnvironmentFile, prodEnvironmentFile]);

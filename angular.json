@@ -1240,37 +1240,6 @@
         }
       }
     },
-    "pmp-web-core": {
-      "projectType": "library",
-      "root": "libs/pmp-web/core",
-      "sourceRoot": "libs/pmp-web/core/src",
-      "prefix": "pimp-my-pr",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/pmp-web/core/tsconfig.lib.json",
-              "libs/pmp-web/core/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/core/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/pmp-web/core/jest.config.js",
-            "tsConfig": "libs/pmp-web/core/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/core/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
-        }
-      }
-    },
     "server-auth-shell": {
       "root": "libs/server/auth/shell",
       "sourceRoot": "libs/server/auth/shell/src",
@@ -1823,6 +1792,93 @@
             "jestConfig": "libs/server/shared/util-typescript/jest.config.js",
             "tsConfig": "libs/server/shared/util-typescript/tsconfig.spec.json"
           }
+        }
+      }
+    },
+    "server-shared-config": {
+      "root": "libs/server/shared/config",
+      "sourceRoot": "libs/server/shared/config/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/shared/config/tsconfig.lib.json",
+              "libs/server/shared/config/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/shared/config/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/shared/config/jest.config.js",
+            "tsConfig": "libs/server/shared/config/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "pmp-web-shared-config": {
+      "projectType": "library",
+      "root": "libs/pmp-web/shared/config",
+      "sourceRoot": "libs/pmp-web/shared/config/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shared/config/tsconfig.lib.json",
+              "libs/pmp-web/shared/config/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/config/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shared/config/jest.config.js",
+            "tsConfig": "libs/pmp-web/shared/config/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/shared/config/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "pmp-web-shared-core": {
+      "projectType": "library",
+      "root": "libs/pmp-web/shared/core",
+      "sourceRoot": "libs/pmp-web/shared/core/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shared/core/tsconfig.lib.json",
+              "libs/pmp-web/shared/core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/core/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shared/core/jest.config.js",
+            "tsConfig": "libs/pmp-web/shared/core/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/shared/core/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
         }
       }
     }
