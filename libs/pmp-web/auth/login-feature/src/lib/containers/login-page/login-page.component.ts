@@ -1,5 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Inject } from '@angular/core';
 import { AuthFacade } from '@pimp-my-pr/pmp-web/auth/data-access';
 import {
   AvailableSystems,
@@ -14,12 +13,11 @@ import {
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent {
   loginInProgress$ = this.authFacade.loginInProgress$;
 
   constructor(
     @Inject(ENVIRONMENT_ADAPTER) private environment: EnvironmentAdapter,
-    private router: Router,
     private authFacade: AuthFacade
   ) {}
 
@@ -35,12 +33,6 @@ export class LoginPageComponent implements OnInit {
       color: '#0052CC'
     }
   ];
-
-  ngOnInit(): void {
-    if (!!this.authFacade.getSavedToken()) {
-      this.router.navigate(['/user']);
-    }
-  }
 
   login(system: string): void {
     switch (system) {
