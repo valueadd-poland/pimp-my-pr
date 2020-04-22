@@ -11,6 +11,7 @@ export * from './lib/interfaces/repository-statistics.interface';
 export * from './lib/interfaces/pr.statistics';
 export * from './lib/interfaces/pr-reviewer.interface';
 export * from './lib/interfaces/pr-author.interface';
+export * from './lib/enums/http-status-codes.enum';
 export * from './lib/enums/platform.enum';
 export * from './lib/responses/auth.response';
 export * from './lib/interfaces/login-success-payload';
