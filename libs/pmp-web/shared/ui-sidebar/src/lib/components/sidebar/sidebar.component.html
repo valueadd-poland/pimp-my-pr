@@ -1,13 +1,21 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" opened>
     <div class="sidebar-content">
-      <a class="sidebar__item" [routerLink]="['/user']" routerLinkActive="sidebar__item--active">
+      <a
+        class="sidebar__item"
+        [routerLink]="['/user']"
+        routerLinkActive="sidebar__item--active"
+        matTooltip="PR reviewers pending"
+        matTooltipPosition="right"
+      >
         <mat-icon>people</mat-icon>
       </a>
       <a
         class="sidebar__item"
         [routerLink]="['/repositories']"
         routerLinkActive="sidebar__item--active"
+        matTooltip="Repositories with pending PRs"
+        matTooltipPosition="right"
       >
         <mat-icon>folder</mat-icon>
       </a>
@@ -15,6 +23,8 @@
         class="sidebar__item"
         [routerLink]="['/repository-settings']"
         routerLinkActive="sidebar__item--active"
+        matTooltip="Settings"
+        matTooltipPosition="right"
       >
         <mat-icon>settings</mat-icon>
       </a>
