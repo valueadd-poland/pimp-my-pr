@@ -1775,6 +1775,31 @@
           "styleext": "scss"
         }
       }
+    },
+    "server-user-api-rest": {
+      "root": "libs/server/user/api-rest",
+      "sourceRoot": "libs/server/user/api-rest/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/user/api-rest/tsconfig.lib.json",
+              "libs/server/user/api-rest/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/user/api-rest/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/user/api-rest/jest.config.js",
+            "tsConfig": "libs/server/user/api-rest/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {

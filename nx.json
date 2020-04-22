@@ -184,6 +184,9 @@
     },
     "pmp-web-shared-util-ngrx": {
       "tags": ["platform:web", "scope:shared", "type:util"]
+    },
+    "server-user-api-rest": {
+      "tags": ["platform:server", "scope:user", "type:api"]
     }
   }
 }
