@@ -66,6 +66,57 @@
               "name:user-public",
               "scope:repository",
               "scope:shared",
+              "name:auth-public",
+              "scope:repositories-statistics"
+            ]
+          },
+          {
+            "sourceTag": "scope:repository-statistics",
+            "onlyDependOnLibsWithTags": [
+              "name:user-public",
+              "scope:repository",
+              "scope:repository-statistics",
+              "scope:shared",
+              "name:auth-public"
+            ]
+          },
+          {
+            "sourceTag": "scope:repositories-statistics",
+            "onlyDependOnLibsWithTags": [
+              "name:user-public",
+              "scope:repository",
+              "scope:repositories-statistics",
+              "scope:shared",
+              "name:auth-public"
+            ]
+          },
+          {
+            "sourceTag": "scope:reviewer-statistics",
+            "onlyDependOnLibsWithTags": [
+              "name:user-public",
+              "scope:repository",
+              "scope:reviewer-statistics",
+              "scope:shared",
+              "name:auth-public"
+            ]
+          },
+          {
+            "sourceTag": "scope:reviewers-statistics",
+            "onlyDependOnLibsWithTags": [
+              "name:user-public",
+              "scope:repository",
+              "scope:reviewers-statistics",
+              "scope:shared",
+              "name:auth-public"
+            ]
+          },
+          {
+            "sourceTag": "scope:repository-settings",
+            "onlyDependOnLibsWithTags": [
+              "name:user-public",
+              "scope:repository",
+              "scope:repository-settings",
+              "scope:shared",
               "name:auth-public"
             ]
           },

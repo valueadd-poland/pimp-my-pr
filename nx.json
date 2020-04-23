@@ -63,28 +63,28 @@
       "tags": ["platform:web", "scope:repository", "type:data-access"]
     },
     "pmp-web-repository-repository-statistics-feature": {
-      "tags": ["platform:web", "scope:repository", "type:feature"]
+      "tags": ["platform:web", "scope:repository-statistics", "type:feature"]
     },
     "pmp-web-repository-repository-statistics-data-access": {
-      "tags": ["platform:web", "scope:repository", "type:data-access"]
+      "tags": ["platform:web", "scope:repository-statistics", "type:data-access"]
     },
     "pmp-web-repository-repositories-statistics-feature": {
-      "tags": ["platform:web", "scope:repository", "type:feature"]
+      "tags": ["platform:web", "scope:repositories-statistics", "type:feature"]
     },
     "pmp-web-repository-repositories-statistics-data-access": {
-      "tags": ["platform:web", "scope:repository", "type:data-access"]
+      "tags": ["platform:web", "scope:repositories-statistics", "type:data-access"]
     },
     "pmp-web-repository-reviewer-statistics-feature": {
-      "tags": ["platform:web", "scope:repository", "type:feature"]
+      "tags": ["platform:web", "scope:reviewer-statistics", "type:feature"]
     },
     "pmp-web-repository-reviewer-statistics-data-access": {
-      "tags": ["platform:web", "scope:repository", "type:data-access"]
+      "tags": ["platform:web", "scope:reviewer-statistics", "type:data-access"]
     },
     "pmp-web-repository-reviewers-statistics-feature": {
-      "tags": ["platform:web", "scope:repository", "type:feature"]
+      "tags": ["platform:web", "scope:reviewers-statistics", "type:feature"]
     },
     "pmp-web-repository-reviewers-statistics-data-access": {
-      "tags": ["platform:web", "scope:repository", "type:data-access"]
+      "tags": ["platform:web", "scope:reviewers-statistics", "type:data-access"]
     },
     "pmp-web-repository-domain": {
       "tags": ["platform:web", "scope:repository", "type:domain"]
@@ -93,10 +93,10 @@
       "tags": ["platform:web", "scope:repository", "type:shell"]
     },
     "pmp-web-repository-repository-settings-feature": {
-      "tags": ["platform:web", "scope:repository", "type:feature"]
+      "tags": ["platform:web", "scope:repository-settings", "type:feature"]
     },
     "pmp-web-repository-repository-settings-ui": {
-      "tags": ["platform:web", "scope:repository", "type:ui"]
+      "tags": ["platform:web", "scope:repository-settings", "type:ui"]
     },
     "server-repository-api-rest": {
       "tags": ["platform:server", "scope:repository", "type:api"]
