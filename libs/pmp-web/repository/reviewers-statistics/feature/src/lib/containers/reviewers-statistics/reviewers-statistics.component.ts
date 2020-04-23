@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReviewersFacade } from '@pimp-my-pr/pmp-web/repository/reviewers-statistics/data-access';
-import { UserStatistics } from '@pimp-my-pr/shared/domain';
+import { ReviewerStatistics } from '@pimp-my-pr/shared/domain';
 
 @Component({
   selector: 'pmp-users-statistics',
@@ -19,7 +19,7 @@ export class ReviewersStatisticsComponent implements OnInit {
     this.userFacade.getReviewersStatisticsCollection({});
   }
 
-  onNavigateToUser(userStatistics: UserStatistics): void {
+  onNavigateToUser(userStatistics: ReviewerStatistics): void {
     this.router.navigate(['reviewer', userStatistics.name], {
       state: { avatarUrl: userStatistics.avatarUrl }
     });

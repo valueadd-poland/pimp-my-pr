@@ -12,6 +12,7 @@ import { authQuery } from './auth.selectors';
 export class AuthFacade {
   authToken$ = this.store.pipe(select(authQuery.getAuthToken));
   loginInProgress$ = this.store.pipe(select(authQuery.getLoginInProgress));
+  getUser$ = this.store.pipe(select(authQuery.getUser));
 
   constructor(
     private authDataService: AuthDataService,
@@ -37,5 +38,9 @@ export class AuthFacade {
 
   getSavedToken(): string {
     return this.authDataService.getToken();
+  }
+
+  getUser(): void {
+    this.store.dispatch(new fromAuthActions.GetUser());
   }
 }

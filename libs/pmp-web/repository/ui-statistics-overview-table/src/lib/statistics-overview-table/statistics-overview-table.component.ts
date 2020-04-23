@@ -7,7 +7,7 @@ import {
   ViewChild
 } from '@angular/core';
 import { MatSort, MatTableDataSource } from '@angular/material';
-import { RepositoryStatistics, UserStatistics } from '@pimp-my-pr/shared/domain';
+import { RepositoryStatistics, ReviewerStatistics } from '@pimp-my-pr/shared/domain';
 
 @Component({
   selector: 'pmp-statistics-overview-table',
@@ -17,8 +17,8 @@ import { RepositoryStatistics, UserStatistics } from '@pimp-my-pr/shared/domain'
 })
 export class StatisticsOverviewTableComponent {
   @Input()
-  set data(data: (UserStatistics | RepositoryStatistics)[]) {
-    this.dataSource = new MatTableDataSource<UserStatistics | RepositoryStatistics>(data);
+  set data(data: (ReviewerStatistics | RepositoryStatistics)[]) {
+    this.dataSource = new MatTableDataSource<ReviewerStatistics | RepositoryStatistics>(data);
     this.dataSource.sort = this.sort;
   }
 
@@ -26,12 +26,12 @@ export class StatisticsOverviewTableComponent {
   isLoading = false;
 
   @Output()
-  navigateToItem = new EventEmitter<UserStatistics | RepositoryStatistics>();
+  navigateToItem = new EventEmitter<ReviewerStatistics | RepositoryStatistics>();
 
   @ViewChild(MatSort, { static: true })
   sort: MatSort;
 
-  dataSource: MatTableDataSource<UserStatistics | RepositoryStatistics>;
+  dataSource: MatTableDataSource<ReviewerStatistics | RepositoryStatistics>;
   displayColumns = [
     'avatar',
     'name',

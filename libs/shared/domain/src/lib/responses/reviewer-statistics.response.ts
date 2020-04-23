@@ -1,3 +1,3 @@
-import { UserModel } from '../interfaces/user.model';
+import { ReviewerModel } from '../interfaces/reviewer.model';
 
-export type ReviewerStatisticsResponse = UserModel;
+export type ReviewerStatisticsResponse = ReviewerModel;
