@@ -3,7 +3,22 @@
 <mat-tab-group>
   <mat-tab label="Manage">
     <ng-template matTabContent>
-      <h4>Some tab content</h4>
+      <pimp-my-pr-repositories-settings-table
+        [data]="repositoryCollection$ | async"
+        [isLoading]="repositoryCollectionLoading$ | async"
+      >
+        <ng-container tableAction>
+          <button
+            (click)="openAddRepoDialog()"
+            [matTooltip]="'Add repository'"
+            class="table-action__button"
+            color="primary"
+            mat-fab
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+        </ng-container>
+      </pimp-my-pr-repositories-settings-table>
     </ng-template>
   </mat-tab>
   <mat-tab label="Constraints">

@@ -48,8 +48,8 @@ export class RepositoryFacade {
     return this.queryBus.execute(new ListRepositoriesStatisticsQuery(token, platform, userId));
   }
 
-  listRepositories(): Promise<RepositoryEntity[]> {
-    return this.queryBus.execute(new ListRepositoriesQuery());
+  listRepositories(currentUserId: string): Promise<RepositoryEntity[]> {
+    return this.queryBus.execute(new ListRepositoriesQuery(currentUserId));
   }
 
   listReviewersStatistics(

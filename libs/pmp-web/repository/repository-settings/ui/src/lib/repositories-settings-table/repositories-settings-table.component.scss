@@ -1,0 +1,33 @@
+.table-action__button-wrapper {
+  position: fixed;
+  right: 3rem;
+  bottom: 3rem;
+}
+
+mat-header-cell > span {
+  font-size: 14px;
+  font-weight: normal;
+  padding: 0 5px;
+}
+
+mat-header-cell > span > mat-icon {
+  color: #000000;
+}
+
+mat-cell {
+  padding: 0 5px;
+}
+
+.avatar-column {
+  flex: unset;
+  width: 62px;
+  padding: 0 0 0 5px;
+}
+
+.avatar-column__empty-space {
+  width: 32px;
+  height: 32px;
+  background: gray;
+  border-radius: 50%;
+  margin: auto;
+}

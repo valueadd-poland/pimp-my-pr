@@ -47,19 +47,19 @@ const routes: Routes = [
               )
           }
         ]
-      }
-    ]
-  },
-  {
-    path: 'repository-settings',
-    component: RepositoriesComponent,
-    children: [
+      },
       {
-        path: '',
-        loadChildren: () =>
-          import('@pimp-my-pr/pmp-web/repository/repository-settings/feature').then(
-            m => m.PmpWebRepositoryRepositorySettingsFeatureModule
-          )
+        path: 'repository-settings',
+        component: RepositoriesComponent,
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('@pimp-my-pr/pmp-web/repository/repository-settings/feature').then(
+                m => m.PmpWebRepositoryRepositorySettingsFeatureModule
+              )
+          }
+        ]
       }
     ]
   }
