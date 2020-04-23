@@ -37,6 +37,7 @@ export function authReducer(
       break;
     }
 
+    case fromAuthActions.Types.ApplyToken:
     case fromAuthActions.Types.LoginSuccess: {
       state = {
         ...state,
