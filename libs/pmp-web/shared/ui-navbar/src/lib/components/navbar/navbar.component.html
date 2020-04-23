@@ -4,11 +4,11 @@
       pull request analyzer
     </span>
   </div>
-  <div class="navbar__user-info">
+  <div class="navbar__user-info" *ngIf="user">
     <div class="avatar-column">
-      <img [src]="avatar" class="avatar-column__empty-space" />
+      <img [src]="user.avatarUrl" class="avatar-column__empty-space" />
     </div>
-    <span>{{ name }}</span>
+    <span>{{ user.name }}</span>
     <!-- @TODO translate -->
     <button (click)="onLogout()" [matTooltip]="'Logout'" mat-icon-button>
       <mat-icon>input</mat-icon>

@@ -1,5 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthPublicFacade } from '@pimp-my-pr/pmp-web/auth/public';
+import { User } from '@pimp-my-pr/shared/domain';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'pmp-repositories',
@@ -7,12 +10,23 @@ import { AuthPublicFacade } from '@pimp-my-pr/pmp-web/auth/public';
   styleUrls: ['./repositories.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RepositoriesComponent {
-  id = '1223';
-  name = 'Artix1500';
-  avatar = 'https://avatars1.githubusercontent.com/u/38567097?s=460&v=4';
+export class RepositoriesComponent implements OnInit, OnDestroy {
+  user: User;
+  private ngUnsubscribe$: Subject<void> = new Subject<void>();
 
   constructor(private authPublicFacade: AuthPublicFacade) {}
+
+  ngOnInit(): void {
+    this.authPublicFacade
+      .getUser()
+      .pipe(takeUntil(this.ngUnsubscribe$))
+      .subscribe(user => (this.user = user));
+  }
+
+  ngOnDestroy(): void {
+    this.ngUnsubscribe$.next();
+    this.ngUnsubscribe$.complete();
+  }
 
   onLogout(): void {
     this.authPublicFacade.logout();

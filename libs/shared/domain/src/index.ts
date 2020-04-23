@@ -15,3 +15,6 @@ export * from './lib/enums/platform.enum';
 export * from './lib/responses/auth.response';
 export * from './lib/interfaces/login-success-payload';
 export * from './lib/responses/login-success.response';
+export * from './lib/interfaces/user.interface';
+export * from './lib/responses/get-user-info.response';
+export * from './lib/interfaces/get-user-info-success-payload';

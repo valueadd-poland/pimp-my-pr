@@ -1,10 +1,14 @@
 import { fromAuthActions } from './auth.actions';
 
+import { User } from '@pimp-my-pr/shared/domain';
+
 export const AUTH_FEATURE_KEY = 'auth';
 
 export interface AuthState {
   authToken: string | null;
   loginInProgress: boolean;
+  getUserInProgress: boolean;
+  user: User | null;
 }
 
 export interface AuthPartialState {
@@ -13,7 +17,9 @@ export interface AuthPartialState {
 
 export const initialState: AuthState = {
   authToken: null,
-  loginInProgress: false
+  loginInProgress: false,
+  getUserInProgress: false,
+  user: null
 };
 
 export function authReducer(
@@ -42,6 +48,31 @@ export function authReducer(
         ...state,
         loginInProgress: false,
         authToken: action.payload.token
+      };
+      break;
+    }
+
+    case fromAuthActions.Types.GetUser: {
+      state = {
+        ...state,
+        getUserInProgress: true
+      };
+      break;
+    }
+
+    case fromAuthActions.Types.GetUserFail: {
+      state = {
+        ...state,
+        getUserInProgress: false
+      };
+      break;
+    }
+
+    case fromAuthActions.Types.GetUserSuccess: {
+      state = {
+        ...state,
+        getUserInProgress: false,
+        user: { ...action.payload }
       };
       break;
     }

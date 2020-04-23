@@ -9,6 +9,11 @@ const getAuthToken = createSelector(
   state => state.authToken
 );
 
+const getUser = createSelector(
+  getAuthState,
+  state => state.user
+);
+
 const getLoginInProgress = createSelector(
   getAuthState,
   state => state.loginInProgress
@@ -16,5 +21,6 @@ const getLoginInProgress = createSelector(
 
 export const authQuery = {
   getAuthToken,
-  getLoginInProgress
+  getLoginInProgress,
+  getUser
 };

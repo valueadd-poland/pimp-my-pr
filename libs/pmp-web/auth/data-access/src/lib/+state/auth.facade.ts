@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { ActionStatusResolverService } from '@pimp-my-pr/pmp-web/shared/util-ngrx';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { AuthDataService } from '../services/auth-data.service';
 import { fromAuthActions } from './auth.actions';
 import { AuthPartialState } from './auth.reducer';
@@ -11,6 +11,7 @@ import { authQuery } from './auth.selectors';
 export class AuthFacade {
   authToken$ = this.store.pipe(select(authQuery.getAuthToken));
   loginInProgress$ = this.store.pipe(select(authQuery.getLoginInProgress));
+  getUser$ = this.store.pipe(select(authQuery.getUser));
 
   constructor(
     private authDataService: AuthDataService,
@@ -36,5 +37,9 @@ export class AuthFacade {
 
   getSavedToken(): string {
     return this.authDataService.getToken();
+  }
+
+  getUser(): void {
+    this.store.dispatch(new fromAuthActions.GetUser());
   }
 }

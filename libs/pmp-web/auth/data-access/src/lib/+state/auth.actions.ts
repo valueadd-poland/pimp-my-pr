@@ -1,13 +1,17 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Action } from '@ngrx/store';
 import { LoginPayload } from '@pimp-my-pr/pmp-web/auth/domain';
-import { LoginSuccessPayload } from '@pimp-my-pr/shared/domain';
+import { LoginSuccessPayload, GetUserSuccessPayload } from '@pimp-my-pr/shared/domain';
+import { User } from '@pimp-my-pr/shared/domain';
 
 export namespace fromAuthActions {
   export enum Types {
     Login = '[Auth] Login',
     LoginFail = '[Auth] Login Fail',
     LoginSuccess = '[Auth] Login Success',
+    GetUser = '[Auth] GetUser',
+    GetUserFail = '[Auth] GetUser Fail',
+    GetUserSuccess = '[Auth] GetUser Success',
     Logout = '[Auth] Logout'
   }
 
@@ -29,9 +33,34 @@ export namespace fromAuthActions {
     constructor(public payload: LoginSuccessPayload) {}
   }
 
+  export class GetUser implements Action {
+    readonly type = Types.GetUser;
+
+    constructor() {}
+  }
+
+  export class GetUserFail implements Action {
+    readonly type = Types.GetUserFail;
+
+    constructor(public payload: HttpErrorResponse) {}
+  }
+
+  export class GetUserSuccess implements Action {
+    readonly type = Types.GetUserSuccess;
+
+    constructor(public payload: GetUserSuccessPayload) {}
+  }
+
   export class Logout implements Action {
     readonly type = Types.Logout;
   }
 
-  export type CollectiveType = Login | LoginFail | LoginSuccess | Logout;
+  export type CollectiveType =
+    | Login
+    | LoginFail
+    | LoginSuccess
+    | GetUser
+    | GetUserFail
+    | GetUserSuccess
+    | Logout;
 }

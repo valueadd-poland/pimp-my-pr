@@ -1,7 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginPayload } from '@pimp-my-pr/pmp-web/auth/domain';
-import { LoginSuccessPayload, LoginSuccessResponse } from '@pimp-my-pr/shared/domain';
+import {
+  LoginSuccessPayload,
+  LoginSuccessResponse,
+  GetUserSuccessPayload,
+  GetUserResponse
+} from '@pimp-my-pr/shared/domain';
 import { urlFactory } from '@valueadd/typed-urls';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -9,7 +14,8 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class AuthDataService {
   readonly endpoints = {
-    getAccessToken: urlFactory('/api/auth/access-token')
+    getAccessToken: urlFactory('/api/auth/access-token'),
+    getUser: urlFactory('/api/user-info')
   };
 
   readonly TOKEN_KEY = 'TOKEN';
@@ -35,5 +41,11 @@ export class AuthDataService {
 
   saveToken(authToken: string): void {
     localStorage.setItem(this.TOKEN_KEY, JSON.stringify(authToken));
+  }
+
+  getUser(): Observable<GetUserSuccessPayload> {
+    return this.http
+      .get<GetUserResponse>(this.endpoints.getUser.url())
+      .pipe(map((res: GetUserResponse) => res.data));
   }
 }

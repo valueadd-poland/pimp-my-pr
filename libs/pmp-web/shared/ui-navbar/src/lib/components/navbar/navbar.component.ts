@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output, Input } from '@angular/core';
+import { User } from '@pimp-my-pr/shared/domain';
 
 @Component({
   selector: 'pmp-navbar',
@@ -8,9 +9,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output, Input } from 
 })
 export class NavbarComponent {
   @Input()
-  name: string;
-  @Input()
-  avatar: string;
+  user: User;
   @Output()
   logout = new EventEmitter<void>();
 
