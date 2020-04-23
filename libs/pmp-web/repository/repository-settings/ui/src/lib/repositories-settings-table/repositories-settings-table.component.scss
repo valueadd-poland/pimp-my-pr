@@ -4,18 +4,16 @@
   bottom: 3rem;
 }
 
-mat-header-cell > span {
-  font-size: 14px;
-  font-weight: normal;
-  padding: 0 5px;
-}
-
 mat-header-cell > span > mat-icon {
   color: #000000;
 }
 
 mat-cell {
   padding: 0 5px;
+}
+
+.mat-column-delete {
+  flex: 0.5;
 }
 
 .avatar-column {

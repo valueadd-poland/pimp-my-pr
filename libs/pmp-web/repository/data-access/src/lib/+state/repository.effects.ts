@@ -36,6 +36,22 @@ export class RepositoryEffects {
     ofType(fromRepositoryActions.Types.AddRepositorySuccess),
     map(() => new fromRepositoryActions.GetRepositoryCollection())
   );
+  @Effect()
+  deleteRepository$ = this.dp.fetch(fromRepositoryActions.Types.DeleteRepository, {
+    run: (action: fromRepositoryActions.DeleteRepository) => {
+      return this.repositoryDataService
+        .deleteRepository(action.payload)
+        .pipe(map(() => new fromRepositoryActions.DeleteRepositorySuccess()));
+    },
+    onError: (action: fromRepositoryActions.DeleteRepository, error: HttpErrorResponse) => {
+      return new fromRepositoryActions.DeleteRepositoryFail(error);
+    }
+  });
+  @Effect()
+  deleteRepositorySuccess$ = this.actions$.pipe(
+    ofType(fromRepositoryActions.Types.DeleteRepositorySuccess),
+    map(() => new fromRepositoryActions.GetRepositoryCollection())
+  );
 
   constructor(
     private dp: DataPersistence<RepositoryPartialState>,
