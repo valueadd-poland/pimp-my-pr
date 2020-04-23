@@ -46,4 +46,8 @@ export class RepositoryRepositoryAdapter extends RepositoryRepository {
   async save(repository: RepositoryEntity): Promise<void> {
     await this.typeOrmRepository.save(repository);
   }
+
+  async delete(repository: RepositoryEntity): Promise<void> {
+    await this.typeOrmRepository.remove(repository);
+  }
 }

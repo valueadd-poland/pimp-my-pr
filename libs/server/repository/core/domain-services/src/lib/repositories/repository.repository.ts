@@ -15,4 +15,6 @@ export abstract class RepositoryRepository {
   ): Promise<RepositoryEntity>;
 
   abstract save(repository: RepositoryEntity): Promise<void>;
+
+  abstract delete(repository: RepositoryEntity): Promise<void>;
 }
