@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
 import {
+  DeleteRepositoryCommand,
   RepositoriesStatisticsItemReadModel,
   ReviewersStatisticsItemReadModel,
   ReviewerStatisticsReadModel
@@ -20,6 +21,10 @@ export class RepositoryFacade {
   constructor(private commandBus: CommandBus, private queryBus: QueryBus) {}
 
   addRepository(command: AddRepositoryCommand): Promise<void> {
+    return this.commandBus.execute(command);
+  }
+
+  deleteRepository(command: DeleteRepositoryCommand): Promise<void> {
     return this.commandBus.execute(command);
   }
 
