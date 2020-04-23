@@ -8,7 +8,13 @@
         [isLoading]="repositoryCollectionLoading$ | async"
       >
         <ng-container tableAction>
-          <button (click)="openAddRepoDialog()" mat-fab color="primary">
+          <button
+            (click)="openAddRepoDialog()"
+            [matTooltip]="'Add repository'"
+            class="table-action__button"
+            color="primary"
+            mat-fab
+          >
             <mat-icon>add</mat-icon>
           </button>
         </ng-container>

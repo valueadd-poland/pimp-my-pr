@@ -37,9 +37,13 @@ export class AddRepositoryDialogComponent implements OnInit, OnDestroy {
       maxLines: [],
       maxWaitingTimeDefinition: this.fb.group({
         maxWaitingTime: [],
-        timeUnit: [{ value: '', disabled: true }]
+        timeUnit: [{ value: '' }]
       })
     });
+    this.form
+      .get('maxWaitingTimeDefinition')
+      .get('timeUnit')
+      .setValue(TimeUnit.Hour);
   }
 
   initializeMaxWaitingTimeDefinitionControls(): void {

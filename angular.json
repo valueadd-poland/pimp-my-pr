@@ -1918,7 +1918,7 @@
     "defaultCollection": "@nrwl/angular"
   },
   "schematics": {
-    "@nrwl/angular:applicatia wez mi powiedz, jak teraz chce fixa wrzucic, to powinno sie do on": {
+    "@nrwl/angular:application": {
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
     },
