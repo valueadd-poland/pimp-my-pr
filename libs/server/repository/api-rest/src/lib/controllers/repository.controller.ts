@@ -23,8 +23,8 @@ export class RepositoryController {
   constructor(private repositoryFacade: RepositoryFacade) {}
 
   @Get()
-  list(): Promise<RepositoryEntity[]> {
-    return this.repositoryFacade.listRepositories();
+  list(@CurrentUserId() currentUserId: string): Promise<RepositoryEntity[]> {
+    return this.repositoryFacade.listRepositories(currentUserId);
   }
 
   @Post()

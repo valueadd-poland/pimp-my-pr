@@ -9,6 +9,6 @@ export class ListRepositoriesHandler
   constructor(private repositoryRepository: RepositoryRepository) {}
 
   async execute(query: ListRepositoriesQuery): Promise<RepositoryEntity[]> {
-    return this.repositoryRepository.findAll();
+    return this.repositoryRepository.findByUserId(query.currentUserId);
   }
 }
