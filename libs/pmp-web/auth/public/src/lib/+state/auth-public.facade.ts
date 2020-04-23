@@ -6,6 +6,8 @@ import { AuthFeatureFacade } from '@pimp-my-pr/pmp-web/auth/feature';
   providedIn: 'root'
 })
 export class AuthPublicFacade {
+  user$ = this.authFacade.getUser$;
+
   constructor(private authFacade: AuthFacade, private authFeatureFacade: AuthFeatureFacade) {}
 
   logout(): void {
@@ -14,5 +16,9 @@ export class AuthPublicFacade {
 
   loginRememberedUserOrGoToLogin(): void {
     this.authFeatureFacade.loginRememberedUserOrGoToLogin();
+  }
+
+  getUser(): void {
+    this.authFacade.getUser();
   }
 }

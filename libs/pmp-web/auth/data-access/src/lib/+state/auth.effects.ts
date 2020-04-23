@@ -9,6 +9,7 @@ import { switchMap, tap } from 'rxjs/operators';
 import { AuthDataService } from '../services/auth-data.service';
 import { fromAuthActions } from './auth.actions';
 import { AuthPartialState } from './auth.reducer';
+import { GetUserSuccessPayload } from '@pimp-my-pr/pmp-web/auth/domain';
 
 @Injectable()
 export class AuthEffects {
@@ -23,6 +24,19 @@ export class AuthEffects {
       ),
     onError: (action: fromAuthActions.Login, error: HttpErrorResponse) => {
       return new fromAuthActions.LoginFail(error);
+    }
+  });
+
+  @Effect()
+  getUser$ = this.dp.fetch(fromAuthActions.Types.GetUser, {
+    run: (action: fromAuthActions.GetUser, state: AuthPartialState) =>
+      this.authDataService.getUser().pipe(
+        switchMap((res: GetUserSuccessPayload) => {
+          return of(new fromAuthActions.GetUserSuccess(res));
+        })
+      ),
+    onError: (action: fromAuthActions.GetUser, error: HttpErrorResponse) => {
+      return new fromAuthActions.GetUserFail(error);
     }
   });
 

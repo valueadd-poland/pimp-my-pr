@@ -1,4 +1,4 @@
-export interface UserStatistics {
+export interface ReviewerStatistics {
   avatarUrl: string;
   id: string;
   name: string;

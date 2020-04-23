@@ -1,16 +1,16 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { UserStatistics } from '@pimp-my-pr/shared/domain';
+import { ReviewerStatistics } from '@pimp-my-pr/shared/domain';
 import { fromUserActions } from './reviewers.actions';
 
 export const REVIEWERS_FEATURE_KEY = 'reviewers';
 
-export interface ReviewersStatisticsEntityState extends EntityState<UserStatistics> {}
+export interface ReviewersStatisticsEntityState extends EntityState<ReviewerStatistics> {}
 export interface ReviewersStatisticsPartialState {
   readonly [REVIEWERS_FEATURE_KEY]: UserState;
 }
 
-export const adapter: EntityAdapter<UserStatistics> = createEntityAdapter<UserStatistics>();
+export const adapter: EntityAdapter<ReviewerStatistics> = createEntityAdapter<ReviewerStatistics>();
 
 export interface UserState {
   reviewersStatisticsCollection: ReviewersStatisticsEntityState;

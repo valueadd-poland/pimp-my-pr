@@ -1,5 +1,5 @@
 <div class="repositories-component__container">
-  <pmp-navbar (logout)="onLogout()" class="navbar"></pmp-navbar>
+  <pmp-navbar (logout)="onLogout()" [user]="user | async" class="navbar"></pmp-navbar>
   <pmp-sidebar class="sidebar"></pmp-sidebar>
   <div class="content">
     <router-outlet></router-outlet>

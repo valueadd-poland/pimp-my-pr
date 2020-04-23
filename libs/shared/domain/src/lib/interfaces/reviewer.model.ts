@@ -1,6 +1,6 @@
 import { RepositoryModel } from './repository.model';
 
-export interface UserModel {
+export interface ReviewerModel {
   name: string;
   avatarUrl: string;
   id: number;

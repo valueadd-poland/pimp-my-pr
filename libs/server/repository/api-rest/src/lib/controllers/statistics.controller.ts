@@ -12,7 +12,7 @@ import {
   ReviewersStatisticsItemReadModel,
   ReviewerStatisticsReadModel
 } from '@pimp-my-pr/server/repository/core/application-services';
-import { ListRepositoriesResponse, UserStatistics } from '@pimp-my-pr/shared/domain';
+import { ListRepositoriesResponse, ReviewerStatistics } from '@pimp-my-pr/shared/domain';
 import { UserRepositoryGuard } from '../guards/user-repository.guard';
 
 @ApiTags('statistics')
@@ -54,7 +54,7 @@ export class StatisticsController {
   listReviewers(
     @Credentials() credentials: RequestCredentials,
     @CurrentUserId() currentUserId: string
-  ): Promise<UserStatistics[]> {
+  ): Promise<ReviewerStatistics[]> {
     return this.repositoryFacade.listReviewersStatistics(
       credentials.token,
       credentials.platform,

@@ -128,6 +128,7 @@
       "@pimp-my-pr/server/user/infrastructure": ["libs/server/user/infrastructure/src/index.ts"],
       "@pimp-my-pr/server/user/public": ["libs/server/user/public/src/index.ts"],
       "@pimp-my-pr/pmp-web/shared/util-ngrx": ["libs/pmp-web/shared/util-ngrx/src/index.ts"],
+      "@pimp-my-pr/server/user/api-rest": ["libs/server/user/api-rest/src/index.ts"],
       "@pimp-my-pr/server/shared/util-bitbucket": [
         "libs/server/shared/util-bitbucket/src/index.ts"
       ],
