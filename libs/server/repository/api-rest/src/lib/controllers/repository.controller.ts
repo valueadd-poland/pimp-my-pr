@@ -48,8 +48,8 @@ export class RepositoryController {
   }
 
   @UseGuards(UserRepositoryGuard)
-  @Delete(':id')
-  delete(@Param('id') repositoryId: string): Promise<void> {
+  @Delete(':repositoryId')
+  delete(@Param('repositoryId') repositoryId: string): Promise<void> {
     return this.repositoryFacade.deleteRepository(new DeleteRepositoryCommand(repositoryId));
   }
 }

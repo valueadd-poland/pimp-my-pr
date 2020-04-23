@@ -1937,6 +1937,37 @@
           }
         }
       }
+    },
+    "pmp-web-shared-ui-generic-dialog": {
+      "projectType": "library",
+      "root": "libs/pmp-web/shared/ui-generic-dialog",
+      "sourceRoot": "libs/pmp-web/shared/ui-generic-dialog/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shared/ui-generic-dialog/tsconfig.lib.json",
+              "libs/pmp-web/shared/ui-generic-dialog/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-generic-dialog/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shared/ui-generic-dialog/jest.config.js",
+            "tsConfig": "libs/pmp-web/shared/ui-generic-dialog/tsconfig.spec.json",
+            "setupFile": "libs/pmp-web/shared/ui-generic-dialog/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

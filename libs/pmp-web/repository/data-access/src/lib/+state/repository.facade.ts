@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { AddRepositoryPayload } from '@pimp-my-pr/pmp-web/repository/domain';
+import {
+  AddRepositoryPayload,
+  DeleteRepositoryPayload
+} from '@pimp-my-pr/pmp-web/repository/domain';
 import { fromRepositoryActions } from './repository.actions';
 import { RepositoryPartialState } from './repository.reducer';
 import { repositoryQuery } from './repository.selectors';
@@ -27,6 +30,14 @@ export class RepositoryFacade {
       new fromRepositoryActions.AddRepository(data),
       fromRepositoryActions.Types.AddRepositorySuccess,
       fromRepositoryActions.Types.AddRepositoryFail
+    );
+  }
+
+  deleteRepository(data: DeleteRepositoryPayload): Observable<void> {
+    return this.actionStatusResolverService.resolve(
+      new fromRepositoryActions.DeleteRepository(data),
+      fromRepositoryActions.Types.DeleteRepositorySuccess,
+      fromRepositoryActions.Types.DeleteRepositoryFail
     );
   }
 }

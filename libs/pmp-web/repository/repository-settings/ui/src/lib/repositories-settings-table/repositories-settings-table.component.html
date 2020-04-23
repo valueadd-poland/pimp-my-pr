@@ -40,6 +40,18 @@
     </mat-cell>
   </ng-container>
 
+  <!-- Delete repository icon Column -->
+  <ng-container matColumnDef="delete">
+    <mat-header-cell *matHeaderCellDef>
+      <span>Delete repository</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button (click)="onDeleteRepository(element)" mat-icon-button>
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
   <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayColumns"></mat-row>
 </mat-table>

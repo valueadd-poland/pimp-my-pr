@@ -140,6 +140,9 @@
       "@pimp-my-pr/pmp-web/shared/core": ["libs/pmp-web/shared/core/src/index.ts"],
       "@pimp-my-pr/pmp-web/repository/repository-settings/ui": [
         "libs/pmp-web/repository/repository-settings/ui/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/shared/ui-generic-dialog": [
+        "libs/pmp-web/shared/ui-generic-dialog/src/index.ts"
       ]
     }
   },
