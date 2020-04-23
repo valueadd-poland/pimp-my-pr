@@ -199,6 +199,9 @@
     },
     "pmp-web-shared-core": {
       "tags": ["platform:web", "type:core"]
+    },
+    "pmp-web-shared-ui-generic-dialog": {
+      "tags": ["platform:web", "scope:shared", "type:ui"]
     }
   }
 }

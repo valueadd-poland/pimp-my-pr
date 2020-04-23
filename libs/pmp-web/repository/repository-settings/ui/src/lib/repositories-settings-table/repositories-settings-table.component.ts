@@ -26,11 +26,18 @@ export class RepositoriesSettingsTableComponent {
   isLoading = false;
 
   @Output()
+  deleteRepository = new EventEmitter<Repository>();
+
+  @Output()
   navigateToItem = new EventEmitter<Repository>();
 
   @ViewChild(MatSort, { static: true })
   sort: MatSort;
 
   dataSource: MatTableDataSource<Repository>;
-  displayColumns = ['avatar', 'name', 'maxLines', 'maxWaitingTime'];
+  displayColumns = ['avatar', 'name', 'maxLines', 'maxWaitingTime', 'delete'];
+
+  onDeleteRepository(repository: Repository): void {
+    this.deleteRepository.emit(repository);
+  }
 }

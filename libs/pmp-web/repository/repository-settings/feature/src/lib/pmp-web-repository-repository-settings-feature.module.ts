@@ -22,6 +22,7 @@ import { PmpWebRepositoryRepositorySettingsUiModule } from '@pimp-my-pr/pmp-web/
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddRepositoryDialogComponent } from './containers/add-repository-dialog/add-repository-dialog.component';
 import { ValidationMessagesModule } from '@valueadd/validation-messages';
+import { PmpWebSharedUiGenericDialogModule } from '@pimp-my-pr/pmp-web/shared/ui-generic-dialog';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { ValidationMessagesModule } from '@valueadd/validation-messages';
     MatSnackBarModule,
     MatSelectModule,
     PmpWebRepositoryRepositorySettingsUiModule,
-    ValidationMessagesModule
+    ValidationMessagesModule,
+    PmpWebSharedUiGenericDialogModule
   ],
   declarations: [RepositorySettingsComponent, AddRepositoryDialogComponent],
   entryComponents: [AddRepositoryDialogComponent]
