@@ -5,10 +5,17 @@ import { LoginSuccessPayload } from '@pimp-my-pr/shared/domain';
 
 export namespace fromAuthActions {
   export enum Types {
+    ApplyToken = '[Auth] Apply Token',
     Login = '[Auth] Login',
     LoginFail = '[Auth] Login Fail',
     LoginSuccess = '[Auth] Login Success',
     Logout = '[Auth] Logout'
+  }
+
+  export class ApplyToken implements Action {
+    readonly type = Types.ApplyToken;
+
+    constructor(public payload: LoginSuccessPayload) {}
   }
 
   export class Login implements Action {
@@ -33,5 +40,5 @@ export namespace fromAuthActions {
     readonly type = Types.Logout;
   }
 
-  export type CollectiveType = Login | LoginFail | LoginSuccess | Logout;
+  export type CollectiveType = ApplyToken | Login | LoginFail | LoginSuccess | Logout;
 }

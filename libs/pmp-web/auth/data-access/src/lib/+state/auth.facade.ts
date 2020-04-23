@@ -20,7 +20,7 @@ export class AuthFacade {
   ) {}
 
   applyToken(token: string): void {
-    this.store.dispatch(new fromAuthActions.LoginSuccess({ token }));
+    this.store.dispatch(new fromAuthActions.ApplyToken({ token }));
   }
 
   login(authCode: string, platform: Platform): Observable<boolean> {
