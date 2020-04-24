@@ -11,7 +11,7 @@ A brilliant tool that will pimp your pull requests by collecting and presenting 
 - copy `.env-sample` file as `.env` in project root
 - fill the `.env` file
 - install dependencies by `npm install` and run `node ./scripts/init.js`
-  or manually copy all sample files under `libs/pmp-web/core/src/lib/environment/` directory
+  or manually copy all sample files under `libs/pmp-web/core/src/lib/environmentSample/` directory
   without `.sample` key word and fill that files with proper configuration
 
 Generate repository platform client credentials:

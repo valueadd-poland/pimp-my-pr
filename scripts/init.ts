@@ -10,7 +10,7 @@ function initPmpWebEnvironment(): void {
   const prodEnvironmentFile = 'libs/pmp-web/shared/config/src/lib/environment/environment.prod.ts';
 
   fs.copyFileSync(
-    'libs/pmp-web/shared/config/src/lib/environment/environment.sample.ts',
+    'libs/pmp-web/shared/config/src/lib/environment/environment.ts',
     devEnvironmentFile
   );
   fs.copyFileSync(
