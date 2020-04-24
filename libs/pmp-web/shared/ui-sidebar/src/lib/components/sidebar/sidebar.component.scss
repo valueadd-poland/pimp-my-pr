@@ -27,14 +27,14 @@ mat-sidenav {
 }
 
 .sidebar__item {
-  & mat-icon {
+  mat-icon {
     width: 32px;
     height: 32px;
     font-size: 32px;
     cursor: pointer;
+    color: gray;
   }
 
-  color: gray;
   display: block;
   overflow: hidden;
 
@@ -46,11 +46,11 @@ mat-sidenav {
     margin-top: 20px;
   }
 
-  &:hover {
+  &:hover mat-icon {
     color: #fc3b56;
   }
 
-  &.sidebar__item--active {
+  &.sidebar__item--active mat-icon {
     color: #fc3b56;
   }
 }
