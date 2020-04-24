@@ -28,12 +28,12 @@ export class LoginPageComponent {
       imageSrc: 'assets/images/bitbucket_logo.png',
       name: Platform.bitbucket,
       color: '#0052CC'
-    },
-    {
-      imageSrc: 'assets/images/gitlab_logo.png',
-      name: Platform.gitlab,
-      color: '#FC6D27'
     }
+    // {
+    //   imageSrc: 'assets/images/gitlab_logo.png',
+    //   name: Platform.gitlab,
+    //   color: '#FC6D27'
+    // }
   ];
 
   login(system: string): void {

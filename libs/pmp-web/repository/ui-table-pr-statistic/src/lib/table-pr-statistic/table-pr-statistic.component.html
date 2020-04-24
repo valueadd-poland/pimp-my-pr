@@ -21,7 +21,7 @@
       >Time waiting</mat-header-cell
     >
     <mat-cell *matCellDef="let element" class="waiting-time-column">
-      {{ element.timeWaiting | resolveHours }}
+      {{ element.timeWaiting | timeAgo }}
     </mat-cell>
   </ng-container>
 
