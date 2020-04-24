@@ -8,7 +8,7 @@ export class TablePrStatisticsPresenter {
       case 'author':
         return item.author.name;
       case 'comments':
-        return item.commentsCount + item.reviewCommentsCount;
+        return item.commentsCount;
       case 'reviewers':
         return item.reviewers.length;
       default:

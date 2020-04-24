@@ -12,8 +12,6 @@ export class PrStatisticsReadModel {
   id: string;
   @ApiProperty()
   linesOfCodeToCheck: number;
-  @ApiProperty()
-  reviewCommentsCount: number;
   @ApiProperty({ type: [ReviewerEntity] })
   reviewers: ReviewerEntity[];
   @ApiProperty()
@@ -31,7 +29,6 @@ export class PrStatisticsReadModel {
     this.author = pr.author;
     this.commentsCount = pr.commentsCount;
     this.reviewers = pr.reviewers;
-    this.reviewCommentsCount = pr.reviewCommentsCount;
     this.url = pr.url;
     this.timeWaiting = this.getTimePrWaiting(pr);
   }

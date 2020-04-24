@@ -16,6 +16,5 @@ export const mapGithubPr = (pr: GithubPrDetailsEntity) =>
     reviewers: pr.requested_reviewers.map(mapGithubContributor),
     updatedAt: pr.updated_at,
     author: mapGithubContributor(pr.user),
-    commentsCount: pr.comments,
-    reviewCommentsCount: pr.review_comments
+    commentsCount: pr.review_comments
   });

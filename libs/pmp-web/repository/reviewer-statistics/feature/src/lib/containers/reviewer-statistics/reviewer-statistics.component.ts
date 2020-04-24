@@ -34,8 +34,7 @@ export class ReviewerStatisticsComponent implements OnInit {
 
   private initGetUserStatistics(): void {
     this.route.params.pipe(first()).subscribe(params => {
-      this.reviewerName = params.reviewerName;
-      this.facade.getReviewerStatisticsResponse({ reviewerName: this.reviewerName });
+      this.facade.getReviewerStatistics({ id: params.id });
     });
   }
 
@@ -45,6 +44,7 @@ export class ReviewerStatisticsComponent implements OnInit {
     }
 
     const routerNavigationState = this.router.getCurrentNavigation().extras.state;
+    this.reviewerName = routerNavigationState.reviewerName;
     this.userAvatarUrl = routerNavigationState.avatarUrl;
   }
 }

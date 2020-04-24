@@ -28,17 +28,13 @@ export class GetReviewerStatisticsHandler
     const reviewerRepository = this.reviewerRepositoryFactory(query.platform);
 
     const repositories = await this.repositoryRepository.findByUserId(query.userId);
-    const reviewer = await reviewerRepository.get(query.username, query.token);
+    const reviewer = await reviewerRepository.get(query.reviewerId, query.token);
 
     const repositoryStatistics = await Promise.all(
       repositories.map(repository =>
         prRepository
           .findByRepositoryId(repository.fullName, query.token)
-          .then(prs => {
-            return Promise.all(
-              prs.filter(pr => pr.reviewers.some(rev => rev.name === query.username))
-            );
-          })
+          .then(prs => prs.filter(pr => pr.reviewers.some(rev => rev.id === query.reviewerId)))
           .then(pr => repositoryPrsStatisticsReadModelFactory(repository, pr))
       )
     );

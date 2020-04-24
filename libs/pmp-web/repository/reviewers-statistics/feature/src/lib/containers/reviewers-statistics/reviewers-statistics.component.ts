@@ -20,8 +20,8 @@ export class ReviewersStatisticsComponent implements OnInit {
   }
 
   onNavigateToUser(userStatistics: ReviewerStatistics): void {
-    this.router.navigate(['reviewer', userStatistics.name], {
-      state: { avatarUrl: userStatistics.avatarUrl }
+    this.router.navigate(['reviewer', userStatistics.id], {
+      state: { avatarUrl: userStatistics.avatarUrl, reviewerName: userStatistics.name }
     });
   }
 }
