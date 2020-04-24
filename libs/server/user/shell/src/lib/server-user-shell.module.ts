@@ -4,6 +4,7 @@ import { UserRepository } from '@pimp-my-pr/server/user/core/domain-services';
 import {
   BitbucketUserRepository,
   GithubUserRepository,
+  GitlabUserRepository,
   remoteUserRepositoryFactory,
   remoteUserRepositoryFactoryToken,
   ServerUserInfrastructureModule,
@@ -15,7 +16,7 @@ const providers = [
   {
     provide: remoteUserRepositoryFactoryToken,
     useFactory: remoteUserRepositoryFactory,
-    inject: [GithubUserRepository, BitbucketUserRepository]
+    inject: [GithubUserRepository, BitbucketUserRepository, GitlabUserRepository]
   }
 ];
 

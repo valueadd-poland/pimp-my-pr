@@ -33,6 +33,16 @@ Register application:
 - Set callback URL as `http://your.pmp.domain/login?platform=bitbucket`
 - Add Permissions to `Account:read`, `Repositories:read` and `Pull requests:read`
 
+#### Gitlab
+
+Register application:
+
+- Go to account settings
+- Find "Applications" group
+- Add new application, setting following options
+  Set Redirect URI as `http://your.pmp.domain/login?platform=gitlab`
+  Select scopes `read_user`, `read_repository` and `read_api`
+
 ## Development
 
 - install dependencies with `npm install`

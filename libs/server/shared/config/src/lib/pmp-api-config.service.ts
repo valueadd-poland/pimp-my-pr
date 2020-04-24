@@ -16,6 +16,10 @@ export const pmpApiConfigService = registerAs(CONFIG_NAMESPACE, () => ({
   },
   githubClientId: process.env.GITHUB_CLIENT_ID,
   githubClientSecret: process.env.GITHUB_CLIENT_SECRET,
+  gitlabClientId: process.env.GITLAB_CLIENT_ID,
+  gitlabClientSecret: process.env.GITLAB_CLIENT_SECRET,
+  gitlabRedirectUri: process.env.GITLAB_REDIRECT_URI,
+  gitlabToken: process.env.PMP_SERVER_GITLAB_TOKEN,
   jwtSecret: process.env.PMP_SERVER_JWT_SECRET
 }));
 
@@ -45,6 +49,18 @@ export class PmpApiConfigService {
 
   getGithubClientSecret(): string {
     return this.configService.get<string>(CONFIG_NAMESPACE + '.githubClientSecret');
+  }
+
+  getGitlabClientId(): string {
+    return this.configService.get<string>(CONFIG_NAMESPACE + '.gitlabClientId');
+  }
+
+  getGitlabClientSecret(): string {
+    return this.configService.get<string>(CONFIG_NAMESPACE + '.gitlabClientSecret');
+  }
+
+  getGitlabRedirectUri(): string {
+    return this.configService.get<string>(CONFIG_NAMESPACE + '.gitlabRedirectUri');
   }
 
   getJwtSecret(): string {
