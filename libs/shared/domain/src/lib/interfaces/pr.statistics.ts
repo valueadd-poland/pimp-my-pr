@@ -9,7 +9,6 @@ export interface PrStatistics {
   linesOfCodeToCheck: number;
   author: PrAuthor;
   commentsCount: number;
-  reviewCommentsCount: number;
   url: string;
   reviewers: PrReviewer[];
 }

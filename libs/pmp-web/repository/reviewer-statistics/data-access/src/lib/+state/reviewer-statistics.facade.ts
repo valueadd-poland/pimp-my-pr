@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { GetReviewerStatisticsResponseRequestPayload } from '../resources/request-payloads/get-reviewer-statistics-response.request-payload';
+import { GetReviewerStatisticsPayload } from '../resources/payloads/get-reviewer-statistics.payload';
 import { fromReviewerStatisticsActions } from './reviewer-statistics.actions';
 import { ReviewerStatisticsPartialState } from './reviewer-statistics.reducer';
 import { reviewerStatisticsQuery } from './reviewer-statistics.selectors';
@@ -20,7 +20,7 @@ export class ReviewerStatisticsFacade {
 
   constructor(private store: Store<ReviewerStatisticsPartialState>) {}
 
-  getReviewerStatisticsResponse(data: GetReviewerStatisticsResponseRequestPayload): void {
+  getReviewerStatistics(data: GetReviewerStatisticsPayload): void {
     this.store.dispatch(new fromReviewerStatisticsActions.GetReviewerStatisticsResponse(data));
   }
 }

@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Action } from '@ngrx/store';
 import { ReviewerStatisticsResponse } from '@pimp-my-pr/shared/domain';
-import { GetReviewerStatisticsResponseRequestPayload } from '../resources/request-payloads/get-reviewer-statistics-response.request-payload';
+import { GetReviewerStatisticsPayload } from '../resources/payloads/get-reviewer-statistics.payload';
 
 export namespace fromReviewerStatisticsActions {
   export enum Types {
@@ -13,7 +13,7 @@ export namespace fromReviewerStatisticsActions {
   export class GetReviewerStatisticsResponse implements Action {
     readonly type = Types.GetReviewerStatisticsResponse;
 
-    constructor(public payload: GetReviewerStatisticsResponseRequestPayload) {}
+    constructor(public payload: GetReviewerStatisticsPayload) {}
   }
 
   export class GetReviewerStatisticsResponseFail implements Action {

@@ -19,8 +19,6 @@ export class PrEntity {
   deletions: number;
   @f
   id: string;
-  @f.optional()
-  reviewCommentsCount?: number;
   @f.array(ReviewerEntity)
   reviewers: ReviewerEntity[];
   @f

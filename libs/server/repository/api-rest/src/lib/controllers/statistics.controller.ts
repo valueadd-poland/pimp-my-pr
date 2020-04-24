@@ -63,14 +63,14 @@ export class StatisticsController {
   }
 
   @ApiOkResponse({ type: [ReviewerStatisticsReadModel] })
-  @Get('reviewers/:username')
+  @Get('reviewers/:reviewerId')
   listReviewerStatistics(
-    @Param('username') username: string,
+    @Param('reviewerId') reviewerId: string,
     @Credentials() credentials: RequestCredentials,
     @CurrentUserId() currentUserId: string
   ): Promise<ReviewerStatisticsReadModel> {
     return this.repositoryFacade.getReviewerStatistics(
-      username,
+      reviewerId,
       credentials.token,
       credentials.platform,
       currentUserId

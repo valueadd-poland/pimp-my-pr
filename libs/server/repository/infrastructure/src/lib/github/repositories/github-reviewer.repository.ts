@@ -11,7 +11,7 @@ import { mapGithubContributor } from '../mappers/map-github-contributor';
 @Injectable()
 export class GithubReviewerRepository extends ReviewerRepository {
   endpoints = {
-    getUser: urlFactory<'username'>(githubConfig.apiUrl + '/users/:username', true)
+    getUser: urlFactory<'id'>(githubConfig.apiUrl + '/user/:id', true)
   };
 
   constructor(private http: HttpService) {
@@ -20,7 +20,7 @@ export class GithubReviewerRepository extends ReviewerRepository {
 
   get(id: string, token: string): Promise<ReviewerEntity> {
     return this.http
-      .get<GithubUserEntity>(this.endpoints.getUser.url({ username: id }), {
+      .get<GithubUserEntity>(this.endpoints.getUser.url({ id }), {
         headers: { Authorization: `token ${token}` }
       })
       .pipe(

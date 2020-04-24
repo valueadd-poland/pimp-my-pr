@@ -20,7 +20,7 @@ const routes: Routes = [
               )
           },
           {
-            path: ':reviewerName',
+            path: ':id',
             loadChildren: () =>
               import('@pimp-my-pr/pmp-web/repository/reviewer-statistics/feature').then(
                 m => m.PmpWebRepositoryReviewerStatisticsFeatureModule
