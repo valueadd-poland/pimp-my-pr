@@ -9,10 +9,10 @@ export const pmpApiConfigService = registerAs(CONFIG_NAMESPACE, () => ({
   bitbucketToken: process.env.PMP_SERVER_BITBUCKET_TOKEN,
   githubToken: process.env.PMP_SERVER_GITHUB_TOKEN,
   db: {
-    host: process.env.PMP_SERVER_DB_HOST,
-    name: process.env.PMP_SERVER_DB_NAME,
-    password: process.env.PMP_SERVER_DB_PASSWORD,
-    user: process.env.PMP_SERVER_DB_USER
+    host: process.env.DB_HOST,
+    name: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    user: process.env.DB_USER
   },
   githubClientId: process.env.GITHUB_CLIENT_ID,
   githubClientSecret: process.env.GITHUB_CLIENT_SECRET,

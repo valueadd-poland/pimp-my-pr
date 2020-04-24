@@ -30,7 +30,7 @@ jobs:
     - name: prettier check
       run: npm run format:check
     - name: build
-      run: npm run affected:build -- --all
+      run: npm run affected:build -- --all --prod
     - name: test
       run: npm run affected:test -- --parallel --all
     - name: lint

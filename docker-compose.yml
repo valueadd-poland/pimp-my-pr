@@ -36,3 +36,26 @@ services:
       - "traefik.http.routers.api.entrypoints=web"
     env_file:
       - .env
+    networks:
+      backend:
+        aliases:
+          - api
+  db:
+    image: postgres
+    volumes:
+      - db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_DB:${DB_NAME}
+    networks:
+      backend:
+        aliases:
+          - db
+
+networks:
+  backend:
+    driver: 'bridge'
+
+volumes:
+  db:
