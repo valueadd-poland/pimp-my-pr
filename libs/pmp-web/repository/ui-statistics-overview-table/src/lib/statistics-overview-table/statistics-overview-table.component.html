@@ -33,7 +33,7 @@
       <span>{{ 'Sum of time PR waiting' }}</span>
     </mat-header-cell>
     <mat-cell *matCellDef="let element">
-      {{ element.sumOfHoursPrsWaiting | resolveHours }}
+      {{ element.sumOfHoursPrsWaiting | timeAgo }}
     </mat-cell>
   </ng-container>
 

@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ResolveHoursPipe } from './pipes/resolve-hours.pipe';
+import { TimeAgoPipe } from './pipes/time-ago/time-ago.pipe';
+import { ResolveHoursPipe } from './pipes/resolve-hours/resolve-hourse.pipe';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [ResolveHoursPipe],
-  exports: [ResolveHoursPipe]
+  declarations: [TimeAgoPipe, ResolveHoursPipe],
+  exports: [TimeAgoPipe, ResolveHoursPipe]
 })
 export class PmpWebSharedUtilModule {}

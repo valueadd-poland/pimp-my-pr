@@ -1,10 +1,10 @@
-import { ResolveHoursPipe } from './resolve-hours.pipe';
+import { TimeAgoPipe } from './time-ago.pipe';
 
-describe('ResolveHoursPipe', () => {
-  let pipe: ResolveHoursPipe;
+describe('TimeAgoPipe', () => {
+  let pipe: TimeAgoPipe;
 
   beforeEach(() => {
-    pipe = new ResolveHoursPipe();
+    pipe = new TimeAgoPipe();
   });
   it('expect(pipe.transform(0))', () => {
     expect(pipe.transform(0)).toBe(`less than an hour`);

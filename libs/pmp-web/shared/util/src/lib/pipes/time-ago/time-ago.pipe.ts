@@ -1,16 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { TimeUnit } from '@pimp-my-pr/shared/domain';
 
 @Pipe({
-  name: 'resolveHours'
+  name: 'timeAgo'
 })
-export class ResolveHoursPipe implements PipeTransform {
+export class TimeAgoPipe implements PipeTransform {
   transform(value: number): string {
     const timeValues: { hrsInThatPeriod: number; name: string }[] = [
-      { hrsInThatPeriod: 8760, name: 'year' },
-      { hrsInThatPeriod: 730, name: 'month' },
-      { hrsInThatPeriod: 168, name: 'week' },
-      { hrsInThatPeriod: 24, name: 'day' },
-      { hrsInThatPeriod: 1, name: 'hour' }
+      { hrsInThatPeriod: +TimeUnit.Year, name: 'year' },
+      { hrsInThatPeriod: +TimeUnit.Month, name: 'month' },
+      { hrsInThatPeriod: +TimeUnit.Week, name: 'week' },
+      { hrsInThatPeriod: +TimeUnit.Day, name: 'day' },
+      { hrsInThatPeriod: +TimeUnit.Hour, name: 'hour' }
     ];
 
     let timeLabel: string,
