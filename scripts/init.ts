@@ -3,7 +3,13 @@ import * as fs from 'fs';
 
 config();
 
-const { GITHUB_CLIENT_ID, BITBUCKET_CLIENT_ID } = process.env;
+const {
+  GITHUB_CLIENT_ID,
+  BITBUCKET_CLIENT_ID,
+  GITLAB_CLIENT_ID,
+  GITLAB_CLIENT_SECRET,
+  GITLAB_REDIRECT_URI
+} = process.env;
 
 function initPmpWebEnvironment(): void {
   const devEnvironmentFile = 'libs/pmp-web/shared/config/src/lib/environment/environment.ts';
@@ -20,6 +26,15 @@ function initPmpWebEnvironment(): void {
 
   replaceInFiles('{{githubClientId}}', GITHUB_CLIENT_ID, [devEnvironmentFile, prodEnvironmentFile]);
   replaceInFiles('{{bitbucketClientId}}', BITBUCKET_CLIENT_ID, [
+    devEnvironmentFile,
+    prodEnvironmentFile
+  ]);
+  replaceInFiles('{{gitlabClientId}}', GITLAB_CLIENT_ID, [devEnvironmentFile, prodEnvironmentFile]);
+  replaceInFiles('{{gitlabClientSecret}}', GITLAB_CLIENT_SECRET, [
+    devEnvironmentFile,
+    prodEnvironmentFile
+  ]);
+  replaceInFiles('{{gitlabRedirectUri}}', GITLAB_REDIRECT_URI, [
     devEnvironmentFile,
     prodEnvironmentFile
   ]);

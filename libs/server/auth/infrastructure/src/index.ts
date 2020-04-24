@@ -5,4 +5,5 @@ export * from './lib/interfaces/request-credentials.interface';
 export * from './lib/repositories/auth-token-repository.factory';
 export * from './lib/repositories/bitbucket-auth-token.repository';
 export * from './lib/repositories/github-auth-token.repository';
+export * from './lib/repositories/gitlab-auth-token.repository';
 export * from './lib/server-auth-infrastructure.module';

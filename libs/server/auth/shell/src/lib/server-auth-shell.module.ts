@@ -10,12 +10,13 @@ import {
 } from '@pimp-my-pr/server/auth/infrastructure';
 import { PmpApiConfigService } from '@pimp-my-pr/server/shared/config';
 import { ServerUserShellModule } from '@pimp-my-pr/server/user/public';
+import { GitlabAuthTokenRepository } from '@pimp-my-pr/server/auth/infrastructure';
 
 const providers = [
   {
     provide: authTokenRepositoryFactoryToken,
     useFactory: authTokenRepositoryFactory,
-    inject: [GithubAuthTokenRepository, BitbucketAuthTokenRepository]
+    inject: [GithubAuthTokenRepository, BitbucketAuthTokenRepository, GitlabAuthTokenRepository]
   }
 ];
 

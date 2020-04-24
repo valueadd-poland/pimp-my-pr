@@ -1,4 +1,5 @@
 export enum Platform {
   github = 'github',
-  bitbucket = 'bitbucket'
+  bitbucket = 'bitbucket',
+  gitlab = 'gitlab'
 }

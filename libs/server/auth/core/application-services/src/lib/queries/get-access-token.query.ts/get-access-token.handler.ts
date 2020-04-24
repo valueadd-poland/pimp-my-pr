@@ -8,26 +8,26 @@ import {
 import { AddUserCommand, UserPublicFacade, UserRepository } from '@pimp-my-pr/server/user/public';
 import { Platform } from '@pimp-my-pr/shared/domain';
 import { AuthTokenReadModel } from '../../read-models/auth-token/auth-token.read-model';
-import { GetBitbucketAccessTokenQuery } from './get-bitbucket-access-token.query';
+import { GetAccessTokenQuery } from './get-access-tokent.query';
 
-@QueryHandler(GetBitbucketAccessTokenQuery)
-export class GetBitbucketAccessTokenHandler
-  implements IQueryHandler<GetBitbucketAccessTokenQuery, AuthTokenReadModel> {
+@QueryHandler(GetAccessTokenQuery)
+export class GetAccessTokenHandler
+  implements IQueryHandler<GetAccessTokenQuery, AuthTokenReadModel> {
   private authTokenRepository: AuthTokenRepository;
 
   constructor(
     @Inject(authTokenRepositoryFactoryToken)
-    authTokenRepositoryFactory: (platform: Platform) => AuthTokenRepository,
+    private authTokenRepositoryFactory: (platform: Platform) => AuthTokenRepository,
     private jwtService: JwtService,
     private userRepository: UserRepository,
     private userFacade: UserPublicFacade
-  ) {
-    this.authTokenRepository = authTokenRepositoryFactory(Platform.bitbucket);
-  }
+  ) {}
 
-  async execute(query: GetBitbucketAccessTokenQuery): Promise<AuthTokenReadModel> {
-    const { token } = await this.authTokenRepository.getAccessToken(query.bitbucketCode);
-    const userData = { ...(await this.userRepository.loadCurrentUser(token, Platform.bitbucket)) };
+  async execute(query: GetAccessTokenQuery): Promise<AuthTokenReadModel> {
+    const { code, platform } = query;
+    this.authTokenRepository = this.authTokenRepositoryFactory(platform);
+    const { token } = await this.authTokenRepository.getAccessToken(code);
+    const userData = { ...(await this.userRepository.loadCurrentUser(token, platform)) };
 
     let user = await this.userRepository.findById(userData.id);
     if (!user) {
@@ -37,8 +37,8 @@ export class GetBitbucketAccessTokenHandler
 
     const jwtPayload = {
       token,
-      platform: Platform.bitbucket,
-      user
+      user,
+      platform
     };
 
     const jwtToken = await this.jwtService.signAsync(jwtPayload);

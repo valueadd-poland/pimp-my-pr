@@ -11,20 +11,12 @@ export class AuthController {
 
   @Post('access-token')
   getJwtToken(@Body() body: AccessTokenBodyDto): Promise<AuthResponse> {
-    switch (body.platform) {
-      case Platform.bitbucket: {
-        return this.authFacade.getBitbucketAccessToken(body.code);
-      }
-
-      case Platform.github: {
-        return this.authFacade.getGithubAccessToken(body.code);
-      }
-
-      default: {
-        throw new NotImplementedException(
-          `authorization for ${body.platform} is not implemented yet`
-        );
-      }
+    if (body.platform in Platform) {
+      return this.authFacade.getAccessToken(body.code, body.platform);
+    } else {
+      throw new NotImplementedException(
+        `authorization for ${body.platform} is not implemented yet`
+      );
     }
   }
 }
