@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   traefik:
-    image: traefik:v2.1.4
+    image: traefik:v2.1.9
     restart: always
     command:
 #      - "--log.level=DEBUG"
@@ -31,17 +31,17 @@ services:
     restart: always
     labels:
       - "traefik.enable=true"
+      - "traefik.docker.network=pmp"
       # HTTP
       - "traefik.http.routers.api.rule=Host(`${DOMAIN:-pmp.local}`) && PathPrefix(`/api`)"
       - "traefik.http.routers.api.entrypoints=web"
     env_file:
       - .env
     networks:
-      backend:
-        aliases:
-          - api
+      - default
+      - backend
   db:
-    image: postgres
+    image: postgres:12.2
     volumes:
       - db:/var/lib/postgresql/data
     environment:
@@ -49,11 +49,11 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_DB:${DB_NAME}
     networks:
-      backend:
-        aliases:
-          - db
+      - backend
 
 networks:
+  default:
+    name: pmp
   backend:
     driver: 'bridge'
 
