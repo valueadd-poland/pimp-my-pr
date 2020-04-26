@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/valueadd-poland/pimp-my-pr/compare/1.0.0...1.1.0) (2020-04-26)
+
+
+### Features
+
+* **pmp:** display user info in navbar ([063b246](https://github.com/valueadd-poland/pimp-my-pr/commit/063b246f558c6b1230f73a20d698f0b133267cdc)), closes [#158](https://github.com/valueadd-poland/pimp-my-pr/issues/158)
+* **pmp:** login by bitbucket ([#162](https://github.com/valueadd-poland/pimp-my-pr/issues/162)) ([00dc87b](https://github.com/valueadd-poland/pimp-my-pr/commit/00dc87b51ff75146461e4f3991eb732a8e7a04b1))
+* **pmp:** login by gitlab account ([f1e6703](https://github.com/valueadd-poland/pimp-my-pr/commit/f1e6703d6d88dc1b61f8d88d6fac0fc96e96d653)), closes [#197](https://github.com/valueadd-poland/pimp-my-pr/issues/197)
+* **pmp:** logout on unauthorized request ([904c80a](https://github.com/valueadd-poland/pimp-my-pr/commit/904c80a9be928e1e67e51a4eec72f90a998206e1)), closes [#182](https://github.com/valueadd-poland/pimp-my-pr/issues/182)
+* **pmp:** remove repository - backend ([b2f6468](https://github.com/valueadd-poland/pimp-my-pr/commit/b2f64688ae992eabc09db514e3aa8bc52262e77a)), closes [#181](https://github.com/valueadd-poland/pimp-my-pr/issues/181)
+* **pmp:** remove repository - front ([fd9344c](https://github.com/valueadd-poland/pimp-my-pr/commit/fd9344c600b9e476bdd7b8dd694c5ddb360f5ae3)), closes [#181](https://github.com/valueadd-poland/pimp-my-pr/issues/181)
+* **pmp-api:** add repository to the system ([1cb9b7f](https://github.com/valueadd-poland/pimp-my-pr/commit/1cb9b7f5e17ef000f262ea711df033d0a982f139)), closes [#118](https://github.com/valueadd-poland/pimp-my-pr/issues/118)
+* **pmp-api:** adding 'max lines' and 'max waiting date' property ([db8ae97](https://github.com/valueadd-poland/pimp-my-pr/commit/db8ae97493f680e27e54d683689d1cb9b5fde463))
+* **pmp-api:** fetch data from bitbucket ([96eb59f](https://github.com/valueadd-poland/pimp-my-pr/commit/96eb59fc28512e536e295039142ba1973cdab851)), closes [#7](https://github.com/valueadd-poland/pimp-my-pr/issues/7)
+* **pmp-api:** repository list ([f4cf731](https://github.com/valueadd-poland/pimp-my-pr/commit/f4cf731082ec9843307516b1a1e0360ed59e8d15))
+* **pmp-api:** swagger ([337e477](https://github.com/valueadd-poland/pimp-my-pr/commit/337e47752c180d81856df2e4a602495e31357f72))
+* **pmp-web:** add core module ([1d72045](https://github.com/valueadd-poland/pimp-my-pr/commit/1d720450df99f68c14f7a354ad5d8cb54e5c7fd6))
+* **pmp-web:** add repositery-settings view ([ace8b1b](https://github.com/valueadd-poland/pimp-my-pr/commit/ace8b1bc4693e4c18f1d3c358c25d3ba218bffc5))
+* **pmp-web:** add repository data-access [#149](https://github.com/valueadd-poland/pimp-my-pr/issues/149) ([2f8216f](https://github.com/valueadd-poland/pimp-my-pr/commit/2f8216fe4af077c01b67c90122b710619fdd721c))
+* **pmp-web:** add repository ui implementation ([#169](https://github.com/valueadd-poland/pimp-my-pr/issues/169)) ([e53f53f](https://github.com/valueadd-poland/pimp-my-pr/commit/e53f53f483ff640551c35568b304a186cfaa3f84)), closes [#106](https://github.com/valueadd-poland/pimp-my-pr/issues/106) [#108](https://github.com/valueadd-poland/pimp-my-pr/issues/108)
+* **pmp-web:** enhance resolveHours, replace user for reviewer ([1ab3cc3](https://github.com/valueadd-poland/pimp-my-pr/commit/1ab3cc384edd2063fb809c72bf47602ae9177b26)), closes [#121](https://github.com/valueadd-poland/pimp-my-pr/issues/121) [#124](https://github.com/valueadd-poland/pimp-my-pr/issues/124)
+* **pmp-web:** enhance resolveHours, replace user for reviewer ([5733ed9](https://github.com/valueadd-poland/pimp-my-pr/commit/5733ed9452d608fc9ddd9f79bab0725dc4d5db31)), closes [#121](https://github.com/valueadd-poland/pimp-my-pr/issues/121) [#124](https://github.com/valueadd-poland/pimp-my-pr/issues/124)
+
+
+### Bug Fixes
+
+* **pmp:** change fullName to Url in addRepo ([a7a5267](https://github.com/valueadd-poland/pimp-my-pr/commit/a7a5267115f0282387620105b73c3e06bf7afef7))
+* **pmp:** load reviewer by id ([6f78d19](https://github.com/valueadd-poland/pimp-my-pr/commit/6f78d197ff92ba275bb3fcc726a08ad9111c2fac)), closes [#137](https://github.com/valueadd-poland/pimp-my-pr/issues/137)
+* **pmp:** redirect on app refresh ([11e6ee1](https://github.com/valueadd-poland/pimp-my-pr/commit/11e6ee18ab9520a0ca6b982522ea7d97e2dfee6f)), closes [#189](https://github.com/valueadd-poland/pimp-my-pr/issues/189)
+* **pmp-web:** add tooltips to the navigation bar items ([153b7f3](https://github.com/valueadd-poland/pimp-my-pr/commit/153b7f35a4ec9c6f4da515fb9c5f8adfd16d2d34)), closes [#178](https://github.com/valueadd-poland/pimp-my-pr/issues/178)
+* **pmp-web:** blinking login page ([3248bc6](https://github.com/valueadd-poland/pimp-my-pr/commit/3248bc6097f85958f78f26f5cca45e05a35f845a))
+* **pmp-web:** display proper maxWaitingTime ([7dea623](https://github.com/valueadd-poland/pimp-my-pr/commit/7dea6236b0d623400224c9e0b82f56b78e736f90))
+* **pmp-web:** fix pages' height ([a2353ea](https://github.com/valueadd-poland/pimp-my-pr/commit/a2353eaa0df65844f0363d7bc44dd9aa9fe9da2e)), closes [#179](https://github.com/valueadd-poland/pimp-my-pr/issues/179)
+* **pmp-web:** remove gray background from icons ([d49c57f](https://github.com/valueadd-poland/pimp-my-pr/commit/d49c57f6e3254b463bb3c09927405ff40e08c60c)), closes [#172](https://github.com/valueadd-poland/pimp-my-pr/issues/172)
+
 ## 1.0.0 (2020-03-16)
 
 
