@@ -29,8 +29,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "libs/pmp-web/core/src/lib/environment/environment.ts",
-                  "with": "libs/pmp-web/core/src/lib/environment/environment.prod.ts"
+                  "replace": "libs/pmp-web/shared/config/src/lib/environment/environment.ts",
+                  "with": "libs/pmp-web/shared/config/src/lib/environment/environment.prod.ts"
                 }
               ],
               "optimization": true,

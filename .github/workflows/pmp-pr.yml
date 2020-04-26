@@ -27,7 +27,7 @@ jobs:
       - name: prettier check
         run: node ./node_modules/@valueadd/dev prettier-check `git diff origin/master  --cached --name-only --diff-filter=AM | tr '\r\n' ','`
       - name: affected:build
-        run: npm run affected:build -- --base origin/master
+        run: npm run affected:build -- --base origin/master --prod
       - name: affected:test
         run: npm run affected:test -- --parallel --base origin/master
       - name: affected:lint
