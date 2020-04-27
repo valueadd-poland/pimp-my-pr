@@ -7,47 +7,29 @@ const {
   GITHUB_CLIENT_ID,
   BITBUCKET_CLIENT_ID,
   GITLAB_CLIENT_ID,
-  GITLAB_CLIENT_SECRET,
   GITLAB_REDIRECT_URI
 } = process.env;
 
 function initPmpWebEnvironment(): void {
-  const devEnvironmentFile = 'libs/pmp-web/shared/config/src/lib/environment/environment.ts';
-  const prodEnvironmentFile = 'libs/pmp-web/shared/config/src/lib/environment/environment.prod.ts';
+  const environmentFile = 'apps/pmp-web/src/assets/env/env.json';
 
-  fs.copyFileSync(
-    'libs/pmp-web/shared/config/src/lib/environment/environment.sample.ts',
-    devEnvironmentFile
-  );
-  fs.copyFileSync(
-    'libs/pmp-web/shared/config/src/lib/environment/environment.prod.sample.ts',
-    prodEnvironmentFile
-  );
+  fs.copyFileSync('apps/pmp-web/src/assets/env/env.json.sample', environmentFile);
 
+  replaceInFiles(`"{{githubClientId}}"`, `${GITHUB_CLIENT_ID ? `"${GITHUB_CLIENT_ID}"` : null}`, [
+    environmentFile
+  ]);
   replaceInFiles(
-    `'{{githubClientId}}'`,
-    `${GITHUB_CLIENT_ID ? `'${GITHUB_CLIENT_ID}'` : undefined}`,
-    [devEnvironmentFile, prodEnvironmentFile]
+    `"{{bitbucketClientId}}"`,
+    `${BITBUCKET_CLIENT_ID ? `"${BITBUCKET_CLIENT_ID}"` : null}`,
+    [environmentFile]
   );
+  replaceInFiles(`"{{gitlabClientId}}"`, `${GITLAB_CLIENT_ID ? `"${GITLAB_CLIENT_ID}"` : null}`, [
+    environmentFile
+  ]);
   replaceInFiles(
-    `'{{bitbucketClientId}}'`,
-    `${BITBUCKET_CLIENT_ID ? `'${BITBUCKET_CLIENT_ID}'` : undefined}`,
-    [devEnvironmentFile, prodEnvironmentFile]
-  );
-  replaceInFiles(
-    `'{{gitlabClientId}}'`,
-    `${GITLAB_CLIENT_ID ? `'${GITLAB_CLIENT_ID}'` : undefined}`,
-    [devEnvironmentFile, prodEnvironmentFile]
-  );
-  replaceInFiles(
-    `'{{gitlabClientSecret}}'`,
-    `${GITLAB_CLIENT_SECRET ? `'${GITLAB_CLIENT_SECRET}'` : undefined}`,
-    [devEnvironmentFile, prodEnvironmentFile]
-  );
-  replaceInFiles(
-    `'{{gitlabRedirectUri}}'`,
-    `${GITLAB_REDIRECT_URI ? `'${GITLAB_REDIRECT_URI}'` : undefined}`,
-    [devEnvironmentFile, prodEnvironmentFile]
+    `"{{gitlabRedirectUri}}"`,
+    `${GITLAB_REDIRECT_URI ? `"${GITLAB_REDIRECT_URI}"` : null}`,
+    [environmentFile]
   );
 }
 

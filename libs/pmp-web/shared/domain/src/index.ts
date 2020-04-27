@@ -1,1 +1,1 @@
-export * from './payloads/generic-dialog.payload';
+export * from './lib/payloads/generic-dialog.payload';

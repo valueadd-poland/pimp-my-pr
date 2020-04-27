@@ -24,6 +24,12 @@ services:
       # HTTP
       - "traefik.http.routers.ng.rule=Host(`${DOMAIN:-pmp.local}`)"
       - "traefik.http.routers.ng.entrypoints=web"
+    environment:
+      - BITBUCKET_CLIENT_ID=${BITBUCKET_CLIENT_ID}
+      - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID}
+      - GITLAB_CLIENT_ID=${GITLAB_CLIENT_ID}
+      - GITLAB_REDIRECT_URI=${GITLAB_REDIRECT_URI}
+
   api:
     build:
       context: ./
@@ -47,7 +53,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_USER=${DB_USER}
-      - POSTGRES_DB:${DB_NAME}
+      - POSTGRES_DB=${DB_NAME}
     networks:
       - backend
 

@@ -94,7 +94,7 @@
           },
           {
             "sourceTag": "type:application",
-            "onlyDependOnLibsWithTags": ["type:api", "type:core", "type:shell"]
+            "onlyDependOnLibsWithTags": ["type:api", "type:core", "type:config", "type:shell"]
           },
           {
             "sourceTag": "type:application-services",
