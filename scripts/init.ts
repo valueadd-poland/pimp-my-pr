@@ -24,20 +24,31 @@ function initPmpWebEnvironment(): void {
     prodEnvironmentFile
   );
 
-  replaceInFiles('{{githubClientId}}', GITHUB_CLIENT_ID, [devEnvironmentFile, prodEnvironmentFile]);
-  replaceInFiles('{{bitbucketClientId}}', BITBUCKET_CLIENT_ID, [
-    devEnvironmentFile,
-    prodEnvironmentFile
-  ]);
-  replaceInFiles('{{gitlabClientId}}', GITLAB_CLIENT_ID, [devEnvironmentFile, prodEnvironmentFile]);
-  replaceInFiles('{{gitlabClientSecret}}', GITLAB_CLIENT_SECRET, [
-    devEnvironmentFile,
-    prodEnvironmentFile
-  ]);
-  replaceInFiles('{{gitlabRedirectUri}}', GITLAB_REDIRECT_URI, [
-    devEnvironmentFile,
-    prodEnvironmentFile
-  ]);
+  replaceInFiles(
+    `'{{githubClientId}}'`,
+    `${GITHUB_CLIENT_ID ? `'${GITHUB_CLIENT_ID}'` : undefined}`,
+    [devEnvironmentFile, prodEnvironmentFile]
+  );
+  replaceInFiles(
+    `'{{bitbucketClientId}}'`,
+    `${BITBUCKET_CLIENT_ID ? `'${BITBUCKET_CLIENT_ID}'` : undefined}`,
+    [devEnvironmentFile, prodEnvironmentFile]
+  );
+  replaceInFiles(
+    `'{{gitlabClientId}}'`,
+    `${GITLAB_CLIENT_ID ? `'${GITLAB_CLIENT_ID}'` : undefined}`,
+    [devEnvironmentFile, prodEnvironmentFile]
+  );
+  replaceInFiles(
+    `'{{gitlabClientSecret}}'`,
+    `${GITLAB_CLIENT_SECRET ? `'${GITLAB_CLIENT_SECRET}'` : undefined}`,
+    [devEnvironmentFile, prodEnvironmentFile]
+  );
+  replaceInFiles(
+    `'{{gitlabRedirectUri}}'`,
+    `${GITLAB_REDIRECT_URI ? `'${GITLAB_REDIRECT_URI}'` : undefined}`,
+    [devEnvironmentFile, prodEnvironmentFile]
+  );
 }
 
 function replaceInFiles(from: string, to: string, files: string[]): void {
