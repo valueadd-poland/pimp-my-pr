@@ -10,9 +10,6 @@ A brilliant tool that will pimp your pull requests by collecting and presenting 
 
 - copy `.env-sample` file as `.env` in project root
 - fill the `.env` file
-- install dependencies by `npm install` and run `node ./scripts/init.js`
-  or manually copy all sample files under `libs/pmp-web/shared/config/src/lib/environment/` directory
-  without `.sample` key word and fill that files with proper configuration
 
 Generate repository platform client credentials:
 
@@ -46,6 +43,9 @@ Register application:
 ## Development
 
 - install dependencies with `npm install`
+- run `node ./scripts/init.js`
+  or manually copy all sample files under `libs/pmp-web/shared/config/src/lib/environment/` directory
+  without `.sample` key word and fill that files with proper configuration
 - serve frontend application with `ng serve`
 - (optional) start a database with docker `docker run --name pmp-postgres -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_USER=pmp -p 5432:5432 -d postgres`
 - serve api with `ng serve pmp-api`
@@ -58,9 +58,10 @@ Register application:
 
 ## Production Server Setup
 
-- go through all Setup section steps
+- clone the repository or copy just .env-sample and docker-compose.yml files to your device.
+- go through the Setup section steps
 - run `docker-compose up -d`
 
 ### SWAGGER
 
-API specification is available in swagger under the `/api` endpoint on the running pmp-api application.
+APIs specification is available in swagger under the `/api` endpoint on the running pmp-api application.

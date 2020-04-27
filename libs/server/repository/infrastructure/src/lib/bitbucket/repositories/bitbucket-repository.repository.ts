@@ -11,7 +11,7 @@ import { AxiosError, AxiosResponse } from 'axios';
 import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { RemoteRepositoryRepository } from '../../repositories/remote-repository.repository';
-import { BitbucketRepositoryEnity } from '../domain/entities/bitbucket-repository.enity';
+import { BitbucketRepositoryEntity } from '../domain/entities/bitbucket-repository.entity';
 import { mapBitbucketRepository } from '../mappers/map-bitbucket-repository';
 
 @Injectable()
@@ -30,7 +30,7 @@ export class BitbucketRepositoryRepository extends RemoteRepositoryRepository {
 
   getSingleRepositoryByName(fullName, token: string): Promise<RepositoryEntity> {
     return this.httpService
-      .get<BitbucketRepositoryEnity>(this.endpoints.getRepository.url({ fullName }), {
+      .get<BitbucketRepositoryEntity>(this.endpoints.getRepository.url({ fullName }), {
         headers: { Authorization: `Bearer ${token}` }
       })
       .pipe(

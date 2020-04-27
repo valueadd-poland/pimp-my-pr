@@ -18,7 +18,6 @@ COPY ./apps/pmp-web /app/apps/pmp-web
 COPY ./scripts /app/scripts
 COPY ./.env /app/.env
 
-RUN npm run init
 RUN npm run build:pmp-web:prod
 
 FROM nginx:1.17-alpine
@@ -31,6 +30,9 @@ COPY apps/pmp-web/docker/nginx/pimp.conf /etc/nginx/conf.d/pimp.conf
 RUN rm -rf /usr/share/nginx/html/* && rm /etc/nginx/conf.d/default.conf
 
 COPY --from=build-stage /app/dist/apps/pmp-web/ /usr/share/nginx/html
+COPY apps/pmp-web/docker/entrypoint.sh /usr/local/bin/
+
+ENTRYPOINT ["entrypoint.sh"]
 
 STOPSIGNAL SIGTERM
 
