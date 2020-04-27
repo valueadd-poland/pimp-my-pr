@@ -19,27 +19,39 @@ export class LoginPageComponent {
   constructor(private authFacade: AuthFacade) {}
 
   systems = [
-    {
-      imageSrc: 'assets/images/github_logo.png',
-      name: Platform.github,
-      color: '#2cbe4e'
-    },
-    {
-      imageSrc: 'assets/images/bitbucket_logo.png',
-      name: Platform.bitbucket,
-      color: '#0052CC'
-    }
-    // {
-    //   imageSrc: 'assets/images/gitlab_logo.png',
-    //   name: Platform.gitlab,
-    //   color: '#FC6D27'
-    // }
+    ...(environment.githubClientId
+      ? [
+          {
+            imageSrc: 'assets/images/github_logo.png',
+            name: Platform.github,
+            color: '#2cbe4e'
+          }
+        ]
+      : []),
+    ...(environment.bitbucketClientId
+      ? [
+          {
+            imageSrc: 'assets/images/bitbucket_logo.png',
+            name: Platform.bitbucket,
+            color: '#0052CC'
+          }
+        ]
+      : []),
+    ...(environment.gitlabClientId
+      ? [
+          {
+            imageSrc: 'assets/images/gitlab_logo.png',
+            name: Platform.gitlab,
+            color: '#FC6D27'
+          }
+        ]
+      : [])
   ];
 
   login(system: string): void {
     switch (system) {
       case Platform.github:
-        window.location.href = `${githubAuthConfig.authLink}?client_id=${environment.githubClientId}`;
+        window.location.href = `${githubAuthConfig.authLink}?client_id=${environment.githubClientId}&scope=user%20repo`;
         break;
       case Platform.gitlab:
         window.location.href = `${gitlabAuthConfig.authLink}?client_id=${environment.gitlabClientId}&redirect_uri=${environment.gitlabRedirectUri}&response_type=${gitlabAuthConfig.responseType}&scope=${gitlabAuthConfig.scope}`;
