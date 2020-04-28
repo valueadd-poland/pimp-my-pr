@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/valueadd-poland/pimp-my-pr/compare/1.1.0...1.2.0) (2020-04-28)
+
+
+### Features
+
+* code of conduct ([123d501](https://github.com/valueadd-poland/pimp-my-pr/commit/123d50116aea2bf3aca439600dfb300bb2a1b81d))
+
+
+### Bug Fixes
+
+* **pmp-web:** decrease access to github ([68afdcd](https://github.com/valueadd-poland/pimp-my-pr/commit/68afdcdcc7f68460ff3ab2f71dddef10e1dddc74))
+* **pmp-web:** hide not available platforms ([2cdb134](https://github.com/valueadd-poland/pimp-my-pr/commit/2cdb13460529cd1919328825159efe1acb6695e6))
+
 ## [1.1.0](https://github.com/valueadd-poland/pimp-my-pr/compare/1.0.0...1.1.0) (2020-04-26)
 
 
