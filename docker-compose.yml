@@ -15,9 +15,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
   ng:
-    build:
-      context: ./
-      dockerfile: apps/pmp-web/Dockerfile
+    image: valueaddpoland/pmp-ng
     restart: always
     labels:
       - "traefik.enable=true"
@@ -31,9 +29,7 @@ services:
       - GITLAB_REDIRECT_URI=${GITLAB_REDIRECT_URI}
 
   api:
-    build:
-      context: ./
-      dockerfile: apps/pmp-api/Dockerfile
+    image: valueaddpoland/pmp-api
     restart: always
     labels:
       - "traefik.enable=true"
