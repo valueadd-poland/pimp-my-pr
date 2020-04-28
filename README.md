@@ -44,7 +44,7 @@ Register application:
 
 - install dependencies with `npm install`
 - run `node ./scripts/init.js`
-  or manually copy all sample files under `libs/pmp-web/shared/config/src/lib/environment/` directory
+  or manually copy all sample files under `apps/pmp-web/src/assets/env/` directory
   without `.sample` key word and fill that files with proper configuration
 - serve frontend application with `ng serve`
 - (optional) start a database with docker `docker run --name pmp-postgres -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_USER=pmp -p 5432:5432 -d postgres`
