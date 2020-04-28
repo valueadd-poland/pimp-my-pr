@@ -4,7 +4,7 @@
 
 A brilliant tool that will pimp your pull requests by collecting and presenting PR statistics.
 
-![Preview](docs/img/pmp-preview.png)
+![Preview](https://github.com/valueadd-poland/pimp-my-pr/raw/master/docs/img/pmp-preview.png)
 
 ### Setup
 

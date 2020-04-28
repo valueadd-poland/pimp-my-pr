@@ -15,8 +15,6 @@ COPY angular.json nx.json package.json package-lock.json tsconfig.json /app/
 COPY ./libs/shared /app/libs/shared
 COPY ./libs/pmp-web /app/libs/pmp-web
 COPY ./apps/pmp-web /app/apps/pmp-web
-COPY ./scripts /app/scripts
-COPY ./.env /app/.env
 
 RUN npm run build:pmp-web:prod
 
