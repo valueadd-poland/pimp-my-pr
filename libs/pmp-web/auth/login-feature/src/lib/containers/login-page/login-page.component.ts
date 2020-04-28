@@ -51,7 +51,7 @@ export class LoginPageComponent {
   login(system: string): void {
     switch (system) {
       case Platform.github:
-        window.location.href = `${githubAuthConfig.authLink}?client_id=${environment.githubClientId}&scope=user%20repo`;
+        window.location.href = `${githubAuthConfig.authLink}?client_id=${environment.githubClientId}&scope=read:user%20repo`;
         break;
       case Platform.gitlab:
         window.location.href = `${gitlabAuthConfig.authLink}?client_id=${environment.gitlabClientId}&redirect_uri=${environment.gitlabRedirectUri}&response_type=${gitlabAuthConfig.responseType}&scope=${gitlabAuthConfig.scope}`;
