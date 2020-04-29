@@ -21,12 +21,12 @@ The most important part, to add any value to Pimp My PR you have to follow up th
 This section describes our methodologies and conventions.
 
 1. Pimp My PR's code organization and the structure bases on [NRWL](nrwl.io), this
-   [pdf](connect.nrwl.io/app/books/enterprise-angular-monorepo-patterns) shows why and how
+   [pdf](//connect.nrwl.io/app/books/enterprise-angular-monorepo-patterns) shows why and how
    we are structuring that way, also this
-   [article](www.softwarearchitekt.at/aktuelles/tactical-domain-driven-design-with-monorepos)
+   [article](//www.softwarearchitekt.at/aktuelles/tactical-domain-driven-design-with-monorepos)
    could help to understand the code organization in this project.
 
-2. Familiarize with Git flow - [read more](nvie.com/posts/a-successful-git-branching-model/),
+2. Familiarize with Git flow - [read more](//nvie.com/posts/a-successful-git-branching-model/),
    here a [gist](https://gist.github.com/markreid/12e7c2203916b93d23c27a263f6091a0) about rebasing.
 
 3. Check out our [Git guidelines](#git-guidelines). If a commit messages will not follow with these rules the CI
