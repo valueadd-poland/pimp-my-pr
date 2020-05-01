@@ -29,7 +29,9 @@ services:
       - GITLAB_REDIRECT_URI=${GITLAB_REDIRECT_URI}
 
   api:
-    image: valueaddpoland/pmp-api
+    build:
+      context: ./
+      dockerfile: apps/pmp-api/Dockerfile
     restart: always
     labels:
       - "traefik.enable=true"
@@ -37,6 +39,7 @@ services:
       # HTTP
       - "traefik.http.routers.api.rule=Host(`${DOMAIN:-pmp.local}`) && PathPrefix(`/api`)"
       - "traefik.http.routers.api.entrypoints=web"
+    command: sleep infinity
     env_file:
       - .env
     networks:
