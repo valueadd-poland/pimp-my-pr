@@ -20,10 +20,14 @@ Listen them. Consider their viewpoint.
 The most important part, to add any value to Pimp My PR you have to follow up this list.
 This section describes our methodologies and conventions.
 
-1. Pimp My PR's code organization and the structure bases on [NRWL](nrwl.io), this
+1. Pimp My PR's code organization and the structure bases on [NRWL](//nrwl.io), this
    [pdf](//connect.nrwl.io/app/books/enterprise-angular-monorepo-patterns) shows why and how
-   we are structuring that way, also this
-   [article](//www.softwarearchitekt.at/aktuelles/tactical-domain-driven-design-with-monorepos)
+   we are structuring Angular applications.
+
+   This [article](https://medium.com/@maciejsikorski/onion-architecture-with-nest-js-and-nx-d9b5c7126b37)
+   describes how we are structuring Nest.js applications.
+
+   Also [this one](//www.softwarearchitekt.at/aktuelles/tactical-domain-driven-design-with-monorepos)
    could help to understand the code organization in this project.
 
 2. Familiarize with Git flow - [read more](//nvie.com/posts/a-successful-git-branching-model/),
@@ -40,11 +44,9 @@ This section describes our methodologies and conventions.
 
 6. Submit the branch as a PR to relevant Pimp My PR repository.
 
-7. Mark someone to review your code, if you don't know who to ask, check out Github's recommendations.
+7. Make sure your PR passes the build at CI.
 
-8. Make sure your PR passes the build at CI.
-
-9. When everything is green and your changes looks good to reviewer, then wait for a feedback from someone from the core team.
+8. When everything is green and your changes looks good to reviewer, then wait for a feedback from someone from the core team.
 
 ## Git guidelines
 
