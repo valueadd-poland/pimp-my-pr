@@ -25,7 +25,7 @@
     "format:write": "nx format:write",
     "format:check": "nx format:check",
     "init": "node ./scripts/init.js",
-    "run:pmp-api": "pm2 start dist/apps/pmp-api/main.js --no-daemon",
+    "run:pmp-api": "pm2 start main.js --no-daemon",
     "update": "ng update @nrwl/workspace",
     "update:check": "ng update",
     "workspace-schematic": "nx workspace-schematic",
