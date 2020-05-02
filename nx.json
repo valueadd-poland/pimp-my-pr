@@ -18,7 +18,7 @@
       "tags": ["platform:server", "type:application"]
     },
     "pmp-api-e2e": {
-      "tags": ["platform:server", "type:application"]
+      "tags": ["platform:server"]
     },
     "shared-domain": {
       "tags": ["platform:any", "scope:shared", "type:domain"]
@@ -205,6 +205,9 @@
     },
     "pmp-web-shared-ui-generic-dialog": {
       "tags": ["platform:web", "scope:shared", "type:ui"]
+    },
+    "server-shared-core-api-rest": {
+      "tags": ["platform:server", "scope:shared", "type:core"]
     }
   }
 }

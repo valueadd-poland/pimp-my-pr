@@ -1,4 +1,4 @@
-import { HttpModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { BitbucketAuthTokenRepository } from './repositories/bitbucket-auth-token.repository';
 import { GithubAuthTokenRepository } from './repositories/github-auth-token.repository';
 import { GitlabAuthTokenRepository } from './repositories/gitlab-auth-token.repository';
@@ -10,7 +10,6 @@ const providers = [
 ];
 
 @Module({
-  imports: [HttpModule],
   providers: providers,
   exports: providers
 })

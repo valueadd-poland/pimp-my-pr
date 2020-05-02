@@ -1,9 +1,9 @@
-import { HttpModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { FeatureUserTypeOrmModule } from './feature-user-type-orm.module';
 import { BitbucketUserRepository } from './repositories/bitbucket/bitbucket-user.repository';
 import { GithubUserRepository } from './repositories/github/github-user.repository';
-import { UserRepositoryAdapter } from './repositories/user-repository.adapter';
 import { GitlabUserRepository } from './repositories/gitlab/gitlab-user.repository';
+import { UserRepositoryAdapter } from './repositories/user-repository.adapter';
 
 const providers = [
   UserRepositoryAdapter,
@@ -13,7 +13,7 @@ const providers = [
 ];
 
 @Module({
-  imports: [HttpModule, FeatureUserTypeOrmModule],
+  imports: [FeatureUserTypeOrmModule],
   providers: providers,
   exports: [FeatureUserTypeOrmModule, ...providers]
 })

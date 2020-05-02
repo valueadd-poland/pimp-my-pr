@@ -25,6 +25,15 @@ jobs:
 
   e2e:
     runs-on: ubuntu-16.04
+    services:
+      db:
+        image: postgres:12.2
+        env:
+          POSTGRES_PASSWORD: mysecretpassword
+          POSTGRES_USER: pmp
+          POSTGRES_DB: pmp
+        ports:
+          - 5432
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js ${{ matrix.node-version }}
@@ -36,9 +45,16 @@ jobs:
       - name: npm install
         run: npm ci
       - name: init configs
-        run: cp .env-sample .env && npm run init
+        run: cp .env-sample .env && npm run init && rm .env
       - name: affected:e2e
         run: npm run affected:e2e
+        env:
+          DB_PORT: ${{ job.services.db.ports[5432] }}
+          DB_HOST: localhost
+          DB_NAME: pmp
+          DB_PASSWORD: mysecretpassword
+          DB_USER: pmp
+          PMP_SERVER_JWT_SECRET: somecomplextext
     env:
       CI: true
 

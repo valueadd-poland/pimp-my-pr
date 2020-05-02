@@ -1968,6 +1968,31 @@
           "styleext": "scss"
         }
       }
+    },
+    "server-shared-core-api-rest": {
+      "root": "libs/server/shared/core-api-rest",
+      "sourceRoot": "libs/server/shared/core-api-rest/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/shared/core-api-rest/tsconfig.lib.json",
+              "libs/server/shared/core-api-rest/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/shared/core-api-rest/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/shared/core-api-rest/jest.config.js",
+            "tsConfig": "libs/server/shared/core-api-rest/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {
