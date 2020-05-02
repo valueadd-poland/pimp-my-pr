@@ -3,13 +3,11 @@ name: PMP PR CI
 on: pull_request
 
 jobs:
-  base:
+  build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [12.x]
-
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js ${{ matrix.node-version }}
@@ -20,20 +18,10 @@ jobs:
         run: npm ci
       - name: init configs
         run: cp .env-sample .env && npm run init
-      - name: validate commits
-        run: node ./node_modules/@valueadd/dev validate-commit origin/master
-      - name: validate nx tags
-        run: node ./node_modules/@valueadd/dev validate-nx-tags
-      - name: prettier check
-        run: node ./node_modules/@valueadd/dev prettier-check `git diff origin/master  --cached --name-only --diff-filter=AM | tr '\r\n' ','`
       - name: affected:build
         run: npm run affected:build -- --base origin/master --prod
-      - name: affected:test
-        run: npm run affected:test -- --parallel --base origin/master
-      - name: affected:lint
-        run: npm run affected:lint -- --parallel --base origin/master
-        env:
-          CI: true
+    env:
+      CI: true
 
   e2e:
     runs-on: ubuntu-16.04
@@ -53,3 +41,61 @@ jobs:
         run: npm run affected:e2e
     env:
       CI: true
+
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: affected:lint
+        run: npm run affected:lint -- --parallel --base origin/master
+        env:
+          CI: true
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: affected:test
+        run: npm run affected:test -- --parallel --base origin/master
+        env:
+          CI: true
+
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: validate commits
+        run: node ./node_modules/@valueadd/dev validate-commit origin/master
+      - name: validate nx tags
+        run: node ./node_modules/@valueadd/dev validate-nx-tags
+      - name: prettier check
+        run: node ./node_modules/@valueadd/dev prettier-check `git diff origin/master  --cached --name-only --diff-filter=AM | tr '\r\n' ','`
+        env:
+          CI: true
