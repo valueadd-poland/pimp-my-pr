@@ -106,7 +106,7 @@
           },
           {
             "sourceTag": "type:core",
-            "onlyDependOnLibsWithTags": ["type:config"]
+            "onlyDependOnLibsWithTags": ["type:config", "type:domain"]
           },
           {
             "sourceTag": "type:data-access",

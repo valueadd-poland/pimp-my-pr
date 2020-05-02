@@ -12,6 +12,7 @@ export const pmpApiConfigService = registerAs(CONFIG_NAMESPACE, () => ({
     host: process.env.DB_HOST,
     name: process.env.DB_NAME,
     password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
     user: process.env.DB_USER
   },
   githubClientId: process.env.GITHUB_CLIENT_ID,
@@ -35,11 +36,7 @@ export class PmpApiConfigService {
     return this.configService.get<string>(CONFIG_NAMESPACE + '.bitbucketClientSecret');
   }
 
-  getBitbucketToken(): string {
-    return this.configService.get<string>(CONFIG_NAMESPACE + '.bitbucketToken');
-  }
-
-  getDbConfig(): { host: string; name: string; password: string; user: string } {
+  getDbConfig(): { host: string; name: string; password: string; port: number; user: string } {
     return this.configService.get(CONFIG_NAMESPACE + '.db');
   }
 

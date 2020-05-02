@@ -4,11 +4,11 @@ import { PmpApiConfigService } from '@pimp-my-pr/server/shared/config';
 
 const typeOrmModule = TypeOrmModule.forRootAsync({
   useFactory: async (configService: PmpApiConfigService) => {
-    const { host, name, password, user } = configService.getDbConfig();
+    const { host, name, password, port, user } = configService.getDbConfig();
     return {
       type: 'postgres' as 'postgres',
       host,
-      port: 5432,
+      port,
       username: user,
       password,
       database: name,
