@@ -97,10 +97,10 @@
       2,
       'always',
       [
-        'pmp',
-        'pmp-api',
-        'pmp-web',
-        'pmp-web-repository'
+        'api',
+        'api-user',
+        'web',
+        'web-repository'
       ]
     ]
   },

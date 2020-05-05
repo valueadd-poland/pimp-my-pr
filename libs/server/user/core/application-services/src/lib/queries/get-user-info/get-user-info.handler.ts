@@ -8,6 +8,6 @@ export class GetUserInfoHandler implements IQueryHandler<GetUserInfoQuery> {
   constructor(private userRepository: UserRepository) {}
 
   async execute(query: GetUserInfoQuery): Promise<User> {
-    return this.userRepository.findById(query.currentUserId);
+    return this.userRepository.getById(query.currentUserId);
   }
 }
