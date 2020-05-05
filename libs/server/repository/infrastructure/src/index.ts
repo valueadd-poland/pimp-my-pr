@@ -9,3 +9,5 @@ export * from './lib/bitbucket/repositories/bitbucket-reviewer.repository';
 export * from './lib/github/repositories/github-pr.repository';
 export * from './lib/github/repositories/github-repository.repository';
 export * from './lib/github/repositories/github-reviewer.repository';
+
+export * from './lib/gitlab/repositories/gitlab-repository.repository';

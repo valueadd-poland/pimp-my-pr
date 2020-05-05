@@ -1,6 +1,6 @@
 import { URL } from 'url';
 
-const allowedDomains = ['github', 'bitbucket'];
+const allowedDomains = ['github', 'bitbucket', 'gitlab'];
 
 function isHostAllowed(host: string): boolean {
   return allowedDomains.reduce((accumulator, currentValue) => {

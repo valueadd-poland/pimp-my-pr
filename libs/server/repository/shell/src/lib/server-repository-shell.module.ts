@@ -13,6 +13,7 @@ import {
   GithubPrRepository,
   GithubRepositoryRepository,
   GithubReviewerRepository,
+  GitlabRepositoryRepository,
   remoteRepositoryRepositoryFactoryToken,
   RepositoryRepositoryAdapter,
   ServerRepositoryInfrastructureModule
@@ -30,7 +31,7 @@ const providers = [
   {
     provide: remoteRepositoryRepositoryFactoryToken,
     useFactory: remoteRepositoryRepositoryFactoryFactory,
-    inject: [GithubRepositoryRepository, BitbucketRepositoryRepository]
+    inject: [GithubRepositoryRepository, BitbucketRepositoryRepository, GitlabRepositoryRepository]
   },
   {
     provide: reviewerRepositoryFactoryToken,
