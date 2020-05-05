@@ -10,7 +10,7 @@ import { urlFactory } from '@valueadd/typed-urls';
 import { AxiosError, AxiosResponse } from 'axios';
 import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { RemoteRepositoryRepository } from '@pimp-my-pr/server/repository/infrastructure';
+import { RemoteRepositoryRepository } from '../../repositories/remote-repository.repository';
 import { GitlabRepositoryEntity } from '../domain/entities/gitlab-repository.entity';
 import { mapGitlabRepository } from '../mappers/map-gitlab-repository';
 
