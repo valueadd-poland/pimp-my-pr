@@ -25,6 +25,19 @@
     </mat-cell>
   </ng-container>
 
+  <!-- Time waiting from last change Column -->
+  <ng-container matColumnDef="timeWaitingFromLastChange">
+    <mat-header-cell
+      *matHeaderCellDef
+      class="waiting-time-from-last-change-column"
+      mat-sort-header="timeWaitingFromLastChange"
+      >Time waiting from last change</mat-header-cell
+    >
+    <mat-cell *matCellDef="let element" class="waiting-time-from-last-change-column">
+      {{ element.timeWaitingFromLastChange | timeAgo }}
+    </mat-cell>
+  </ng-container>
+
   <!-- Lines To Check Column -->
   <ng-container matColumnDef="linesToCheck">
     <mat-header-cell

@@ -47,7 +47,9 @@ export class TablePrStatisticComponent implements OnInit {
       'id',
       'title',
       'waitingTime',
+      'timeWaitingFromLastChange',
       'linesToCheck',
+      'comments',
       'author',
       this.columnPropertyName,
       'link'
