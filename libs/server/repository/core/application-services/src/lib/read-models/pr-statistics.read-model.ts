@@ -17,6 +17,8 @@ export class PrStatisticsReadModel {
   @ApiProperty()
   timeWaiting: number;
   @ApiProperty()
+  timeWaitingFromLastChange: number;
+  @ApiProperty()
   title: string;
   @ApiProperty()
   url: string;
@@ -30,13 +32,14 @@ export class PrStatisticsReadModel {
     this.commentsCount = pr.commentsCount;
     this.reviewers = pr.reviewers;
     this.url = pr.url;
-    this.timeWaiting = this.getTimePrWaiting(pr);
+    this.timeWaiting = this.getTimePrWaiting(pr.createdAt);
+    this.timeWaitingFromLastChange = this.getTimePrWaiting(pr.updatedAt);
   }
 
-  private getTimePrWaiting(pr: PrEntity): number {
+  private getTimePrWaiting(waitingSince: Date): number {
     let result: number;
     const now = new Date();
-    result = (now.getTime() - pr.createdAt.getTime()) / (60 * 60 * 1000);
+    result = (now.getTime() - waitingSince.getTime()) / (60 * 60 * 1000);
 
     return Math.round(result);
   }
