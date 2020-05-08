@@ -11,3 +11,5 @@ export * from './lib/github/repositories/github-repository.repository';
 export * from './lib/github/repositories/github-reviewer.repository';
 
 export * from './lib/gitlab/repositories/gitlab-repository.repository';
+export * from './lib/gitlab/repositories/gitlab-pr.repository';
+export * from './lib/gitlab/repositories/gitlab-reviewer.repository';
