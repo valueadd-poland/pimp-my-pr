@@ -13,7 +13,9 @@ import {
   GithubPrRepository,
   GithubRepositoryRepository,
   GithubReviewerRepository,
+  GitlabPrRepository,
   GitlabRepositoryRepository,
+  GitlabReviewerRepository,
   remoteRepositoryRepositoryFactoryToken,
   RepositoryRepositoryAdapter,
   ServerRepositoryInfrastructureModule
@@ -26,7 +28,7 @@ const providers = [
   {
     provide: prRepositoryFactoryToken,
     useFactory: prRepositoryFactoryFactory,
-    inject: [GithubPrRepository, BitbucketPrRepository]
+    inject: [GithubPrRepository, BitbucketPrRepository, GitlabPrRepository]
   },
   {
     provide: remoteRepositoryRepositoryFactoryToken,
@@ -36,7 +38,7 @@ const providers = [
   {
     provide: reviewerRepositoryFactoryToken,
     useFactory: reviewerRepositoryFactoryFactory,
-    inject: [GithubReviewerRepository, BitbucketReviewerRepository]
+    inject: [GithubReviewerRepository, BitbucketReviewerRepository, GitlabReviewerRepository]
   },
   {
     provide: RepositoryRepository,
@@ -45,10 +47,12 @@ const providers = [
 
   GithubPrRepository,
   BitbucketPrRepository,
+  GitlabPrRepository,
   GithubRepositoryRepository,
   BitbucketRepositoryRepository,
   GithubReviewerRepository,
-  BitbucketReviewerRepository
+  BitbucketReviewerRepository,
+  GitlabReviewerRepository
 ];
 
 @Global()
