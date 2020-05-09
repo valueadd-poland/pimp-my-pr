@@ -35,9 +35,13 @@ export class GetReviewerStatisticsHandler
         prRepository
           .findByRepositoryId(repository.fullName, query.token)
           .then(prs => prs.filter(pr => pr.reviewers.some(rev => rev.id === query.reviewerId)))
-          .then(pr => repositoryPrsStatisticsReadModelFactory(repository, pr))
+          .then(pr => {
+            if (pr.length > 0) {
+              return repositoryPrsStatisticsReadModelFactory(repository, pr);
+            }
+          })
       )
-    );
+    ).then(repositoriesList => repositoriesList.filter(Boolean));
 
     return new ReviewerStatisticsReadModel(reviewer, repositoryStatistics);
   }
