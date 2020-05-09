@@ -92,13 +92,11 @@ describe('Repository', () => {
         .expect(200, {
           data: [
             {
-              prs: [],
               id: '22123383112345',
               repositoryId: '221233831',
               name: 'pimp-my-pr',
               owner: 'valueadd-poland',
               pictureUrl: 'https://avatars1.githubusercontent.com/u/49273957?v=4',
-              userId: '12345',
               maxWaitingTime: null,
               maxLines: null
             }

@@ -1,9 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { AuthorEntity, PrEntity, ReviewerEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { PrEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { authorReadModelFactory } from './factories/author-read-model.factory';
+import { AuthorReadModel } from './author.read-model';
+import { ReviewerReadModel } from './reviewer.read-model';
+import { reviewerReadModelFactory } from './factories/reviewer-read-model.factory';
 
 export class PrStatisticsReadModel {
   @ApiProperty()
-  author: AuthorEntity;
+  author: AuthorReadModel;
   @ApiProperty()
   commentsCount: number;
   @ApiProperty()
@@ -12,8 +16,8 @@ export class PrStatisticsReadModel {
   id: string;
   @ApiProperty()
   linesOfCodeToCheck: number;
-  @ApiProperty({ type: [ReviewerEntity] })
-  reviewers: ReviewerEntity[];
+  @ApiProperty({ type: [ReviewerReadModel] })
+  reviewers: ReviewerReadModel[];
   @ApiProperty()
   timeWaiting: number;
   @ApiProperty()
@@ -28,9 +32,9 @@ export class PrStatisticsReadModel {
     this.linesOfCodeToCheck = pr.linesOfCodeToCheck;
     this.id = pr.id;
     this.title = pr.title;
-    this.author = pr.author;
+    this.author = authorReadModelFactory(pr.author);
     this.commentsCount = pr.commentsCount;
-    this.reviewers = pr.reviewers;
+    this.reviewers = pr.reviewers.map(reviewer => reviewerReadModelFactory(reviewer));
     this.url = pr.url;
     this.timeWaiting = this.getTimePrWaiting(pr.createdAt);
     this.timeWaitingFromLastChange = this.getTimePrWaiting(pr.updatedAt);

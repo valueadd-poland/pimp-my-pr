@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import {
   AuthGuard,
   Credentials,
@@ -11,9 +11,9 @@ import {
   AddRepositoryCommand,
   DeleteRepositoryCommand,
   EditRepositoryCommand,
-  RepositoryFacade
+  RepositoryFacade,
+  ListRepositoriesReadModel
 } from '@pimp-my-pr/server/repository/core/application-services';
-import { RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
 import { extractFullName } from '@pimp-my-pr/server/shared/util-repository';
 import { AddRepositoryDto } from '../dtos/add-repository.dto';
 import { UserRepositoryGuard } from '../guards/user-repository.guard';
@@ -27,7 +27,8 @@ export class RepositoryController {
   constructor(private repositoryFacade: RepositoryFacade) {}
 
   @Get()
-  list(@CurrentUserId() currentUserId: string): Promise<RepositoryEntity[]> {
+  @ApiOkResponse({ type: [ListRepositoriesReadModel] })
+  list(@CurrentUserId() currentUserId: string): Promise<ListRepositoriesReadModel[]> {
     return this.repositoryFacade.listRepositories(currentUserId);
   }
 
