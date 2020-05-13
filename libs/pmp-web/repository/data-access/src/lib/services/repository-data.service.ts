@@ -9,7 +9,9 @@ import { IResponse } from '@pimp-my-pr/shared/domain';
 import { urlFactory } from '@valueadd/typed-urls';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class RepositoryDataService {
   readonly endpoints = {
     getRepositoryCollection: urlFactory('/api/repository'),

@@ -88,7 +88,8 @@
           "options": {
             "jestConfig": "apps/pmp-web/jest.config.js",
             "tsConfig": "apps/pmp-web/tsconfig.spec.json",
-            "setupFile": "apps/pmp-web/src/test-setup.ts"
+            "setupFile": "apps/pmp-web/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       }
@@ -133,7 +134,8 @@
             "outputPath": "dist/apps/pmp-api",
             "main": "apps/pmp-api/src/main.ts",
             "tsConfig": "apps/pmp-api/tsconfig.app.json",
-            "assets": ["apps/pmp-api/src/assets"]
+            "assets": ["apps/pmp-api/src/assets"],
+            "buildLibsFromSource": true
           },
           "configurations": {
             "production": {
@@ -166,7 +168,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/pmp-api/jest.config.js",
-            "tsConfig": "apps/pmp-api/tsconfig.spec.json"
+            "tsConfig": "apps/pmp-api/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -192,7 +195,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/pmp-api-e2e/jest.config.js",
-            "tsConfig": "apps/pmp-api-e2e/tsconfig.spec.json"
+            "tsConfig": "apps/pmp-api-e2e/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -217,7 +221,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/domain/jest.config.js",
-            "tsConfig": "libs/shared/domain/tsconfig.spec.json"
+            "tsConfig": "libs/shared/domain/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -243,7 +248,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/shared/domain/jest.config.js",
             "tsConfig": "libs/pmp-web/shared/domain/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/domain/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/shared/domain/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -274,7 +280,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/shared/util/jest.config.js",
             "tsConfig": "libs/pmp-web/shared/util/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/util/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/shared/util/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -305,7 +312,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/shared/ui-navbar/jest.config.js",
             "tsConfig": "libs/pmp-web/shared/ui-navbar/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/ui-navbar/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/shared/ui-navbar/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -336,7 +344,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/shared/ui-sidebar/jest.config.js",
             "tsConfig": "libs/pmp-web/shared/ui-sidebar/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/ui-sidebar/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/shared/ui-sidebar/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -367,7 +376,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/shared/ui-picture-label/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/ui-picture-label/tsconfig.spec.json"
+            "tsConfig": "libs/pmp-web/shared/ui-picture-label/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -393,7 +403,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/shared/ui-go-back-header/jest.config.js",
             "tsConfig": "libs/pmp-web/shared/ui-go-back-header/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/ui-go-back-header/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/shared/ui-go-back-header/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -424,7 +435,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/shared/ui-header-container/jest.config.js",
             "tsConfig": "libs/pmp-web/shared/ui-header-container/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/ui-header-container/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/shared/ui-header-container/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -455,7 +467,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/shared/ui-persons-bar/jest.config.js",
             "tsConfig": "libs/pmp-web/shared/ui-persons-bar/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/ui-persons-bar/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/shared/ui-persons-bar/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -486,7 +499,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/auth/shell/jest.config.js",
             "tsConfig": "libs/pmp-web/auth/shell/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/auth/shell/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/auth/shell/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -517,7 +531,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/auth/login-feature/jest.config.js",
             "tsConfig": "libs/pmp-web/auth/login-feature/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/auth/login-feature/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/auth/login-feature/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -551,7 +566,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/repository/ui-statistics-overview-table/jest.config.js",
             "tsConfig": "libs/pmp-web/repository/ui-statistics-overview-table/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/ui-statistics-overview-table/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/repository/ui-statistics-overview-table/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -582,7 +598,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/repository/ui-table-pr-statistic/jest.config.js",
             "tsConfig": "libs/pmp-web/repository/ui-table-pr-statistic/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/ui-table-pr-statistic/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/repository/ui-table-pr-statistic/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -616,7 +633,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/repository/repository-statistics/feature/jest.config.js",
             "tsConfig": "libs/pmp-web/repository/repository-statistics/feature/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/repository-statistics/feature/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/repository/repository-statistics/feature/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -650,7 +668,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/repository/repository-statistics/data-access/jest.config.js",
             "tsConfig": "libs/pmp-web/repository/repository-statistics/data-access/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/repository-statistics/data-access/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/repository/repository-statistics/data-access/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -684,7 +703,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/repository/repositories-statistics/feature/jest.config.js",
             "tsConfig": "libs/pmp-web/repository/repositories-statistics/feature/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/repositories-statistics/feature/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/repository/repositories-statistics/feature/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -718,7 +738,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/repository/repositories-statistics/data-access/jest.config.js",
             "tsConfig": "libs/pmp-web/repository/repositories-statistics/data-access/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/repositories-statistics/data-access/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/repository/repositories-statistics/data-access/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -752,7 +773,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/reviewer-statistics/feature/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/reviewer-statistics/feature/tsconfig.spec.json"
+            "tsConfig": "libs/pmp-web/repository/reviewer-statistics/feature/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -781,7 +803,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/repository/reviewer-statistics/data-access/jest.config.js",
             "tsConfig": "libs/pmp-web/repository/reviewer-statistics/data-access/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/reviewer-statistics/data-access/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/repository/reviewer-statistics/data-access/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -815,7 +838,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/repository/reviewers-statistics/feature/jest.config.js",
             "tsConfig": "libs/pmp-web/repository/reviewers-statistics/feature/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/reviewers-statistics/feature/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/repository/reviewers-statistics/feature/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -849,7 +873,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/repository/reviewers-statistics/data-access/jest.config.js",
             "tsConfig": "libs/pmp-web/repository/reviewers-statistics/data-access/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/reviewers-statistics/data-access/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/repository/reviewers-statistics/data-access/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -880,7 +905,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/repository/domain/jest.config.js",
             "tsConfig": "libs/pmp-web/repository/domain/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/domain/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/repository/domain/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -911,7 +937,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/repository/shell/jest.config.js",
             "tsConfig": "libs/pmp-web/repository/shell/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/shell/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/repository/shell/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -941,7 +968,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/repository/api-rest/jest.config.js",
-            "tsConfig": "libs/server/repository/api-rest/tsconfig.spec.json"
+            "tsConfig": "libs/server/repository/api-rest/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -966,7 +994,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/repository/core/domain/jest.config.js",
-            "tsConfig": "libs/server/repository/core/domain/tsconfig.spec.json"
+            "tsConfig": "libs/server/repository/core/domain/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -994,7 +1023,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/repository/core/application-services/jest.config.js",
-            "tsConfig": "libs/server/repository/core/application-services/tsconfig.spec.json"
+            "tsConfig": "libs/server/repository/core/application-services/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1019,7 +1049,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/repository/shell/jest.config.js",
-            "tsConfig": "libs/server/repository/shell/tsconfig.spec.json"
+            "tsConfig": "libs/server/repository/shell/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1044,7 +1075,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/repository/infrastructure/jest.config.js",
-            "tsConfig": "libs/server/repository/infrastructure/tsconfig.spec.json"
+            "tsConfig": "libs/server/repository/infrastructure/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1069,7 +1101,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/shared/domain/jest.config.js",
-            "tsConfig": "libs/server/shared/domain/tsconfig.spec.json"
+            "tsConfig": "libs/server/shared/domain/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1094,7 +1127,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/shared/util-exception/jest.config.js",
-            "tsConfig": "libs/server/shared/util-exception/tsconfig.spec.json"
+            "tsConfig": "libs/server/shared/util-exception/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1119,7 +1153,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/shared/core/jest.config.js",
-            "tsConfig": "libs/server/shared/core/tsconfig.spec.json"
+            "tsConfig": "libs/server/shared/core/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1144,7 +1179,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/repository/core/domain-services/jest.config.js",
-            "tsConfig": "libs/server/repository/core/domain-services/tsconfig.spec.json"
+            "tsConfig": "libs/server/repository/core/domain-services/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1173,7 +1209,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/repository/repository-settings/feature/jest.config.js",
             "tsConfig": "libs/pmp-web/repository/repository-settings/feature/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/repository-settings/feature/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/repository/repository-settings/feature/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -1203,7 +1240,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/shared/util-repository/jest.config.js",
-            "tsConfig": "libs/server/shared/util-repository/tsconfig.spec.json"
+            "tsConfig": "libs/server/shared/util-repository/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       },
@@ -1230,7 +1268,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/repository/data-access/jest.config.js",
             "tsConfig": "libs/pmp-web/repository/data-access/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/data-access/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/repository/data-access/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -1260,7 +1299,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/shell/jest.config.js",
-            "tsConfig": "libs/server/auth/shell/tsconfig.spec.json"
+            "tsConfig": "libs/server/auth/shell/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1285,7 +1325,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/api-rest/jest.config.js",
-            "tsConfig": "libs/server/auth/api-rest/tsconfig.spec.json"
+            "tsConfig": "libs/server/auth/api-rest/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1310,7 +1351,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/core/application-services/jest.config.js",
-            "tsConfig": "libs/server/auth/core/application-services/tsconfig.spec.json"
+            "tsConfig": "libs/server/auth/core/application-services/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1335,7 +1377,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/infrastructure/jest.config.js",
-            "tsConfig": "libs/server/auth/infrastructure/tsconfig.spec.json"
+            "tsConfig": "libs/server/auth/infrastructure/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1360,7 +1403,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/core/domain-services/jest.config.js",
-            "tsConfig": "libs/server/auth/core/domain-services/tsconfig.spec.json"
+            "tsConfig": "libs/server/auth/core/domain-services/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1385,7 +1429,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/core/domain/jest.config.js",
-            "tsConfig": "libs/server/auth/core/domain/tsconfig.spec.json"
+            "tsConfig": "libs/server/auth/core/domain/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1410,7 +1455,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/util-query-string/jest.config.js",
-            "tsConfig": "libs/shared/util-query-string/tsconfig.spec.json"
+            "tsConfig": "libs/shared/util-query-string/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1435,7 +1481,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/public/jest.config.js",
-            "tsConfig": "libs/server/auth/public/tsconfig.spec.json"
+            "tsConfig": "libs/server/auth/public/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1461,7 +1508,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/auth/data-access/jest.config.js",
             "tsConfig": "libs/pmp-web/auth/data-access/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/auth/data-access/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/auth/data-access/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -1492,7 +1540,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/auth/domain/jest.config.js",
             "tsConfig": "libs/pmp-web/auth/domain/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/auth/domain/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/auth/domain/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -1523,7 +1572,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/auth/public/jest.config.js",
             "tsConfig": "libs/pmp-web/auth/public/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/auth/public/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/auth/public/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -1554,7 +1604,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/auth/feature/jest.config.js",
             "tsConfig": "libs/pmp-web/auth/feature/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/auth/feature/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/auth/feature/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -1584,7 +1635,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/user/core/domain/jest.config.js",
-            "tsConfig": "libs/server/user/core/domain/tsconfig.spec.json"
+            "tsConfig": "libs/server/user/core/domain/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1609,7 +1661,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/user/core/domain-services/jest.config.js",
-            "tsConfig": "libs/server/user/core/domain-services/tsconfig.spec.json"
+            "tsConfig": "libs/server/user/core/domain-services/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1634,7 +1687,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/user/core/application-services/jest.config.js",
-            "tsConfig": "libs/server/user/core/application-services/tsconfig.spec.json"
+            "tsConfig": "libs/server/user/core/application-services/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1659,7 +1713,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/user/shell/jest.config.js",
-            "tsConfig": "libs/server/user/shell/tsconfig.spec.json"
+            "tsConfig": "libs/server/user/shell/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1684,7 +1739,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/user/infrastructure/jest.config.js",
-            "tsConfig": "libs/server/user/infrastructure/tsconfig.spec.json"
+            "tsConfig": "libs/server/user/infrastructure/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1709,7 +1765,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/user/public/jest.config.js",
-            "tsConfig": "libs/server/user/public/tsconfig.spec.json"
+            "tsConfig": "libs/server/user/public/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1735,7 +1792,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/shared/util-ngrx/jest.config.js",
             "tsConfig": "libs/pmp-web/shared/util-ngrx/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/util-ngrx/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/shared/util-ngrx/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -1765,7 +1823,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/shared/util-bitbucket/jest.config.js",
-            "tsConfig": "libs/server/shared/util-bitbucket/tsconfig.spec.json"
+            "tsConfig": "libs/server/shared/util-bitbucket/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1790,7 +1849,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/shared/util-typescript/jest.config.js",
-            "tsConfig": "libs/server/shared/util-typescript/tsconfig.spec.json"
+            "tsConfig": "libs/server/shared/util-typescript/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1815,7 +1875,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/shared/config/jest.config.js",
-            "tsConfig": "libs/server/shared/config/tsconfig.spec.json"
+            "tsConfig": "libs/server/shared/config/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1841,7 +1902,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/shared/config/jest.config.js",
             "tsConfig": "libs/pmp-web/shared/config/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/config/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/shared/config/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -1872,7 +1934,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/shared/core/jest.config.js",
             "tsConfig": "libs/pmp-web/shared/core/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/core/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/shared/core/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -1903,7 +1966,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/repository/repository-settings/ui/jest.config.js",
             "tsConfig": "libs/pmp-web/repository/repository-settings/ui/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/repository-settings/ui/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/repository/repository-settings/ui/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -1933,7 +1997,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/user/api-rest/jest.config.js",
-            "tsConfig": "libs/server/user/api-rest/tsconfig.spec.json"
+            "tsConfig": "libs/server/user/api-rest/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -1959,7 +2024,8 @@
           "options": {
             "jestConfig": "libs/pmp-web/shared/ui-generic-dialog/jest.config.js",
             "tsConfig": "libs/pmp-web/shared/ui-generic-dialog/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/ui-generic-dialog/src/test-setup.ts"
+            "setupFile": "libs/pmp-web/shared/ui-generic-dialog/src/test-setup.ts",
+            "passWithNoTests": true
           }
         }
       },
@@ -1989,7 +2055,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/shared/core-api-rest/jest.config.js",
-            "tsConfig": "libs/server/shared/core-api-rest/tsconfig.spec.json"
+            "tsConfig": "libs/server/shared/core-api-rest/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }

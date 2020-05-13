@@ -215,5 +215,13 @@
     "server-auth-infrastructure-remote-token-crypto": {
       "tags": ["platform:server", "scope:shared", "type:infrastructure"]
     }
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
   }
 }

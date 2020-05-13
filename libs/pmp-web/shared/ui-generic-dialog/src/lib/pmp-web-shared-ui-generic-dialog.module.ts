@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GenericDialogComponent } from '@pimp-my-pr/pmp-web/shared/ui-generic-dialog';
+import { NgModule } from '@angular/core';
 import { MatButtonModule, MatDialogModule } from '@angular/material';
+import { GenericDialogComponent } from './components/generic-dialog/generic-dialog.component';
 
 @NgModule({
   imports: [CommonModule, MatDialogModule, MatButtonModule],

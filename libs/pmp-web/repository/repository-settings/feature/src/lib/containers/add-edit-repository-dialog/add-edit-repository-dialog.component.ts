@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { RepositoryFacade } from '@pimp-my-pr/pmp-web/repository/data-access';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { TimeUnit } from '@pimp-my-pr/shared/domain';
-import { untilDestroyed } from 'ngx-take-until-destroy';
 import { AddEditRepositoryDialogData, Repository } from '@pimp-my-pr/pmp-web/repository/domain';
 import { SnackbarService } from '@pimp-my-pr/pmp-web/shared/domain';
 import { AddEditRepositoryDialogService } from './add-edit-repository-dialog.service';
 
+@UntilDestroy()
 @Component({
   selector: 'pmp-add-repository-dialog',
   templateUrl: './add-edit-repository-dialog.component.html',
