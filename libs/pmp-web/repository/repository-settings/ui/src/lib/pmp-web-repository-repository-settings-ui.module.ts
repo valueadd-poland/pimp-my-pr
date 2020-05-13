@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  MatButtonModule,
-  MatIconModule,
-  MatSortModule,
-  MatTableModule,
-  MatTooltipModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { PmpWebSharedUtilModule } from '@pimp-my-pr/pmp-web/shared/util';
 import { ContentLoaderModule } from '@ngneat/content-loader';
 import { RepositoriesSettingsTableComponent } from './repositories-settings-table/repositories-settings-table.component';
