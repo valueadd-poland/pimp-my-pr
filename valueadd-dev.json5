@@ -83,14 +83,13 @@
         'chore',
         'ci',
         'docs',
+        'deps',
         'feat',
         'fix',
         'perf',
         'refactor',
-        'release',
         'style',
         'test',
-        'translation'
       ]
     ],
     'scope-enum': [

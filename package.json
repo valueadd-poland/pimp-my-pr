@@ -106,7 +106,7 @@
     "prettier": "1.19.1",
     "semantic-git-commit-cli": "^3.5.0",
     "standard-version": "^7.1.0",
-    "supertest": "latest",
+    "supertest": "^4.0.2",
     "ts-jest": "^25.5.1",
     "ts-node": "~7.0.0",
     "tslint": "6.0.0",
