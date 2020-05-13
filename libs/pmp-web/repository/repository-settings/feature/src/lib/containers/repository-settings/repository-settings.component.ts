@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RepositoryFacade } from '@pimp-my-pr/pmp-web/repository/data-access';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { AddEditRepositoryDialogComponent } from '../add-edit-repository-dialog/add-edit-repository-dialog.component';
 import { Repository } from '@pimp-my-pr/pmp-web/repository/domain';
 import { GenericDialogComponent } from '@pimp-my-pr/pmp-web/shared/ui-generic-dialog';

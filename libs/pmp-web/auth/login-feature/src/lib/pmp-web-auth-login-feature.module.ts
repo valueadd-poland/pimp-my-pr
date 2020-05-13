@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatCardModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PmpWebAuthDataAccessModule } from '@pimp-my-pr/pmp-web/auth/data-access';
 import { LoginPageComponent } from './containers/login-page/login-page.component';
 import { PmpWebAuthLoginRoutingModule } from './pmp-web-auth-login-routing.module';
