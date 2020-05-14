@@ -8,6 +8,6 @@ export const mapBitbucketRepository = (repo: BitbucketRepositoryEntity) =>
     displayName: repo.name,
     id: BitbucketUuidUtil.parseFrom(repo.uuid),
     name: repo.slug,
-    owner: repo.owner.username,
+    owner: repo.owner.username || repo.owner.nickname,
     pictureUrl: repo.links.avatar.href
   });

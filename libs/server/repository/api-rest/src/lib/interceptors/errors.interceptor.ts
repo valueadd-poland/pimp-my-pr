@@ -4,11 +4,13 @@ import {
   Injectable,
   NestInterceptor,
   NotFoundException,
-  UnauthorizedException
+  UnauthorizedException,
+  UnprocessableEntityException
 } from '@nestjs/common';
 import {
   CoreNotFoundException,
-  CoreUnauthorizedFoundException
+  CoreUnauthorizedFoundException,
+  CoreUnprocessableEntityException
 } from '@pimp-my-pr/server/shared/domain';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -23,6 +25,9 @@ export class ErrorsInterceptor implements NestInterceptor {
         }
         if (err instanceof CoreUnauthorizedFoundException) {
           return throwError(new UnauthorizedException());
+        }
+        if (err instanceof CoreUnprocessableEntityException) {
+          return throwError(new UnprocessableEntityException());
         }
         return throwError(err);
       })
