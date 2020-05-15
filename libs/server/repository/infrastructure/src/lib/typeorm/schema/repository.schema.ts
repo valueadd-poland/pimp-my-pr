@@ -21,6 +21,10 @@ export const schema = new EntitySchema<RepositoryEntity | RepositoryRelations>({
       type: Number,
       nullable: true
     },
+    maxPrs: {
+      type: Number,
+      nullable: true
+    },
     name: {
       type: String
     },

@@ -22,11 +22,13 @@ import { TablePrStatisticsPresenter } from './table-pr-statistics.presenter';
 export class TablePrStatisticComponent implements OnInit {
   @Input()
   columnPropertyName: string;
+
   @Input()
   isLoading = false;
+
   @Input()
   set tableData(data: PrStatistics[]) {
-    this.dataSource = new MatTableDataSource<PrStatistics>(data);
+    this.dataSource = new MatTableDataSource<PrStatistics>(data || []);
     this.dataSource.sortingDataAccessor = (item, property) =>
       this.presenter.sortData(item, property);
     this.dataSource.sort = this.sort;

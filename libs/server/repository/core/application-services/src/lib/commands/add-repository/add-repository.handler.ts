@@ -13,7 +13,7 @@ export class AddRepositoryHandler implements ICommandHandler<AddRepositoryComman
   constructor(private repositoryRepository: RepositoryRepository) {}
 
   async execute(command: AddRepositoryCommand): Promise<void> {
-    const { repositoryName, maxLines, maxWaitingTime, userId } = command;
+    const { repositoryName, maxLines, maxWaitingTime, userId, maxPrs } = command;
     if (
       await this.repositoryRepository.getByData(
         userId,
@@ -39,7 +39,8 @@ export class AddRepositoryHandler implements ICommandHandler<AddRepositoryComman
       repositoryData.pictureUrl,
       command.userId,
       maxLines,
-      maxWaitingTime
+      maxWaitingTime,
+      maxPrs
     );
 
     return this.repositoryRepository.save(repository);

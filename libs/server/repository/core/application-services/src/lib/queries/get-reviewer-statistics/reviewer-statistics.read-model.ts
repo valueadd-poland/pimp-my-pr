@@ -5,12 +5,16 @@ import { RepositoryStatisticsReadModel } from '../get-repository-statistics/repo
 export class ReviewerStatisticsReadModel {
   @ApiProperty()
   avatarUrl: string;
+
   @ApiProperty()
   contributions: number;
+
   @ApiProperty()
   id: string;
+
   @ApiProperty()
   name: string;
+
   @ApiProperty({ type: [RepositoryStatisticsReadModel] })
   repositories: RepositoryStatisticsReadModel[];
 

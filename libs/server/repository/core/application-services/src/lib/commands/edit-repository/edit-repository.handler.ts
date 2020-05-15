@@ -7,11 +7,11 @@ export class EditRepositoryHandler implements ICommandHandler<EditRepositoryComm
   constructor(private repositoryRepository: RepositoryRepository) {}
 
   async execute(command: EditRepositoryCommand): Promise<void> {
-    const { repositoryId, maxLines, maxWaitingTime } = command;
+    const { repositoryId, maxLines, maxWaitingTime, maxPrs } = command;
 
     const repository = await this.repositoryRepository.getById(repositoryId);
 
-    repository.edit({ maxLines, maxWaitingTime });
+    repository.edit({ maxLines, maxWaitingTime, maxPrs });
 
     return this.repositoryRepository.save(repository);
   }

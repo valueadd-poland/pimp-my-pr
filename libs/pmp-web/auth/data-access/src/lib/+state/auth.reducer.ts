@@ -81,7 +81,8 @@ export function authReducer(
     case fromAuthActions.Types.Logout: {
       state = {
         ...state,
-        authToken: null
+        authToken: null,
+        user: null
       };
       break;
     }

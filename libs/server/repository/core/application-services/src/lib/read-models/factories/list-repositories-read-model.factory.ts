@@ -9,6 +9,7 @@ export const listRepositoriesReadModelFactory = (
   listRepositoriesReadModel.id = repository.id;
   listRepositoriesReadModel.maxLines = repository.maxLines;
   listRepositoriesReadModel.maxWaitingTime = repository.maxWaitingTime;
+  listRepositoriesReadModel.maxPrs = repository.maxPrs;
   listRepositoriesReadModel.name = repository.name;
   listRepositoriesReadModel.owner = repository.owner;
   listRepositoriesReadModel.pictureUrl = repository.pictureUrl;

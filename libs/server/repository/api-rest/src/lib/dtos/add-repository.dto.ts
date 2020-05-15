@@ -15,4 +15,9 @@ export class AddRepositoryDto {
   @IsNumber()
   @IsOptional()
   maxWaitingTime?: number;
+
+  @ApiProperty()
+  @IsNumber()
+  @IsOptional()
+  maxPrs?: number;
 }

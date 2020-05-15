@@ -13,4 +13,10 @@ export interface RepositoryStatistics {
   averageCodeToCheck?: number;
   longestWaitingPr?: number;
   prsStatistics?: PrStatistics[];
+  maxLines?: number;
+  maxPrs?: number;
+  maxWaitingTime?: number;
+  maxLinesWarning: boolean;
+  maxWaitingTimeWarning: boolean;
+  maxPrsWarning: boolean;
 }

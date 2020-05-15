@@ -1,14 +1,21 @@
 <pmp-go-back-header link="/repositories">Repositories with PRs pending</pmp-go-back-header>
 
-<div class="repository-statistics__container">
+<div
+  *ngIf="{
+    repository: repository$ | async,
+    repositoryLoading: repositoryLoading$ | async
+  } as state"
+  class="repository-statistics__container"
+>
   <pmp-header-container
-    [avatarLabel]="repositoryName || (repository$ | async)?.name"
-    [avatarUrl]="repositoryPictureUrl || (repository$ | async)?.pictureUrl"
+    [avatarLabel]="repositoryName || state.repository?.name"
+    [avatarUrl]="repositoryPictureUrl || state.repository?.pictureUrl"
     label="Pull requests pending"
   ></pmp-header-container>
+
   <pmp-table-pr-statistic
-    [tableData]="(repository$ | async)?.prsStatistics"
-    [isLoading]="repositoryLoading$ | async"
+    [tableData]="state.repository?.prsStatistics"
+    [isLoading]="state.repositoryLoading"
     (navigateItem)="onNavigateItem($event)"
     columnPropertyName="reviewers"
   ></pmp-table-pr-statistic>

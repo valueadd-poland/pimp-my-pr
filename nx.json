@@ -223,6 +223,9 @@
     },
     "pmp-web-shell": {
       "tags": ["platform:web", "scope:pmp-web", "type:shell"]
+    },
+    "shared-util-time-diff-in-hours": {
+      "tags": ["platform:any", "scope:shared", "type:util"]
     }
   },
   "tasksRunnerOptions": {

@@ -11,6 +11,9 @@ export class ListRepositoriesReadModel {
   maxWaitingTime?: number;
 
   @ApiProperty()
+  maxPrs?: number;
+
+  @ApiProperty()
   name: string;
 
   @ApiProperty()

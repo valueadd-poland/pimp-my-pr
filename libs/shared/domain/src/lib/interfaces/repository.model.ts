@@ -6,4 +6,8 @@ export interface RepositoryModel {
   owner: string;
   pictureUrl: string;
   prsStatistics: PrStatistics[];
+  maxLines?: number;
+  maxPrs?: number;
+  maxWaitingTime?: number;
+  id: string;
 }

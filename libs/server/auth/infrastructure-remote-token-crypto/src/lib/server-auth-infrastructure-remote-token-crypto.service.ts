@@ -11,6 +11,7 @@ export class ServerAuthInfrastructureRemoteTokenCryptoService extends RemoteToke
   constructor(private readonly key: string) {
     super();
   }
+
   async encrypt(text: string): Promise<string> {
     const iv = Buffer.from(crypto.randomBytes(16));
     const cipher = crypto.createCipheriv(this.algorithm, this.key, iv);

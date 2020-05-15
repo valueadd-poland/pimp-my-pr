@@ -1,0 +1,12 @@
+// TODO: move somewhere to SCSS variables file
+$red: #fc3b56;
+
+.table__row--with-notification {
+  border-left: 3px solid $red;
+  width: calc(100% - 3px);
+}
+
+.table__notification-icon {
+  margin-left: 15px;
+  color: $red;
+}

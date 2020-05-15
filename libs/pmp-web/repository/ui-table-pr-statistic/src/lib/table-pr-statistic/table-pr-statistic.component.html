@@ -35,6 +35,9 @@
     >
     <mat-cell *matCellDef="let element" class="waiting-time-from-last-change-column">
       {{ element.timeWaitingFromLastChange | timeAgo }}
+      <mat-icon *ngIf="element.maxWaitingTimeWarning" class="table__notification-icon">
+        notification_important
+      </mat-icon>
     </mat-cell>
   </ng-container>
 
@@ -48,6 +51,9 @@
     </mat-header-cell>
     <mat-cell *matCellDef="let element" class="lines-to-check-column">
       {{ element.linesOfCodeToCheck }}
+      <mat-icon *ngIf="element.maxLinesWarning" class="table__notification-icon">
+        notification_important
+      </mat-icon>
     </mat-cell>
   </ng-container>
 
@@ -94,7 +100,11 @@
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+  <mat-row
+    *matRowDef="let row; columns: displayedColumns"
+    [class.table__row--with-notification]="row.maxWaitingTimeWarning || row.maxLinesWarning"
+  ></mat-row>
 </mat-table>
 
 <div *ngIf="isLoading" class="content-loader">
