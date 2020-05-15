@@ -106,7 +106,8 @@
               "type:domain",
               "type:domain-services",
               "type:port",
-              "type:public"
+              "type:public",
+              "type:util"
             ]
           },
           {

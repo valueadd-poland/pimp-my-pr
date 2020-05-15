@@ -104,7 +104,8 @@ describe('Repository', () => {
               owner: 'valueadd-poland',
               pictureUrl: 'https://avatars1.githubusercontent.com/u/49273957?v=4',
               maxWaitingTime: null,
-              maxLines: null
+              maxLines: null,
+              maxPrs: null
             }
           ],
           error: null

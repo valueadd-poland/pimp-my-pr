@@ -4,7 +4,12 @@ import { RepositoryFacade } from '@pimp-my-pr/pmp-web/repository/data-access';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TimeUnit } from '@pimp-my-pr/shared/domain';
-import { AddEditRepositoryDialogData, Repository } from '@pimp-my-pr/pmp-web/repository/domain';
+import {
+  AddEditRepositoryDialogData,
+  AddRepositoryPayload,
+  EditRepositoryPayload,
+  Repository
+} from '@pimp-my-pr/pmp-web/repository/domain';
 import { SnackbarService } from '@pimp-my-pr/pmp-web/shared/domain';
 import { AddEditRepositoryDialogService } from './add-edit-repository-dialog.service';
 import { Router } from '@angular/router';
@@ -20,7 +25,6 @@ import { ApiException } from '@pimp-my-pr/pmp-web/shared/domain';
 export class AddEditRepositoryDialogComponent implements OnInit, OnDestroy {
   dialogTitle: string;
   form: FormGroup;
-  isEditMode: boolean;
   maxWaitingTimeFormControl: FormControl;
   repositoryToEdit: Repository;
   submitMsg: string;
@@ -36,9 +40,8 @@ export class AddEditRepositoryDialogComponent implements OnInit, OnDestroy {
     private router: Router,
     private addEditRepositoryDialogService: AddEditRepositoryDialogService
   ) {
-    if (!!data) {
+    if (data) {
       this.dialogTitle = data.dialogTitle;
-      this.isEditMode = data.isEditMode;
       this.repositoryToEdit = data.repositoryToEdit;
       this.submitMsg = data.submitMsg;
     }
@@ -52,21 +55,15 @@ export class AddEditRepositoryDialogComponent implements OnInit, OnDestroy {
   }
 
   initForm(): void {
-    this.form = this.addEditRepositoryDialogService.initForm(
-      this.isEditMode,
-      this.repositoryToEdit
-    );
-    this.form
-      .get('maxWaitingTimeDefinition')
-      .get('timeUnit')
-      .setValue(TimeUnit.Hour);
+    this.form = this.addEditRepositoryDialogService.initForm(this.repositoryToEdit);
   }
 
   initializeMaxWaitingTimeDefinitionControls(): void {
-    this.maxWaitingTimeFormControl = (this.form.controls.maxWaitingTimeDefinition as FormGroup)
-      .controls.maxWaitingTime as FormControl;
-    this.timeUnitFormControl = (this.form.controls.maxWaitingTimeDefinition as FormGroup).controls
-      .timeUnit as FormControl;
+    this.maxWaitingTimeFormControl = this.form.get(
+      'maxWaitingTimeDefinition.maxWaitingTime'
+    ) as FormControl;
+
+    this.timeUnitFormControl = this.form.get('maxWaitingTimeDefinition.timeUnit') as FormControl;
 
     this.maxWaitingTimeFormControl.valueChanges
       .pipe(untilDestroyed(this))
@@ -74,16 +71,25 @@ export class AddEditRepositoryDialogComponent implements OnInit, OnDestroy {
   }
 
   submit(): void {
-    if (this.form.valid) {
-      const { repositoryUrl, maxLines } = this.form.value;
-      const maxWaitingTime = this.maxWaitingTimeFormControl.value
-        ? this.maxWaitingTimeFormControl.value * this.timeUnitFormControl.value
-        : null;
-      if (this.isEditMode) {
-        this.editRepository(maxLines, maxWaitingTime);
-      } else {
-        this.addRepository(repositoryUrl, maxLines, maxWaitingTime);
-      }
+    if (this.form.invalid) {
+      return;
+    }
+
+    const { maxLines, repositoryUrl, maxPrs } = this.form.value;
+
+    const maxWaitingTime = this.maxWaitingTimeFormControl.value
+      ? this.maxWaitingTimeFormControl.value * this.timeUnitFormControl.value
+      : null;
+
+    if (this.repositoryToEdit) {
+      this.editRepository({
+        maxLines,
+        maxWaitingTime,
+        maxPrs,
+        repositoryId: this.repositoryToEdit.id
+      });
+    } else {
+      this.addRepository(repositoryUrl, maxLines, maxWaitingTime, maxPrs);
     }
   }
 
@@ -101,12 +107,18 @@ export class AddEditRepositoryDialogComponent implements OnInit, OnDestroy {
     this.timeUnitFormControl.updateValueAndValidity();
   };
 
-  private addRepository(repositoryUrl: string, maxLines: number, maxWaitingTime: number): void {
+  private addRepository(
+    repositoryUrl: string,
+    maxLines: number,
+    maxWaitingTime: number,
+    maxPrs: number
+  ): void {
     this.repoFacade
       .addRepository({
         repositoryUrl,
         maxLines,
-        maxWaitingTime
+        maxWaitingTime,
+        maxPrs
       })
       .subscribe(
         payload => {
@@ -120,21 +132,15 @@ export class AddEditRepositoryDialogComponent implements OnInit, OnDestroy {
       );
   }
 
-  private editRepository(maxLines: number, maxWaitingTime: number): void {
-    this.repoFacade
-      .editRepository({
-        repositoryId: this.repositoryToEdit.id,
-        maxLines,
-        maxWaitingTime
-      })
-      .subscribe(
-        () => {
-          this.snackbarService.open('Repository has been updated');
-          this.dialogRef.close();
-        },
-        error => {
-          this.snackbarService.open('Something went wrong. Repository was not updated');
-        }
-      );
+  private editRepository(payload: EditRepositoryPayload): void {
+    this.repoFacade.editRepository(payload).subscribe(
+      () => {
+        this.snackbarService.open('Repository has been updated');
+        this.dialogRef.close();
+      },
+      error => {
+        this.snackbarService.open('Something went wrong. Repository was not updated');
+      }
+    );
   }
 }

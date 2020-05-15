@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { AuthPublicFacade } from '@pimp-my-pr/pmp-web/auth/public';
 import { User } from '@pimp-my-pr/shared/domain';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'pmp-repositories',
@@ -16,7 +17,6 @@ export class RepositoriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.authPublicFacade.user$;
-    this.authPublicFacade.getUser();
   }
 
   onLogout(): void {

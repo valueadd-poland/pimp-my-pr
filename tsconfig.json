@@ -152,6 +152,9 @@
       "@pimp-my-pr/pmp-web/shared/styles": ["libs/pmp-web/shared/styles/src/index.ts"],
       "@pimp-my-pr/pmp-web/shared/util-google-analytics": [
         "libs/pmp-web/shared/util-google-analytics/src/index.ts"
+      ],
+      "@pimp-my-pr/shared/util-time-diff-in-hours": [
+        "libs/shared/util-time-diff-in-hours/src/index.ts"
       ]
     }
   },

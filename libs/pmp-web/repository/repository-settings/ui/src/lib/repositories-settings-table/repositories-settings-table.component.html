@@ -30,6 +30,16 @@
     </mat-cell>
   </ng-container>
 
+  <!-- Max PRs Column -->
+  <ng-container matColumnDef="maxPrs">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      <span>Max PRs</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.maxPrs || '-' }}
+    </mat-cell>
+  </ng-container>
+
   <!-- Max waiting time Column -->
   <ng-container matColumnDef="maxWaitingTime">
     <mat-header-cell *matHeaderCellDef mat-sort-header>

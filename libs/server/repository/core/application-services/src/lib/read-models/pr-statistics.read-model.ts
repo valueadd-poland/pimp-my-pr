@@ -4,26 +4,42 @@ import { authorReadModelFactory } from './factories/author-read-model.factory';
 import { AuthorReadModel } from './author.read-model';
 import { ReviewerReadModel } from './reviewer.read-model';
 import { reviewerReadModelFactory } from './factories/reviewer-read-model.factory';
+import { getTimeDiffInHours } from '@pimp-my-pr/shared/util-time-diff-in-hours';
 
 export class PrStatisticsReadModel {
   @ApiProperty()
   author: AuthorReadModel;
+
   @ApiProperty()
   commentsCount: number;
+
   @ApiProperty()
   createdAt: Date;
+
   @ApiProperty()
   id: string;
+
   @ApiProperty()
   linesOfCodeToCheck: number;
+
+  @ApiProperty()
+  maxLinesWarning: boolean;
+
+  @ApiProperty()
+  maxWaitingTimeWarning: boolean;
+
   @ApiProperty({ type: [ReviewerReadModel] })
   reviewers: ReviewerReadModel[];
+
   @ApiProperty()
   timeWaiting: number;
+
   @ApiProperty()
   timeWaitingFromLastChange: number;
+
   @ApiProperty()
   title: string;
+
   @ApiProperty()
   url: string;
 
@@ -36,15 +52,7 @@ export class PrStatisticsReadModel {
     this.commentsCount = pr.commentsCount;
     this.reviewers = pr.reviewers.map(reviewer => reviewerReadModelFactory(reviewer));
     this.url = pr.url;
-    this.timeWaiting = this.getTimePrWaiting(pr.createdAt);
-    this.timeWaitingFromLastChange = this.getTimePrWaiting(pr.updatedAt);
-  }
-
-  private getTimePrWaiting(waitingSince: Date): number {
-    let result: number;
-    const now = new Date();
-    result = (now.getTime() - waitingSince.getTime()) / (60 * 60 * 1000);
-
-    return Math.round(result);
+    this.timeWaiting = getTimeDiffInHours(pr.createdAt);
+    this.timeWaitingFromLastChange = getTimeDiffInHours(pr.updatedAt);
   }
 }

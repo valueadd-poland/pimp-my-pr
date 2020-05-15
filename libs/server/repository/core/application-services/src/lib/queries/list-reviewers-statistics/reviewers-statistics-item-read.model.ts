@@ -6,8 +6,15 @@ export class ReviewersStatisticsItemReadModel extends BaseStatisticsReadModel {
   @ApiProperty()
   avatarUrl: string;
 
-  constructor(userModel: ReviewerEntity, prsModel: PrEntity[]) {
+  constructor(
+    userModel: ReviewerEntity,
+    prsModel: PrEntity[],
+    maxLinesWarning?: boolean,
+    maxWaitingTimeWarning?: boolean
+  ) {
     super(userModel, prsModel);
     this.avatarUrl = userModel.avatarUrl;
+    this.maxLinesWarning = maxLinesWarning;
+    this.maxWaitingTimeWarning = maxWaitingTimeWarning;
   }
 }

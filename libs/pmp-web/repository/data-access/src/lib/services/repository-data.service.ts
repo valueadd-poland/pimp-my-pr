@@ -38,10 +38,7 @@ export class RepositoryDataService {
     return this.http.delete<void>(this.endpoints.deleteRepository.url({ id: data.repositoryId }));
   }
 
-  editRepository(data: EditRepositoryPayload): Observable<void> {
-    return this.http.put<void>(this.endpoints.editRepository.url({ id: data.repositoryId }), {
-      maxLines: data.maxLines,
-      maxWaitingTime: data.maxWaitingTime
-    });
+  editRepository({ repositoryId, ...body }: EditRepositoryPayload): Observable<void> {
+    return this.http.put<void>(this.endpoints.editRepository.url({ id: repositoryId }), body);
   }
 }
