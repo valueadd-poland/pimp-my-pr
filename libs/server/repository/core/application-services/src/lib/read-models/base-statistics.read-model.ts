@@ -8,14 +8,25 @@ import {
 export abstract class BaseStatisticsReadModel {
   @ApiProperty()
   id: string;
+
   @ApiProperty()
   linesOfCodeToCheck: number;
+
   @ApiProperty()
   longestPrLinesOfCode?: number;
+
+  @ApiProperty()
+  maxLinesWarning: boolean;
+
+  @ApiProperty()
+  maxWaitingTimeWarning: boolean;
+
   @ApiProperty()
   name: string;
+
   @ApiProperty()
   pendingPrs: number;
+
   @ApiProperty()
   sumOfHoursPrsWaiting?: number;
 

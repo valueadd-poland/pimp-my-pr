@@ -45,7 +45,8 @@ export class RepositoryController {
         credentials.token,
         credentials.platform,
         addRepositoryDto.maxLines,
-        addRepositoryDto.maxWaitingTime
+        addRepositoryDto.maxWaitingTime,
+        addRepositoryDto.maxPrs
       )
     );
   }
@@ -66,7 +67,8 @@ export class RepositoryController {
       new EditRepositoryCommand(
         repositoryId,
         editRepositoryDto.maxLines,
-        editRepositoryDto.maxWaitingTime
+        editRepositoryDto.maxWaitingTime,
+        editRepositoryDto.maxPrs
       )
     );
   }

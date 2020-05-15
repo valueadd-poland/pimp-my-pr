@@ -39,7 +39,7 @@ export class RepositoriesSettingsTableComponent {
   sort: MatSort;
 
   dataSource: MatTableDataSource<Repository>;
-  displayColumns = ['avatar', 'name', 'maxLines', 'maxWaitingTime', 'edit', 'delete'];
+  displayColumns = ['avatar', 'name', 'maxLines', 'maxPrs', 'maxWaitingTime', 'edit', 'delete'];
 
   onDeleteRepository(repository: Repository): void {
     this.deleteRepository.emit(repository);

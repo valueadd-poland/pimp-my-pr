@@ -7,6 +7,7 @@ export class AddRepositoryCommand {
     public token: string,
     public platform: Platform,
     public maxLines?: number,
-    public maxWaitingTime?: number
+    public maxWaitingTime?: number,
+    public maxPrs?: number
   ) {}
 }

@@ -6,4 +6,8 @@ export interface Repository {
   pictureUrl: string;
   maxLines?: number;
   maxWaitingTime?: number;
+  maxPrs?: number;
+  maxLinesWarning: boolean;
+  maxWaitingTimeWarning: boolean;
+  maxPrsWarning: boolean;
 }

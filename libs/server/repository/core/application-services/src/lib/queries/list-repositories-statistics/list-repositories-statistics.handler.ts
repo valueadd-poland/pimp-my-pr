@@ -23,17 +23,14 @@ export class ListRepositoriesStatisticsHandler
     query: ListRepositoriesStatisticsQuery
   ): Promise<RepositoriesStatisticsItemReadModel[]> {
     const prRepository = this.prRepositoryFactory(query.platform);
-    const result: Promise<RepositoriesStatisticsItemReadModel>[] = [];
 
     const repositories = await this.repositoryRepository.findByUserId(query.userId);
 
-    for (const repository of repositories) {
-      const repositoryStatisticsPromise = prRepository
-        .findByRepositoryId(repository.fullName, query.token)
-        .then(prs => new RepositoriesStatisticsItemReadModel(repository, prs));
+    const result = repositories.map(async repository => {
+      const prs = await prRepository.findByRepositoryId(repository.fullName, query.token);
 
-      result.push(repositoryStatisticsPromise);
-    }
+      return new RepositoriesStatisticsItemReadModel(repository, prs);
+    });
 
     return Promise.all(result);
   }

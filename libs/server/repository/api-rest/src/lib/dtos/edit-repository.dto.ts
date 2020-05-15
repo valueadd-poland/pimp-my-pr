@@ -11,4 +11,9 @@ export class EditRepositoryDto {
   @IsNumber()
   @IsOptional()
   maxWaitingTime?: number;
+
+  @ApiProperty()
+  @IsNumber()
+  @IsOptional()
+  maxPrs?: number;
 }

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReviewerStatisticsFacade } from '@pimp-my-pr/pmp-web/repository/reviewer-statistics/data-access';
-import { PrStatistics } from '@pimp-my-pr/shared/domain';
+import { PrStatistics, RepositoryModel } from '@pimp-my-pr/shared/domain';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -32,6 +32,10 @@ export class ReviewerStatisticsComponent implements OnInit {
     window.open(prStatistics.url, '_blank');
   }
 
+  trackRepositories(index: number, repository: RepositoryModel): string {
+    return repository.id;
+  }
+
   private initGetUserStatistics(): void {
     this.route.params.pipe(first()).subscribe(params => {
       this.facade.getReviewerStatistics({ id: params.id });
@@ -39,11 +43,13 @@ export class ReviewerStatisticsComponent implements OnInit {
   }
 
   private initUserInfoRouterNavigation(): void {
-    if (!this.router.getCurrentNavigation() || !this.router.getCurrentNavigation().extras.state) {
+    const currentNavigation = this.router.getCurrentNavigation();
+
+    if (!currentNavigation || !currentNavigation.extras.state) {
       return;
     }
 
-    const routerNavigationState = this.router.getCurrentNavigation().extras.state;
+    const routerNavigationState = currentNavigation.extras.state;
     this.reviewerName = routerNavigationState.reviewerName;
     this.userAvatarUrl = routerNavigationState.avatarUrl;
   }

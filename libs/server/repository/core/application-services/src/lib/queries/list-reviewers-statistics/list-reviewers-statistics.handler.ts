@@ -1,7 +1,11 @@
 import { Inject } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 
-import { PrEntity, ReviewerEntity } from '@pimp-my-pr/server/repository/core/domain';
+import {
+  PrEntity,
+  RepositoryEntity,
+  ReviewerEntity
+} from '@pimp-my-pr/server/repository/core/domain';
 import {
   PrRepository,
   prRepositoryFactoryToken,
@@ -11,6 +15,7 @@ import { Platform } from '@pimp-my-pr/shared/domain';
 import { ReviewerModelWithPr } from '../../read-models/reviewer-model-with-pr.interface';
 import { ListReviewersStatisticsQuery } from './list-reviewers-statistics.query';
 import { ReviewersStatisticsItemReadModel } from './reviewers-statistics-item-read.model';
+import { getTimeDiffInHours } from '@pimp-my-pr/shared/util-time-diff-in-hours';
 
 @QueryHandler(ListReviewersStatisticsQuery)
 export class ListReviewersStatisticsHandler
@@ -25,38 +30,48 @@ export class ListReviewersStatisticsHandler
     const prRepository = this.prRepositoryFactory(query.platform);
 
     const repositories = await this.repositoryRepository.findByUserId(query.userId);
-    const result = await Promise.all(
+
+    const repositoriesPrs = new Map<RepositoryEntity, PrEntity[]>();
+
+    const nestedPrs = await Promise.all(
       repositories.map(repository =>
-        prRepository
-          .findByRepositoryId(repository.fullName, query.token)
-          .then(prs => this.groupByReviewers(prs))
-          .then(repositoryReviewersWithPrs =>
-            repositoryReviewersWithPrs.map(
-              reviewerWithPrs =>
-                new ReviewersStatisticsItemReadModel(reviewerWithPrs.reviewer, reviewerWithPrs.prs)
-            )
-          )
+        prRepository.findByRepositoryId(repository.fullName, query.token)
       )
     );
 
-    return result.flatMap<ReviewersStatisticsItemReadModel>(res => res);
+    nestedPrs.forEach((prs, index) => repositoriesPrs.set(repositories[index], prs));
+
+    const reviewersWithPrs = this.groupPrsByReviewers(repositoriesPrs);
+
+    return reviewersWithPrs.map(
+      ({ reviewer, prs, maxLinesWarning, maxWaitingTimeWarning }) =>
+        new ReviewersStatisticsItemReadModel(reviewer, prs, maxLinesWarning, maxWaitingTimeWarning)
+    );
   }
 
-  private groupByReviewers(prs: PrEntity[]): ReviewerModelWithPr[] {
-    const result: { [id: string]: { reviewer: ReviewerEntity; prs: PrEntity[] } } = {};
+  private groupPrsByReviewers(
+    repositoriesPrs: Map<RepositoryEntity, PrEntity[]>
+  ): ReviewerModelWithPr[] {
+    const result: { [id: string]: ReviewerModelWithPr } = {};
 
-    prs.forEach(pr =>
-      pr.reviewers.forEach(reviewer => {
-        result[reviewer.id] = {
-          reviewer,
-          prs: result[reviewer.id] ? result[reviewer.id].prs.concat(pr) : [pr]
-        };
-      })
-    );
+    repositoriesPrs.forEach((repositoryPrs, repository) => {
+      repositoryPrs.forEach(repositoryPr => {
+        repositoryPr.reviewers.forEach(reviewer => {
+          result[reviewer.id] = {
+            reviewer,
+            prs: result[reviewer.id]?.prs.concat(repositoryPr) || [repositoryPr],
+            maxLinesWarning:
+              result[reviewer.id]?.maxLinesWarning ||
+              (!!repository.maxLines && repositoryPr.linesOfCodeToCheck > repository.maxLines),
+            maxWaitingTimeWarning:
+              result[reviewer.id]?.maxWaitingTimeWarning ||
+              (!!repository.maxWaitingTime &&
+                getTimeDiffInHours(repositoryPr.updatedAt) > repository.maxWaitingTime)
+          };
+        });
+      });
+    });
 
-    return Object.keys(result).map(key => ({
-      reviewer: result[key].reviewer,
-      prs: result[key].prs
-    }));
+    return Object.values(result);
   }
 }

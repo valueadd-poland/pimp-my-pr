@@ -9,4 +9,10 @@ export interface RepositoryStatistics {
   pictureUrl: string;
   sumOfHoursPrsWaiting?: number;
   prsStatistics?: PrStatistics[];
+  maxLines?: number;
+  maxPrs?: number;
+  maxWaitingTime?: number;
+  maxLinesWarning: boolean;
+  maxWaitingTimeWarning: boolean;
+  maxPrsWarning: boolean;
 }

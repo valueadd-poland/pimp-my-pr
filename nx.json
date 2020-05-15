@@ -217,6 +217,9 @@
     },
     "pmp-web-shared-styles": {
       "tags": ["scope:shared", "type:styles", "platform:web"]
+    },
+    "shared-util-time-diff-in-hours": {
+      "tags": ["platform:any", "scope:shared", "type:util"]
     }
   },
   "tasksRunnerOptions": {

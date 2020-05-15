@@ -6,4 +6,6 @@ export interface ReviewerStatistics {
   longestPrLinesOfCode?: number;
   pendingPrs?: number;
   sumOfHoursPrsWaiting?: number;
+  maxLinesWarning: boolean;
+  maxWaitingTimeWarning: boolean;
 }

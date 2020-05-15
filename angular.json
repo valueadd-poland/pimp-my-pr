@@ -2127,6 +2127,32 @@
           "styleext": "scss"
         }
       }
+    },
+    "shared-util-time-diff-in-hours": {
+      "root": "libs/shared/util-time-diff-in-hours",
+      "sourceRoot": "libs/shared/util-time-diff-in-hours/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/util-time-diff-in-hours/tsconfig.lib.json",
+              "libs/shared/util-time-diff-in-hours/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/util-time-diff-in-hours/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/util-time-diff-in-hours/jest.config.js",
+            "tsConfig": "libs/shared/util-time-diff-in-hours/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
