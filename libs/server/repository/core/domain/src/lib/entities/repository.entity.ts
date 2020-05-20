@@ -1,5 +1,6 @@
 import { f } from '@marcj/marshal';
 import { PrEntity } from './pr.entity';
+import { RepositoryEditWriteModel } from '@pimp-my-pr/shared/domain';
 
 export class RepositoryEntity {
   @f.primary()
@@ -49,5 +50,10 @@ export class RepositoryEntity {
     this.userId = userId;
     this.maxWaitingTime = maxWaitingTime;
     this.maxLines = maxLines;
+  }
+
+  edit(writeModel: RepositoryEditWriteModel): void {
+    this.maxLines = writeModel.maxLines;
+    this.maxWaitingTime = writeModel.maxWaitingTime;
   }
 }
