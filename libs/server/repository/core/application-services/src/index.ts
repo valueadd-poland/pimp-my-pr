@@ -8,3 +8,4 @@ export * from './lib/queries/list-repositories-statistics/repositories-statistic
 export * from './lib/read-models/reviewer-model-with-pr.interface';
 export * from './lib/commands/add-repository/add-repository.command';
 export * from './lib/commands/delete-repository/delete-repository.command';
+export * from './lib/commands/edit-repository/edit-repository.command';
