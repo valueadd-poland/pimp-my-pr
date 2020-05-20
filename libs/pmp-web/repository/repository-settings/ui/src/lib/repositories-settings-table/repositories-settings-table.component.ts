@@ -29,15 +29,22 @@ export class RepositoriesSettingsTableComponent {
   deleteRepository = new EventEmitter<Repository>();
 
   @Output()
+  editRepository = new EventEmitter<Repository>();
+
+  @Output()
   navigateToItem = new EventEmitter<Repository>();
 
   @ViewChild(MatSort, { static: true })
   sort: MatSort;
 
   dataSource: MatTableDataSource<Repository>;
-  displayColumns = ['avatar', 'name', 'maxLines', 'maxWaitingTime', 'delete'];
+  displayColumns = ['avatar', 'name', 'maxLines', 'maxWaitingTime', 'edit', 'delete'];
 
   onDeleteRepository(repository: Repository): void {
     this.deleteRepository.emit(repository);
+  }
+
+  onEditRepository(repository: Repository): void {
+    this.editRepository.emit(repository);
   }
 }
