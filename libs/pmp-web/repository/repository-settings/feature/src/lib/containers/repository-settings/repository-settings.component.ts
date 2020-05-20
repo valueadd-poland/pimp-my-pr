@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RepositoryFacade } from '@pimp-my-pr/pmp-web/repository/data-access';
 import { MatDialog } from '@angular/material';
-import { AddRepositoryDialogComponent } from '../add-repository-dialog/add-repository-dialog.component';
+import { AddEditRepositoryDialogComponent } from '../add-edit-repository-dialog/add-edit-repository-dialog.component';
 import { Repository } from '@pimp-my-pr/pmp-web/repository/domain';
 import { GenericDialogComponent } from '@pimp-my-pr/pmp-web/shared/ui-generic-dialog';
 
 @Component({
-  selector: 'pimp-my-pr-repository-settings',
+  selector: 'pmp-repository-settings',
   templateUrl: './repository-settings.component.html',
   styleUrls: ['./repository-settings.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -30,9 +30,26 @@ export class RepositorySettingsComponent {
       });
   }
 
+  onEditRepository(repository: Repository): void {
+    this.matDialog.open(AddEditRepositoryDialogComponent, {
+      panelClass: 'add-edit-repository-dialog',
+      data: {
+        submitMsg: 'Update',
+        dialogTitle: `Edit ${repository.name} repository`,
+        isEditMode: true,
+        repositoryToEdit: repository
+      }
+    });
+  }
+
   openAddRepoDialog(): void {
-    this.matDialog.open(AddRepositoryDialogComponent, {
-      width: '350px' // Consider better way of setting width of dialogs
+    this.matDialog.open(AddEditRepositoryDialogComponent, {
+      panelClass: 'add-edit-repository-dialog',
+      data: {
+        submitMsg: 'Add',
+        dialogTitle: 'Add repository',
+        isEditMode: false
+      }
     });
   }
 }

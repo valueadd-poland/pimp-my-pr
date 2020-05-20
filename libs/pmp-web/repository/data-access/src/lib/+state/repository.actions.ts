@@ -3,6 +3,7 @@ import { Action } from '@ngrx/store';
 import {
   AddRepositoryPayload,
   DeleteRepositoryPayload,
+  EditRepositoryPayload,
   Repository
 } from '@pimp-my-pr/pmp-web/repository/domain';
 
@@ -16,7 +17,10 @@ export namespace fromRepositoryActions {
     AddRepositorySuccess = '[Repository] Add Repository Success',
     DeleteRepository = '[Repository] Delete Repository',
     DeleteRepositoryFail = '[Repository] Delete Repository Fail',
-    DeleteRepositorySuccess = '[Repository] Delete Repository Success'
+    DeleteRepositorySuccess = '[Repository] Delete Repository Success',
+    EditRepository = '[Repository] Edit Repository',
+    EditRepositoryFail = '[Repository] Edit Repository Fail',
+    EditRepositorySuccess = '[Repository] Edit Repository Success'
   }
 
   export class GetRepositoryCollection implements Action {
@@ -67,6 +71,22 @@ export namespace fromRepositoryActions {
     readonly type = Types.DeleteRepositorySuccess;
   }
 
+  export class EditRepository implements Action {
+    readonly type = Types.EditRepository;
+
+    constructor(public payload: EditRepositoryPayload) {}
+  }
+
+  export class EditRepositoryFail implements Action {
+    readonly type = Types.EditRepositoryFail;
+
+    constructor(public payload: HttpErrorResponse) {}
+  }
+
+  export class EditRepositorySuccess implements Action {
+    readonly type = Types.EditRepositorySuccess;
+  }
+
   export type CollectiveType =
     | GetRepositoryCollection
     | GetRepositoryCollectionFail
@@ -76,5 +96,8 @@ export namespace fromRepositoryActions {
     | AddRepositorySuccess
     | DeleteRepository
     | DeleteRepositoryFail
-    | DeleteRepositorySuccess;
+    | DeleteRepositorySuccess
+    | EditRepository
+    | EditRepositoryFail
+    | EditRepositorySuccess;
 }

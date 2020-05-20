@@ -20,9 +20,11 @@ import { ContentLoaderModule } from '@ngneat/content-loader';
 import { PmpWebRepositoryDataAccessModule } from '@pimp-my-pr/pmp-web/repository/data-access';
 import { PmpWebRepositoryRepositorySettingsUiModule } from '@pimp-my-pr/pmp-web/repository/repository-settings/ui';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AddRepositoryDialogComponent } from './containers/add-repository-dialog/add-repository-dialog.component';
+import { AddEditRepositoryDialogComponent } from './containers/add-edit-repository-dialog/add-edit-repository-dialog.component';
 import { ValidationMessagesModule } from '@valueadd/validation-messages';
 import { PmpWebSharedUiGenericDialogModule } from '@pimp-my-pr/pmp-web/shared/ui-generic-dialog';
+import { SnackbarService } from '@pimp-my-pr/pmp-web/shared/domain';
+import { AddEditRepositoryDialogService } from './containers/add-edit-repository-dialog/add-edit-repository-dialog.service';
 
 @NgModule({
   imports: [
@@ -48,7 +50,8 @@ import { PmpWebSharedUiGenericDialogModule } from '@pimp-my-pr/pmp-web/shared/ui
     ValidationMessagesModule,
     PmpWebSharedUiGenericDialogModule
   ],
-  declarations: [RepositorySettingsComponent, AddRepositoryDialogComponent],
-  entryComponents: [AddRepositoryDialogComponent]
+  declarations: [RepositorySettingsComponent, AddEditRepositoryDialogComponent],
+  entryComponents: [AddEditRepositoryDialogComponent],
+  providers: [AddEditRepositoryDialogService, SnackbarService]
 })
 export class PmpWebRepositoryRepositorySettingsFeatureModule {}
