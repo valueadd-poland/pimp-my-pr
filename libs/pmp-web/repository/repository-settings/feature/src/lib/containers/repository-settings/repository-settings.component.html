@@ -5,6 +5,7 @@
     <ng-template matTabContent>
       <pimp-my-pr-repositories-settings-table
         (deleteRepository)="onDeleteRespository($event)"
+        (editRepository)="onEditRepository($event)"
         [data]="repositoryCollection$ | async"
         [isLoading]="repositoryCollectionLoading$ | async"
       >

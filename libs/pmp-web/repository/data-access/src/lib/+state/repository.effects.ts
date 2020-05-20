@@ -52,6 +52,22 @@ export class RepositoryEffects {
     ofType(fromRepositoryActions.Types.DeleteRepositorySuccess),
     map(() => new fromRepositoryActions.GetRepositoryCollection())
   );
+  @Effect()
+  editRepository$ = this.dp.fetch(fromRepositoryActions.Types.EditRepository, {
+    run: (action: fromRepositoryActions.EditRepository) => {
+      return this.repositoryDataService
+        .editRepository(action.payload)
+        .pipe(map(() => new fromRepositoryActions.EditRepositorySuccess()));
+    },
+    onError: (action: fromRepositoryActions.EditRepository, error: HttpErrorResponse) => {
+      return new fromRepositoryActions.EditRepositoryFail(error);
+    }
+  });
+  @Effect()
+  editRepositorySuccess$ = this.actions$.pipe(
+    ofType(fromRepositoryActions.Types.EditRepositorySuccess),
+    map(() => new fromRepositoryActions.GetRepositoryCollection())
+  );
 
   constructor(
     private dp: DataPersistence<RepositoryPartialState>,

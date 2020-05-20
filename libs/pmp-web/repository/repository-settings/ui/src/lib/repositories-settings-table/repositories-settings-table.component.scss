@@ -12,8 +12,11 @@ mat-cell {
   padding: 0 5px;
 }
 
-.mat-column-delete {
-  flex: 0.5;
+.mat-column-delete,
+.mat-column-edit {
+  flex: 0.4;
+  display: flex;
+  justify-content: center;
 }
 
 .avatar-column {
