@@ -3,6 +3,7 @@ import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
 import {
   DeleteRepositoryCommand,
+  EditRepositoryCommand,
   RepositoriesStatisticsItemReadModel,
   ReviewersStatisticsItemReadModel,
   ReviewerStatisticsReadModel
@@ -25,6 +26,10 @@ export class RepositoryFacade {
   }
 
   deleteRepository(command: DeleteRepositoryCommand): Promise<void> {
+    return this.commandBus.execute(command);
+  }
+
+  editRepository(command: EditRepositoryCommand): Promise<void> {
     return this.commandBus.execute(command);
   }
 

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import {
   AuthGuard,
@@ -10,12 +10,14 @@ import {
 import {
   AddRepositoryCommand,
   DeleteRepositoryCommand,
+  EditRepositoryCommand,
   RepositoryFacade
 } from '@pimp-my-pr/server/repository/core/application-services';
 import { RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
 import { extractFullName } from '@pimp-my-pr/server/shared/util-repository';
 import { AddRepositoryDto } from '../dtos/add-repository.dto';
 import { UserRepositoryGuard } from '../guards/user-repository.guard';
+import { EditRepositoryDto } from '../dtos/edit-repository.dto';
 
 @ApiTags('repository')
 @ApiBearerAuth()
@@ -51,5 +53,20 @@ export class RepositoryController {
   @Delete(':repositoryId')
   delete(@Param('repositoryId') repositoryId: string): Promise<void> {
     return this.repositoryFacade.deleteRepository(new DeleteRepositoryCommand(repositoryId));
+  }
+
+  @UseGuards(UserRepositoryGuard)
+  @Put(':repositoryId')
+  edit(
+    @Param('repositoryId') repositoryId: string,
+    @Body() editRepositoryDto: EditRepositoryDto
+  ): Promise<void> {
+    return this.repositoryFacade.editRepository(
+      new EditRepositoryCommand(
+        repositoryId,
+        editRepositoryDto.maxLines,
+        editRepositoryDto.maxWaitingTime
+      )
+    );
   }
 }
