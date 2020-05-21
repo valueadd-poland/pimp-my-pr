@@ -22,7 +22,7 @@
             "tsConfig": "apps/pmp-web/tsconfig.app.json",
             "aot": false,
             "assets": ["apps/pmp-web/src/favicon.ico", "apps/pmp-web/src/assets"],
-            "styles": ["apps/pmp-web/src/styles.scss"],
+            "styles": ["libs/pmp-web/shared/styles/src/index.scss"],
             "scripts": []
           },
           "configurations": {
@@ -2113,6 +2113,18 @@
             "tsConfig": "libs/server/auth/infrastructure-remote-token-crypto/tsconfig.spec.json",
             "passWithNoTests": true
           }
+        }
+      }
+    },
+    "pmp-web-shared-styles": {
+      "projectType": "library",
+      "root": "libs/pmp-web/shared/styles",
+      "sourceRoot": "libs/pmp-web/shared/styles/src",
+      "prefix": "pimp-my-pr",
+      "architect": {},
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
         }
       }
     }

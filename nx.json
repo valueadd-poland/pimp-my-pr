@@ -214,6 +214,9 @@
     },
     "server-auth-infrastructure-remote-token-crypto": {
       "tags": ["platform:server", "scope:shared", "type:infrastructure"]
+    },
+    "pmp-web-shared-styles": {
+      "tags": ["scope:shared", "type:styles", "platform:web"]
     }
   },
   "tasksRunnerOptions": {

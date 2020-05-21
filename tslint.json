@@ -149,6 +149,10 @@
           {
             "sourceTag": "type:util",
             "onlyDependOnLibsWithTags": ["type:util", "type:config", "type:domain"]
+          },
+          {
+            "sourceTag": "type:styles",
+            "onlyDependOnLibsWithTags": ["type:styles"]
           }
         ]
       }
