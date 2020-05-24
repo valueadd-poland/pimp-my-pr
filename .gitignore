@@ -40,3 +40,4 @@ Thumbs.db
 
 #PMP
 .env
+data/acme.json

@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  ng:
+    labels:
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
+      - "traefik.http.routers.${ENV:-dev}-ng.middlewares=redirect-to-https"
+      - "traefik.http.routers.${ENV:-dev}-ng-secure.entrypoints=websecure"
+      - "traefik.http.routers.${ENV:-dev}-ng-secure.rule=Host(`${DOMAIN:-pmp.local}`)"
+      - "traefik.http.routers.${ENV:-dev}-ng-secure.tls.certResolver=ssl-resolver"
+    networks:
+      - traefik
+  api:
+    labels:
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
+      - "traefik.http.routers.${ENV:-dev}-api.middlewares=redirect-to-https"
+      - "traefik.http.routers.${ENV:-dev}-api-secure.entrypoints=websecure"
+      - "traefik.http.routers.${ENV:-dev}-api-secure.rule=Host(`${DOMAIN:-pmp.local}`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.${ENV:-dev}-api-secure.tls.certResolver=ssl-resolver"
+    networks:
+      - traefik
+
+networks:
+  traefik:
+    external: true

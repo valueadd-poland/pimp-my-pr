@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  traefik:
+    image: traefik:v2.2.1
+    restart: always
+    command:
+      - "--api.insecure=false"
+      - "--api.dashboard=false"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedByDefault=false"
+      - "--providers.docker.network=traefik"
+      - "--entryPoints.web.address=:80"
+      - "--entryPoints.websecure.address=:443"
+      - "--certificatesResolvers.ssl-resolver.acme.email=${SSL_EMAIL}"
+      - "--certificatesResolvers.ssl-resolver.acme.storage=/acme.json"
+      - "--certificatesResolvers.ssl-resolver.acme.httpChallenge.entryPoint=web"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./data/acme.json:/acme.json"
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+networks:
+  default:
+    name: traefik
