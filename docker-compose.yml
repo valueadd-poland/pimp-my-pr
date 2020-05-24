@@ -1,42 +1,28 @@
 version: '3.7'
 services:
-  traefik:
-    image: traefik:v2.1.9
-    restart: always
-    command:
-#      - "--log.level=DEBUG"
-      - "--api.insecure=false"
-      - "--api.dashboard=false"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedByDefault=false"
-      - "--entryPoints.web.address=:80"
-    ports:
-      - "80:80"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
   ng:
     image: valueaddpoland/pmp-ng
     restart: always
     labels:
       - "traefik.enable=true"
       # HTTP
-      - "traefik.http.routers.ng.rule=Host(`${DOMAIN:-pmp.local}`)"
-      - "traefik.http.routers.ng.entrypoints=web"
+      - "traefik.http.routers.${ENV:-dev}-ng.rule=Host(`${DOMAIN:-pmp.local}`)"
+      - "traefik.http.routers.${ENV:-dev}-ng.entrypoints=web"
     environment:
       - BITBUCKET_CLIENT_ID=${BITBUCKET_CLIENT_ID}
       - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID}
       - GITLAB_CLIENT_ID=${GITLAB_CLIENT_ID}
       - GITLAB_REDIRECT_URI=${GITLAB_REDIRECT_URI}
-
+    networks:
+      - default
   api:
     image: valueaddpoland/pmp-api
     restart: always
     labels:
       - "traefik.enable=true"
-      - "traefik.docker.network=pmp"
       # HTTP
-      - "traefik.http.routers.api.rule=Host(`${DOMAIN:-pmp.local}`) && PathPrefix(`/api`)"
-      - "traefik.http.routers.api.entrypoints=web"
+      - "traefik.http.routers.${ENV:-dev}-api.rule=Host(`${DOMAIN:-pmp.local}`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.${ENV:-dev}-api.entrypoints=web"
     env_file:
       - .env
     networks:
@@ -55,7 +41,7 @@ services:
 
 networks:
   default:
-    name: pmp
+    name: ${NETWORK_NAME:-pmp}
   backend:
     driver: 'bridge'
 
