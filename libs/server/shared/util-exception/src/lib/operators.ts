@@ -11,7 +11,7 @@ export function catchRequestExceptions(): OperatorFunction<any, any> {
   return source$ =>
     source$.pipe(
       catchError((err: AxiosError) => {
-        if ('response' in err) {
+        if (err.response && err.response.status) {
           switch (err.response.status) {
             case 401:
               return throwError(new CoreUnauthorizedFoundException());
