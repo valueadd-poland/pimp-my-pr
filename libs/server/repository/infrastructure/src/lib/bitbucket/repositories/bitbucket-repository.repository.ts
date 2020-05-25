@@ -4,7 +4,11 @@ import {
   RepositoryNotFoundException
 } from '@pimp-my-pr/server/repository/core/domain';
 import { bitbucketConfig } from '@pimp-my-pr/server/shared/config';
-import { CoreException, CoreNotFoundException } from '@pimp-my-pr/server/shared/domain';
+import {
+  CoreException,
+  CoreNotFoundException,
+  CoreUnprocessableEntityException
+} from '@pimp-my-pr/server/shared/domain';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
 import { urlFactory } from '@valueadd/typed-urls';
 import { AxiosError, AxiosResponse } from 'axios';
@@ -34,7 +38,14 @@ export class BitbucketRepositoryRepository extends RemoteRepositoryRepository {
         headers: { Authorization: `Bearer ${token}` }
       })
       .pipe(
-        map((res: AxiosResponse) => res.data),
+        map((res: AxiosResponse) => {
+          if (!(res.data.username || res.data.nickname)) {
+            throw new CoreUnprocessableEntityException(
+              `Cannot resolve the owner of the ${fullName}`
+            );
+          }
+          return res.data;
+        }),
         map(mapBitbucketRepository),
         catchRequestExceptions(),
         catchError((error: AxiosError | CoreException) => {
