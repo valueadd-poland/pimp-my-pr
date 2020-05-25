@@ -13,7 +13,7 @@ import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception
 import { urlFactory } from '@valueadd/typed-urls';
 import { AxiosError, AxiosResponse } from 'axios';
 import { throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { RemoteRepositoryRepository } from '../../repositories/remote-repository.repository';
 import { BitbucketRepositoryEntity } from '../domain/entities/bitbucket-repository.entity';
 import { mapBitbucketRepository } from '../mappers/map-bitbucket-repository';
@@ -38,13 +38,13 @@ export class BitbucketRepositoryRepository extends RemoteRepositoryRepository {
         headers: { Authorization: `Bearer ${token}` }
       })
       .pipe(
-        map((res: AxiosResponse) => {
-          if (!(res.data.username || res.data.nickname)) {
+        map((res: AxiosResponse) => res.data),
+        tap(data => {
+          if (!(data.owner.username || data.owner.nickname)) {
             throw new CoreUnprocessableEntityException(
               `Cannot resolve the owner of the ${fullName}`
             );
           }
-          return res.data;
         }),
         map(mapBitbucketRepository),
         catchRequestExceptions(),
