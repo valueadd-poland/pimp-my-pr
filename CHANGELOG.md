@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/valueadd-poland/pimp-my-pr/compare/1.2.0...2.0.0) (2020-05-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **security:** new auth environment variables
+
+### Features
+
+* **pmp:** allow to add gitlab repo settings ([53c2bb5](https://github.com/valueadd-poland/pimp-my-pr/commit/53c2bb56b1ee0472f5becaeb09177c2ad1386c9e)), closes [#159](https://github.com/valueadd-poland/pimp-my-pr/issues/159)
+* **pmp:** edit repository in settings - backend ([69c3522](https://github.com/valueadd-poland/pimp-my-pr/commit/69c3522112f3bbf805a22da976b5e8290a9cdc02)), closes [#107](https://github.com/valueadd-poland/pimp-my-pr/issues/107)
+* **pmp:** edit repository in settings - front ([8b0ebe8](https://github.com/valueadd-poland/pimp-my-pr/commit/8b0ebe8752550b9fc1b0ae7f7aaaca35ea41e6cf)), closes [#107](https://github.com/valueadd-poland/pimp-my-pr/issues/107)
+* **pmp:** single repository statistics changes ([a0531bd](https://github.com/valueadd-poland/pimp-my-pr/commit/a0531bd72c26dda72be689166f3fb2a471c64f14)), closes [#217](https://github.com/valueadd-poland/pimp-my-pr/issues/217)
+* **pmp-api:** get info about gitlab repo MR and reviewer ([02cdbdc](https://github.com/valueadd-poland/pimp-my-pr/commit/02cdbdc39684a32d6d5dde66a7f4508e81141466)), closes [#159](https://github.com/valueadd-poland/pimp-my-pr/issues/159)
+* **security:** encrypt remote token in jwt ([0b1856d](https://github.com/valueadd-poland/pimp-my-pr/commit/0b1856df09367c3d5ef82939af963f2fdb56a2e9))
+
+
+### Bug Fixes
+
+* **api:** remove 500 error bitbucket repository with no pr ([d900d72](https://github.com/valueadd-poland/pimp-my-pr/commit/d900d7241cae3ae301d7855a8306b43069604ad0)), closes [#237](https://github.com/valueadd-poland/pimp-my-pr/issues/237)
+* **api-user:** handle user not found on user info ([6d18304](https://github.com/valueadd-poland/pimp-my-pr/commit/6d183043abd91ee0965786d800308c4f3db6c9ba))
+* **pmp:** invalid import in gitlab-repository ([dc00e4e](https://github.com/valueadd-poland/pimp-my-pr/commit/dc00e4efb7f879fc79edb9bd9cb9e8b22ff4f4ba)), closes [#159](https://github.com/valueadd-poland/pimp-my-pr/issues/159)
+* **pmp-api:** remove empty repositories from reviewer statistics ([4feb001](https://github.com/valueadd-poland/pimp-my-pr/commit/4feb001482d51f5946c88b100a5ffd75071877f8))
+* **web-repository:** standardize empty values ([808053c](https://github.com/valueadd-poland/pimp-my-pr/commit/808053c68d84261a298294d0ed8de5446dedfc71))
+
 ### [1.2.1](https://github.com/valueadd-poland/pimp-my-pr/compare/1.2.0...1.2.1) (2020-05-25)
 
 
