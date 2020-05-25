@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/valueadd-poland/pimp-my-pr/compare/1.2.0...1.2.1) (2020-05-25)
+
+
+### Bug Fixes
+
+* **api:** remove 500 error bitbucket repository with no pr ([19ec8cd](https://github.com/valueadd-poland/pimp-my-pr/commit/19ec8cd72c2914f6fe2b433db60944a47acbb6c9)), closes [#237](https://github.com/valueadd-poland/pimp-my-pr/issues/237)
+* **api-user:** handle user not found on user info ([15ee3e7](https://github.com/valueadd-poland/pimp-my-pr/commit/15ee3e73d82647504afade32b25513b132c0f2c9))
+* **pmp-api:** remove empty repositories from reviewer statistics ([17bf87e](https://github.com/valueadd-poland/pimp-my-pr/commit/17bf87e7caa7a3a6366420634ba620ca0f5e4817))
+* **web-repository:** standardize empty values ([c1c7d13](https://github.com/valueadd-poland/pimp-my-pr/commit/c1c7d13f8dddd4cc3a879b990e045265321fcff8))
+
 ## [1.2.0](https://github.com/valueadd-poland/pimp-my-pr/compare/1.1.0...1.2.0) (2020-04-28)
 
 
