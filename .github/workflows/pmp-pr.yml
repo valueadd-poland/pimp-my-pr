@@ -49,12 +49,13 @@ jobs:
       - name: affected:e2e
         run: npm run affected:e2e
         env:
+          AUTH_JWT_SECRET: somecomplextext
+          AUTH_REMOTE_TOKEN_CRYPTO_KEY: "12345678901234567890123456789012"
           DB_PORT: ${{ job.services.db.ports[5432] }}
           DB_HOST: localhost
           DB_NAME: pmp
           DB_PASSWORD: mysecretpassword
           DB_USER: pmp
-          PMP_SERVER_JWT_SECRET: somecomplextext
     env:
       CI: true
 

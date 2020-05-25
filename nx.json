@@ -208,6 +208,12 @@
     },
     "server-shared-core-api-rest": {
       "tags": ["platform:server", "scope:shared", "type:core"]
+    },
+    "server-auth-port": {
+      "tags": ["platform:server", "scope:shared", "type:port"]
+    },
+    "server-auth-infrastructure-remote-token-crypto": {
+      "tags": ["platform:server", "scope:shared", "type:infrastructure"]
     }
   }
 }

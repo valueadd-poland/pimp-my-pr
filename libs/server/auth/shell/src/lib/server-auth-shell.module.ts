@@ -8,9 +8,11 @@ import {
   GithubAuthTokenRepository,
   ServerAuthInfrastructureModule
 } from '@pimp-my-pr/server/auth/infrastructure';
+import { RemoteTokenCryptoService } from '@pimp-my-pr/server/auth/port';
 import { PmpApiConfigService } from '@pimp-my-pr/server/shared/config';
 import { ServerUserShellModule } from '@pimp-my-pr/server/user/public';
 import { GitlabAuthTokenRepository } from '@pimp-my-pr/server/auth/infrastructure';
+import { ServerAuthInfrastructureRemoteTokenCryptoModule } from '@pimp-my-pr/server/auth/infrastructure-remote-token-crypto';
 
 const providers = [
   {
@@ -29,11 +31,23 @@ const providers = [
         secret: configService.getJwtSecret()
       })
     }),
+    ServerAuthInfrastructureRemoteTokenCryptoModule.registerAsync({
+      useFactory: (configService: PmpApiConfigService) => ({
+        key: configService.getRemoteTokenCryptoKey()
+      }),
+      inject: [PmpApiConfigService]
+    }),
     ServerAuthInfrastructureModule,
     ServerAuthCoreApplicationServicesModule,
     ServerUserShellModule
   ],
   providers,
-  exports: [...providers, ServerUserShellModule, ServerAuthCoreApplicationServicesModule, JwtModule]
+  exports: [
+    ...providers,
+    ServerAuthInfrastructureRemoteTokenCryptoModule,
+    ServerUserShellModule,
+    ServerAuthCoreApplicationServicesModule,
+    JwtModule
+  ]
 })
 export class ServerAuthShellModule {}

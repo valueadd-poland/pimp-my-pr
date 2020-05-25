@@ -4,6 +4,10 @@ import { ConfigService, registerAs } from '@nestjs/config';
 const CONFIG_NAMESPACE = 'pmp-api-service';
 
 export const pmpApiConfigService = registerAs(CONFIG_NAMESPACE, () => ({
+  auth: {
+    jwtSecret: process.env.AUTH_JWT_SECRET,
+    remoteTokenCryptoKey: process.env.AUTH_REMOTE_TOKEN_CRYPTO_KEY
+  },
   bitbucketClientId: process.env.BITBUCKET_CLIENT_ID,
   bitbucketClientSecret: process.env.BITBUCKET_CLIENT_SECRET,
   bitbucketToken: process.env.PMP_SERVER_BITBUCKET_TOKEN,
@@ -61,6 +65,10 @@ export class PmpApiConfigService {
   }
 
   getJwtSecret(): string {
-    return this.configService.get<string>(CONFIG_NAMESPACE + '.jwtSecret');
+    return this.configService.get<string>(CONFIG_NAMESPACE + '.auth.jwtSecret');
+  }
+
+  getRemoteTokenCryptoKey(): string {
+    return this.configService.get<string>(CONFIG_NAMESPACE + '.auth.remoteTokenCryptoKey');
   }
 }
