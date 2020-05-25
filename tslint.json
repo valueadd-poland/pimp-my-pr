@@ -98,7 +98,12 @@
           },
           {
             "sourceTag": "type:application-services",
-            "onlyDependOnLibsWithTags": ["type:domain", "type:domain-services", "type:public"]
+            "onlyDependOnLibsWithTags": [
+              "type:domain",
+              "type:domain-services",
+              "type:port",
+              "type:public"
+            ]
           },
           {
             "sourceTag": "type:config",

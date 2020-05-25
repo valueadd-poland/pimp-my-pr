@@ -1993,6 +1993,59 @@
           }
         }
       }
+    },
+    "server-auth-port": {
+      "root": "libs/server/auth/port",
+      "sourceRoot": "libs/server/auth/port/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/auth/port/tsconfig.lib.json",
+              "libs/server/auth/port/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/auth/port/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/auth/port/jest.config.js",
+            "tsConfig": "libs/server/auth/port/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "server-auth-infrastructure-remote-token-crypto": {
+      "root": "libs/server/auth/infrastructure-remote-token-crypto",
+      "sourceRoot": "libs/server/auth/infrastructure-remote-token-crypto/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/auth/infrastructure-remote-token-crypto/tsconfig.lib.json",
+              "libs/server/auth/infrastructure-remote-token-crypto/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/server/auth/infrastructure-remote-token-crypto/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/auth/infrastructure-remote-token-crypto/jest.config.js",
+            "tsConfig": "libs/server/auth/infrastructure-remote-token-crypto/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {

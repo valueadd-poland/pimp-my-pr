@@ -5,6 +5,7 @@ import {
   AuthTokenRepository,
   authTokenRepositoryFactoryToken
 } from '@pimp-my-pr/server/auth/core/domain-services';
+import { RemoteTokenCryptoService } from '@pimp-my-pr/server/auth/port';
 import { AddUserCommand, UserPublicFacade, UserRepository } from '@pimp-my-pr/server/user/public';
 import { Platform } from '@pimp-my-pr/shared/domain';
 import { AuthTokenReadModel } from '../../read-models/auth-token/auth-token.read-model';
@@ -19,6 +20,7 @@ export class GetAccessTokenHandler
     @Inject(authTokenRepositoryFactoryToken)
     private authTokenRepositoryFactory: (platform: Platform) => AuthTokenRepository,
     private jwtService: JwtService,
+    private tokenCryptoService: RemoteTokenCryptoService,
     private userRepository: UserRepository,
     private userFacade: UserPublicFacade
   ) {}
@@ -36,7 +38,7 @@ export class GetAccessTokenHandler
     }
 
     const jwtPayload = {
-      token,
+      token: await this.tokenCryptoService.encrypt(token),
       user,
       platform
     };

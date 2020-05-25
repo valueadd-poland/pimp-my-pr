@@ -144,7 +144,11 @@
       "@pimp-my-pr/pmp-web/shared/ui-generic-dialog": [
         "libs/pmp-web/shared/ui-generic-dialog/src/index.ts"
       ],
-      "@pimp-my-pr/server/shared/core-api-rest": ["libs/server/shared/core-api-rest/src/index.ts"]
+      "@pimp-my-pr/server/shared/core-api-rest": ["libs/server/shared/core-api-rest/src/index.ts"],
+      "@pimp-my-pr/server/auth/port": ["libs/server/auth/port/src/index.ts"],
+      "@pimp-my-pr/server/auth/infrastructure-remote-token-crypto": [
+        "libs/server/auth/infrastructure-remote-token-crypto/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
