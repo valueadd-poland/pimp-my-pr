@@ -1,7 +1,7 @@
-<h1 mat-dialog-title>Add repository</h1>
+<h1 mat-dialog-title>{{ dialogTitle }}</h1>
 <div mat-dialog-content>
   <form [formGroup]="form" class="form--container">
-    <mat-form-field>
+    <mat-form-field *ngIf="!isEditMode">
       <mat-label>Repository Url</mat-label>
       <input formControlName="repositoryUrl" matInput />
       <mat-error>
@@ -33,7 +33,13 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button color="primary" type="submit" [disabled]="form.invalid" (click)="submit()">
-    Add
+  <button
+    mat-button
+    color="primary"
+    type="submit"
+    [disabled]="form.invalid || !form.dirty"
+    (click)="submit()"
+  >
+    {{ submitMsg }}
   </button>
 </div>

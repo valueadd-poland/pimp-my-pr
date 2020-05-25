@@ -9,6 +9,7 @@ export * from './lib/interfaces/pr-author.interface';
 export * from './lib/interfaces/pr-reviewer.interface';
 export * from './lib/interfaces/pr.statistics';
 export * from './lib/interfaces/repository.model';
+export * from './lib/interfaces/repository-edit-write.model';
 export * from './lib/interfaces/repository-statistics.interface';
 export * from './lib/read-models/user.read-model';
 export * from './lib/responses/api-repository-statistics.response';

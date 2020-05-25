@@ -98,6 +98,7 @@
       'always',
       [
         'api',
+        'api-e2e',
         'api-user',
         'web',
         'web-repository'

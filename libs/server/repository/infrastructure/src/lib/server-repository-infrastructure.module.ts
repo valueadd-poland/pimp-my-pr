@@ -3,18 +3,21 @@ import { BitbucketRepositoryRepository } from './bitbucket/repositories/bitbucke
 import { GithubRepositoryRepository } from './github/repositories/github-repository.repository';
 import { RepositoryRepositoryAdapter } from './repositories/repository-repository.adapter';
 import { FeatureRepositoryTypeOrmModule } from './typeorm/feature-repository-type-orm.module';
+import { GitlabRepositoryRepository } from './gitlab/repositories/gitlab-repository.repository';
 
 @Module({
   imports: [FeatureRepositoryTypeOrmModule],
   providers: [
     RepositoryRepositoryAdapter,
     BitbucketRepositoryRepository,
-    GithubRepositoryRepository
+    GithubRepositoryRepository,
+    GitlabRepositoryRepository
   ],
   exports: [
     FeatureRepositoryTypeOrmModule,
     BitbucketRepositoryRepository,
-    GithubRepositoryRepository
+    GithubRepositoryRepository,
+    GitlabRepositoryRepository
   ]
 })
 export class ServerRepositoryInfrastructureModule {}

@@ -3,11 +3,11 @@ import { CommandBus, QueryBus } from '@nestjs/cqrs';
 
 import {
   DeleteRepositoryCommand,
+  EditRepositoryCommand,
   RepositoriesStatisticsItemReadModel,
   ReviewersStatisticsItemReadModel,
   ReviewerStatisticsReadModel
 } from '@pimp-my-pr/server/repository/core/application-services';
-import { RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
 import { Platform } from '@pimp-my-pr/shared/domain';
 import { AddRepositoryCommand } from './commands/add-repository/add-repository.command';
 import { GetRepositoryStatisticsQuery } from './queries/get-repository-statistics/get-repository-statistics.query';
@@ -15,6 +15,7 @@ import { GetReviewerStatisticsQuery } from './queries/get-reviewer-statistics/ge
 import { ListRepositoriesStatisticsQuery } from './queries/list-repositories-statistics/list-repositories-statistics.query';
 import { ListRepositoriesQuery } from './queries/list-repositories/list-repositories.query';
 import { ListReviewersStatisticsQuery } from './queries/list-reviewers-statistics/list-reviewers-statistics.query';
+import { ListRepositoriesReadModel } from './queries/list-repositories/list-repositories.read-model';
 
 @Injectable()
 export class RepositoryFacade {
@@ -25,6 +26,10 @@ export class RepositoryFacade {
   }
 
   deleteRepository(command: DeleteRepositoryCommand): Promise<void> {
+    return this.commandBus.execute(command);
+  }
+
+  editRepository(command: EditRepositoryCommand): Promise<void> {
     return this.commandBus.execute(command);
   }
 
@@ -53,7 +58,7 @@ export class RepositoryFacade {
     return this.queryBus.execute(new ListRepositoriesStatisticsQuery(token, platform, userId));
   }
 
-  listRepositories(currentUserId: string): Promise<RepositoryEntity[]> {
+  listRepositories(currentUserId: string): Promise<ListRepositoriesReadModel[]> {
     return this.queryBus.execute(new ListRepositoriesQuery(currentUserId));
   }
 

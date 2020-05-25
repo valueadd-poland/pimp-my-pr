@@ -40,10 +40,22 @@
     </mat-cell>
   </ng-container>
 
+  <!-- Edit repository icon Column -->
+  <ng-container matColumnDef="edit">
+    <mat-header-cell *matHeaderCellDef>
+      <span>Edit</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button (click)="onEditRepository(element)" mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
   <!-- Delete repository icon Column -->
   <ng-container matColumnDef="delete">
     <mat-header-cell *matHeaderCellDef>
-      <span>Delete repository</span>
+      <span>Delete</span>
     </mat-header-cell>
     <mat-cell *matCellDef="let element">
       <button (click)="onDeleteRepository(element)" mat-icon-button>

@@ -6,53 +6,111 @@ on:
       - master
 
 jobs:
-  setup:
+  build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [12.x]
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: use master
-      run: git branch master origin/master #https://github.com/nrwl/nx/issues/1988
-    - name: npm install
-      run: npm ci
-    - name: init configs
-      run: cp .env-sample .env && npm run init
-    - name: validate nx tags
-      run: node ./node_modules/@valueadd/dev validate-nx-tags
-    - name: prettier check
-      run: npm run format:check
-    - name: build
-      run: npm run affected:build -- --all --prod
-    - name: test
-      run: npm run affected:test -- --parallel --all
-    - name: lint
-      run: npm run affected:lint -- --parallel --all
-      env:
-        CI: true
-
-  e2e:
-    runs-on: ubuntu-16.04
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: use master
-        run: git branch master origin/master #https://github.com/nrwl/nx/issues/1988
       - name: npm install
         run: npm ci
       - name: init configs
         run: cp .env-sample .env && npm run init
-      - name: affected:e2e
-        run: npm run affected:e2e
+      - name: affected:build
+        run: npm run affected:build -- --parallel --all --prod
     env:
       CI: true
+
+  e2e:
+    runs-on: ubuntu-16.04
+    services:
+      db:
+        image: postgres:12.2
+        env:
+          POSTGRES_PASSWORD: mysecretpassword
+          POSTGRES_USER: pmp
+          POSTGRES_DB: pmp
+        ports:
+          - 5432
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: init configs
+        run: cp .env-sample .env && npm run init && rm .env
+      - name: affected:e2e
+        run: npm run affected:e2e  -- --parallel --all
+        env:
+          DB_PORT: ${{ job.services.db.ports[5432] }}
+          DB_HOST: localhost
+          DB_NAME: pmp
+          DB_PASSWORD: mysecretpassword
+          DB_USER: pmp
+          PMP_SERVER_JWT_SECRET: somecomplextext
+    env:
+      CI: true
+
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: affected:lint
+        run: npm run affected:lint -- --parallel --all
+        env:
+          CI: true
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: affected:test
+        run: npm run affected:test -- --parallel --all
+        env:
+          CI: true
+
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: validate nx tags
+        run: node ./node_modules/@valueadd/dev validate-nx-tags
+      - name: prettier check
+        run: npm run format:check
+        env:
+          CI: true
