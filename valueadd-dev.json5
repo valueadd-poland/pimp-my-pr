@@ -99,6 +99,7 @@
       [
         'api',
         'api-e2e',
+        'api-repository',
         'api-user',
         'security',
         'web',

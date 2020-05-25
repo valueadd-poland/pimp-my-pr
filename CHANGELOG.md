@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/valueadd-poland/pimp-my-pr/compare/2.0.0...2.0.1) (2020-05-25)
+
+
+### Bug Fixes
+
+* **api-repository:** bitbucket owner always unprocessable ([489c5a6](https://github.com/valueadd-poland/pimp-my-pr/commit/489c5a6b7bb5cf23ee4e53397b61c58e771a23ee))
+
 ## [2.0.0](https://github.com/valueadd-poland/pimp-my-pr/compare/1.2.0...2.0.0) (2020-05-25)
 
 
