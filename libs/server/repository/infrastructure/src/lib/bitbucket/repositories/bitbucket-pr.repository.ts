@@ -36,7 +36,11 @@ export class BitbucketPrRepository extends PrRepository {
         .pipe(map(res => res.data)),
       this.getPrsFromNextPage(token)
     )
-      .pipe(switchMap(prs => forkJoin(prs.map(pr => this.getPrDetails(pr, token)))))
+      .pipe(
+        switchMap(prs =>
+          prs.length ? forkJoin(prs.map(pr => this.getPrDetails(pr, token))) : of([])
+        )
+      )
       .toPromise();
   }
 
