@@ -2081,7 +2081,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/port/jest.config.js",
-            "tsConfig": "libs/server/auth/port/tsconfig.spec.json"
+            "tsConfig": "libs/server/auth/port/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
@@ -2109,7 +2110,8 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/infrastructure-remote-token-crypto/jest.config.js",
-            "tsConfig": "libs/server/auth/infrastructure-remote-token-crypto/tsconfig.spec.json"
+            "tsConfig": "libs/server/auth/infrastructure-remote-token-crypto/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }
