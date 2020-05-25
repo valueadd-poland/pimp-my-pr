@@ -26,7 +26,7 @@
       <span>Max lines</span>
     </mat-header-cell>
     <mat-cell *matCellDef="let element">
-      {{ element.maxLines }}
+      {{ element.maxLines || '-' }}
     </mat-cell>
   </ng-container>
 
