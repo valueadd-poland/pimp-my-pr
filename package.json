@@ -1,6 +1,6 @@
 {
   "name": "pimp-my-pr",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "license": "MIT",
   "description": "A brilliant tool that will pimp your pull requests by collecting and presenting PR statistics.",
   "scripts": {
