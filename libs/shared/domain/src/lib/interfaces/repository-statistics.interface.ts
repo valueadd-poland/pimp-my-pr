@@ -8,5 +8,9 @@ export interface RepositoryStatistics {
   pendingPrs?: number;
   pictureUrl: string;
   sumOfHoursPrsWaiting?: number;
+  reviewersCount?: number;
+  averagePrWaiting?: number;
+  averageCodeToCheck?: number;
+  longestWaitingPr?: number;
   prsStatistics?: PrStatistics[];
 }

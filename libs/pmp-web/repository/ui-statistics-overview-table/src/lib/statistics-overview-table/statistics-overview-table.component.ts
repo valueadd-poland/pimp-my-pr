@@ -38,8 +38,12 @@ export class StatisticsOverviewTableComponent {
     'name',
     'pendingPrs',
     'sumOfHoursPrsWaiting',
+    'averagePrWaiting',
+    'longestWaitingPr',
     'linesOfCodeToCheck',
+    'averageCodeToCheck',
     'longestPrLinesOfCode',
+    'reviewersCount',
     'link'
   ];
 

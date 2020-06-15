@@ -1,26 +1,33 @@
 mat-header-cell > span {
-  font-size: 14px;
+  font-size: 1em;
   font-weight: normal;
-  padding: 0 5px;
+  padding: 0 0.5em;
 }
 
 mat-header-cell > span > mat-icon {
   color: #000000;
 }
 
+mat-header-cell {
+  flex-direction: column;
+  justify-content: center;
+}
+
 mat-cell {
-  padding: 0 5px;
+  padding: 0 0.5em;
+  text-align: center;
+  justify-content: center;
 }
 
 .avatar-column {
   flex: unset;
-  width: 62px;
-  padding: 0 0 0 5px;
+  width: 4em;
+  padding: 0 0 0 0.5em;
 }
 
 .link-column {
   flex: unset;
-  width: 90px;
+  width: 6em;
   color: rgba(0, 0, 0, 0.6);
   > mat-icon {
     cursor: pointer;
@@ -28,8 +35,8 @@ mat-cell {
 }
 
 .avatar-column__empty-space {
-  width: 32px;
-  height: 32px;
+  width: 2em;
+  height: 2em;
   border-radius: 50%;
   margin: auto;
 }

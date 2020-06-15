@@ -18,14 +18,29 @@ export abstract class BaseStatisticsReadModel {
   pendingPrs: number;
   @ApiProperty()
   sumOfHoursPrsWaiting?: number;
+  @ApiProperty()
+  reviewersCount: number;
+  @ApiProperty()
+  averagePrWaiting: number;
+  @ApiProperty()
+  averageCodeToCheck: number;
+  @ApiProperty()
+  longestWaitingPr: number;
 
   protected constructor(model: RepositoryEntity | ReviewerEntity, prs: PrEntity[]) {
+    const sumOfHoursPrsWaiting = this.getSumOfHoursPrsWaiting(prs);
+    const linesOfCodeToCheck = this.getLinesOfCodeToCheck(prs);
+
     this.id = model.id;
     this.name = model.name;
     this.pendingPrs = prs.length;
-    this.sumOfHoursPrsWaiting = this.getSumOfHoursPrsWaiting(prs);
-    this.linesOfCodeToCheck = this.getLinesOfCodeToCheck(prs);
+    this.sumOfHoursPrsWaiting = sumOfHoursPrsWaiting;
+    this.linesOfCodeToCheck = linesOfCodeToCheck;
     this.longestPrLinesOfCode = this.getLongestPrLinesOfCode(prs);
+    this.reviewersCount = this.getReviewersCount(prs);
+    this.averagePrWaiting = this.getAveragePrWaiting(prs, sumOfHoursPrsWaiting);
+    this.averageCodeToCheck = this.getAverageCodeToCheck(prs, linesOfCodeToCheck);
+    this.longestWaitingPr = this.getLongestWaitingPr(prs);
   }
 
   private getLongestPrLinesOfCode(prs: PrEntity[]): number {
@@ -41,12 +56,34 @@ export abstract class BaseStatisticsReadModel {
   }
 
   private getSumOfHoursPrsWaiting(prs: PrEntity[]): number {
-    let result = 0;
+    const now = new Date();
+    return Math.round(
+      prs.reduce((sum, pr) => sum + (now.getTime() - pr.createdAt.getTime()) / (60 * 60 * 1000), 0)
+    );
+  }
+
+  private getLongestWaitingPr(prs: PrEntity[]): number {
+    let max = 0;
     const now = new Date();
     prs.forEach(pr => {
-      result = (now.getTime() - pr.createdAt.getTime()) / (60 * 60 * 1000);
+      const newTime = (now.getTime() - pr.createdAt.getTime()) / (60 * 60 * 1000);
+      if (newTime > max) {
+        max = newTime;
+      }
     });
+    return Math.round(max);
+  }
 
-    return Math.round(result);
+  private getReviewersCount(prs: PrEntity[]): number {
+    const prAuthorsIds = prs.map(x => x.author.id);
+    return [...new Set(prAuthorsIds)].length;
+  }
+
+  private getAveragePrWaiting(prs: PrEntity[], sumOfHoursPrsWaiting: number): number {
+    return prs.length > 0 ? Math.round(sumOfHoursPrsWaiting / prs.length) : 0;
+  }
+
+  private getAverageCodeToCheck(prs: PrEntity[], linesOfCodeToCheck: number): number {
+    return prs.length > 0 ? Math.round(linesOfCodeToCheck / prs.length) : 0;
   }
 }

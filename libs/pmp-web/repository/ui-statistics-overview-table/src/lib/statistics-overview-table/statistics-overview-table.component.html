@@ -47,6 +47,46 @@
     </mat-cell>
   </ng-container>
 
+  <!-- Reviewers count Column -->
+  <ng-container matColumnDef="reviewersCount">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      <span>{{ 'Reviewers count' }}</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.reviewersCount }}
+    </mat-cell>
+  </ng-container>
+
+  <!-- Average PR waiting Column -->
+  <ng-container matColumnDef="averagePrWaiting">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      <span>{{ 'Average PR is waiting' }}</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.averagePrWaiting | timeAgo }}
+    </mat-cell>
+  </ng-container>
+
+  <!-- Average Code to check Column -->
+  <ng-container matColumnDef="averageCodeToCheck">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      <span>{{ 'Average Code to check' }}</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.averageCodeToCheck }}
+    </mat-cell>
+  </ng-container>
+
+  <!-- Longest waiting PR Column -->
+  <ng-container matColumnDef="longestWaitingPr">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      <span>{{ 'Longest waiting PR' }}</span>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.longestWaitingPr | timeAgo }}
+    </mat-cell>
+  </ng-container>
+
   <!-- Longest PR Column -->
   <ng-container matColumnDef="longestPrLinesOfCode">
     <mat-header-cell *matHeaderCellDef mat-sort-header>
