@@ -1,10 +1,12 @@
-# Pimp My PR
+# ![PMP Logo](docs/img/pmp-logo.svg)
 
 [![build](https://github.com/valueadd-poland/pimp-my-pr/workflows/PMP%20MASTER%20CI/badge.svg)](https://github.com/valueadd-poland/pimp-my-pr/actions?query=workflow%3A%22PMP+MASTER+CI%22)
 
+![PMP Image](docs/img/pmp-image.png)
+
 A brilliant tool that will pimp your pull requests by collecting and presenting PR statistics.
 
-![Preview](https://github.com/valueadd-poland/pimp-my-pr/raw/master/docs/img/pmp-preview.png)
+![Preview](docs/img/pmp-preview.png)
 
 ### Setup
 
