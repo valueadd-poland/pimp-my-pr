@@ -102,6 +102,7 @@
         'api-user',
         'security',
         'web',
+        'web-e2e',
         'web-repository'
       ]
     ]

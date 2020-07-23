@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "maxLines": 10,
+      "maxWaitingTime": 3,
+      "name": "va",
+      "owner": "va",
+      "pictureUrl": "https://avatars3.githubusercontent.com/u/139426?v=4",
+      "prs": [],
+      "repositoryId": "1",
+      "userId": "1"
+    }
+  ],
+  "errors": {}
+}

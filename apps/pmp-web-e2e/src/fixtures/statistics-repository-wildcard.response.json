@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fullName": "angular/angular",
+    "name": "angular",
+    "owner": "angular",
+    "pictureUrl": "https://avatars3.githubusercontent.com/u/139426?v=4",
+    "prsStatistics": [
+      {
+        "author": {
+          "name": "vadev",
+          "id": "123",
+          "avatarUrl": "https://avatars3.githubusercontent.com/u/139426?v=4"
+        },
+        "commentsCount": 0,
+        "createdAt": "2020-07-22T20:38:56.000Z",
+        "id": "123",
+        "linesOfCodeToCheck": 17,
+        "timeWaiting": 12,
+        "timeWaitingFromLastChange": 12,
+        "title": "fix(vadev)",
+        "url": "example.com",
+        "reviewers": [
+          {
+            "name": "vad",
+            "id": "123",
+            "avatarUrl": "https://avatars3.githubusercontent.com/u/139426?v=4"
+          }
+        ]
+      }
+    ]
+  },
+  "errors": {}
+}
