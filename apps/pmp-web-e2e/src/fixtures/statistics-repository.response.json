@@ -1,0 +1,15 @@
+{
+  "data": [
+    {
+      "id": "123",
+      "linesOfCodeToCheck": "11356",
+      "longestPrLinesOfCode": "5033",
+      "name": "angular",
+      "owner": "angular",
+      "pendingPrs": "30",
+      "pictureUrl": "https://avatars3.githubusercontent.com/u/139426?v=4",
+      "sumOfHoursPrsWaiting": "173"
+    }
+  ],
+  "errors": {}
+}

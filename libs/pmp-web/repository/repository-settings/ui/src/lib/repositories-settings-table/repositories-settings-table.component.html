@@ -1,7 +1,7 @@
 <div class="table-action__button-wrapper">
   <ng-content select="[tableAction]"></ng-content>
 </div>
-<mat-table matSort [dataSource]="dataSource">
+<mat-table matSort [dataSource]="dataSource" data-test="repo-settings-table">
   <!-- Avatar Column -->
   <ng-container matColumnDef="avatar">
     <mat-header-cell *matHeaderCellDef class="avatar-column"></mat-header-cell>
@@ -15,7 +15,7 @@
     <mat-header-cell *matHeaderCellDef mat-sort-header>
       <span>Name</span>
     </mat-header-cell>
-    <mat-cell *matCellDef="let element">
+    <mat-cell *matCellDef="let element" data-test="repo-settings-table__name-col-cell">
       {{ element.name }}
     </mat-cell>
   </ng-container>
@@ -46,7 +46,11 @@
       <span>Edit</span>
     </mat-header-cell>
     <mat-cell *matCellDef="let element">
-      <button (click)="onEditRepository(element)" mat-icon-button>
+      <button
+        (click)="onEditRepository(element)"
+        mat-icon-button
+        data-test="repo-settings-table__edit-button"
+      >
         <mat-icon>edit</mat-icon>
       </button>
     </mat-cell>
@@ -58,7 +62,11 @@
       <span>Delete</span>
     </mat-header-cell>
     <mat-cell *matCellDef="let element">
-      <button (click)="onDeleteRepository(element)" mat-icon-button>
+      <button
+        (click)="onDeleteRepository(element)"
+        mat-icon-button
+        data-test="repo-settings-table__delete-button"
+      >
         <mat-icon>delete</mat-icon>
       </button>
     </mat-cell>

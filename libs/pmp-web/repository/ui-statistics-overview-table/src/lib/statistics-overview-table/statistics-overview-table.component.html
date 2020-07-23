@@ -1,9 +1,13 @@
-<mat-table matSort [dataSource]="dataSource">
+<mat-table matSort [dataSource]="dataSource" data-test="statistics-overview-table">
   <!-- Avatar Column -->
   <ng-container matColumnDef="avatar">
     <mat-header-cell *matHeaderCellDef class="avatar-column"></mat-header-cell>
     <mat-cell *matCellDef="let element" class="avatar-column">
-      <img [src]="element.avatarUrl || element.pictureUrl" class="avatar-column__empty-space" />
+      <img
+        [src]="element.avatarUrl || element.pictureUrl"
+        class="avatar-column__empty-space"
+        data-test="avatar-column__image"
+      />
     </mat-cell>
   </ng-container>
 
@@ -12,7 +16,7 @@
     <mat-header-cell *matHeaderCellDef mat-sort-header>
       <span>{{ 'Name' }}</span>
     </mat-header-cell>
-    <mat-cell *matCellDef="let element">
+    <mat-cell *matCellDef="let element" data-test="statistics-overview-table__name-col-cell">
       {{ element.name }}
     </mat-cell>
   </ng-container>
@@ -22,7 +26,7 @@
     <mat-header-cell *matHeaderCellDef mat-sort-header>
       <span> {{ 'Pending PR' }}</span>
     </mat-header-cell>
-    <mat-cell *matCellDef="let element">
+    <mat-cell *matCellDef="let element" data-test="statistics-overview-table__pending-pr-col-cell">
       {{ element.pendingPrs }}
     </mat-cell>
   </ng-container>
@@ -32,7 +36,10 @@
     <mat-header-cell *matHeaderCellDef mat-sort-header>
       <span>{{ 'Sum of time PR waiting' }}</span>
     </mat-header-cell>
-    <mat-cell *matCellDef="let element">
+    <mat-cell
+      *matCellDef="let element"
+      data-test="statistics-overview-table__sum-of-hours-col-cell"
+    >
       {{ element.sumOfHoursPrsWaiting | timeAgo }}
     </mat-cell>
   </ng-container>
@@ -42,7 +49,10 @@
     <mat-header-cell *matHeaderCellDef mat-sort-header>
       <span>{{ 'To check [lines of code]' }}</span>
     </mat-header-cell>
-    <mat-cell *matCellDef="let element">
+    <mat-cell
+      *matCellDef="let element"
+      data-test="statistics-overview-table__lines-of-code-col-cell"
+    >
       {{ element.linesOfCodeToCheck }}
     </mat-cell>
   </ng-container>
@@ -52,7 +62,7 @@
     <mat-header-cell *matHeaderCellDef mat-sort-header>
       <span>{{ 'Longest PR [lines of code]' }}</span>
     </mat-header-cell>
-    <mat-cell *matCellDef="let element">
+    <mat-cell *matCellDef="let element" data-test="statistics-overview-table__longest-pr-col-cell">
       {{ element.longestPrLinesOfCode }}
     </mat-cell>
   </ng-container>
@@ -61,7 +71,7 @@
   <ng-container matColumnDef="link">
     <mat-header-cell *matHeaderCellDef class="link-column"></mat-header-cell>
     <mat-cell *matCellDef="let element" [matTooltip]="'See details'" class="link-column">
-      <mat-icon (click)="onNavigateToItem(element)">launch</mat-icon>
+      <mat-icon (click)="onNavigateToItem(element)" data-test="link-column__icon">launch</mat-icon>
     </mat-cell>
   </ng-container>
 

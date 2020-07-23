@@ -101,6 +101,7 @@
         'api-e2e',
         'api-user',
         'web',
+        'web-e2e',
         'web-repository'
       ]
     ]

@@ -1,21 +1,37 @@
 <h1 mat-dialog-title>{{ dialogTitle }}</h1>
 <div mat-dialog-content>
-  <form [formGroup]="form" class="form--container">
+  <form [formGroup]="form" class="form--container" data-test="repository-dialog">
     <mat-form-field *ngIf="!isEditMode">
       <mat-label>Repository Url</mat-label>
-      <input formControlName="repositoryUrl" matInput />
+      <input
+        formControlName="repositoryUrl"
+        matInput
+        data-test="repository-dialog__repository-url-input"
+      />
       <mat-error>
         <va-validation-messages [control]="form.controls.repositoryUrl"></va-validation-messages>
       </mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Max pull request lines</mat-label>
-      <input min="1" type="number" formControlName="maxLines" matInput />
+      <input
+        min="1"
+        type="number"
+        formControlName="maxLines"
+        matInput
+        data-test="repository-dialog__max-lines-input"
+      />
     </mat-form-field>
     <div class="form-fields--container" [formGroup]="form.controls.maxWaitingTimeDefinition">
       <mat-form-field>
         <mat-label>Max waiting time</mat-label>
-        <input min="1" type="number" formControlName="maxWaitingTime" matInput />
+        <input
+          min="1"
+          type="number"
+          formControlName="maxWaitingTime"
+          matInput
+          data-test="repository-dialog__max-waiting-input"
+        />
       </mat-form-field>
       <mat-form-field class="time-format--selector">
         <mat-label>Unit</mat-label>
@@ -37,6 +53,7 @@
     mat-button
     color="primary"
     type="submit"
+    data-test="repository-dialog__submit-button"
     [disabled]="form.invalid || !form.dirty"
     (click)="submit()"
   >
