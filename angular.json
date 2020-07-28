@@ -2127,6 +2127,70 @@
           "styleext": "scss"
         }
       }
+    },
+    "pmp-web-shared-util-google-analytics": {
+      "projectType": "library",
+      "root": "libs/pmp-web/shared/util-google-analytics",
+      "sourceRoot": "libs/pmp-web/shared/util-google-analytics/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shared/util-google-analytics/tsconfig.lib.json",
+              "libs/pmp-web/shared/util-google-analytics/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/util-google-analytics/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shared/util-google-analytics/jest.config.js",
+            "tsConfig": "libs/pmp-web/shared/util-google-analytics/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/pmp-web/shared/util-google-analytics/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "pmp-web-shell": {
+      "projectType": "library",
+      "root": "libs/pmp-web/shell",
+      "sourceRoot": "libs/pmp-web/shell/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shell/tsconfig.lib.json",
+              "libs/pmp-web/shell/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shell/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shell/jest.config.js",
+            "tsConfig": "libs/pmp-web/shell/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/pmp-web/shell/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
