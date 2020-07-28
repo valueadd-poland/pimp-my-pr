@@ -5,6 +5,7 @@ import { PmpWebRepositoryShellModule } from '@pimp-my-pr/pmp-web/repository/shel
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { PmpWebShellModule } from '@pimp-my-pr/pmp-web/shell';
 
 @NgModule({
   declarations: [AppComponent],
@@ -12,7 +13,8 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     PmpWebSharedCoreModule,
     PmpWebRepositoryShellModule,
-    PmpWebAuthShellModule
+    PmpWebAuthShellModule,
+    PmpWebShellModule
   ],
   bootstrap: [AppComponent]
 })

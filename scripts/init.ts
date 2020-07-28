@@ -7,7 +7,8 @@ const {
   GITHUB_CLIENT_ID,
   BITBUCKET_CLIENT_ID,
   GITLAB_CLIENT_ID,
-  GITLAB_REDIRECT_URI
+  GITLAB_REDIRECT_URI,
+  GOOGLE_ANALYTICS_ID
 } = process.env;
 
 function initPmpWebEnvironment(): void {
@@ -29,6 +30,12 @@ function initPmpWebEnvironment(): void {
   replaceInFiles(
     `"{{gitlabRedirectUri}}"`,
     `${GITLAB_REDIRECT_URI ? `"${GITLAB_REDIRECT_URI}"` : null}`,
+    [environmentFile]
+  );
+
+  replaceInFiles(
+    `"{{googleAnalyticsId}}"`,
+    `${GOOGLE_ANALYTICS_ID ? `"${GOOGLE_ANALYTICS_ID}"` : null}`,
     [environmentFile]
   );
 }

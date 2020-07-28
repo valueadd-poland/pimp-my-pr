@@ -217,6 +217,12 @@
     },
     "pmp-web-shared-styles": {
       "tags": ["scope:shared", "type:styles", "platform:web"]
+    },
+    "pmp-web-shared-util-google-analytics": {
+      "tags": ["platform:web", "scope:shared", "type:util"]
+    },
+    "pmp-web-shell": {
+      "tags": ["platform:web", "scope:pmp-web", "type:shell"]
     }
   },
   "tasksRunnerOptions": {

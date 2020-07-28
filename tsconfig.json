@@ -149,7 +149,10 @@
       "@pimp-my-pr/server/auth/infrastructure-remote-token-crypto": [
         "libs/server/auth/infrastructure-remote-token-crypto/src/index.ts"
       ],
-      "@pimp-my-pr/pmp-web/shared/styles": ["libs/pmp-web/shared/styles/src/index.ts"]
+      "@pimp-my-pr/pmp-web/shared/styles": ["libs/pmp-web/shared/styles/src/index.ts"],
+      "@pimp-my-pr/pmp-web/shared/util-google-analytics": [
+        "libs/pmp-web/shared/util-google-analytics/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

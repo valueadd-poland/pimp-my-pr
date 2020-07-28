@@ -78,6 +78,10 @@
             "onlyDependOnLibsWithTags": ["scope:user", "scope:shared"]
           },
           {
+            "sourceTag": "scope:pmp-web",
+            "onlyDependOnLibsWithTags": ["scope:pmp-web", "scope:shared"]
+          },
+          {
             "sourceTag": "type:public",
             "onlyDependOnLibsWithTags": ["*"]
           },
