@@ -3,5 +3,6 @@ export class Environment {
   githubClientId: string;
   gitlabClientId: string;
   gitlabRedirectUri: string;
+  googleAnalyticsId: string;
   production: boolean;
 }
