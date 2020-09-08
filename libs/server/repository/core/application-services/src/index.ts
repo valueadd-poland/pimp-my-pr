@@ -10,3 +10,5 @@ export * from './lib/commands/add-repository/add-repository.command';
 export * from './lib/commands/delete-repository/delete-repository.command';
 export * from './lib/queries/list-repositories/list-repositories.read-model';
 export * from './lib/commands/edit-repository/edit-repository.command';
+export * from './lib/queries/get-single-repository-data/get-single-repository-data.handler';
+export * from './lib/queries/get-single-repository-data/single-repository-data.read-model';

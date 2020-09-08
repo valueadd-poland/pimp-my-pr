@@ -10,6 +10,7 @@ import { RepositoryPartialState } from './repository.reducer';
 import { repositoryQuery } from './repository.selectors';
 import { ActionStatusResolverService } from '@pimp-my-pr/pmp-web/shared/util-ngrx';
 import { Observable } from 'rxjs';
+import { AddRepositorySuccessPayload } from '@pimp-my-pr/pmp-web/repository/domain';
 
 @Injectable()
 export class RepositoryFacade {
@@ -26,8 +27,8 @@ export class RepositoryFacade {
     this.store.dispatch(new fromRepositoryActions.GetRepositoryCollection());
   }
 
-  addRepository(data: AddRepositoryPayload): Observable<void> {
-    return this.actionStatusResolverService.resolve(
+  addRepository(data: AddRepositoryPayload): Observable<AddRepositorySuccessPayload> {
+    return this.actionStatusResolverService.resolve<AddRepositorySuccessPayload>(
       new fromRepositoryActions.AddRepository(data),
       fromRepositoryActions.Types.AddRepositorySuccess,
       fromRepositoryActions.Types.AddRepositoryFail

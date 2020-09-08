@@ -6,7 +6,8 @@ import {
   EditRepositoryCommand,
   RepositoriesStatisticsItemReadModel,
   ReviewersStatisticsItemReadModel,
-  ReviewerStatisticsReadModel
+  ReviewerStatisticsReadModel,
+  SingleRepositoryDataReadModel
 } from '@pimp-my-pr/server/repository/core/application-services';
 import { Platform } from '@pimp-my-pr/shared/domain';
 import { AddRepositoryCommand } from './commands/add-repository/add-repository.command';
@@ -16,13 +17,20 @@ import { ListRepositoriesStatisticsQuery } from './queries/list-repositories-sta
 import { ListRepositoriesQuery } from './queries/list-repositories/list-repositories.query';
 import { ListReviewersStatisticsQuery } from './queries/list-reviewers-statistics/list-reviewers-statistics.query';
 import { ListRepositoriesReadModel } from './queries/list-repositories/list-repositories.read-model';
+import { GetSingleRepositoryDataQuery } from './queries/get-single-repository-data/get-single-repository-data.query';
 
 @Injectable()
 export class RepositoryFacade {
   constructor(private commandBus: CommandBus, private queryBus: QueryBus) {}
 
-  addRepository(command: AddRepositoryCommand): Promise<void> {
-    return this.commandBus.execute(command);
+  addRepository(command: AddRepositoryCommand): Promise<SingleRepositoryDataReadModel> {
+    return this.commandBus
+      .execute(command)
+      .then(_ =>
+        this.queryBus.execute(
+          new GetSingleRepositoryDataQuery(command.userId, command.repositoryName)
+        )
+      );
   }
 
   deleteRepository(command: DeleteRepositoryCommand): Promise<void> {
