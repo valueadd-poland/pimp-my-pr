@@ -8,6 +8,7 @@ import { AddEditRepositoryDialogData, Repository } from '@pimp-my-pr/pmp-web/rep
 import { SnackbarService } from '@pimp-my-pr/pmp-web/shared/domain';
 import { AddEditRepositoryDialogService } from './add-edit-repository-dialog.service';
 import { Router } from '@angular/router';
+import { ApiException } from '@pimp-my-pr/pmp-web/shared/domain';
 
 @UntilDestroy()
 @Component({
@@ -113,8 +114,8 @@ export class AddEditRepositoryDialogComponent implements OnInit, OnDestroy {
           this.router.navigate(['repositories', payload.repository.id]);
           this.dialogRef.close();
         },
-        error => {
-          this.snackbarService.open('Something went wrong. Repository was not added');
+        (error: ApiException) => {
+          this.snackbarService.open(error.message);
         }
       );
   }
