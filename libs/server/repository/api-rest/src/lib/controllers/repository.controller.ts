@@ -12,7 +12,8 @@ import {
   DeleteRepositoryCommand,
   EditRepositoryCommand,
   RepositoryFacade,
-  ListRepositoriesReadModel
+  ListRepositoriesReadModel,
+  SingleRepositoryDataReadModel
 } from '@pimp-my-pr/server/repository/core/application-services';
 import { extractFullName } from '@pimp-my-pr/server/shared/util-repository';
 import { AddRepositoryDto } from '../dtos/add-repository.dto';
@@ -37,7 +38,7 @@ export class RepositoryController {
     @Body() addRepositoryDto: AddRepositoryDto,
     @Credentials() credentials: RequestCredentials,
     @CurrentUserId() userId: string
-  ): Promise<void> {
+  ): Promise<SingleRepositoryDataReadModel> {
     return this.repositoryFacade.addRepository(
       new AddRepositoryCommand(
         extractFullName(addRepositoryDto.repositoryUrl),

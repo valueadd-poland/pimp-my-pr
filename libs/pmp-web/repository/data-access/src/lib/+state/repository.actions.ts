@@ -6,6 +6,7 @@ import {
   EditRepositoryPayload,
   Repository
 } from '@pimp-my-pr/pmp-web/repository/domain';
+import { AddRepositorySuccessPayload } from '@pimp-my-pr/pmp-web/repository/domain';
 
 export namespace fromRepositoryActions {
   export enum Types {
@@ -53,6 +54,8 @@ export namespace fromRepositoryActions {
 
   export class AddRepositorySuccess implements Action {
     readonly type = Types.AddRepositorySuccess;
+
+    constructor(public payload: AddRepositorySuccessPayload) {}
   }
 
   export class DeleteRepository implements Action {

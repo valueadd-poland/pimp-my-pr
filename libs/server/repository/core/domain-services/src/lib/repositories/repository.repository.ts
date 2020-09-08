@@ -8,6 +8,8 @@ export abstract class RepositoryRepository {
 
   abstract getById(id: string): Promise<RepositoryEntity>;
 
+  abstract getByData(userId: string, name: string, owner: string): Promise<RepositoryEntity>;
+
   abstract loadRepositoryByName(
     fullName: string,
     token: string,

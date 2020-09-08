@@ -28,8 +28,10 @@ export class RepositoryDataService {
       .pipe(map(res => res.data));
   }
 
-  addRepository(data: AddRepositoryPayload): Observable<void> {
-    return this.http.post<void>(this.endpoints.addRepository.url(), data);
+  addRepository(data: AddRepositoryPayload): Observable<Repository> {
+    return this.http
+      .post<IResponse<Repository>>(this.endpoints.addRepository.url(), data)
+      .pipe(map(resp => resp.data));
   }
 
   deleteRepository(data: DeleteRepositoryPayload): Observable<void> {

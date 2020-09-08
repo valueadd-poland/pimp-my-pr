@@ -33,6 +33,10 @@ export class RepositoryRepositoryAdapter extends RepositoryRepository {
     return this.typeOrmRepository.findOneOrFail(id);
   }
 
+  getByData(userId: string, name: string, owner: string): Promise<RepositoryEntity> {
+    return this.typeOrmRepository.findOne({ userId, name });
+  }
+
   loadRepositoryByName(
     fullName: string,
     token: string,
