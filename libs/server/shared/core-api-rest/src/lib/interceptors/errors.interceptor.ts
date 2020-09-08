@@ -5,6 +5,7 @@ import {
   NestInterceptor,
   NotFoundException,
   UnauthorizedException,
+  ConflictException,
   UnprocessableEntityException
 } from '@nestjs/common';
 import {
@@ -15,6 +16,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { EntityNotFoundError } from 'typeorm/error/EntityNotFoundError';
+import { CoreResourceAlreadyExistsException } from '@pimp-my-pr/server/shared/domain';
 
 @Injectable()
 export class ErrorsInterceptor implements NestInterceptor {
@@ -25,12 +27,15 @@ export class ErrorsInterceptor implements NestInterceptor {
           return throwError(new NotFoundException(err.message));
         }
         if (err instanceof CoreUnauthorizedFoundException) {
-          return throwError(new UnauthorizedException());
+          return throwError(new UnauthorizedException(err.message));
         }
         if (err instanceof CoreUnprocessableEntityException) {
-          return throwError(new UnprocessableEntityException());
+          return throwError(new UnprocessableEntityException(err.message));
         }
-        return throwError(err);
+        if (err instanceof CoreResourceAlreadyExistsException) {
+          return throwError(new ConflictException(err.message));
+        }
+        if (err) return throwError(err);
       })
     );
   }

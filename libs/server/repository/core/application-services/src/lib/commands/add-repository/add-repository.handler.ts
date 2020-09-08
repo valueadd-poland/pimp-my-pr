@@ -1,5 +1,10 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
+import {
+  getOwnerFromFullRepoName,
+  getRepoNameFromFullRepoName,
+  RepositoryAlreadyExists,
+  RepositoryEntity
+} from '@pimp-my-pr/server/repository/core/domain';
 import { RepositoryRepository } from '@pimp-my-pr/server/repository/core/domain-services';
 import { AddRepositoryCommand } from './add-repository.command';
 
@@ -8,7 +13,16 @@ export class AddRepositoryHandler implements ICommandHandler<AddRepositoryComman
   constructor(private repositoryRepository: RepositoryRepository) {}
 
   async execute(command: AddRepositoryCommand): Promise<void> {
-    const { repositoryName, maxLines, maxWaitingTime } = command;
+    const { repositoryName, maxLines, maxWaitingTime, userId } = command;
+    if (
+      await this.repositoryRepository.getByData(
+        userId,
+        getRepoNameFromFullRepoName(repositoryName),
+        getOwnerFromFullRepoName(repositoryName)
+      )
+    ) {
+      throw new RepositoryAlreadyExists(repositoryName);
+    }
 
     const repositoryData = {
       ...(await this.repositoryRepository.loadRepositoryByName(

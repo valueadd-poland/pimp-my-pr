@@ -9,8 +9,10 @@ import { fromRepositoryActions } from './repository.actions';
 import { RepositoryPartialState } from './repository.reducer';
 import { repositoryQuery } from './repository.selectors';
 import { ActionStatusResolverService } from '@pimp-my-pr/pmp-web/shared/util-ngrx';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { AddRepositorySuccessPayload } from '@pimp-my-pr/pmp-web/repository/domain';
+import { catchError, map } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class RepositoryFacade {
@@ -28,11 +30,13 @@ export class RepositoryFacade {
   }
 
   addRepository(data: AddRepositoryPayload): Observable<AddRepositorySuccessPayload> {
-    return this.actionStatusResolverService.resolve<AddRepositorySuccessPayload>(
-      new fromRepositoryActions.AddRepository(data),
-      fromRepositoryActions.Types.AddRepositorySuccess,
-      fromRepositoryActions.Types.AddRepositoryFail
-    );
+    return this.actionStatusResolverService
+      .resolve<AddRepositorySuccessPayload>(
+        new fromRepositoryActions.AddRepository(data),
+        fromRepositoryActions.Types.AddRepositorySuccess,
+        fromRepositoryActions.Types.AddRepositoryFail
+      )
+      .pipe(catchError((error: HttpErrorResponse) => throwError({ message: error.error.error })));
   }
 
   deleteRepository(data: DeleteRepositoryPayload): Observable<void> {
