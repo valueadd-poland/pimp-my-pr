@@ -1,0 +1,25 @@
+@mixin half-width-container {
+  width: 50%;
+  margin: auto;
+}
+
+.settings-container {
+  @include half-width-container;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-container__checkbox {
+  margin: 2px 0 10px;
+}
+
+.button-container {
+  @include half-width-container;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 auto 10px;
+}
+
+.settings-container__field {
+  margin-top: 5px;
+}

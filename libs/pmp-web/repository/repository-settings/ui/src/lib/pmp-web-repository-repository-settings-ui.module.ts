@@ -8,6 +8,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { PmpWebSharedUtilModule } from '@pimp-my-pr/pmp-web/shared/util';
 import { ContentLoaderModule } from '@ngneat/content-loader';
 import { RepositoriesSettingsTableComponent } from './repositories-settings-table/repositories-settings-table.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { ValidationMessagesModule } from '@valueadd/validation-messages';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { TimeInputComponent } from './time-input/time-input.component';
 
 @NgModule({
   imports: [
@@ -18,9 +24,14 @@ import { RepositoriesSettingsTableComponent } from './repositories-settings-tabl
     MatSortModule,
     MatTooltipModule,
     ContentLoaderModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    ValidationMessagesModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
-  declarations: [RepositoriesSettingsTableComponent],
-  exports: [RepositoriesSettingsTableComponent]
+  declarations: [RepositoriesSettingsTableComponent, TimeInputComponent],
+  exports: [RepositoriesSettingsTableComponent, TimeInputComponent]
 })
 export class PmpWebRepositoryRepositorySettingsUiModule {}

@@ -155,6 +155,12 @@
       ],
       "@pimp-my-pr/shared/util-time-diff-in-hours": [
         "libs/shared/util-time-diff-in-hours/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/repository/repository-settings/data-access": [
+        "libs/pmp-web/repository/repository-settings/data-access/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/repository/repository-settings/util-validators": [
+        "libs/pmp-web/repository/repository-settings/util-validators/src/index.ts"
       ]
     }
   },

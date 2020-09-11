@@ -10,6 +10,14 @@
         "$source": "argv",
         "index": 0
       }
+    },
+    "nested": {
+      "type": "boolean",
+      "description": "Is library nested in grouping directory fallowed by library name"
+    },
+    "dir": {
+      "type": "string",
+      "description": "Directory where library should be placed"
     }
   },
   "required": ["name"]

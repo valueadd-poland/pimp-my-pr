@@ -26,7 +26,7 @@ export default function(schema: any): Rule {
       directory: dir,
       unitTestRunner: 'jest'
     }),
-    externalSchematic('va-schematics', 'ngrx', {
+    externalSchematic('@valueadd/schematics', 'ngrx', {
       name: stateName,
       module: path.join(libModuleDir, libModuleName),
       facade: true

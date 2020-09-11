@@ -226,6 +226,12 @@
     },
     "shared-util-time-diff-in-hours": {
       "tags": ["platform:any", "scope:shared", "type:util"]
+    },
+    "pmp-web-repository-repository-settings-data-access": {
+      "tags": ["scope:repository", "type:data-access", "platform:web"]
+    },
+    "pmp-web-repository-repository-settings-util-validators": {
+      "tags": ["scope:repository", "type:util", "platform:web"]
     }
   },
   "tasksRunnerOptions": {

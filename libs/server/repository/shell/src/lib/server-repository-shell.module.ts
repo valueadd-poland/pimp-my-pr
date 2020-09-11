@@ -4,7 +4,8 @@ import { ServerRepositoryCoreApplicationServicesModule } from '@pimp-my-pr/serve
 import {
   prRepositoryFactoryToken,
   RepositoryRepository,
-  reviewerRepositoryFactoryToken
+  reviewerRepositoryFactoryToken,
+  SettingsRepository
 } from '@pimp-my-pr/server/repository/core/domain-services';
 import {
   BitbucketPrRepository,
@@ -18,6 +19,7 @@ import {
   GitlabReviewerRepository,
   remoteRepositoryRepositoryFactoryToken,
   RepositoryRepositoryAdapter,
+  SettingsRepositoryAdapter,
   ServerRepositoryInfrastructureModule
 } from '@pimp-my-pr/server/repository/infrastructure';
 import { prRepositoryFactoryFactory } from './factories/pr-repository.factory';
@@ -43,6 +45,10 @@ const providers = [
   {
     provide: RepositoryRepository,
     useClass: RepositoryRepositoryAdapter
+  },
+  {
+    provide: SettingsRepository,
+    useClass: SettingsRepositoryAdapter
   },
 
   GithubPrRepository,

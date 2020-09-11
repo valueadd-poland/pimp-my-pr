@@ -4,11 +4,13 @@ import { GithubRepositoryRepository } from './github/repositories/github-reposit
 import { RepositoryRepositoryAdapter } from './repositories/repository-repository.adapter';
 import { FeatureRepositoryTypeOrmModule } from './typeorm/feature-repository-type-orm.module';
 import { GitlabRepositoryRepository } from './gitlab/repositories/gitlab-repository.repository';
+import { SettingsRepositoryAdapter } from './repositories/settings-repository.adapter';
 
 @Module({
   imports: [FeatureRepositoryTypeOrmModule],
   providers: [
     RepositoryRepositoryAdapter,
+    SettingsRepositoryAdapter,
     BitbucketRepositoryRepository,
     GithubRepositoryRepository,
     GitlabRepositoryRepository

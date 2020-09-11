@@ -101,7 +101,7 @@ describe('repository-settings', () => {
         expect(value).to.eq('10');
       });
 
-    cy.get('[data-test="repository-dialog__max-waiting-input"]')
+    cy.get('[data-test="repository-dialog__max-waiting-input"] input')
       .should('exist')
       .invoke('val')
       .then(value => {

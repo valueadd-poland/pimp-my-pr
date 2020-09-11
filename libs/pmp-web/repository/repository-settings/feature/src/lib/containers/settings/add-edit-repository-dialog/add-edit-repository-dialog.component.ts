@@ -22,14 +22,13 @@ import { ApiException } from '@pimp-my-pr/pmp-web/shared/domain';
   styleUrls: ['./add-edit-repository-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AddEditRepositoryDialogComponent implements OnInit, OnDestroy {
+export class AddEditRepositoryDialogComponent implements OnInit {
   dialogTitle: string;
   form: FormGroup;
   maxWaitingTimeFormControl: FormControl;
   repositoryToEdit: Repository;
   submitMsg: string;
   timeUnitFormControl: FormControl;
-  TimeUnit = TimeUnit;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: AddEditRepositoryDialogData,
@@ -47,65 +46,25 @@ export class AddEditRepositoryDialogComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {}
-
   ngOnInit(): void {
-    this.initForm();
-    this.initializeMaxWaitingTimeDefinitionControls();
-  }
-
-  initForm(): void {
     this.form = this.addEditRepositoryDialogService.initForm(this.repositoryToEdit);
   }
 
-  initializeMaxWaitingTimeDefinitionControls(): void {
-    this.maxWaitingTimeFormControl = this.form.get(
-      'maxWaitingTimeDefinition.maxWaitingTime'
-    ) as FormControl;
-
-    this.timeUnitFormControl = this.form.get('maxWaitingTimeDefinition.timeUnit') as FormControl;
-
-    this.maxWaitingTimeFormControl.valueChanges
-      .pipe(untilDestroyed(this))
-      .subscribe(this.updateTimeUnitValidation);
-  }
-
   submit(): void {
-    if (this.form.invalid) {
-      return;
-    }
-
-    const { maxLines, repositoryUrl, maxPrs } = this.form.value;
-
-    const maxWaitingTime = this.maxWaitingTimeFormControl.value
-      ? this.maxWaitingTimeFormControl.value * this.timeUnitFormControl.value
-      : null;
-
-    if (this.repositoryToEdit) {
-      this.editRepository({
-        maxLines,
-        maxWaitingTime,
-        maxPrs,
-        repositoryId: this.repositoryToEdit.id
-      });
-    } else {
-      this.addRepository(repositoryUrl, maxLines, maxWaitingTime, maxPrs);
+    if (this.form.valid) {
+      const { repositoryUrl, maxLines, maxWaitingTime, maxPrs } = this.form.value;
+      if (this.repositoryToEdit) {
+        this.editRepository({
+          maxLines,
+          maxWaitingTime,
+          maxPrs,
+          repositoryId: this.repositoryToEdit.id
+        });
+      } else {
+        this.addRepository(repositoryUrl, maxLines, maxWaitingTime, maxPrs);
+      }
     }
   }
-
-  updateTimeUnitValidation = (maxWaitingTime: number) => {
-    if (maxWaitingTime && maxWaitingTime > 0) {
-      this.timeUnitFormControl.setValidators(Validators.required);
-      this.timeUnitFormControl.markAsTouched();
-      this.timeUnitFormControl.enable();
-    } else {
-      this.timeUnitFormControl.markAsUntouched();
-      this.timeUnitFormControl.disable();
-      this.timeUnitFormControl.clearValidators();
-    }
-
-    this.timeUnitFormControl.updateValueAndValidity();
-  };
 
   private addRepository(
     repositoryUrl: string,

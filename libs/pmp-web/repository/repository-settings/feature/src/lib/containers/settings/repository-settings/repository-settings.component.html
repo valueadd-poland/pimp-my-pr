@@ -1,0 +1,19 @@
+<pmp-repositories-settings-table
+  (deleteRepository)="onDeleteRespository($event)"
+  (editRepository)="onEditRepository($event)"
+  [data]="repositoryCollection$ | async"
+  [isLoading]="repositoryCollectionLoading$ | async"
+>
+  <ng-container tableAction>
+    <button
+      (click)="openAddRepoDialog()"
+      [matTooltip]="'Add repository'"
+      class="table-action__button"
+      data-test="repository-settings__table-action"
+      color="primary"
+      mat-fab
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </ng-container>
+</pmp-repositories-settings-table>
