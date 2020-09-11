@@ -2192,6 +2192,76 @@
         }
       }
     },
+    "pmp-web-repository-repository-settings-data-access": {
+      "projectType": "library",
+      "root": "libs/pmp-web/repository/repository-settings/data-access",
+      "sourceRoot": "libs/pmp-web/repository/repository-settings/data-access/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/repository/repository-settings/data-access/tsconfig.lib.json",
+              "libs/pmp-web/repository/repository-settings/data-access/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/pmp-web/repository/repository-settings/data-access/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/repository/repository-settings/data-access/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/repository-settings/data-access/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/pmp-web/repository/repository-settings/data-access/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "pmp-web-repository-repository-settings-util-validators": {
+      "projectType": "library",
+      "root": "libs/pmp-web/repository/repository-settings/util-validators",
+      "sourceRoot": "libs/pmp-web/repository/repository-settings/util-validators/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/repository/repository-settings/util-validators/tsconfig.lib.json",
+              "libs/pmp-web/repository/repository-settings/util-validators/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/pmp-web/repository/repository-settings/util-validators/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/repository/repository-settings/util-validators/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/repository-settings/util-validators/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/pmp-web/repository/repository-settings/util-validators/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
     "shared-util-time-diff-in-hours": {
       "root": "libs/shared/util-time-diff-in-hours",
       "sourceRoot": "libs/shared/util-time-diff-in-hours/src",

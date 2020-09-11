@@ -10,6 +10,11 @@ import { RepositoryFacade } from './repository.facade';
 import { DeleteRepositoryHandler } from './commands/delete-repository/delete-repository.handler';
 import { EditRepositoryHandler } from './commands/edit-repository/edit-repository.handler';
 import { GetSingleRepositoryDataHandler } from './queries/get-single-repository-data/get-single-repository-data.handler';
+import { GetUserSettingsHandler } from './queries/get-user-settings/get-user-settings.handler';
+import { DeleteSettingHandler } from './commands/delete-setting/delete-setting.handler';
+import { SettingsFacade } from './settings.facade';
+import { EditSettingsHandler } from './commands/edit-settings/edit-settings.handler';
+import { UserAddedEventHandler } from './events/user-added/user-added.event-handler';
 
 const QueryHandlers = [
   AddRepositoryHandler,
@@ -20,12 +25,16 @@ const QueryHandlers = [
   GetSingleRepositoryDataHandler,
   ListRepositoriesStatisticsHandler,
   ListReviewersStatisticsHandler,
-  ListRepositoriesHandler
+  ListRepositoriesHandler,
+  GetUserSettingsHandler,
+  DeleteSettingHandler,
+  EditSettingsHandler,
+  UserAddedEventHandler
 ];
 
 @Module({
   imports: [CqrsModule],
-  providers: [RepositoryFacade, ...QueryHandlers],
-  exports: [RepositoryFacade]
+  providers: [RepositoryFacade, SettingsFacade, ...QueryHandlers],
+  exports: [RepositoryFacade, SettingsFacade]
 })
 export class ServerRepositoryCoreApplicationServicesModule {}

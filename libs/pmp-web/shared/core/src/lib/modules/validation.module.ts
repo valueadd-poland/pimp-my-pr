@@ -11,6 +11,8 @@ export class ValidationModule {
     min: 'This field value should be greater than {{value}}.',
     minlength: 'This field should contain at least {{value}} characters.',
     required: 'This field is required.',
+    notInteger: 'Integer required',
+    toManyDecimalPlaces: 'To many decimal places',
     pattern: {
       message: 'patternIssue',
       validatorValue: 'requiredPattern',

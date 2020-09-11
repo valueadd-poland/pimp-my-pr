@@ -11,7 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Repository } from '@pimp-my-pr/pmp-web/repository/domain';
 
 @Component({
-  selector: 'pimp-my-pr-repositories-settings-table',
+  selector: 'pmp-repositories-settings-table',
   templateUrl: './repositories-settings-table.component.html',
   styleUrls: ['./repositories-settings-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

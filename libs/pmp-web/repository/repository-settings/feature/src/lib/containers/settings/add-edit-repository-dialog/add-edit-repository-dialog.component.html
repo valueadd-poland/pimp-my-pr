@@ -13,7 +13,6 @@
         <va-validation-messages [control]="form.controls.repositoryUrl"></va-validation-messages>
       </mat-error>
     </mat-form-field>
-
     <mat-form-field>
       <mat-label>Max pull request lines</mat-label>
       <input
@@ -22,37 +21,15 @@
         matInput
         data-test="repository-dialog__max-lines-input"
     /></mat-form-field>
-
     <mat-form-field>
       <mat-label>Max PRs</mat-label>
       <input type="number" formControlName="maxPrs" matInput />
     </mat-form-field>
-
-    <div class="form-fields--container" [formGroup]="form.controls.maxWaitingTimeDefinition">
-      <mat-form-field>
-        <mat-label>Max waiting time</mat-label>
-        <input
-          type="number"
-          formControlName="maxWaitingTime"
-          matInput
-          data-test="repository-dialog__max-waiting-input"
-        />
-      </mat-form-field>
-
-      <mat-form-field class="time-format--selector">
-        <mat-label>Unit</mat-label>
-
-        <mat-select formControlName="timeUnit">
-          <mat-option *ngFor="let unit of TimeUnit | keyvalue" [value]="unit.value">
-            {{ unit.key }}
-          </mat-option>
-        </mat-select>
-
-        <mat-error>
-          <va-validation-messages [control]="timeUnitFormControl"></va-validation-messages>
-        </mat-error>
-      </mat-form-field>
-    </div>
+    <pmp-time-input
+      formControlName="maxWaitingTimeDefinition"
+      label="Max waiting time"
+      data-test="repository-dialog__max-waiting-input"
+    ></pmp-time-input>
   </form>
 </div>
 

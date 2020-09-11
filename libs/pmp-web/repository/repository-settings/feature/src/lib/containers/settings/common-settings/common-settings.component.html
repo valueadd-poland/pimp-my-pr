@@ -1,0 +1,45 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Common settings</mat-card-title>
+    <mat-card-subtitle>Settings not related to a particular repository</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form" class="settings-container">
+      <ng-container *ngFor="let item of settings$ | async" [ngSwitch]="item.type">
+        <mat-form-field *ngSwitchCase="'string'" class="settings-container__field">
+          <mat-label>{{ translate(item.key) }}</mat-label>
+          <input matInput [formControlName]="item.id" type="text" />
+          <mat-error>
+            <va-validation-messages [control]="form.controls[item.id]"></va-validation-messages>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field *ngSwitchCase="'number'" class="settings-container__field">
+          <mat-label>{{ translate(item.key) }}</mat-label>
+          <input matInput [formControlName]="item.id" type="number" min="0" />
+          <mat-error>
+            <va-validation-messages [control]="form.controls[item.id]"></va-validation-messages>
+          </mat-error>
+        </mat-form-field>
+        <ng-container *ngSwitchCase="'boolean'">
+          <mat-checkbox class="settings-container__checkbox" [formControlName]="item.id">{{
+            translate(item.key)
+          }}</mat-checkbox>
+        </ng-container>
+        <ng-container *ngSwitchCase="'time'">
+          <pmp-time-input
+            [formControl]="form.controls[item.id]"
+            [label]="translate(item.key)"
+            class="settings-container__field"
+          ></pmp-time-input>
+        </ng-container>
+      </ng-container>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="button-container">
+      <button mat-button (click)="submit()" [disabled]="form.pristine || form.invalid">
+        <mat-icon>done</mat-icon> Save
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

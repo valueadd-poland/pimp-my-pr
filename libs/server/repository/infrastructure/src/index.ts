@@ -1,6 +1,7 @@
 export * from './lib/server-repository-infrastructure.module';
 export * from './lib/repositories/remote-repository.repository';
 export * from './lib/repositories/repository-repository.adapter';
+export * from './lib/repositories/settings-repository.adapter';
 
 export * from './lib/bitbucket/repositories/bitbucket-pr.repository';
 export * from './lib/bitbucket/repositories/bitbucket-repository.repository';

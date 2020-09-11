@@ -1,0 +1,15 @@
+<div class="time-field" [formGroup]="form">
+  <mat-form-field>
+    <mat-label>{{ label }}</mat-label>
+    <input min="1" type="number" formControlName="time" matInput />
+    <mat-error>
+      <va-validation-messages [control]="timeControl"></va-validation-messages>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Unit</mat-label>
+    <mat-select formControlName="unit">
+      <mat-option [value]="unit.value" *ngFor="let unit of units">{{ unit.key }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
