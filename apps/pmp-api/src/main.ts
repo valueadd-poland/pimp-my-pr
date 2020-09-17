@@ -9,7 +9,9 @@ async function bootstrap(): Promise<void> {
   const globalPrefix = 'api';
 
   app.setGlobalPrefix(globalPrefix);
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(
+    new ValidationPipe({ transform: true, transformOptions: { enableImplicitConversion: true } })
+  );
 
   const port = process.env.port || 3333;
 

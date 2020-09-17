@@ -2192,6 +2192,38 @@
         }
       }
     },
+    "server-repository-util": {
+      "projectType": "library",
+      "root": "libs/server/repository/util",
+      "sourceRoot": "libs/server/repository/util/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/server/repository/util/tsconfig.lib.json",
+              "libs/server/repository/util/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/server/repository/util/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/server/repository/util/jest.config.js",
+            "tsConfig": "libs/server/repository/util/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/server/repository/util/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
     "pmp-web-repository-repository-settings-data-access": {
       "projectType": "library",
       "root": "libs/pmp-web/repository/repository-settings/data-access",

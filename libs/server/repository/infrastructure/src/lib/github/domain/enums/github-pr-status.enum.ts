@@ -1,4 +1,5 @@
-export enum GithubPrStatus {
-  closed = 'closed',
-  open = 'open'
+export enum GithubPrState {
+  CLOSED = 'closed',
+  OPEN = 'open',
+  ALL = 'all'
 }

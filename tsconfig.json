@@ -153,6 +153,7 @@
       "@pimp-my-pr/pmp-web/shared/util-google-analytics": [
         "libs/pmp-web/shared/util-google-analytics/src/index.ts"
       ],
+      "@pimp-my-pr/server/repository/util": ["libs/server/repository/util/src/index.ts"],
       "@pimp-my-pr/shared/util-time-diff-in-hours": [
         "libs/shared/util-time-diff-in-hours/src/index.ts"
       ],

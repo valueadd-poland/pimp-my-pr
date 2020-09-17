@@ -1,5 +1,5 @@
 import { HttpService, Injectable } from '@nestjs/common';
-import { PrEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { PrEntity, PrState } from '@pimp-my-pr/server/repository/core/domain';
 import { PrRepository } from '@pimp-my-pr/server/repository/core/domain-services';
 import { bitbucketConfig } from '@pimp-my-pr/server/shared/config';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
@@ -12,6 +12,8 @@ import { BitbucketPrDiffEntity } from '../domain/entities/bitbucket-pr-diff.enti
 import { BitbucketPrEntity } from '../domain/entities/bitbucket-pr.entity';
 import { BitbucketPaginatedResponse } from '../domain/interfaces/bitbucket-paginated-response.interface';
 import { mapBitbucketPrDetails } from '../mappers/map-bitbucket-pr-details';
+import { urlWithQueryParams } from '@pimp-my-pr/shared/domain';
+import { BitbucketPrState } from '../domain/enums/bitbucket-pr-state.enum';
 
 @Injectable()
 export class BitbucketPrRepository extends PrRepository {
@@ -26,11 +28,23 @@ export class BitbucketPrRepository extends PrRepository {
     super();
   }
 
-  findByRepositoryId(repositoryId: string, token: string): Promise<PrEntity[]> {
+  findByRepositoryId(
+    repositoryId: string,
+    token: string,
+    { prState = PrState.OPEN, page = 1, onPage = 50 } = {
+      prState: PrState.OPEN,
+      page: 1,
+      onPage: 50
+    }
+  ): Promise<PrEntity[]> {
     return this.getDataFromAllPages(
       this.httpService
         .get<BitbucketPaginatedResponse<BitbucketPrEntity[]>>(
-          this.endpoints.getRepositoryPrs.url({ repositoryId }),
+          urlWithQueryParams(this.endpoints.getRepositoryPrs.url({ repositoryId }), {
+            page: page,
+            pagelen: onPage,
+            state: BitbucketPrState[prState]
+          }),
           { headers: { Authorization: `Bearer ${token}` } }
         )
         .pipe(map(res => res.data)),

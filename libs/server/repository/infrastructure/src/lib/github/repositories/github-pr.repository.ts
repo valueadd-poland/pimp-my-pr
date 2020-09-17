@@ -1,5 +1,5 @@
 import { HttpService, Injectable } from '@nestjs/common';
-import { PrEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { PrEntity, PrState } from '@pimp-my-pr/server/repository/core/domain';
 import { PrRepository } from '@pimp-my-pr/server/repository/core/domain-services';
 import { githubConfig } from '@pimp-my-pr/server/shared/config';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
@@ -9,6 +9,8 @@ import { map, switchMap } from 'rxjs/operators';
 import { GithubPrDetailsEntity } from '../domain/entities/github-pr-details.entity';
 import { GithubPrEntity } from '../domain/entities/github-pr.entity';
 import { mapGithubPr } from '../mappers/map-github-pr';
+import { urlWithQueryParams } from '@pimp-my-pr/shared/domain';
+import { GithubPrState } from '../domain/enums/github-pr-status.enum';
 
 @Injectable()
 export class GithubPrRepository extends PrRepository {
@@ -37,14 +39,33 @@ export class GithubPrRepository extends PrRepository {
       .toPromise();
   }
 
-  findByRepositoryId(repositoryId: string, token: string): Promise<PrEntity[]> {
+  findByRepositoryId(
+    repositoryId: string,
+    token: string,
+    { prState = PrState.OPEN, page = 1, onPage = 50 } = {
+      prState: PrState.OPEN,
+      page: 1,
+      onPage: 50
+    }
+  ): Promise<PrEntity[]> {
     return this.httpService
-      .get<GithubPrEntity[]>(this.endpoints.getRepositoryPrs.url({ fullName: repositoryId }), {
-        headers: { Authorization: `token ${token}` }
-      })
+      .get<GithubPrEntity[]>(
+        urlWithQueryParams(
+          this.endpoints.getRepositoryPrs.url({
+            fullName: repositoryId
+          }),
+          {
+            page: page,
+            state: GithubPrState[prState],
+            per_page: onPage
+          }
+        ),
+        {
+          headers: { Authorization: `token ${token}` }
+        }
+      )
       .pipe(
         map(res => res.data),
-
         switchMap(prs =>
           prs.length ? forkJoin(prs.map(pr => this.get(repositoryId, pr.number, token))) : of([])
         )

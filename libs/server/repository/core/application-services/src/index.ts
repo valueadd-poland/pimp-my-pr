@@ -16,3 +16,6 @@ export * from './lib/commands/edit-repository/edit-repository.command';
 export * from './lib/commands/edit-settings/edit-settings.command';
 export * from './lib/queries/get-single-repository-data/get-single-repository-data.handler';
 export * from './lib/queries/get-single-repository-data/single-repository-data.read-model';
+export * from './lib/queries/get-pr-timeline/get-pr-timeline.query';
+export * from './lib/queries/get-pr-timeline/pr-timeline.read-model';
+export * from './lib/timeline.facade';
