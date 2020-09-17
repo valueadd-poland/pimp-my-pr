@@ -1,5 +1,5 @@
 import { HttpService, Injectable } from '@nestjs/common';
-import { PrEntity } from '@pimp-my-pr/server/repository/core/domain';
+import { PrEntity, PrState } from '@pimp-my-pr/server/repository/core/domain';
 import { PrRepository } from '@pimp-my-pr/server/repository/core/domain-services';
 import { gitlabConfig } from '@pimp-my-pr/server/shared/config';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
@@ -9,6 +9,8 @@ import { map, switchMap } from 'rxjs/operators';
 import { GitlabPrEntity } from '../domain/entities/gitlab-pr.entity';
 import { mapGitlabPr } from '../mappers/map-gitalb-pr';
 import { GitlabPrDetailsEntity } from '../domain/entities/gitlab-pr-details.entity';
+import { urlWithQueryParams } from '@pimp-my-pr/shared/domain';
+import { GithubPrState } from '../../github/domain/enums/github-pr-status.enum';
 
 @Injectable()
 export class GitlabPrRepository extends PrRepository {
@@ -43,10 +45,25 @@ export class GitlabPrRepository extends PrRepository {
       .toPromise();
   }
 
-  findByRepositoryId(repositoryId: string, token: string): Promise<PrEntity[]> {
+  findByRepositoryId(
+    repositoryId: string,
+    token: string,
+    { prState = PrState.OPEN, page = 1, onPage = 50 } = {
+      prState: PrState.OPEN,
+      page: 1,
+      onPage: 50
+    }
+  ): Promise<PrEntity[]> {
     return this.httpService
       .get<GitlabPrEntity[]>(
-        this.endpoints.getRepositoryPrs.url({ fullName: encodeURIComponent(repositoryId) }),
+        urlWithQueryParams(
+          this.endpoints.getRepositoryPrs.url({ fullName: encodeURIComponent(repositoryId) }),
+          {
+            page: page,
+            per_page: onPage,
+            state: GithubPrState[prState]
+          }
+        ),
         {
           headers: { Authorization: `Bearer ${token}` }
         }

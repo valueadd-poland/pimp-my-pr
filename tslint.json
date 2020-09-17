@@ -129,7 +129,7 @@
           },
           {
             "sourceTag": "type:domain",
-            "onlyDependOnLibsWithTags": ["type:domain"]
+            "onlyDependOnLibsWithTags": ["type:domain", "type:util"]
           },
           {
             "sourceTag": "type:domain-services",

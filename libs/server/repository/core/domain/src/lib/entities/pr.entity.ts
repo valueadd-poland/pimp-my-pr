@@ -1,8 +1,9 @@
 import { f } from '@marcj/marshal';
 import { AuthorEntity } from './author.entity';
 import { ReviewerEntity } from './reviewer.entity';
+import { ITimeTrackable } from '@pimp-my-pr/server/repository/util';
 
-export class PrEntity {
+export class PrEntity implements ITimeTrackable {
   @f
   additions: number;
 
