@@ -29,10 +29,11 @@ export class RepositoriesStatisticsItemReadModel extends BaseStatisticsReadModel
     this.maxWaitingTime = repository.maxWaitingTime;
     this.owner = repository.owner;
     this.pictureUrl = repository.pictureUrl;
-    this.maxPrsWarning = prs.length > repository.maxPrs;
-    this.maxLinesWarning = prs.some(pr => pr.linesOfCodeToCheck > repository.maxLines);
-    this.maxWaitingTimeWarning = prs.some(
-      pr => getTimeDiffInHours(pr.updatedAt) > repository.maxWaitingTime
-    );
+    this.maxPrsWarning = repository.maxPrs && prs.length > repository.maxPrs;
+    this.maxLinesWarning =
+      repository.maxLines && prs.some(pr => pr.linesOfCodeToCheck > repository.maxLines);
+    this.maxWaitingTimeWarning =
+      repository.maxWaitingTime &&
+      prs.some(pr => getTimeDiffInHours(pr.updatedAt) > repository.maxWaitingTime);
   }
 }
