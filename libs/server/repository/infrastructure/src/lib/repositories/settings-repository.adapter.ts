@@ -8,6 +8,7 @@ import {
 import { Repository } from 'typeorm';
 import { SettingsRepository } from '@pimp-my-pr/server/repository/core/domain-services';
 import { SettingsSchema } from '../typeorm/schema/settings.schema';
+import { RepositoryCommonSettingType } from '@pimp-my-pr/shared/domain';
 
 @Injectable()
 export class SettingsRepositoryAdapter extends SettingsRepository {
@@ -40,5 +41,15 @@ export class SettingsRepositoryAdapter extends SettingsRepository {
       .where('setting.id = :id', { id })
       .getRawOne<TypeormRawSetting>()
       .then(entity => commonSettingsEntityFactory(entity));
+  }
+
+  getByUserAndType(
+    userId: string,
+    settingType: RepositoryCommonSettingType
+  ): Promise<SettingEntity> {
+    return this.typeOrmRepository.findOne({
+      userId,
+      settingType
+    });
   }
 }

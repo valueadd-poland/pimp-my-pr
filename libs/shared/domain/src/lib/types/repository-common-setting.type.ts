@@ -1,1 +1,1 @@
-export type RepositoryCommonSettingType = 'maxPendingPR' | 'maxSumTimeForPR';
+export type RepositoryCommonSettingType = 'maxPendingPR' | 'maxSumTimeForPR' | 'maxTotalLines';
