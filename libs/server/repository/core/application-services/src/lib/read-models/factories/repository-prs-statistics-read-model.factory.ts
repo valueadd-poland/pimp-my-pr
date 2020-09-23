@@ -26,7 +26,6 @@ export const repositoryPrsStatisticsReadModelFactory = (
     prStatistics.maxWaitingTimeWarning =
       !!repository.maxWaitingTime &&
       prStatistics.timeWaitingFromLastChange > repository.maxWaitingTime;
-
     return prStatistics;
   });
 

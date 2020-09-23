@@ -3,6 +3,4 @@ import { PrEntity, ReviewerEntity } from '@pimp-my-pr/server/repository/core/dom
 export interface ReviewerModelWithPr {
   reviewer: ReviewerEntity;
   prs: PrEntity[];
-  maxLinesWarning: boolean;
-  maxWaitingTimeWarning: boolean;
 }

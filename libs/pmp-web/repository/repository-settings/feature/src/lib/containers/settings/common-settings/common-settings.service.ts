@@ -8,7 +8,8 @@ import { validatorsFactory } from '@pimp-my-pr/pmp-web/repository/repository-set
 export class CommonSettingsService {
   private translations = {
     maxPendingPR: 'Max Pending PRs for a reviewer',
-    maxSumTimeForPR: 'Max Sum of time PRs are waiting'
+    maxSumTimeForPR: 'Max Sum of time PRs are waiting',
+    maxTotalLines: 'Max lines to check in pr for a reviewer'
   };
 
   constructor(private fb: FormBuilder) {}

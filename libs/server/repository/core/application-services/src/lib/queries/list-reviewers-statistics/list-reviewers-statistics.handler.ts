@@ -1,15 +1,12 @@
 import { Inject } from '@nestjs/common';
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 
-import {
-  PrEntity,
-  RepositoryEntity,
-  ReviewerEntity
-} from '@pimp-my-pr/server/repository/core/domain';
+import { PrEntity, RepositoryEntity } from '@pimp-my-pr/server/repository/core/domain';
 import {
   PrRepository,
   prRepositoryFactoryToken,
-  RepositoryRepository
+  RepositoryRepository,
+  SettingsRepository
 } from '@pimp-my-pr/server/repository/core/domain-services';
 import { Platform } from '@pimp-my-pr/shared/domain';
 import { ReviewerModelWithPr } from '../../read-models/reviewer-model-with-pr.interface';
@@ -23,7 +20,8 @@ export class ListReviewersStatisticsHandler
   constructor(
     @Inject(prRepositoryFactoryToken)
     private prRepositoryFactory: (platform: Platform) => PrRepository,
-    private repositoryRepository: RepositoryRepository
+    private repositoryRepository: RepositoryRepository,
+    private settingsRepository: SettingsRepository
   ) {}
 
   async execute(query: ListReviewersStatisticsQuery): Promise<ReviewersStatisticsItemReadModel[]> {
@@ -41,11 +39,30 @@ export class ListReviewersStatisticsHandler
 
     nestedPrs.forEach((prs, index) => repositoriesPrs.set(repositories[index], prs));
 
+    const maxPrsPending = await this.settingsRepository.getByUserAndType(
+      query.userId,
+      'maxPendingPR'
+    );
+    const maxTimeWaiting = await this.settingsRepository.getByUserAndType(
+      query.userId,
+      'maxSumTimeForPR'
+    );
+    const maxLinesToCheck = await this.settingsRepository.getByUserAndType(
+      query.userId,
+      'maxTotalLines'
+    );
+
     const reviewersWithPrs = this.groupPrsByReviewers(repositoriesPrs);
 
     return reviewersWithPrs.map(
-      ({ reviewer, prs, maxLinesWarning, maxWaitingTimeWarning }) =>
-        new ReviewersStatisticsItemReadModel(reviewer, prs, maxLinesWarning, maxWaitingTimeWarning)
+      ({ reviewer, prs }) =>
+        new ReviewersStatisticsItemReadModel(
+          reviewer,
+          prs,
+          this.getTotalPrsWarning(prs, Number(maxPrsPending.typedValue)),
+          this.getMaxLinesWarning(prs, Number(maxLinesToCheck.typedValue)),
+          this.getMaxWaitingTimeWarning(prs, Number(maxTimeWaiting.typedValue))
+        )
     );
   }
 
@@ -57,21 +74,29 @@ export class ListReviewersStatisticsHandler
     repositoriesPrs.forEach((repositoryPrs, repository) => {
       repositoryPrs.forEach(repositoryPr => {
         repositoryPr.reviewers.forEach(reviewer => {
+          const prs = result[reviewer.id]?.prs.concat(repositoryPr) || [repositoryPr];
           result[reviewer.id] = {
             reviewer,
-            prs: result[reviewer.id]?.prs.concat(repositoryPr) || [repositoryPr],
-            maxLinesWarning:
-              result[reviewer.id]?.maxLinesWarning ||
-              (!!repository.maxLines && repositoryPr.linesOfCodeToCheck > repository.maxLines),
-            maxWaitingTimeWarning:
-              result[reviewer.id]?.maxWaitingTimeWarning ||
-              (!!repository.maxWaitingTime &&
-                getTimeDiffInHours(repositoryPr.updatedAt) > repository.maxWaitingTime)
+            prs: prs
           };
         });
       });
     });
 
     return Object.values(result);
+  }
+
+  private getTotalPrsWarning(prs: PrEntity[], limit: number): boolean {
+    return prs.length > limit;
+  }
+
+  private getMaxWaitingTimeWarning(prs: PrEntity[], limit: number): boolean {
+    return (
+      prs.reduce((max, model) => Math.max(max, getTimeDiffInHours(model.updatedAt)), 0) > limit
+    );
+  }
+
+  private getMaxLinesWarning(prs: PrEntity[], limit: number): boolean {
+    return prs.reduce((max, current) => Math.max(max, current.linesOfCodeToCheck), 0) > limit;
   }
 }

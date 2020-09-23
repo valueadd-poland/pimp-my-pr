@@ -6,6 +6,7 @@ export * from './lib/entities/setting.entity';
 export * from './lib/factories/common-settings-entity.factory';
 export * from './lib/entities/common-settings/max-pending-pr-setting.entity';
 export * from './lib/entities/common-settings/max-time-pr-waiting-setting.entity';
+export * from './lib/entities/common-settings/max-lines-to-check-setting.entity';
 export * from './lib/exceptions/repository-not-found.exception';
 export * from './lib/exceptions/invalid-timeline-parameters.exception';
 export * from './lib/interfaces/timeline-bucket-item.interface';
