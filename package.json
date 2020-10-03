@@ -109,7 +109,7 @@
     "lint-staged": "^9.2.1",
     "prettier": "1.19.1",
     "semantic-git-commit-cli": "^3.5.0",
-    "standard-version": "^7.1.0",
+    "standard-version": "^8.0.1",
     "supertest": "^4.0.2",
     "ts-jest": "^25.5.1",
     "ts-node": "~7.0.0",
