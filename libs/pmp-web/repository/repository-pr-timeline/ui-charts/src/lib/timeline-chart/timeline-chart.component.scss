@@ -1,0 +1,23 @@
+.timeline-chart {
+  margin: 10px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.timeline-chart__legend-container {
+  flex-basis: 20%;
+  height: 130px;
+  width: 20%;
+  display: flex;
+  align-items: center;
+}
+.timeline-chart__legend {
+  width: 100%;
+}
+.timeline-chart__chart {
+  flex-basis: 100%;
+  width: 100%;
+}
+.timeline-chart__total-stats {
+  flex-basis: 80%;
+  width: 80%;
+}

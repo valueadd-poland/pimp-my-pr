@@ -224,6 +224,21 @@
     "pmp-web-shell": {
       "tags": ["platform:web", "scope:pmp-web", "type:shell"]
     },
+    "pmp-web-repository-repository-pr-timeline-data-access": {
+      "tags": ["scope:repository", "platform:web", "type:data-access"]
+    },
+    "pmp-web-repository-repository-pr-timeline-feature": {
+      "tags": ["scope:repository", "type:feature", "platform:web"]
+    },
+    "pmp-web-repository-repository-pr-timeline-ui-charts": {
+      "tags": ["scope:repository", "type:ui", "platform:web"]
+    },
+    "pmp-web-shared-ui-error-box": {
+      "tags": ["type:ui", "scope:shared", "platform:web"]
+    },
+    "pmp-web-repository-repository-pr-timeline-util-cross-date-validators": {
+      "tags": ["type:util", "platform:web", "scope:repository"]
+    },
     "server-repository-util": {
       "tags": ["scope:repository", "type:util", "platform:server"]
     },

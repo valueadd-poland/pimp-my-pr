@@ -13,6 +13,7 @@ export class ValidationModule {
     required: 'This field is required.',
     notInteger: 'Integer required',
     toManyDecimalPlaces: 'To many decimal places',
+    isGreaterThanLowerBound: 'This date should be greater than lower bound',
     pattern: {
       message: 'patternIssue',
       validatorValue: 'requiredPattern',

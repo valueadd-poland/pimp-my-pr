@@ -1,0 +1,23 @@
+.ngx-charts {
+  float: left;
+
+  .circle,
+  .bar,
+  .arc {
+    cursor: pointer;
+  }
+
+  .line-highlight {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .gridline-path {
+    stroke: #ddd;
+    stroke-width: 1;
+    fill: none;
+  }
+}

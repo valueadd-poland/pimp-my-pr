@@ -45,6 +45,13 @@ const routes: Routes = [
               import('@pimp-my-pr/pmp-web/repository/repository-statistics/feature').then(
                 m => m.PmpWebRepositoryRepositoryStatisticsFeatureModule
               )
+          },
+          {
+            path: 'timeline/:repositoryId',
+            loadChildren: () =>
+              import('@pimp-my-pr/pmp-web/repository/repository-pr-timeline/feature').then(
+                m => m.PmpWebRepositoryRepositoryPrTimelineFeatureModule
+              )
           }
         ]
       },

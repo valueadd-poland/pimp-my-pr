@@ -1,0 +1,38 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-subtitle>Timeline settings</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form" class="timeline-settings__form" (submit)="submit()">
+      <mat-form-field class="timeline-settings__field">
+        <mat-label>Step</mat-label>
+        <mat-select formControlName="step">
+          <mat-option *ngFor="let step of steps" [value]="step">{{ step | titlecase }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="timeline-settings__field">
+        <mat-label>Timeline from</mat-label>
+        <input matInput [matDatepicker]="pickDateFrom" formControlName="timelineFrom" />
+        <mat-datepicker-toggle matSuffix [for]="pickDateFrom"></mat-datepicker-toggle>
+        <mat-datepicker #pickDateFrom></mat-datepicker>
+        <mat-error>
+          <va-validation-messages
+            [control]="form.controls['timelineFrom']"
+          ></va-validation-messages>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="timeline-settings__field">
+        <mat-label>Timeline to</mat-label>
+        <input matInput [matDatepicker]="pickDateTo" formControlName="timelineTo" />
+        <mat-datepicker-toggle matSuffix [for]="pickDateTo"></mat-datepicker-toggle>
+        <mat-datepicker #pickDateTo></mat-datepicker>
+        <mat-error>
+          <va-validation-messages [control]="form.controls['timelineTo']"></va-validation-messages>
+        </mat-error>
+      </mat-form-field>
+      <button [disabled]="disabled || form.invalid" mat-button color="primary" type="submit">
+        <mat-icon>done</mat-icon>Apply
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

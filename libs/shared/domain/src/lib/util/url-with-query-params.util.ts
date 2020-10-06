@@ -1,6 +1,6 @@
 export const urlWithQueryParams = (
   url: string,
-  queryParams: { [key: string]: number | string | boolean }
+  queryParams: { [key: string]: number | string | boolean | Date }
 ) => {
   return Object.entries(queryParams).reduce((total, current, ind, arr) => {
     if (ind === 0) total += '?';

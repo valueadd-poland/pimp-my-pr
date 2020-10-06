@@ -7,6 +7,8 @@ import { PmpWebSharedUiGoBackHeaderModule } from '@pimp-my-pr/pmp-web/shared/ui-
 import { PmpWebSharedUiHeaderContainerModule } from '@pimp-my-pr/pmp-web/shared/ui-header-container';
 import { PmpWebRepositoryStatisticsRoutingModule } from './pmp-web-repository-statistics-routing.module';
 import { RepositoryStatisticsComponent } from './repository-statistics/repository-statistics.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -16,7 +18,9 @@ import { RepositoryStatisticsComponent } from './repository-statistics/repositor
     PmpWebRepositoryStatisticsRoutingModule,
     PmpWebRepositoryRepositoryStatisticsDataAccessModule,
     PmpWebSharedUiGoBackHeaderModule,
-    ContentLoaderModule
+    ContentLoaderModule,
+    MatButtonModule,
+    MatIconModule
   ],
   declarations: [RepositoryStatisticsComponent]
 })
