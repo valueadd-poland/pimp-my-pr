@@ -11,8 +11,12 @@
     [avatarLabel]="repositoryName || state.repository?.name"
     [avatarUrl]="repositoryPictureUrl || state.repository?.pictureUrl"
     label="Pull requests pending"
-  ></pmp-header-container>
-
+  >
+    <a mat-button [routerLink]="'/repositories/timeline/' + repositoryId" color="primary">
+      <mat-icon>timeline</mat-icon>
+      Timeline
+    </a>
+  </pmp-header-container>
   <pmp-table-pr-statistic
     [tableData]="state.repository?.prsStatistics"
     [isLoading]="state.repositoryLoading"

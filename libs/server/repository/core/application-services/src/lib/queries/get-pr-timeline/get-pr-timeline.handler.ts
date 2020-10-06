@@ -5,7 +5,7 @@ import {
   prRepositoryFactoryToken,
   RepositoryRepository
 } from '@pimp-my-pr/server/repository/core/domain-services';
-import { PrTimelineReadModel } from '@pimp-my-pr/server/repository/core/application-services';
+import { PrTimelineReadModel } from './pr-timeline.read-model';
 import {
   getTimeLineHistory,
   InvalidTimelineParametersException,

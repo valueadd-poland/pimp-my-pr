@@ -162,6 +162,19 @@
       ],
       "@pimp-my-pr/pmp-web/repository/repository-settings/util-validators": [
         "libs/pmp-web/repository/repository-settings/util-validators/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/repository/repository-pr-timeline/data-access": [
+        "libs/pmp-web/repository/repository-pr-timeline/data-access/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/repository/repository-pr-timeline/feature": [
+        "libs/pmp-web/repository/repository-pr-timeline/feature/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/repository/repository-pr-timeline/ui-charts": [
+        "libs/pmp-web/repository/repository-pr-timeline/ui-charts/src/index.ts"
+      ],
+      "@pimp-my-pr/pmp-web/shared/ui-error-box": ["libs/pmp-web/shared/ui-error-box/src/index.ts"],
+      "@pimp-my-pr/pmp-web/repository/repository-pr-timeline/util-cross-date-validators": [
+        "libs/pmp-web/repository/repository-pr-timeline/util-cross-date-validators/src/index.ts"
       ]
     }
   },

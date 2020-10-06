@@ -43,7 +43,6 @@ export class RepositoryStatisticsComponent implements OnInit {
     if (!this.router.getCurrentNavigation() || !this.router.getCurrentNavigation().extras.state) {
       return;
     }
-
     const routerNavigationState = this.router.getCurrentNavigation().extras.state;
     this.repositoryName = routerNavigationState.name;
     this.repositoryPictureUrl = routerNavigationState.pictureUrl;

@@ -2224,6 +2224,178 @@
         }
       }
     },
+    "pmp-web-repository-repository-pr-timeline-data-access": {
+      "projectType": "library",
+      "root": "libs/pmp-web/repository/repository-pr-timeline/data-access",
+      "sourceRoot": "libs/pmp-web/repository/repository-pr-timeline/data-access/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/repository/repository-pr-timeline/data-access/tsconfig.lib.json",
+              "libs/pmp-web/repository/repository-pr-timeline/data-access/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/pmp-web/repository/repository-pr-timeline/data-access/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/repository/repository-pr-timeline/data-access/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/repository-pr-timeline/data-access/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/pmp-web/repository/repository-pr-timeline/data-access/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "pmp-web-repository-repository-pr-timeline-feature": {
+      "projectType": "library",
+      "root": "libs/pmp-web/repository/repository-pr-timeline/feature",
+      "sourceRoot": "libs/pmp-web/repository/repository-pr-timeline/feature/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/repository/repository-pr-timeline/feature/tsconfig.lib.json",
+              "libs/pmp-web/repository/repository-pr-timeline/feature/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/pmp-web/repository/repository-pr-timeline/feature/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/repository/repository-pr-timeline/feature/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/repository-pr-timeline/feature/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/pmp-web/repository/repository-pr-timeline/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "pmp-web-repository-repository-pr-timeline-ui-charts": {
+      "projectType": "library",
+      "root": "libs/pmp-web/repository/repository-pr-timeline/ui-charts",
+      "sourceRoot": "libs/pmp-web/repository/repository-pr-timeline/ui-charts/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/repository/repository-pr-timeline/ui-charts/tsconfig.lib.json",
+              "libs/pmp-web/repository/repository-pr-timeline/ui-charts/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/pmp-web/repository/repository-pr-timeline/ui-charts/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/repository/repository-pr-timeline/ui-charts/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/repository-pr-timeline/ui-charts/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/pmp-web/repository/repository-pr-timeline/ui-charts/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "pmp-web-shared-ui-error-box": {
+      "projectType": "library",
+      "root": "libs/pmp-web/shared/ui-error-box",
+      "sourceRoot": "libs/pmp-web/shared/ui-error-box/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/shared/ui-error-box/tsconfig.lib.json",
+              "libs/pmp-web/shared/ui-error-box/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-error-box/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/shared/ui-error-box/jest.config.js",
+            "tsConfig": "libs/pmp-web/shared/ui-error-box/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/pmp-web/shared/ui-error-box/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "pmp-web-repository-repository-pr-timeline-util-cross-date-validators": {
+      "projectType": "library",
+      "root": "libs/pmp-web/repository/repository-pr-timeline/util-cross-date-validators",
+      "sourceRoot": "libs/pmp-web/repository/repository-pr-timeline/util-cross-date-validators/src",
+      "prefix": "pimp-my-pr",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/repository/repository-pr-timeline/util-cross-date-validators/tsconfig.lib.json",
+              "libs/pmp-web/repository/repository-pr-timeline/util-cross-date-validators/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/pmp-web/repository/repository-pr-timeline/util-cross-date-validators/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/repository/repository-pr-timeline/util-cross-date-validators/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/repository-pr-timeline/util-cross-date-validators/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/pmp-web/repository/repository-pr-timeline/util-cross-date-validators/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
     "pmp-web-repository-repository-settings-data-access": {
       "projectType": "library",
       "root": "libs/pmp-web/repository/repository-settings/data-access",

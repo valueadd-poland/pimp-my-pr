@@ -1,0 +1,43 @@
+<div class="timeline-chart">
+  <div
+    #cardsContainer
+    class="timeline-chart__total-stats"
+    *ngIf="timelineChartData && totalStatsChartData"
+  >
+    <ngx-charts-number-card
+      [results]="totalStatsChartData"
+      [scheme]="colorSchema"
+      [animations]="true"
+      [view]="[cardsContainer.offsetWidth, 150]"
+    ></ngx-charts-number-card>
+  </div>
+  <div class="timeline-chart__legend-container">
+    <ngx-charts-legend
+      class="chart-legend timeline-chart__legend"
+      [data]="legendData"
+      [colors]="legendColors"
+      [activeEntries]="activeEntries"
+      (labelActivate)="activateItem($event)"
+      (labelDeactivate)="deactivateAll()"
+    >
+    </ngx-charts-legend>
+  </div>
+  <div #lineChartContainer class="timeline-chart__chart" *ngIf="timelineChartData">
+    <pmp-web-double-axis-chart
+      [results]="timelineChartData"
+      [xAxis]="true"
+      [yAxis]="true"
+      [showXAxisLabel]="true"
+      [showYMainGridLines]="true"
+      [autoScale]="true"
+      [activeEntries]="activeEntries"
+      [timeline]="true"
+      yMainAxisLabel="PRs"
+      ySecondaryAxisLabel="Waiting time [days]"
+      [scheme]="axisColorSchema"
+      (rangeChanged)="changeTimelineRange($event)"
+      (activate)="activateItem($event)"
+      [view]="[lineChartContainer.offsetWidth, 400]"
+    ></pmp-web-double-axis-chart>
+  </div>
+</div>

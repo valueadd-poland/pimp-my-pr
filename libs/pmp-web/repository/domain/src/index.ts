@@ -1,5 +1,11 @@
 export * from './lib/interfaces/repository.model';
 export * from './lib/interfaces/add-edit-repository-dialog-data.interface';
+export * from './lib/interfaces/timeline.interface';
+export * from './lib/interfaces/timeline-properties.interface';
+export * from './lib/interfaces/timeline-record.interface';
+export * from './lib/interfaces/timeline-settings.interface';
+export * from './lib/interfaces/timeline-chart-range.interface';
+export * from './lib/interfaces/timeline-total-stats.interface';
 export * from './lib/interfaces/setting.model';
 export * from './lib/interfaces/setting-patch.interface';
 export * from './lib/payloads/add-repository.payload';
@@ -9,4 +15,5 @@ export * from './lib/payloads/edit-repository.payload';
 export * from './lib/payloads/get-repository-collection.payload';
 export * from './lib/payloads/get-repository-statistics.payload';
 export * from './lib/payloads/get-reviewers-statistics-collection.payload';
+export * from './lib/payloads/get-pr-timeline.payload';
 export * from './lib/payloads/update-setting-model.payload';

@@ -1,0 +1,20 @@
+:host {
+  display: block;
+  background-color: #c82121;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  color: white;
+  padding: 16px;
+  margin: 20px 0;
+}
+
+.error-box__divider {
+  width: 100%;
+  margin: 2px 0;
+  background-color: #ffffff;
+  opacity: 0.5;
+  height: 1px;
+}
+
+.error-box__title {
+  font-weight: 600;
+}

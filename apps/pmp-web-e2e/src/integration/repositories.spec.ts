@@ -42,13 +42,13 @@ describe('repositories', () => {
   });
 
   it('repositories table should contain one row', () => {
-    cy.get('[data-test="statistics-overview-table"] > mat-row')
+    cy.get('[data-test="statistics-overview-table"] mat-row')
       .its('length')
       .should('eq', 1);
   });
 
   it('repositories table row should display correct data', () => {
-    cy.get('[data-test="statistics-overview-table"] > mat-row')
+    cy.get('[data-test="statistics-overview-table"] mat-row')
       .first()
       .within(() => {
         cy.get('[data-test="avatar-column__image"]').should(

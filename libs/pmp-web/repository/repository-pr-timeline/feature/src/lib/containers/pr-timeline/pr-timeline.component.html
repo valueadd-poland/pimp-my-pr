@@ -1,0 +1,30 @@
+<pmp-go-back-header [link]="'/repositories/' + repositoryId"
+  >Repository PR's statistics</pmp-go-back-header
+>
+<div class="timeline">
+  <h1 class="page__title">Repository PR's timeline</h1>
+  <pimp-my-pr-repository-pr-timeline-settings
+    [disabled]="(timelineState$ | async) == 'loading'"
+    (settingsChanged)="handleSettingsUpdated($event)"
+  >
+  </pimp-my-pr-repository-pr-timeline-settings>
+  <ng-container [ngSwitch]="timelineState$ | async">
+    <pimp-my-pr-web-error-box title="Error while generating timeline" *ngSwitchCase="'error'">
+      Please try again now or later. Keep in mind that your repository hosting may have requests
+      number limit
+    </pimp-my-pr-web-error-box>
+    <pimp-my-pr-web-pr-timeline-loading
+      *ngSwitchCase="'loading'"
+    ></pimp-my-pr-web-pr-timeline-loading>
+    <pmp-web-timeline-chart
+      *ngSwitchCase="'ready'"
+      [timelineRecords]="records$ | async"
+      [timelineTotalStats]="timelineTotalStats$ | async"
+      (timelineRangeChanged)="handleTimelineRangeUpdated($event)"
+    >
+    </pmp-web-timeline-chart>
+    <h2 class="timeline__info--empty" *ngSwitchCase="'empty'">
+      Nothing to show - hit Apply button to generate timeline
+    </h2>
+  </ng-container>
+</div>
