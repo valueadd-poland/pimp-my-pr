@@ -20,6 +20,11 @@ describe('repository-settings', () => {
       method: RequestType.PUT
     },
     {
+      name: 'statisticsRepositoryWildcard',
+      url: 'statistics/repository/**',
+      file: 'statistics-repository-wildcard'
+    },
+    {
       name: 'repositoryWildcardDelete',
       url: 'repository/**',
       file: 'repository-wildcard',

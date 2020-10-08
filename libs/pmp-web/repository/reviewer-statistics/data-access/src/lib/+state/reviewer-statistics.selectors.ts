@@ -24,8 +24,14 @@ const getReviewerStatisticsResponseLoadError = createSelector(
   state => state.reviewerStatisticsResponseLoadError
 );
 
+const getReviewerStatisticsSelectedRepositories = createSelector(
+  getReviewerStatisticsState,
+  state => state.reviewerStatisticsSelectedRepositories
+);
+
 export const reviewerStatisticsQuery = {
   getReviewerStatisticsResponse: getReviewerStatisticsResponse,
   getReviewerStatisticsResponseLoading: getReviewerStatisticsResponseLoading,
-  getReviewerStatisticsResponseLoadError: getReviewerStatisticsResponseLoadError
+  getReviewerStatisticsResponseLoadError: getReviewerStatisticsResponseLoadError,
+  getReviewerStatisticsSelectedRepositories: getReviewerStatisticsSelectedRepositories
 };

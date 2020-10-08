@@ -206,6 +206,9 @@
     "pmp-web-shared-ui-generic-dialog": {
       "tags": ["platform:web", "scope:shared", "type:ui"]
     },
+    "pmp-web-repository-ui-table-reviewer-statistics": {
+      "tags": ["platform:web", "scope:repository", "type:feature"]
+    },
     "server-shared-core-api-rest": {
       "tags": ["platform:server", "scope:shared", "type:core"]
     },

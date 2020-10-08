@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { ReviewerStatisticsResponse } from '@pimp-my-pr/shared/domain';
+import { RepositoryModel, ReviewerStatisticsResponse } from '@pimp-my-pr/shared/domain';
 import { fromReviewerStatisticsActions } from './reviewer-statistics.actions';
 
 export const REVIEWERSTATISTICS_FEATURE_KEY = 'ReviewerStatisticsStatistics';
@@ -8,6 +8,7 @@ export interface ReviewerStatisticsState {
   reviewerStatisticsResponse: ReviewerStatisticsResponse | null;
   reviewerStatisticsResponseLoading: boolean;
   reviewerStatisticsResponseLoadError: HttpErrorResponse | null;
+  reviewerStatisticsSelectedRepositories: RepositoryModel[];
 }
 
 export interface ReviewerStatisticsPartialState {
@@ -17,7 +18,8 @@ export interface ReviewerStatisticsPartialState {
 export const initialState: ReviewerStatisticsState = {
   reviewerStatisticsResponse: null,
   reviewerStatisticsResponseLoading: false,
-  reviewerStatisticsResponseLoadError: null
+  reviewerStatisticsResponseLoadError: null,
+  reviewerStatisticsSelectedRepositories: []
 };
 
 export function reviewerStatisticsReducer(
@@ -30,7 +32,8 @@ export function reviewerStatisticsReducer(
         ...state,
         reviewerStatisticsResponse: null,
         reviewerStatisticsResponseLoading: true,
-        reviewerStatisticsResponseLoadError: null
+        reviewerStatisticsResponseLoadError: null,
+        reviewerStatisticsSelectedRepositories: []
       };
       break;
     }
@@ -50,7 +53,29 @@ export function reviewerStatisticsReducer(
         ...state,
         reviewerStatisticsResponse: action.payload,
         reviewerStatisticsResponseLoading: false,
-        reviewerStatisticsResponseLoadError: null
+        reviewerStatisticsResponseLoadError: null,
+        reviewerStatisticsSelectedRepositories: action.payload.repositories
+      };
+      break;
+    }
+
+    case fromReviewerStatisticsActions.Types.ReviewerStatisticsAddSelectedRepository: {
+      state = {
+        ...state,
+        reviewerStatisticsSelectedRepositories: [
+          ...state.reviewerStatisticsSelectedRepositories,
+          action.payload
+        ]
+      };
+      break;
+    }
+
+    case fromReviewerStatisticsActions.Types.ReviewerStatisticsRemoveSelectedRepository: {
+      state = {
+        ...state,
+        reviewerStatisticsSelectedRepositories: state.reviewerStatisticsSelectedRepositories.filter(
+          repository => repository.fullName !== action.payload.fullName
+        )
       };
       break;
     }

@@ -1,13 +1,16 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Action } from '@ngrx/store';
-import { ReviewerStatisticsResponse } from '@pimp-my-pr/shared/domain';
+import { RepositoryModel, ReviewerStatisticsResponse } from '@pimp-my-pr/shared/domain';
 import { GetReviewerStatisticsPayload } from '../resources/payloads/get-reviewer-statistics.payload';
+import { ToggleSelectedRepository } from '../resources/payloads/toggle-selected-repository.interface';
 
 export namespace fromReviewerStatisticsActions {
   export enum Types {
     GetReviewerStatisticsResponse = '[ReviewerStatistics] Get Single User Statistics Response',
     GetReviewerStatisticsResponseFail = '[ReviewerStatistics] Get Single User Statistics Response Fail',
-    GetReviewerStatisticsResponseSuccess = '[ReviewerStatistics] Get Single User Statistics Response Success'
+    GetReviewerStatisticsResponseSuccess = '[ReviewerStatistics] Get Single User Statistics Response Success',
+    ReviewerStatisticsAddSelectedRepository = '[ReviewerStatistics] Add Selected Repository',
+    ReviewerStatisticsRemoveSelectedRepository = '[ReviewerStatistics] Remove Selected Repository'
   }
 
   export class GetReviewerStatisticsResponse implements Action {
@@ -28,8 +31,22 @@ export namespace fromReviewerStatisticsActions {
     constructor(public payload: ReviewerStatisticsResponse) {}
   }
 
+  export class ReviewerStatisticsAddSelectedRepository implements Action {
+    readonly type = Types.ReviewerStatisticsAddSelectedRepository;
+
+    constructor(public payload: RepositoryModel) {}
+  }
+
+  export class ReviewerStatisticsRemoveSelectedRepository implements Action {
+    readonly type = Types.ReviewerStatisticsRemoveSelectedRepository;
+
+    constructor(public payload: RepositoryModel) {}
+  }
+
   export type CollectiveType =
     | GetReviewerStatisticsResponse
     | GetReviewerStatisticsResponseFail
-    | GetReviewerStatisticsResponseSuccess;
+    | GetReviewerStatisticsResponseSuccess
+    | ReviewerStatisticsAddSelectedRepository
+    | ReviewerStatisticsRemoveSelectedRepository;
 }

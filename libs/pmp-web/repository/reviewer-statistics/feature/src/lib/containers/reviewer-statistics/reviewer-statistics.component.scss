@@ -8,3 +8,23 @@
 .user-statistics__repository-label {
   margin: 1em 0;
 }
+
+.user-statistics__repositories {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -1rem -1rem 1rem -1rem;
+}
+
+.user-statistics__repository-card {
+  margin: 1rem;
+  flex-grow: 1;
+  min-width: 12rem;
+  max-width: 16rem;
+  opacity: 0.5;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.user-statistics__repository-card--active {
+  opacity: 1;
+}

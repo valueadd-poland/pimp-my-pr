@@ -12,19 +12,25 @@
     [avatarUrl]="userAvatarUrl || state.userStatistics?.avatarUrl"
     label="Pull requests pending"
   ></pmp-header-container>
-
-  <div *ngFor="let repo of state.userStatistics?.repositories; trackBy: trackRepositories">
-    <div class="user-statistics__repository-label">
+  <div class="user-statistics__repositories">
+    <mat-card
+      *ngFor="let repo of state.userStatistics?.repositories"
+      class="user-statistics__repository-card"
+      matRipple
+      (click)="onSelectRepository(repo)"
+      [ngClass]="{
+        'user-statistics__repository-card--active': filtersMap[repo.fullName]
+      }"
+    >
       <pmp-picture-label [label]="repo.name" [picture]="repo.pictureUrl"></pmp-picture-label>
-    </div>
-
-    <pmp-table-pr-statistic
-      [tableData]="repo.prsStatistics"
-      (navigateItem)="onNavigateItem($event)"
-      columnPropertyName="comments"
-    ></pmp-table-pr-statistic>
+    </mat-card>
   </div>
-
+  <pmp-table-reviewer-statistic
+    [repositories]="selectedRepositories"
+    [tableData]="selectedRepositoriesPrs"
+    (navigateItem)="onNavigateItem($event)"
+    columnPropertyName="comments"
+  ></pmp-table-reviewer-statistic>
   <div *ngIf="state.userStatisticsLoading" class="content-loader">
     <list-content-loader></list-content-loader>
   </div>
