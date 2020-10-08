@@ -2491,6 +2491,35 @@
           }
         }
       }
+    },
+    "pmp-web-repository-ui-table-reviewer-statistics": {
+      "root": "libs/pmp-web/repository/ui-table-reviewer-statistics",
+      "sourceRoot": "libs/pmp-web/repository/ui-table-reviewer-statistics/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/pmp-web/repository/ui-table-reviewer-statistics/tsconfig.lib.json",
+              "libs/pmp-web/repository/ui-table-reviewer-statistics/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/pmp-web/repository/ui-table-reviewer-statistics/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/pmp-web/repository/ui-table-reviewer-statistics/jest.config.js",
+            "tsConfig": "libs/pmp-web/repository/ui-table-reviewer-statistics/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

@@ -4,6 +4,8 @@ import { GetReviewerStatisticsPayload } from '../resources/payloads/get-reviewer
 import { fromReviewerStatisticsActions } from './reviewer-statistics.actions';
 import { ReviewerStatisticsPartialState } from './reviewer-statistics.reducer';
 import { reviewerStatisticsQuery } from './reviewer-statistics.selectors';
+import { ToggleSelectedRepository } from '../resources/payloads/toggle-selected-repository.interface';
+import { RepositoryModel } from '@pimp-my-pr/shared/domain';
 
 @Injectable()
 export class ReviewerStatisticsFacade {
@@ -17,10 +19,25 @@ export class ReviewerStatisticsFacade {
   reviewerStatisticsResponseLoadError$ = this.store.pipe(
     select(reviewerStatisticsQuery.getReviewerStatisticsResponseLoadError)
   );
+  selectedRepositories$ = this.store.pipe(
+    select(reviewerStatisticsQuery.getReviewerStatisticsSelectedRepositories)
+  );
 
   constructor(private store: Store<ReviewerStatisticsPartialState>) {}
 
   getReviewerStatistics(data: GetReviewerStatisticsPayload): void {
     this.store.dispatch(new fromReviewerStatisticsActions.GetReviewerStatisticsResponse(data));
+  }
+
+  addSelectedRepository(data: RepositoryModel): void {
+    this.store.dispatch(
+      new fromReviewerStatisticsActions.ReviewerStatisticsAddSelectedRepository(data)
+    );
+  }
+
+  removeSelectedRepository(data: RepositoryModel): void {
+    this.store.dispatch(
+      new fromReviewerStatisticsActions.ReviewerStatisticsRemoveSelectedRepository(data)
+    );
   }
 }
