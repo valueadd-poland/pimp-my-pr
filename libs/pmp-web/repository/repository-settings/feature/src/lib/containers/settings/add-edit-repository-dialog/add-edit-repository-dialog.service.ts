@@ -12,7 +12,7 @@ export class AddEditRepositoryDialogService {
       repositoryUrl: ['', repositoryToEdit ? null : Validators.required],
       maxLines: [repositoryToEdit ? repositoryToEdit.maxLines : null],
       maxPrs: [repositoryToEdit?.maxPrs, Validators.min(1)],
-      maxWaitingTimeDefinition: [repositoryToEdit ? repositoryToEdit.maxWaitingTime : null]
+      maxWaitingTime: [repositoryToEdit ? repositoryToEdit.maxWaitingTime : null]
     });
   }
 }
