@@ -11,4 +11,5 @@ export interface PrStatistics {
   commentsCount: number;
   url: string;
   reviewers: PrReviewer[];
+  reviewersWarning: boolean;
 }

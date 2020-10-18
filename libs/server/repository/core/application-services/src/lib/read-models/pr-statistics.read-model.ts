@@ -32,6 +32,9 @@ export class PrStatisticsReadModel {
   reviewers: ReviewerReadModel[];
 
   @ApiProperty()
+  reviewersWarning: boolean;
+
+  @ApiProperty()
   timeWaiting: number;
 
   @ApiProperty()
@@ -51,6 +54,7 @@ export class PrStatisticsReadModel {
     this.author = authorReadModelFactory(pr.author);
     this.commentsCount = pr.commentsCount;
     this.reviewers = pr.reviewers.map(reviewer => reviewerReadModelFactory(reviewer));
+    this.reviewersWarning = this.reviewers.length === 0;
     this.url = pr.url;
     this.timeWaiting = getTimeDiffInHours(pr.createdAt);
     this.timeWaitingFromLastChange = getTimeDiffInHours(pr.updatedAt);

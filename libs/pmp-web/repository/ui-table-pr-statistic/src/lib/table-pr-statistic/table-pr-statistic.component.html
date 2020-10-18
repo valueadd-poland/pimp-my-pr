@@ -83,6 +83,9 @@
     </mat-header-cell>
     <mat-cell *matCellDef="let element" class="reviewers-column">
       <pmp-persons-bar [persons]="element.reviewers"> </pmp-persons-bar>
+      <mat-icon *ngIf="element.reviewersWarning" class="table__notification-icon">
+        notification_important
+      </mat-icon>
     </mat-cell>
   </ng-container>
 
@@ -103,7 +106,9 @@
 
   <mat-row
     *matRowDef="let row; columns: displayedColumns"
-    [class.table__row--with-notification]="row.maxWaitingTimeWarning || row.maxLinesWarning"
+    [class.table__row--with-notification]="
+      row.reviewersWarning || row.maxWaitingTimeWarning || row.maxLinesWarning
+    "
   ></mat-row>
 </mat-table>
 

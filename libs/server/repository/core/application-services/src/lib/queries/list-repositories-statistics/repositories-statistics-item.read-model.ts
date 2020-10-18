@@ -22,6 +22,9 @@ export class RepositoriesStatisticsItemReadModel extends BaseStatisticsReadModel
   @ApiProperty()
   maxWaitingTime: number;
 
+  @ApiProperty()
+  missingReviewerWarning: boolean;
+
   constructor(repository: RepositoryEntity, prs: PrEntity[]) {
     super(repository, prs);
     this.maxLines = repository.maxLines;
@@ -35,5 +38,6 @@ export class RepositoriesStatisticsItemReadModel extends BaseStatisticsReadModel
     this.maxWaitingTimeWarning =
       repository.maxWaitingTime &&
       prs.some(pr => getTimeDiffInHours(pr.updatedAt) > repository.maxWaitingTime);
+    this.missingReviewerWarning = prs.some(pr => pr.reviewers.length === 0);
   }
 }
