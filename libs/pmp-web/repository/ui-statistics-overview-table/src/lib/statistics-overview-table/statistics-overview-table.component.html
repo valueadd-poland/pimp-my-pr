@@ -70,6 +70,9 @@
     </mat-header-cell>
     <mat-cell *matCellDef="let element">
       {{ element.reviewersCount }}
+      <mat-icon *ngIf="element.missingReviewerWarning" class="table__notification-icon">
+        notification_important
+      </mat-icon>
     </mat-cell>
   </ng-container>
 
@@ -133,7 +136,10 @@
   <mat-row
     *matRowDef="let row; columns: displayColumns"
     [class.table__row--with-notification]="
-      row.maxPrsWarning || row.maxWaitingTimeWarning || row.maxLinesWarning
+      row.missingReviewerWarning ||
+      row.maxPrsWarning ||
+      row.maxWaitingTimeWarning ||
+      row.maxLinesWarning
     "
   ></mat-row>
 </mat-table>

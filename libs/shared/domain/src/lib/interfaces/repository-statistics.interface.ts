@@ -1,22 +1,23 @@
 import { PrStatistics } from '@pimp-my-pr/shared/domain';
 
 export interface RepositoryStatistics {
+  averageCodeToCheck?: number;
+  averagePrWaiting?: number;
   id: string;
-  name: string;
   linesOfCodeToCheck?: number;
   longestPrLinesOfCode?: number;
+  longestWaitingPr?: number;
+  maxLines?: number;
+  maxLinesWarning: boolean;
+  maxPrs?: number;
+  maxPrsWarning: boolean;
+  maxWaitingTime?: number;
+  maxWaitingTimeWarning: boolean;
+  missingReviewerWarning?: boolean;
+  name: string;
   pendingPrs?: number;
   pictureUrl: string;
-  sumOfHoursPrsWaiting?: number;
   reviewersCount?: number;
-  averagePrWaiting?: number;
-  averageCodeToCheck?: number;
-  longestWaitingPr?: number;
+  sumOfHoursPrsWaiting?: number;
   prsStatistics?: PrStatistics[];
-  maxLines?: number;
-  maxPrs?: number;
-  maxWaitingTime?: number;
-  maxLinesWarning: boolean;
-  maxWaitingTimeWarning: boolean;
-  maxPrsWarning: boolean;
 }
