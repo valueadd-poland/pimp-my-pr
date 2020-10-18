@@ -25,10 +25,8 @@ import { ApiException } from '@pimp-my-pr/pmp-web/shared/domain';
 export class AddEditRepositoryDialogComponent implements OnInit {
   dialogTitle: string;
   form: FormGroup;
-  maxWaitingTimeFormControl: FormControl;
   repositoryToEdit: Repository;
   submitMsg: string;
-  timeUnitFormControl: FormControl;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: AddEditRepositoryDialogData,
