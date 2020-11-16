@@ -17,16 +17,17 @@ export function generateStats<T extends ITimeTrackable>(
         (total, current) => ({
           closedBefore:
             total.closedBefore +
-            Number(current.closedAt && current.closedAt.getTime() < periodStart),
+            Number(!!(current.closedAt && current.closedAt.getTime() < periodStart)),
           openedAfter: total.openedAfter + Number(current.createdAt.getTime() > periodEnd)
         }),
         { closedBefore: 0, openedAfter: 0 }
       );
+
       const { entitySumTimeIn, entitySumTimeOpened } = entry.reduce(
         (total, current) => ({
-          entitySumTimeOpened: total.entitySumTimeOpened + current.timeIn,
-          entitySumTimeIn:
-            total.entitySumTimeIn +
+          entitySumTimeIn: total.entitySumTimeIn + current.timeIn,
+          entitySumTimeOpened:
+            total.entitySumTimeOpened +
             (current.entity.closedAt
               ? Math.min(current.entity.closedAt.getTime(), periodEnd)
               : periodEnd) -
@@ -34,7 +35,13 @@ export function generateStats<T extends ITimeTrackable>(
         }),
         { entitySumTimeIn: 0, entitySumTimeOpened: 0 }
       );
-      const avgWaitingTime = entityCount ? entitySumTimeOpened / entityCount : 0;
+      let avgWaitingTime;
+      if (entityCount > 0) {
+        avgWaitingTime = entitySumTimeOpened / entityCount;
+      } else {
+        avgWaitingTime = 0;
+      }
+
       return {
         dataFrom: new Date(Number(ts)),
         sumCount: entityCount,

@@ -21,3 +21,5 @@ export * from './lib/utils/repository-name-extract.util';
 export * from './lib/entities/timeline-record.entity';
 export * from './lib/enums/pr-state.enum';
 export * from './lib/utils/get-timeline-history';
+export * from './lib/utils/get-missing-settings.util';
+export * from './lib/factories/default-setting.factory';

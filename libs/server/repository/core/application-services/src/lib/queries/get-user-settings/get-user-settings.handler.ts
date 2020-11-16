@@ -1,4 +1,4 @@
-import { QueryHandler, IQueryHandler } from '@nestjs/cqrs';
+import { QueryHandler, IQueryHandler, CommandBus } from '@nestjs/cqrs';
 import { GetUserSettingsQuery } from './get-user-settings.query';
 import { SettingsRepository } from '@pimp-my-pr/server/repository/core/domain-services';
 import { GetUserSettingsReadModel } from './get-user-settings.read-model';
