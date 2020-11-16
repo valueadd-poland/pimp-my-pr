@@ -17,6 +17,7 @@ import { DeleteSettingHandler } from './commands/delete-setting/delete-setting.h
 import { SettingsFacade } from './settings.facade';
 import { EditSettingsHandler } from './commands/edit-settings/edit-settings.handler';
 import { UserAddedEventHandler } from './events/user-added/user-added.event-handler';
+import { AddMissingSettingsHandler } from './commands/add-missing-settings/add-missing-settings.handler';
 
 const QueryHandlers = [
   AddRepositoryHandler,
@@ -33,7 +34,8 @@ const QueryHandlers = [
   GetUserSettingsHandler,
   DeleteSettingHandler,
   EditSettingsHandler,
-  UserAddedEventHandler
+  UserAddedEventHandler,
+  AddMissingSettingsHandler
 ];
 
 @Module({

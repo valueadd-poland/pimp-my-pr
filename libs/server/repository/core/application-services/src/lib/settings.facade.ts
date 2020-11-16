@@ -4,6 +4,7 @@ import { DeleteSettingCommand } from './commands/delete-setting/delete-setting.c
 import { GetUserSettingsReadModel } from './queries/get-user-settings/get-user-settings.read-model';
 import { GetUserSettingsQuery } from './queries/get-user-settings/get-user-settings.query';
 import { EditSettingsCommand } from './commands/edit-settings/edit-settings.command';
+import { AddMissingSettingsCommand } from './commands/add-missing-settings/add-missing-settings.command';
 
 @Injectable()
 export class SettingsFacade {
@@ -17,7 +18,8 @@ export class SettingsFacade {
     return this.commandBus.execute(command);
   }
 
-  getSettings(userId: string): Promise<GetUserSettingsReadModel[]> {
-    return this.queryBus.execute(new GetUserSettingsQuery(userId));
+  async getSettings(userId: string): Promise<GetUserSettingsReadModel[]> {
+    await this.commandBus.execute(new AddMissingSettingsCommand(userId));
+    return await this.queryBus.execute(new GetUserSettingsQuery(userId));
   }
 }

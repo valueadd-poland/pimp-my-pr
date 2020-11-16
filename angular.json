@@ -196,7 +196,8 @@
           "options": {
             "jestConfig": "apps/pmp-api-e2e/jest.config.js",
             "tsConfig": "apps/pmp-api-e2e/tsconfig.spec.json",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "runInBand": true
           }
         }
       }
@@ -2494,7 +2495,8 @@
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/angular",
+    "analytics": "019dee5b-6725-4d5c-b0ae-5167b6f6f795"
   },
   "schematics": {
     "@nrwl/angular:application": {
