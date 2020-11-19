@@ -20,8 +20,6 @@ jobs:
         run: cp .env-sample .env && npm run init
       - name: affected:build
         run: npm run affected:build -- --base origin/master --prod
-    env:
-      CI: true
 
   e2e:
     runs-on: ubuntu-latest
@@ -56,8 +54,6 @@ jobs:
           DB_NAME: pmp
           DB_PASSWORD: mysecretpassword
           DB_USER: pmp
-    env:
-      CI: true
 
   lint:
     runs-on: ubuntu-latest
