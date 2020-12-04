@@ -12,7 +12,7 @@
   <ng-container matColumnDef="title">
     <mat-header-cell *matHeaderCellDef class="title-column" mat-sort-header>Title</mat-header-cell>
     <mat-cell *matCellDef="let element" class="title-column">
-      {{ element.title }}
+      <span class="title-column__label" [matTooltip]="element.title">{{ element.title }}</span>
     </mat-cell>
     <mat-footer-cell *matFooterCellDef="let element" class="title-column"></mat-footer-cell>
   </ng-container>

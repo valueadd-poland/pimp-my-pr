@@ -12,6 +12,12 @@
   }
 }
 
+.title-column__label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .comments-column {
   color: rgba(0, 0, 0, 0.6);
   flex: unset;
