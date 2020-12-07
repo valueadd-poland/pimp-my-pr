@@ -4,14 +4,17 @@ import { ConfigService, registerAs } from '@nestjs/config';
 const CONFIG_NAMESPACE = 'pmp-api-service';
 
 export const pmpApiConfigService = registerAs(CONFIG_NAMESPACE, () => ({
+  app: {
+    domain: process.env.DOMAIN
+  },
   auth: {
     jwtSecret: process.env.AUTH_JWT_SECRET,
     remoteTokenCryptoKey: process.env.AUTH_REMOTE_TOKEN_CRYPTO_KEY
   },
-  bitbucketClientId: process.env.BITBUCKET_CLIENT_ID,
-  bitbucketClientSecret: process.env.BITBUCKET_CLIENT_SECRET,
-  bitbucketToken: process.env.PMP_SERVER_BITBUCKET_TOKEN,
-  githubToken: process.env.PMP_SERVER_GITHUB_TOKEN,
+  bitbucket: {
+    clientId: process.env.BITBUCKET_CLIENT_ID,
+    clientSecret: process.env.BITBUCKET_CLIENT_SECRET
+  },
   db: {
     host: process.env.DB_HOST,
     name: process.env.DB_NAME,
@@ -19,25 +22,32 @@ export const pmpApiConfigService = registerAs(CONFIG_NAMESPACE, () => ({
     port: process.env.DB_PORT,
     user: process.env.DB_USER
   },
-  githubClientId: process.env.GITHUB_CLIENT_ID,
-  githubClientSecret: process.env.GITHUB_CLIENT_SECRET,
-  gitlabClientId: process.env.GITLAB_CLIENT_ID,
-  gitlabClientSecret: process.env.GITLAB_CLIENT_SECRET,
-  gitlabRedirectUri: process.env.GITLAB_REDIRECT_URI,
-  gitlabToken: process.env.PMP_SERVER_GITLAB_TOKEN,
-  jwtSecret: process.env.PMP_SERVER_JWT_SECRET
+  github: {
+    token: process.env.PMP_SERVER_GITHUB_TOKEN,
+    clientId: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET
+  },
+  gitlab: {
+    clientId: process.env.GITLAB_CLIENT_ID,
+    clientSecret: process.env.GITLAB_CLIENT_SECRET,
+    redirectUri: process.env.GITLAB_REDIRECT_URI
+  }
 }));
 
 @Injectable()
 export class PmpApiConfigService {
   constructor(private configService: ConfigService) {}
 
+  getAppDomain(): string {
+    return this.configService.get<string>(CONFIG_NAMESPACE + '.app.domain');
+  }
+
   getBitbucketClientId(): string {
-    return this.configService.get<string>(CONFIG_NAMESPACE + '.bitbucketClientId');
+    return this.configService.get<string>(CONFIG_NAMESPACE + '.bitbucket.clientId');
   }
 
   getBitbucketClientSecret(): string {
-    return this.configService.get<string>(CONFIG_NAMESPACE + '.bitbucketClientSecret');
+    return this.configService.get<string>(CONFIG_NAMESPACE + '.bitbucket.clientSecret');
   }
 
   getDbConfig(): { host: string; name: string; password: string; port: number; user: string } {
@@ -45,23 +55,23 @@ export class PmpApiConfigService {
   }
 
   getGithubClientId(): string {
-    return this.configService.get<string>(CONFIG_NAMESPACE + '.githubClientId');
+    return this.configService.get<string>(CONFIG_NAMESPACE + '.github.clientId');
   }
 
   getGithubClientSecret(): string {
-    return this.configService.get<string>(CONFIG_NAMESPACE + '.githubClientSecret');
+    return this.configService.get<string>(CONFIG_NAMESPACE + '.github.clientSecret');
   }
 
   getGitlabClientId(): string {
-    return this.configService.get<string>(CONFIG_NAMESPACE + '.gitlabClientId');
+    return this.configService.get<string>(CONFIG_NAMESPACE + '.gitlab.clientId');
   }
 
   getGitlabClientSecret(): string {
-    return this.configService.get<string>(CONFIG_NAMESPACE + '.gitlabClientSecret');
+    return this.configService.get<string>(CONFIG_NAMESPACE + '.gitlab.clientSecret');
   }
 
   getGitlabRedirectUri(): string {
-    return this.configService.get<string>(CONFIG_NAMESPACE + '.gitlabRedirectUri');
+    return this.configService.get<string>(CONFIG_NAMESPACE + '.gitlab.redirectUri');
   }
 
   getJwtSecret(): string {

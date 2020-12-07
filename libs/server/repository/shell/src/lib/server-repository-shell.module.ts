@@ -20,11 +20,13 @@ import {
   remoteRepositoryRepositoryFactoryToken,
   RepositoryRepositoryAdapter,
   SettingsRepositoryAdapter,
-  ServerRepositoryInfrastructureModule
+  ServerRepositoryInfrastructureModule,
+  GithubPrChangedWebHookCreator
 } from '@pimp-my-pr/server/repository/infrastructure';
 import { prRepositoryFactoryFactory } from './factories/pr-repository.factory';
 import { remoteRepositoryRepositoryFactoryFactory } from './factories/remote-repository-repository.factory';
 import { reviewerRepositoryFactoryFactory } from './factories/reviewer-repository.factory';
+import { PrChangedWebHookCreator } from '@pimp-my-pr/server/repository/core/domain';
 
 const providers = [
   {
@@ -45,6 +47,10 @@ const providers = [
   {
     provide: RepositoryRepository,
     useClass: RepositoryRepositoryAdapter
+  },
+  {
+    provide: PrChangedWebHookCreator,
+    useExisting: GithubPrChangedWebHookCreator
   },
   {
     provide: SettingsRepository,

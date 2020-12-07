@@ -10,6 +10,7 @@ export * from './lib/bitbucket/repositories/bitbucket-reviewer.repository';
 export * from './lib/github/repositories/github-pr.repository';
 export * from './lib/github/repositories/github-repository.repository';
 export * from './lib/github/repositories/github-reviewer.repository';
+export * from './lib/github/adapters/github-pr-changed-web-hook-creator.service';
 
 export * from './lib/gitlab/repositories/gitlab-repository.repository';
 export * from './lib/gitlab/repositories/gitlab-pr.repository';

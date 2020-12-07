@@ -1,8 +1,11 @@
 import { f } from '@marcj/marshal';
 import { PrEntity } from './pr.entity';
 import { RepositoryEditWriteModel } from '@pimp-my-pr/shared/domain';
+import { PrChangedWebHookCreator } from '../ports/pr-changed-web-hook-creator.port';
+import { AggregateRoot } from '@nestjs/cqrs';
+import { RepositoryAddedEvent } from '../events/repository-added.event';
 
-export class RepositoryEntity {
+export class RepositoryEntity extends AggregateRoot {
   @f.primary()
   id: string;
 
@@ -36,25 +39,31 @@ export class RepositoryEntity {
     return `${this.owner}/${this.name}`;
   }
 
-  constructor(
+  static async add(
     repositoryId: string,
     name: string,
     owner: string,
     pictureUrl: string,
     userId: string,
+    prChangesSubscriptionCreator: PrChangedWebHookCreator,
     maxLines?: number,
     maxWaitingTime?: number,
     maxPrs?: number
-  ) {
-    this.id = repositoryId + userId;
-    this.repositoryId = repositoryId;
-    this.name = name;
-    this.owner = owner;
-    this.pictureUrl = pictureUrl;
-    this.userId = userId;
-    this.maxWaitingTime = maxWaitingTime;
-    this.maxLines = maxLines;
-    this.maxPrs = maxPrs;
+  ): Promise<RepositoryEntity> {
+    const repo = new RepositoryEntity();
+    repo.id = repositoryId + userId;
+    repo.repositoryId = repositoryId;
+    repo.name = name;
+    repo.owner = owner;
+    repo.pictureUrl = pictureUrl;
+    repo.userId = userId;
+    repo.maxWaitingTime = maxWaitingTime;
+    repo.maxLines = maxLines;
+    repo.maxPrs = maxPrs;
+
+    await prChangesSubscriptionCreator.create(repo);
+    repo.publish(new RepositoryAddedEvent(repo));
+    return repo;
   }
 
   edit(writeModel: RepositoryEditWriteModel): void {

@@ -1,7 +1,8 @@
-import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
+import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import {
   getOwnerFromFullRepoName,
   getRepoNameFromFullRepoName,
+  PrChangedWebHookCreator,
   RepositoryAlreadyExists,
   RepositoryEntity
 } from '@pimp-my-pr/server/repository/core/domain';
@@ -10,7 +11,11 @@ import { AddRepositoryCommand } from './add-repository.command';
 
 @CommandHandler(AddRepositoryCommand)
 export class AddRepositoryHandler implements ICommandHandler<AddRepositoryCommand> {
-  constructor(private repositoryRepository: RepositoryRepository) {}
+  constructor(
+    private repositoryRepository: RepositoryRepository,
+    private prChangedWebHookCreator: PrChangedWebHookCreator,
+    private publisher: EventPublisher
+  ) {}
 
   async execute(command: AddRepositoryCommand): Promise<void> {
     const { repositoryName, maxLines, maxWaitingTime, userId, maxPrs } = command;
@@ -32,17 +37,26 @@ export class AddRepositoryHandler implements ICommandHandler<AddRepositoryComman
       ))
     };
 
-    const repository = new RepositoryEntity(
-      repositoryData.id,
-      repositoryData.name,
-      repositoryData.owner,
-      repositoryData.pictureUrl,
-      command.userId,
-      maxLines,
-      maxWaitingTime,
-      maxPrs
+    const prChangedWebHookCreator = this.prChangedWebHookCreator;
+    const repository = this.publisher.mergeObjectContext(
+      await RepositoryEntity.add(
+        repositoryData.id,
+        repositoryData.name,
+        repositoryData.owner,
+        repositoryData.pictureUrl,
+        command.userId,
+        {
+          create(repo: RepositoryEntity): Promise<void> {
+            return prChangedWebHookCreator.create(repo, command.token);
+          }
+        },
+        maxLines,
+        maxWaitingTime,
+        maxPrs
+      )
     );
 
-    return this.repositoryRepository.save(repository);
+    await this.repositoryRepository.save(repository);
+    repository.commit();
   }
 }
