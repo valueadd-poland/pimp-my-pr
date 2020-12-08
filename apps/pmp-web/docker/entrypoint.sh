@@ -11,7 +11,7 @@ for f in /usr/share/nginx/html/assets/env/*.sample; do
     sed -i -- "s/{{githubClientId}}/${GITHUB_CLIENT_ID}/g" "${f%.sample}"
     sed -i -- "s/{{bitbucketClientId}}/${BITBUCKET_CLIENT_ID}/g" "${f%.sample}"
     sed -i -- "s/{{gitlabClientId}}/${GITLAB_CLIENT_ID}/g" "${f%.sample}"
-    sed -i -- "s/{{gitlabRedirectUri}}/${GITLAB_REDIRECT_URI}/g" "${f%.sample}"
+    sed -i -- "s@{{gitlabRedirectUri}}@${GITLAB_REDIRECT_URI}@g" "${f%.sample}"
     sed -i -- "s/{{googleAnalyticsId}}/${GOOGLE_ANALYTICS_ID}/g" "${f%.sample}"
     echo "${f%.sample}"
 done
