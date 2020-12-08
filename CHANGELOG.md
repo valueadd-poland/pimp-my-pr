@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.2](https://github.com/valueadd-poland/pimp-my-pr/compare/2.1.1...2.1.2) (2020-12-08)
+
+
+### Bug Fixes
+
+* **web:** insert gitlab redirect variable ([31cd735](https://github.com/valueadd-poland/pimp-my-pr/commit/31cd73512e2b9c4a452534cf7995fc3aff08b610))
+
 ### [2.1.1](https://github.com/valueadd-poland/pimp-my-pr/compare/2.1.0...2.1.1) (2020-12-08)
 
 
