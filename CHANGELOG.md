@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/valueadd-poland/pimp-my-pr/compare/2.1.0...2.1.1) (2020-12-08)
+
+
+### Bug Fixes
+
+* **web:** google analytics not working ([b91beab](https://github.com/valueadd-poland/pimp-my-pr/commit/b91beaba8825581f269f375c674343f9b61edff0))
+
 ## [2.1.0](https://github.com/valueadd-poland/pimp-my-pr/compare/1.2.0...2.1.0) (2020-12-07)
 
 
