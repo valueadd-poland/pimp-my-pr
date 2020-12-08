@@ -26,7 +26,7 @@ export class GoogleAnalyticsService {
   async init(): Promise<void> {
     if (this.loaded || this.loadingInProgress) return;
     try {
-      await this.insertGoogleScript(this.googleId);
+      await this.insertGoogleScript();
       await this.insertLocalScript();
       this.loaded = true;
     } catch (error) {
@@ -51,13 +51,14 @@ export class GoogleAnalyticsService {
     gtag('config', this.googleId, { page_path: event.urlAfterRedirects });
   }
 
-  private async insertGoogleScript(googleId: string): Promise<void> {
-    if (!googleId) throw new Error('googleId not set');
-    await this.insertScript(`https://www.googletagmanager.com/gtag/js?id=${googleId}`);
+  private async insertGoogleScript(): Promise<void> {
+    if (!this.googleId) throw new Error('googleId not set');
+    await this.insertScript(`https://www.googletagmanager.com/gtag/js?id=${this.googleId}`);
   }
 
   private async insertLocalScript(): Promise<void> {
     await this.insertScript('/assets/scripts/google-analytics-script.js');
+    gtag('config', this.googleId);
   }
 
   private insertScript(path: string): Promise<void> {
@@ -67,8 +68,7 @@ export class GoogleAnalyticsService {
       script.onload = () => resolve();
       script.onerror = () => reject();
       script.src = path;
-      script.text = path;
-      this.renderer.appendChild(this.document.body, script);
+      this.renderer.appendChild(this.document.head, script);
     });
   }
 }

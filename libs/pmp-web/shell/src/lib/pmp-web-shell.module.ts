@@ -9,7 +9,10 @@ import {
   providers: [
     {
       provide: APP_INITIALIZER,
-      useFactory: (googleService: GoogleAnalyticsService) => () => googleService.init(),
+      useFactory: (googleService: GoogleAnalyticsService) => async () => {
+        await googleService.init();
+        googleService.trackPageViews().subscribe();
+      },
       deps: [GoogleAnalyticsService],
       multi: true
     }
