@@ -6,7 +6,7 @@ export abstract class RepositoryRepository {
 
   abstract findByUserId(userId: string): Promise<RepositoryEntity[]>;
 
-  abstract getById(id: string): Promise<RepositoryEntity>;
+  abstract getById(id: string): Promise<RepositoryEntity | null>;
 
   abstract getByData(userId: string, name: string, owner: string): Promise<RepositoryEntity>;
 

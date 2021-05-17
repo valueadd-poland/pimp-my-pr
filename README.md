@@ -50,6 +50,7 @@ Register application:
   without `.sample` key word and fill that files with proper configuration
 - serve frontend application with `ng serve`
 - (optional) start a database with docker `docker run --name pmp-postgres -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_USER=pmp -p 5432:5432 -d postgres`
+- (optional) start redis with docker `docker run --name pmp-redis -p 6379:6379 -d redis`
 - serve api with `ng serve pmp-api`
 
 ### Build production

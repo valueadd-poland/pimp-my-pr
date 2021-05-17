@@ -1,15 +1,15 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { ReviewerEntity } from '@pimp-my-pr/server/repository/core/domain';
-import { ReviewerRepository } from '@pimp-my-pr/server/repository/core/domain-services';
 import { gitlabConfig } from '@pimp-my-pr/server/shared/config';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
 import { urlFactory } from '@valueadd/typed-urls';
 import { map } from 'rxjs/operators';
 import { GitlabUserEntity } from '../domain/entities/gitlab-user.entity';
 import { mapGitlabUser } from '../mappers/map-gitlab-user';
+import { RemoteContributorRepository } from '@pimp-my-pr/server/repository/core/domain-services';
 
 @Injectable()
-export class GitlabReviewerRepository extends ReviewerRepository {
+export class GitlabReviewerRepository extends RemoteContributorRepository {
   endpoints = {
     getUser: urlFactory<'id'>(gitlabConfig.apiUrl + '/users/:id', true)
   };

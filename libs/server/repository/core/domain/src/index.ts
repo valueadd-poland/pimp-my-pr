@@ -23,3 +23,8 @@ export * from './lib/enums/pr-state.enum';
 export * from './lib/utils/get-timeline-history';
 export * from './lib/utils/get-missing-settings.util';
 export * from './lib/factories/default-setting.factory';
+export * from './lib/consts/pr-queue-name.const';
+export * from './lib/interfaces/pr-sync-job.interface';
+export * from './lib/entities/contributor.entity';
+export * from './lib/entities/contributor-cached.entity';
+export * from './lib/entities/pr-cached.entity';

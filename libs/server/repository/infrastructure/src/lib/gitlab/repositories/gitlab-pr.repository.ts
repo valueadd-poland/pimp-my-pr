@@ -1,6 +1,6 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { PrEntity, PrState } from '@pimp-my-pr/server/repository/core/domain';
-import { PrRepository } from '@pimp-my-pr/server/repository/core/domain-services';
+import { RemotePrRepository } from '@pimp-my-pr/server/repository/core/domain-services';
 import { gitlabConfig } from '@pimp-my-pr/server/shared/config';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
 import { urlFactory } from '@valueadd/typed-urls';
@@ -13,7 +13,7 @@ import { urlWithQueryParams } from '@pimp-my-pr/shared/domain';
 import { GithubPrState } from '../../github/domain/enums/github-pr-status.enum';
 
 @Injectable()
-export class GitlabPrRepository extends PrRepository {
+export class GitlabPrRepository extends RemotePrRepository {
   endpoints = {
     getPr: urlFactory<'repoFullName' | 'prId'>(
       gitlabConfig.apiUrl + '/projects/:repoFullName/merge_requests/:prId',

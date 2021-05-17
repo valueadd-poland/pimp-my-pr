@@ -25,7 +25,7 @@ export class RepositoryEntity {
   pictureUrl: string;
 
   @f.array(PrEntity)
-  prs: PrEntity[] = [];
+  prs: PrEntity[];
 
   @f
   repositoryId: string;

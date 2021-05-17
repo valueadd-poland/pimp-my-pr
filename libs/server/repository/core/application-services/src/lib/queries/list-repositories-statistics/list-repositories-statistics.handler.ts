@@ -6,7 +6,6 @@ import {
   prRepositoryFactoryToken,
   RepositoryRepository
 } from '@pimp-my-pr/server/repository/core/domain-services';
-import { Platform } from '@pimp-my-pr/shared/domain';
 import { ListRepositoriesStatisticsQuery } from './list-repositories-statistics.query';
 import { RepositoriesStatisticsItemReadModel } from './repositories-statistics-item.read-model';
 
@@ -14,20 +13,17 @@ import { RepositoriesStatisticsItemReadModel } from './repositories-statistics-i
 export class ListRepositoriesStatisticsHandler
   implements IQueryHandler<ListRepositoriesStatisticsQuery, RepositoriesStatisticsItemReadModel[]> {
   constructor(
-    @Inject(prRepositoryFactoryToken)
-    private prRepositoryFactory: (platform: Platform) => PrRepository,
+    private prRepository: PrRepository,
     private repositoryRepository: RepositoryRepository
   ) {}
 
   async execute(
     query: ListRepositoriesStatisticsQuery
   ): Promise<RepositoriesStatisticsItemReadModel[]> {
-    const prRepository = this.prRepositoryFactory(query.platform);
-
     const repositories = await this.repositoryRepository.findByUserId(query.userId);
 
     const result = repositories.map(async repository => {
-      const prs = await prRepository.findByRepositoryId(repository.fullName, query.token);
+      const prs = await this.prRepository.findByRepositoryId(repository.fullName);
 
       return new RepositoriesStatisticsItemReadModel(repository, prs);
     });

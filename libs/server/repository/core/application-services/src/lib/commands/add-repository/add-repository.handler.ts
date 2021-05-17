@@ -7,10 +7,11 @@ import {
 } from '@pimp-my-pr/server/repository/core/domain';
 import { RepositoryRepository } from '@pimp-my-pr/server/repository/core/domain-services';
 import { AddRepositoryCommand } from './add-repository.command';
+import { PrSyncService } from '../../queue/pr-sync.service';
 
 @CommandHandler(AddRepositoryCommand)
 export class AddRepositoryHandler implements ICommandHandler<AddRepositoryCommand> {
-  constructor(private repositoryRepository: RepositoryRepository) {}
+  constructor(private repositoryRepository: RepositoryRepository, private prSync: PrSyncService) {}
 
   async execute(command: AddRepositoryCommand): Promise<void> {
     const { repositoryName, maxLines, maxWaitingTime, userId, maxPrs } = command;
@@ -42,7 +43,13 @@ export class AddRepositoryHandler implements ICommandHandler<AddRepositoryComman
       maxWaitingTime,
       maxPrs
     );
+    await this.repositoryRepository.save(repository);
 
-    return this.repositoryRepository.save(repository);
+    return this.prSync.syncPrsInBackground(
+      repository.repositoryId,
+      repositoryName,
+      command.token,
+      command.platform
+    );
   }
 }

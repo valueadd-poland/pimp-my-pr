@@ -3,6 +3,7 @@ import { EntitySchema } from 'typeorm';
 
 interface RepositoryRelations {
   user: undefined;
+  prs: undefined;
 }
 
 export const schema = new EntitySchema<RepositoryEntity | RepositoryRelations>({
@@ -45,6 +46,21 @@ export const schema = new EntitySchema<RepositoryEntity | RepositoryRelations>({
     user: {
       type: 'many-to-one',
       target: 'User'
+    },
+    prs: {
+      target: 'PrEntity',
+      type: 'many-to-many',
+      joinTable: {
+        name: 'repository_prs',
+        joinColumn: {
+          name: 'repository_id'
+        },
+        inverseJoinColumn: {
+          name: 'pr_id'
+        }
+      },
+      inverseSide: 'repositories',
+      cascade: true
     }
   }
 });

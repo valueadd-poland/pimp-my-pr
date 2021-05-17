@@ -2,9 +2,11 @@ import { Global, Module } from '@nestjs/common';
 
 import { ServerRepositoryCoreApplicationServicesModule } from '@pimp-my-pr/server/repository/core/application-services';
 import {
-  prRepositoryFactoryToken,
+  ContributorRepository,
+  PrRepository,
+  remoteContributorRepositoryFactoryToken,
+  remotePrRepositoryFactoryToken,
   RepositoryRepository,
-  reviewerRepositoryFactoryToken,
   SettingsRepository
 } from '@pimp-my-pr/server/repository/core/domain-services';
 import {
@@ -25,10 +27,12 @@ import {
 import { prRepositoryFactoryFactory } from './factories/pr-repository.factory';
 import { remoteRepositoryRepositoryFactoryFactory } from './factories/remote-repository-repository.factory';
 import { reviewerRepositoryFactoryFactory } from './factories/reviewer-repository.factory';
+import { PrRepositoryAdapter } from '@pimp-my-pr/server/repository/infrastructure';
+import { ContributorRepositoryAdapter } from '@pimp-my-pr/server/repository/infrastructure';
 
 const providers = [
   {
-    provide: prRepositoryFactoryToken,
+    provide: remotePrRepositoryFactoryToken,
     useFactory: prRepositoryFactoryFactory,
     inject: [GithubPrRepository, BitbucketPrRepository, GitlabPrRepository]
   },
@@ -38,7 +42,7 @@ const providers = [
     inject: [GithubRepositoryRepository, BitbucketRepositoryRepository, GitlabRepositoryRepository]
   },
   {
-    provide: reviewerRepositoryFactoryToken,
+    provide: remoteContributorRepositoryFactoryToken,
     useFactory: reviewerRepositoryFactoryFactory,
     inject: [GithubReviewerRepository, BitbucketReviewerRepository, GitlabReviewerRepository]
   },
@@ -50,7 +54,14 @@ const providers = [
     provide: SettingsRepository,
     useClass: SettingsRepositoryAdapter
   },
-
+  {
+    provide: PrRepository,
+    useClass: PrRepositoryAdapter
+  },
+  {
+    provide: ContributorRepository,
+    useClass: ContributorRepositoryAdapter
+  },
   GithubPrRepository,
   BitbucketPrRepository,
   GitlabPrRepository,

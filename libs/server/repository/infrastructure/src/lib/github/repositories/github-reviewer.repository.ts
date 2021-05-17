@@ -1,6 +1,6 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { ReviewerEntity } from '@pimp-my-pr/server/repository/core/domain';
-import { ReviewerRepository } from '@pimp-my-pr/server/repository/core/domain-services';
+import { RemoteContributorRepository } from '@pimp-my-pr/server/repository/core/domain-services';
 import { githubConfig } from '@pimp-my-pr/server/shared/config';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
 import { urlFactory } from '@valueadd/typed-urls';
@@ -9,7 +9,7 @@ import { GithubUserEntity } from '../domain/entities/github-user.entity';
 import { mapGithubContributor } from '../mappers/map-github-contributor';
 
 @Injectable()
-export class GithubReviewerRepository extends ReviewerRepository {
+export class GithubReviewerRepository extends RemoteContributorRepository {
   endpoints = {
     getUser: urlFactory<'id'>(githubConfig.apiUrl + '/user/:id', true)
   };

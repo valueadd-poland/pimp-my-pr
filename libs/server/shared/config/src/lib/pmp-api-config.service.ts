@@ -19,6 +19,10 @@ export const pmpApiConfigService = registerAs(CONFIG_NAMESPACE, () => ({
     port: process.env.DB_PORT,
     user: process.env.DB_USER
   },
+  redis: {
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT
+  },
   githubClientId: process.env.GITHUB_CLIENT_ID,
   githubClientSecret: process.env.GITHUB_CLIENT_SECRET,
   gitlabClientId: process.env.GITLAB_CLIENT_ID,
@@ -42,6 +46,10 @@ export class PmpApiConfigService {
 
   getDbConfig(): { host: string; name: string; password: string; port: number; user: string } {
     return this.configService.get(CONFIG_NAMESPACE + '.db');
+  }
+
+  getRedisConfig(): { host: string; port: string } {
+    return this.configService.get(CONFIG_NAMESPACE + '.redis');
   }
 
   getGithubClientId(): string {

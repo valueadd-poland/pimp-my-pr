@@ -18,6 +18,7 @@ import { SettingsFacade } from './settings.facade';
 import { EditSettingsHandler } from './commands/edit-settings/edit-settings.handler';
 import { UserAddedEventHandler } from './events/user-added/user-added.event-handler';
 import { AddMissingSettingsHandler } from './commands/add-missing-settings/add-missing-settings.handler';
+import { PrQueueModule } from './queue/pr-queue.module';
 
 const QueryHandlers = [
   AddRepositoryHandler,
@@ -39,7 +40,7 @@ const QueryHandlers = [
 ];
 
 @Module({
-  imports: [CqrsModule],
+  imports: [CqrsModule, PrQueueModule],
   providers: [RepositoryFacade, SettingsFacade, TimelineFacade, ...QueryHandlers],
   exports: [RepositoryFacade, TimelineFacade, SettingsFacade]
 })

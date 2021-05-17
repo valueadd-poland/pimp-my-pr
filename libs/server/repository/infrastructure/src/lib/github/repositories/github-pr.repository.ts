@@ -1,11 +1,14 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { PrEntity, PrState } from '@pimp-my-pr/server/repository/core/domain';
-import { PrRepository } from '@pimp-my-pr/server/repository/core/domain-services';
+import {
+  PrRepository,
+  RemotePrRepository
+} from '@pimp-my-pr/server/repository/core/domain-services';
 import { githubConfig } from '@pimp-my-pr/server/shared/config';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
 import { urlFactory } from '@valueadd/typed-urls';
 import { forkJoin, of } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { catchError, finalize, map, switchMap, tap } from 'rxjs/operators';
 import { GithubPrDetailsEntity } from '../domain/entities/github-pr-details.entity';
 import { GithubPrEntity } from '../domain/entities/github-pr.entity';
 import { mapGithubPr } from '../mappers/map-github-pr';
@@ -13,7 +16,7 @@ import { urlWithQueryParams } from '@pimp-my-pr/shared/domain';
 import { GithubPrState } from '../domain/enums/github-pr-status.enum';
 
 @Injectable()
-export class GithubPrRepository extends PrRepository {
+export class GithubPrRepository extends RemotePrRepository {
   endpoints = {
     getPr: urlFactory<'repoFullName' | 'prId'>(
       githubConfig.apiUrl + '/repos/:repoFullName/pulls/:prId',

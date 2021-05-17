@@ -1,6 +1,9 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { PrEntity, PrState } from '@pimp-my-pr/server/repository/core/domain';
-import { PrRepository } from '@pimp-my-pr/server/repository/core/domain-services';
+import {
+  PrRepository,
+  RemotePrRepository
+} from '@pimp-my-pr/server/repository/core/domain-services';
 import { bitbucketConfig } from '@pimp-my-pr/server/shared/config';
 import { catchRequestExceptions } from '@pimp-my-pr/server/shared/util-exception';
 import { urlFactory } from '@valueadd/typed-urls';
@@ -16,7 +19,7 @@ import { urlWithQueryParams } from '@pimp-my-pr/shared/domain';
 import { BitbucketPrState } from '../domain/enums/bitbucket-pr-state.enum';
 
 @Injectable()
-export class BitbucketPrRepository extends PrRepository {
+export class BitbucketPrRepository extends RemotePrRepository {
   endpoints = {
     getRepositoryPrs: urlFactory<'repositoryId'>(
       bitbucketConfig.apiUrl + '/repositories/:repositoryId/pullrequests',
