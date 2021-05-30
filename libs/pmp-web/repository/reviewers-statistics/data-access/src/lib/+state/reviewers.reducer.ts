@@ -52,7 +52,7 @@ export function reviewersReducer(
     case fromUserActions.Types.GetReviewersStatisticsCollectionSuccess: {
       state = {
         ...state,
-        reviewersStatisticsCollection: adapter.addAll(
+        reviewersStatisticsCollection: adapter.addMany(
           action.payload,
           state.reviewersStatisticsCollection
         ),

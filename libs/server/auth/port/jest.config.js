@@ -1,9 +1,10 @@
 module.exports = {
-  name: 'server-auth-port',
-  preset: '../../../../jest.config.js',
+  preset: '../../../../jest.preset.js',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../../../coverage/libs/server/auth/port'
+  coverageDirectory: '../../../../coverage/libs/server/auth/port',
+  globals: { 'ts-jest': { tsConfig: '<rootDir>/tsconfig.spec.json' } },
+  displayName: 'server-auth-port'
 };

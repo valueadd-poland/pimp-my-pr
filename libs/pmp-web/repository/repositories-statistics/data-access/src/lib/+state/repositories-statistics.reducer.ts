@@ -10,9 +10,7 @@ export interface RepositoriesStatisticsPartialState {
   readonly [REPOSITORIES_STATISTICS_FEATURE_KEY]: RepositoriesStatisticsState;
 }
 
-export const adapter: EntityAdapter<RepositoryStatistics> = createEntityAdapter<
-  RepositoryStatistics
->();
+export const adapter: EntityAdapter<RepositoryStatistics> = createEntityAdapter<RepositoryStatistics>();
 
 export interface RepositoriesStatisticsState {
   repositoriesStatisticsCollection: RepositoriesStatisticsEntityState;
@@ -54,7 +52,7 @@ export function repositoriesStatisticsReducer(
     case fromRepositoriesStatisticsActions.Types.GetRepositoriesStatisticsCollectionSuccess: {
       state = {
         ...state,
-        repositoriesStatisticsCollection: adapter.addAll(
+        repositoriesStatisticsCollection: adapter.addMany(
           action.payload,
           state.repositoriesStatisticsCollection
         ),

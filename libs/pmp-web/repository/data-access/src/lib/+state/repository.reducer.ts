@@ -57,7 +57,7 @@ export function repositoryReducer(
     case fromRepositoryActions.Types.GetRepositoryCollectionSuccess: {
       state = {
         ...state,
-        repositoryCollection: adapter.addAll(action.payload, state.repositoryCollection),
+        repositoryCollection: adapter.addMany(action.payload, state.repositoryCollection),
         repositoryCollectionLoading: false,
         repositoryCollectionLoadError: null
       };

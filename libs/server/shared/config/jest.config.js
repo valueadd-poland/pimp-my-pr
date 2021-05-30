@@ -1,9 +1,10 @@
 module.exports = {
-  name: 'server-shared-config',
-  preset: '../../../../jest.config.js',
+  preset: '../../../../jest.preset.js',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../../../coverage/libs/server/shared/config'
+  coverageDirectory: '../../../../coverage/libs/server/shared/config',
+  globals: { 'ts-jest': { tsConfig: '<rootDir>/tsconfig.spec.json' } },
+  displayName: 'server-shared-config'
 };

@@ -1,9 +1,10 @@
 module.exports = {
-  name: 'server-repository-shell',
-  preset: '../../../../jest.config.js',
+  preset: '../../../../jest.preset.js',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../../../coverage/libs/server/repository/shell'
+  coverageDirectory: '../../../../coverage/libs/server/repository/shell',
+  globals: { 'ts-jest': { tsConfig: '<rootDir>/tsconfig.spec.json' } },
+  displayName: 'server-repository-shell'
 };

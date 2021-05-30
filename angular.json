@@ -36,7 +36,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -55,7 +54,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -80,17 +80,16 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["apps/pmp-web/tsconfig.app.json", "apps/pmp-web/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!apps/pmp-web/**"]
+            "exclude": ["**/node_modules/**", "!apps/pmp-web/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/pmp-web/jest.config.js",
-            "tsConfig": "apps/pmp-web/tsconfig.spec.json",
-            "setupFile": "apps/pmp-web/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/pmp-web"]
         }
       }
     },
@@ -116,7 +115,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["apps/pmp-web-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/pmp-web-e2e/**"]
+            "exclude": ["**/node_modules/**", "!apps/pmp-web-e2e/**/*"]
           }
         }
       }
@@ -149,7 +148,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@nrwl/node:execute",
@@ -161,16 +161,16 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["apps/pmp-api/tsconfig.app.json", "apps/pmp-api/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!apps/pmp-api/**"]
+            "exclude": ["**/node_modules/**", "!apps/pmp-api/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/pmp-api/jest.config.js",
-            "tsConfig": "apps/pmp-api/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/pmp-api"]
         }
       }
     },
@@ -188,17 +188,17 @@
               "apps/pmp-api-e2e/tsconfig.app.json",
               "apps/pmp-api-e2e/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/pmp-api-e2e/**"]
+            "exclude": ["**/node_modules/**", "!apps/pmp-api-e2e/**/*"]
           }
         },
         "e2e": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/pmp-api-e2e/jest.config.js",
-            "tsConfig": "apps/pmp-api-e2e/tsconfig.spec.json",
             "passWithNoTests": true,
             "runInBand": true
-          }
+          },
+          "outputs": ["coverage/apps/pmp-api-e2e"]
         }
       }
     },
@@ -215,16 +215,16 @@
               "libs/shared/domain/tsconfig.lib.json",
               "libs/shared/domain/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/domain/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/domain/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/domain/jest.config.js",
-            "tsConfig": "libs/shared/domain/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/shared/domain"]
         }
       }
     },
@@ -241,17 +241,16 @@
               "libs/pmp-web/shared/domain/tsconfig.lib.json",
               "libs/pmp-web/shared/domain/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/domain/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/domain/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/shared/domain/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/domain/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/domain/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/shared/domain"]
         }
       },
       "schematics": {
@@ -273,17 +272,16 @@
               "libs/pmp-web/shared/util/tsconfig.lib.json",
               "libs/pmp-web/shared/util/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/util/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/util/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/shared/util/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/util/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/util/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/shared/util"]
         }
       },
       "schematics": {
@@ -305,17 +303,16 @@
               "libs/pmp-web/shared/ui-navbar/tsconfig.lib.json",
               "libs/pmp-web/shared/ui-navbar/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-navbar/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-navbar/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/shared/ui-navbar/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/ui-navbar/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/ui-navbar/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/shared/ui-navbar"]
         }
       },
       "schematics": {
@@ -337,17 +334,16 @@
               "libs/pmp-web/shared/ui-sidebar/tsconfig.lib.json",
               "libs/pmp-web/shared/ui-sidebar/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-sidebar/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-sidebar/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/shared/ui-sidebar/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/ui-sidebar/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/ui-sidebar/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/shared/ui-sidebar"]
         }
       },
       "schematics": {
@@ -370,16 +366,16 @@
               "libs/pmp-web/shared/ui-picture-label/tsconfig.lib.json",
               "libs/pmp-web/shared/ui-picture-label/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-picture-label/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-picture-label/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/shared/ui-picture-label/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/ui-picture-label/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/shared/ui-picture-label"]
         }
       }
     },
@@ -396,17 +392,16 @@
               "libs/pmp-web/shared/ui-go-back-header/tsconfig.lib.json",
               "libs/pmp-web/shared/ui-go-back-header/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-go-back-header/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-go-back-header/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/shared/ui-go-back-header/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/ui-go-back-header/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/ui-go-back-header/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/shared/ui-go-back-header"]
         }
       },
       "schematics": {
@@ -428,17 +423,16 @@
               "libs/pmp-web/shared/ui-header-container/tsconfig.lib.json",
               "libs/pmp-web/shared/ui-header-container/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-header-container/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-header-container/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/shared/ui-header-container/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/ui-header-container/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/ui-header-container/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/shared/ui-header-container"]
         }
       },
       "schematics": {
@@ -460,17 +454,16 @@
               "libs/pmp-web/shared/ui-persons-bar/tsconfig.lib.json",
               "libs/pmp-web/shared/ui-persons-bar/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-persons-bar/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-persons-bar/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/shared/ui-persons-bar/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/ui-persons-bar/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/ui-persons-bar/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/shared/ui-persons-bar"]
         }
       },
       "schematics": {
@@ -492,17 +485,16 @@
               "libs/pmp-web/auth/shell/tsconfig.lib.json",
               "libs/pmp-web/auth/shell/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/shell/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/shell/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/auth/shell/jest.config.js",
-            "tsConfig": "libs/pmp-web/auth/shell/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/auth/shell/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/auth/shell"]
         }
       },
       "schematics": {
@@ -524,17 +516,16 @@
               "libs/pmp-web/auth/login-feature/tsconfig.lib.json",
               "libs/pmp-web/auth/login-feature/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/login-feature/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/login-feature/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/auth/login-feature/jest.config.js",
-            "tsConfig": "libs/pmp-web/auth/login-feature/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/auth/login-feature/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/auth/login-feature"]
         }
       },
       "schematics": {
@@ -558,7 +549,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/ui-statistics-overview-table/**"
+              "!libs/pmp-web/repository/ui-statistics-overview-table/**/*"
             ]
           }
         },
@@ -566,10 +557,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/ui-statistics-overview-table/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/ui-statistics-overview-table/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/ui-statistics-overview-table/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/ui-statistics-overview-table"]
         }
       },
       "schematics": {
@@ -591,17 +581,16 @@
               "libs/pmp-web/repository/ui-table-pr-statistic/tsconfig.lib.json",
               "libs/pmp-web/repository/ui-table-pr-statistic/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/repository/ui-table-pr-statistic/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/repository/ui-table-pr-statistic/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/ui-table-pr-statistic/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/ui-table-pr-statistic/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/ui-table-pr-statistic/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/ui-table-pr-statistic"]
         }
       },
       "schematics": {
@@ -625,7 +614,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/repository-statistics/feature/**"
+              "!libs/pmp-web/repository/repository-statistics/feature/**/*"
             ]
           }
         },
@@ -633,10 +622,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/repository-statistics/feature/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/repository-statistics/feature/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/repository-statistics/feature/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/repository-statistics/feature"]
         }
       },
       "schematics": {
@@ -660,7 +648,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/repository-statistics/data-access/**"
+              "!libs/pmp-web/repository/repository-statistics/data-access/**/*"
             ]
           }
         },
@@ -668,10 +656,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/repository-statistics/data-access/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/repository-statistics/data-access/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/repository-statistics/data-access/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/repository-statistics/data-access"]
         }
       },
       "schematics": {
@@ -695,7 +682,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/repositories-statistics/feature/**"
+              "!libs/pmp-web/repository/repositories-statistics/feature/**/*"
             ]
           }
         },
@@ -703,10 +690,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/repositories-statistics/feature/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/repositories-statistics/feature/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/repositories-statistics/feature/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/repositories-statistics/feature"]
         }
       },
       "schematics": {
@@ -730,7 +716,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/repositories-statistics/data-access/**"
+              "!libs/pmp-web/repository/repositories-statistics/data-access/**/*"
             ]
           }
         },
@@ -738,10 +724,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/repositories-statistics/data-access/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/repositories-statistics/data-access/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/repositories-statistics/data-access/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/repositories-statistics/data-access"]
         }
       },
       "schematics": {
@@ -766,7 +751,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/reviewer-statistics/feature/**"
+              "!libs/pmp-web/repository/reviewer-statistics/feature/**/*"
             ]
           }
         },
@@ -774,9 +759,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/reviewer-statistics/feature/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/reviewer-statistics/feature/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/reviewer-statistics/feature"]
         }
       }
     },
@@ -795,7 +780,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/reviewer-statistics/data-access/**"
+              "!libs/pmp-web/repository/reviewer-statistics/data-access/**/*"
             ]
           }
         },
@@ -803,10 +788,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/reviewer-statistics/data-access/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/reviewer-statistics/data-access/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/reviewer-statistics/data-access/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/reviewer-statistics/data-access"]
         }
       },
       "schematics": {
@@ -830,7 +814,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/reviewers-statistics/feature/**"
+              "!libs/pmp-web/repository/reviewers-statistics/feature/**/*"
             ]
           }
         },
@@ -838,10 +822,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/reviewers-statistics/feature/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/reviewers-statistics/feature/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/reviewers-statistics/feature/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/reviewers-statistics/feature"]
         }
       },
       "schematics": {
@@ -865,7 +848,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/reviewers-statistics/data-access/**"
+              "!libs/pmp-web/repository/reviewers-statistics/data-access/**/*"
             ]
           }
         },
@@ -873,10 +856,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/reviewers-statistics/data-access/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/reviewers-statistics/data-access/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/reviewers-statistics/data-access/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/reviewers-statistics/data-access"]
         }
       },
       "schematics": {
@@ -898,17 +880,16 @@
               "libs/pmp-web/repository/domain/tsconfig.lib.json",
               "libs/pmp-web/repository/domain/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/repository/domain/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/repository/domain/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/domain/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/domain/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/domain/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/domain"]
         }
       },
       "schematics": {
@@ -930,17 +911,16 @@
               "libs/pmp-web/repository/shell/tsconfig.lib.json",
               "libs/pmp-web/repository/shell/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/repository/shell/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/repository/shell/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/shell/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/shell/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/shell/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/shell"]
         }
       },
       "schematics": {
@@ -962,16 +942,16 @@
               "libs/server/repository/api-rest/tsconfig.lib.json",
               "libs/server/repository/api-rest/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/repository/api-rest/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/repository/api-rest/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/repository/api-rest/jest.config.js",
-            "tsConfig": "libs/server/repository/api-rest/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/repository/api-rest"]
         }
       }
     },
@@ -988,16 +968,16 @@
               "libs/server/repository/core/domain/tsconfig.lib.json",
               "libs/server/repository/core/domain/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/repository/core/domain/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/repository/core/domain/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/repository/core/domain/jest.config.js",
-            "tsConfig": "libs/server/repository/core/domain/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/repository/core/domain"]
         }
       }
     },
@@ -1016,7 +996,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/server/repository/core/application-services/**"
+              "!libs/server/repository/core/application-services/**/*"
             ]
           }
         },
@@ -1024,9 +1004,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/repository/core/application-services/jest.config.js",
-            "tsConfig": "libs/server/repository/core/application-services/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/repository/core/application-services"]
         }
       }
     },
@@ -1043,16 +1023,16 @@
               "libs/server/repository/shell/tsconfig.lib.json",
               "libs/server/repository/shell/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/repository/shell/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/repository/shell/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/repository/shell/jest.config.js",
-            "tsConfig": "libs/server/repository/shell/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/repository/shell"]
         }
       }
     },
@@ -1069,16 +1049,16 @@
               "libs/server/repository/infrastructure/tsconfig.lib.json",
               "libs/server/repository/infrastructure/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/repository/infrastructure/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/repository/infrastructure/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/repository/infrastructure/jest.config.js",
-            "tsConfig": "libs/server/repository/infrastructure/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/repository/infrastructure"]
         }
       }
     },
@@ -1095,16 +1075,16 @@
               "libs/server/shared/domain/tsconfig.lib.json",
               "libs/server/shared/domain/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/shared/domain/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/shared/domain/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/shared/domain/jest.config.js",
-            "tsConfig": "libs/server/shared/domain/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/shared/domain"]
         }
       }
     },
@@ -1121,16 +1101,16 @@
               "libs/server/shared/util-exception/tsconfig.lib.json",
               "libs/server/shared/util-exception/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/shared/util-exception/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/shared/util-exception/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/shared/util-exception/jest.config.js",
-            "tsConfig": "libs/server/shared/util-exception/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/shared/util-exception"]
         }
       }
     },
@@ -1147,16 +1127,16 @@
               "libs/server/shared/core/tsconfig.lib.json",
               "libs/server/shared/core/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/shared/core/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/shared/core/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/shared/core/jest.config.js",
-            "tsConfig": "libs/server/shared/core/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/shared/core"]
         }
       }
     },
@@ -1173,16 +1153,16 @@
               "libs/server/repository/core/domain-services/tsconfig.lib.json",
               "libs/server/repository/core/domain-services/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/repository/core/domain-services/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/repository/core/domain-services/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/repository/core/domain-services/jest.config.js",
-            "tsConfig": "libs/server/repository/core/domain-services/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/repository/core/domain-services"]
         }
       }
     },
@@ -1201,7 +1181,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/repository-settings/feature/**"
+              "!libs/pmp-web/repository/repository-settings/feature/**/*"
             ]
           }
         },
@@ -1209,10 +1189,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/repository-settings/feature/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/repository-settings/feature/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/repository-settings/feature/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/repository-settings/feature"]
         }
       },
       "schematics": {
@@ -1234,16 +1213,16 @@
               "libs/server/shared/util-repository/tsconfig.lib.json",
               "libs/server/shared/util-repository/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/shared/util-repository/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/shared/util-repository/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/shared/util-repository/jest.config.js",
-            "tsConfig": "libs/server/shared/util-repository/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/shared/util-repository"]
         }
       },
       "schematics": {}
@@ -1261,17 +1240,16 @@
               "libs/pmp-web/repository/data-access/tsconfig.lib.json",
               "libs/pmp-web/repository/data-access/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/repository/data-access/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/repository/data-access/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/data-access/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/data-access/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/data-access/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/data-access"]
         }
       },
       "schematics": {
@@ -1293,16 +1271,16 @@
               "libs/server/auth/shell/tsconfig.lib.json",
               "libs/server/auth/shell/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/auth/shell/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/auth/shell/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/shell/jest.config.js",
-            "tsConfig": "libs/server/auth/shell/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/auth/shell"]
         }
       }
     },
@@ -1319,16 +1297,16 @@
               "libs/server/auth/api-rest/tsconfig.lib.json",
               "libs/server/auth/api-rest/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/auth/api-rest/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/auth/api-rest/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/api-rest/jest.config.js",
-            "tsConfig": "libs/server/auth/api-rest/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/auth/api-rest"]
         }
       }
     },
@@ -1345,16 +1323,16 @@
               "libs/server/auth/core/application-services/tsconfig.lib.json",
               "libs/server/auth/core/application-services/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/auth/core/application-services/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/auth/core/application-services/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/core/application-services/jest.config.js",
-            "tsConfig": "libs/server/auth/core/application-services/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/auth/core/application-services"]
         }
       }
     },
@@ -1371,16 +1349,16 @@
               "libs/server/auth/infrastructure/tsconfig.lib.json",
               "libs/server/auth/infrastructure/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/auth/infrastructure/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/auth/infrastructure/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/infrastructure/jest.config.js",
-            "tsConfig": "libs/server/auth/infrastructure/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/auth/infrastructure"]
         }
       }
     },
@@ -1397,16 +1375,16 @@
               "libs/server/auth/core/domain-services/tsconfig.lib.json",
               "libs/server/auth/core/domain-services/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/auth/core/domain-services/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/auth/core/domain-services/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/core/domain-services/jest.config.js",
-            "tsConfig": "libs/server/auth/core/domain-services/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/auth/core/domain-services"]
         }
       }
     },
@@ -1423,16 +1401,16 @@
               "libs/server/auth/core/domain/tsconfig.lib.json",
               "libs/server/auth/core/domain/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/auth/core/domain/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/auth/core/domain/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/core/domain/jest.config.js",
-            "tsConfig": "libs/server/auth/core/domain/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/auth/core/domain"]
         }
       }
     },
@@ -1449,16 +1427,16 @@
               "libs/shared/util-query-string/tsconfig.lib.json",
               "libs/shared/util-query-string/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/util-query-string/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/util-query-string/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/util-query-string/jest.config.js",
-            "tsConfig": "libs/shared/util-query-string/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/shared/util-query-string"]
         }
       }
     },
@@ -1475,16 +1453,16 @@
               "libs/server/auth/public/tsconfig.lib.json",
               "libs/server/auth/public/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/auth/public/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/auth/public/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/public/jest.config.js",
-            "tsConfig": "libs/server/auth/public/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/auth/public"]
         }
       }
     },
@@ -1501,17 +1479,16 @@
               "libs/pmp-web/auth/data-access/tsconfig.lib.json",
               "libs/pmp-web/auth/data-access/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/data-access/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/data-access/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/auth/data-access/jest.config.js",
-            "tsConfig": "libs/pmp-web/auth/data-access/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/auth/data-access/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/auth/data-access"]
         }
       },
       "schematics": {
@@ -1533,17 +1510,16 @@
               "libs/pmp-web/auth/domain/tsconfig.lib.json",
               "libs/pmp-web/auth/domain/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/domain/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/domain/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/auth/domain/jest.config.js",
-            "tsConfig": "libs/pmp-web/auth/domain/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/auth/domain/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/auth/domain"]
         }
       },
       "schematics": {
@@ -1565,17 +1541,16 @@
               "libs/pmp-web/auth/public/tsconfig.lib.json",
               "libs/pmp-web/auth/public/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/public/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/public/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/auth/public/jest.config.js",
-            "tsConfig": "libs/pmp-web/auth/public/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/auth/public/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/auth/public"]
         }
       },
       "schematics": {
@@ -1597,17 +1572,16 @@
               "libs/pmp-web/auth/feature/tsconfig.lib.json",
               "libs/pmp-web/auth/feature/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/feature/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/auth/feature/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/auth/feature/jest.config.js",
-            "tsConfig": "libs/pmp-web/auth/feature/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/auth/feature/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/auth/feature"]
         }
       },
       "schematics": {
@@ -1629,16 +1603,16 @@
               "libs/server/user/core/domain/tsconfig.lib.json",
               "libs/server/user/core/domain/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/user/core/domain/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/user/core/domain/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/user/core/domain/jest.config.js",
-            "tsConfig": "libs/server/user/core/domain/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/user/core/domain"]
         }
       }
     },
@@ -1655,16 +1629,16 @@
               "libs/server/user/core/domain-services/tsconfig.lib.json",
               "libs/server/user/core/domain-services/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/user/core/domain-services/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/user/core/domain-services/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/user/core/domain-services/jest.config.js",
-            "tsConfig": "libs/server/user/core/domain-services/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/user/core/domain-services"]
         }
       }
     },
@@ -1681,16 +1655,16 @@
               "libs/server/user/core/application-services/tsconfig.lib.json",
               "libs/server/user/core/application-services/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/user/core/application-services/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/user/core/application-services/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/user/core/application-services/jest.config.js",
-            "tsConfig": "libs/server/user/core/application-services/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/user/core/application-services"]
         }
       }
     },
@@ -1707,16 +1681,16 @@
               "libs/server/user/shell/tsconfig.lib.json",
               "libs/server/user/shell/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/user/shell/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/user/shell/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/user/shell/jest.config.js",
-            "tsConfig": "libs/server/user/shell/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/user/shell"]
         }
       }
     },
@@ -1733,16 +1707,16 @@
               "libs/server/user/infrastructure/tsconfig.lib.json",
               "libs/server/user/infrastructure/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/user/infrastructure/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/user/infrastructure/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/user/infrastructure/jest.config.js",
-            "tsConfig": "libs/server/user/infrastructure/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/user/infrastructure"]
         }
       }
     },
@@ -1759,16 +1733,16 @@
               "libs/server/user/public/tsconfig.lib.json",
               "libs/server/user/public/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/user/public/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/user/public/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/user/public/jest.config.js",
-            "tsConfig": "libs/server/user/public/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/user/public"]
         }
       }
     },
@@ -1785,17 +1759,16 @@
               "libs/pmp-web/shared/util-ngrx/tsconfig.lib.json",
               "libs/pmp-web/shared/util-ngrx/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/util-ngrx/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/util-ngrx/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/shared/util-ngrx/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/util-ngrx/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/util-ngrx/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/shared/util-ngrx"]
         }
       },
       "schematics": {
@@ -1817,16 +1790,16 @@
               "libs/server/shared/util-bitbucket/tsconfig.lib.json",
               "libs/server/shared/util-bitbucket/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/shared/util-bitbucket/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/shared/util-bitbucket/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/shared/util-bitbucket/jest.config.js",
-            "tsConfig": "libs/server/shared/util-bitbucket/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/shared/util-bitbucket"]
         }
       }
     },
@@ -1843,16 +1816,16 @@
               "libs/server/shared/util-typescript/tsconfig.lib.json",
               "libs/server/shared/util-typescript/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/shared/util-typescript/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/shared/util-typescript/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/shared/util-typescript/jest.config.js",
-            "tsConfig": "libs/server/shared/util-typescript/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/shared/util-typescript"]
         }
       }
     },
@@ -1869,16 +1842,16 @@
               "libs/server/shared/config/tsconfig.lib.json",
               "libs/server/shared/config/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/shared/config/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/shared/config/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/shared/config/jest.config.js",
-            "tsConfig": "libs/server/shared/config/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/shared/config"]
         }
       }
     },
@@ -1895,17 +1868,16 @@
               "libs/pmp-web/shared/config/tsconfig.lib.json",
               "libs/pmp-web/shared/config/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/config/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/config/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/shared/config/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/config/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/config/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/shared/config"]
         }
       },
       "schematics": {
@@ -1927,17 +1899,16 @@
               "libs/pmp-web/shared/core/tsconfig.lib.json",
               "libs/pmp-web/shared/core/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/core/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/core/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/shared/core/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/core/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/core/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/shared/core"]
         }
       },
       "schematics": {
@@ -1959,17 +1930,19 @@
               "libs/pmp-web/repository/repository-settings/ui/tsconfig.lib.json",
               "libs/pmp-web/repository/repository-settings/ui/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/repository/repository-settings/ui/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/pmp-web/repository/repository-settings/ui/**/*"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/repository-settings/ui/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/repository-settings/ui/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/repository/repository-settings/ui/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/repository-settings/ui"]
         }
       },
       "schematics": {
@@ -1991,16 +1964,16 @@
               "libs/server/user/api-rest/tsconfig.lib.json",
               "libs/server/user/api-rest/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/user/api-rest/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/user/api-rest/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/user/api-rest/jest.config.js",
-            "tsConfig": "libs/server/user/api-rest/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/user/api-rest"]
         }
       }
     },
@@ -2017,17 +1990,16 @@
               "libs/pmp-web/shared/ui-generic-dialog/tsconfig.lib.json",
               "libs/pmp-web/shared/ui-generic-dialog/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-generic-dialog/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-generic-dialog/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/shared/ui-generic-dialog/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/ui-generic-dialog/tsconfig.spec.json",
-            "setupFile": "libs/pmp-web/shared/ui-generic-dialog/src/test-setup.ts",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/shared/ui-generic-dialog"]
         }
       },
       "schematics": {
@@ -2049,16 +2021,16 @@
               "libs/server/shared/core-api-rest/tsconfig.lib.json",
               "libs/server/shared/core-api-rest/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/shared/core-api-rest/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/shared/core-api-rest/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/shared/core-api-rest/jest.config.js",
-            "tsConfig": "libs/server/shared/core-api-rest/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/shared/core-api-rest"]
         }
       }
     },
@@ -2075,16 +2047,16 @@
               "libs/server/auth/port/tsconfig.lib.json",
               "libs/server/auth/port/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/auth/port/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/auth/port/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/port/jest.config.js",
-            "tsConfig": "libs/server/auth/port/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/auth/port"]
         }
       }
     },
@@ -2103,7 +2075,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/server/auth/infrastructure-remote-token-crypto/**"
+              "!libs/server/auth/infrastructure-remote-token-crypto/**/*"
             ]
           }
         },
@@ -2111,9 +2083,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/auth/infrastructure-remote-token-crypto/jest.config.js",
-            "tsConfig": "libs/server/auth/infrastructure-remote-token-crypto/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/server/auth/infrastructure-remote-token-crypto"]
         }
       }
     },
@@ -2142,17 +2114,16 @@
               "libs/pmp-web/shared/util-google-analytics/tsconfig.lib.json",
               "libs/pmp-web/shared/util-google-analytics/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/util-google-analytics/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/util-google-analytics/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/shared/util-google-analytics/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/util-google-analytics/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/pmp-web/shared/util-google-analytics/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/pmp-web/shared/util-google-analytics"]
         }
       },
       "schematics": {
@@ -2174,17 +2145,16 @@
               "libs/pmp-web/shell/tsconfig.lib.json",
               "libs/pmp-web/shell/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/shell/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shell/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/shell/jest.config.js",
-            "tsConfig": "libs/pmp-web/shell/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/pmp-web/shell/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/pmp-web/shell"]
         }
       },
       "schematics": {
@@ -2206,17 +2176,16 @@
               "libs/server/repository/util/tsconfig.lib.json",
               "libs/server/repository/util/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/server/repository/util/**"]
+            "exclude": ["**/node_modules/**", "!libs/server/repository/util/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/server/repository/util/jest.config.js",
-            "tsConfig": "libs/server/repository/util/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/server/repository/util/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/server/repository/util"]
         }
       },
       "schematics": {
@@ -2240,7 +2209,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/repository-pr-timeline/data-access/**"
+              "!libs/pmp-web/repository/repository-pr-timeline/data-access/**/*"
             ]
           }
         },
@@ -2248,10 +2217,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/repository-pr-timeline/data-access/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/repository-pr-timeline/data-access/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/pmp-web/repository/repository-pr-timeline/data-access/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/repository-pr-timeline/data-access"]
         }
       },
       "schematics": {
@@ -2275,7 +2243,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/repository-pr-timeline/feature/**"
+              "!libs/pmp-web/repository/repository-pr-timeline/feature/**/*"
             ]
           }
         },
@@ -2283,10 +2251,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/repository-pr-timeline/feature/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/repository-pr-timeline/feature/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/pmp-web/repository/repository-pr-timeline/feature/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/repository-pr-timeline/feature"]
         }
       },
       "schematics": {
@@ -2310,7 +2277,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/repository-pr-timeline/ui-charts/**"
+              "!libs/pmp-web/repository/repository-pr-timeline/ui-charts/**/*"
             ]
           }
         },
@@ -2318,10 +2285,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/repository-pr-timeline/ui-charts/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/repository-pr-timeline/ui-charts/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/pmp-web/repository/repository-pr-timeline/ui-charts/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/repository-pr-timeline/ui-charts"]
         }
       },
       "schematics": {
@@ -2343,17 +2309,16 @@
               "libs/pmp-web/shared/ui-error-box/tsconfig.lib.json",
               "libs/pmp-web/shared/ui-error-box/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-error-box/**"]
+            "exclude": ["**/node_modules/**", "!libs/pmp-web/shared/ui-error-box/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/shared/ui-error-box/jest.config.js",
-            "tsConfig": "libs/pmp-web/shared/ui-error-box/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/pmp-web/shared/ui-error-box/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/pmp-web/shared/ui-error-box"]
         }
       },
       "schematics": {
@@ -2377,7 +2342,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/repository-pr-timeline/util-cross-date-validators/**"
+              "!libs/pmp-web/repository/repository-pr-timeline/util-cross-date-validators/**/*"
             ]
           }
         },
@@ -2385,10 +2350,11 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/repository-pr-timeline/util-cross-date-validators/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/repository-pr-timeline/util-cross-date-validators/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/pmp-web/repository/repository-pr-timeline/util-cross-date-validators/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": [
+            "coverage/libs/pmp-web/repository/repository-pr-timeline/util-cross-date-validators"
+          ]
         }
       },
       "schematics": {
@@ -2412,7 +2378,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/repository-settings/data-access/**"
+              "!libs/pmp-web/repository/repository-settings/data-access/**/*"
             ]
           }
         },
@@ -2420,10 +2386,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/repository-settings/data-access/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/repository-settings/data-access/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/pmp-web/repository/repository-settings/data-access/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/repository-settings/data-access"]
         }
       },
       "schematics": {
@@ -2447,7 +2412,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/repository-settings/util-validators/**"
+              "!libs/pmp-web/repository/repository-settings/util-validators/**/*"
             ]
           }
         },
@@ -2455,10 +2420,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/repository-settings/util-validators/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/repository-settings/util-validators/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/pmp-web/repository/repository-settings/util-validators/src/test-setup.ts"
-          }
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/repository-settings/util-validators"]
         }
       },
       "schematics": {
@@ -2480,16 +2444,16 @@
               "libs/shared/util-time-diff-in-hours/tsconfig.lib.json",
               "libs/shared/util-time-diff-in-hours/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/util-time-diff-in-hours/**"]
+            "exclude": ["**/node_modules/**", "!libs/shared/util-time-diff-in-hours/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/util-time-diff-in-hours/jest.config.js",
-            "tsConfig": "libs/shared/util-time-diff-in-hours/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/shared/util-time-diff-in-hours"]
         }
       }
     },
@@ -2508,7 +2472,7 @@
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/pmp-web/repository/ui-table-reviewer-statistics/**"
+              "!libs/pmp-web/repository/ui-table-reviewer-statistics/**/*"
             ]
           }
         },
@@ -2516,9 +2480,9 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/pmp-web/repository/ui-table-reviewer-statistics/jest.config.js",
-            "tsConfig": "libs/pmp-web/repository/ui-table-reviewer-statistics/tsconfig.spec.json",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/pmp-web/repository/ui-table-reviewer-statistics"]
         }
       }
     }

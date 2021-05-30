@@ -1,9 +1,10 @@
 module.exports = {
-  name: 'server-auth-infrastructure-remote-token-crypto',
-  preset: '../../../../jest.config.js',
+  preset: '../../../../jest.preset.js',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../../../coverage/libs/server/auth/infrastructure-remote-token-crypto'
+  coverageDirectory: '../../../../coverage/libs/server/auth/infrastructure-remote-token-crypto',
+  globals: { 'ts-jest': { tsConfig: '<rootDir>/tsconfig.spec.json' } },
+  displayName: 'server-auth-infrastructure-remote-token-crypto'
 };

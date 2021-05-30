@@ -24,7 +24,7 @@ export class GoogleAnalyticsService {
   }
 
   async init(): Promise<void> {
-    if (this.loaded || this.loadingInProgress) return;
+    if (this.loaded || this.loadingInProgress || !this.googleId) return;
     try {
       await this.insertGoogleScript();
       await this.insertLocalScript();

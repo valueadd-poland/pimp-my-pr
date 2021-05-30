@@ -8,7 +8,7 @@ if (environment.production) {
   enableProdMode();
 }
 
-function loadEnv(): Promise<any> {
+function loadEnv(): Promise<void> {
   return new Promise((resolve, reject) => {
     const req = new XMLHttpRequest();
     req.overrideMimeType('application/json');

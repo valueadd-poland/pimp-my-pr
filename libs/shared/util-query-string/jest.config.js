@@ -1,9 +1,10 @@
 module.exports = {
-  name: 'shared-util-query-string',
-  preset: '../../../jest.config.js',
+  preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../../coverage/libs/shared/util-query-string'
+  coverageDirectory: '../../../coverage/libs/shared/util-query-string',
+  globals: { 'ts-jest': { tsConfig: '<rootDir>/tsconfig.spec.json' } },
+  displayName: 'shared-util-query-string'
 };

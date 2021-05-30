@@ -1,7 +1,7 @@
 import { chain, externalSchematic, Rule } from '@angular-devkit/schematics';
 import * as path from 'path';
 
-export default function(schema: any): Rule {
+export default function (schema: any): Rule {
   if (!schema.name.startsWith('data-access-')) {
     throw new Error(`Data-access lib names should start with 'data-access-'`);
   }

@@ -1,6 +1,7 @@
 module.exports = {
-  name: 'pmp-api-e2e',
-  preset: '../../jest.config.js',
+  preset: '../../jest.preset.js',
   coverageDirectory: '../../coverage/apps/pmp-api-e2e',
-  testEnvironment: 'node'
+  testEnvironment: 'node',
+  globals: { 'ts-jest': { tsConfig: '<rootDir>/tsconfig.spec.json' } },
+  displayName: 'pmp-api-e2e'
 };
