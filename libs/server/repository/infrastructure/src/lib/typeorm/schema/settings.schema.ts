@@ -35,6 +35,4 @@ export const schema = new EntitySchema<SettingEntity | RepositoryRelations>({
   }
 });
 
-// @ts-ignore https://github.com/nestjs/typeorm/issues/151
-schema.name = 'SettingEntity';
 export const SettingsSchema = schema;

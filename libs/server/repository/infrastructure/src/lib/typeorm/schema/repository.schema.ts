@@ -49,6 +49,4 @@ export const schema = new EntitySchema<RepositoryEntity | RepositoryRelations>({
   }
 });
 
-// @ts-ignore https://github.com/nestjs/typeorm/issues/151
-schema.name = 'RepositoryEntity';
 export const RepositorySchema = schema;

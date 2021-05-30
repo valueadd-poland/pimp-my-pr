@@ -13,7 +13,7 @@ import { RepositoryCommonSettingType } from '@pimp-my-pr/shared/domain';
 @Injectable()
 export class SettingsRepositoryAdapter extends SettingsRepository {
   constructor(
-    @InjectRepository(SettingsSchema as any)
+    @InjectRepository(SettingsSchema)
     private typeOrmRepository: Repository<SettingEntity>
   ) {
     super();

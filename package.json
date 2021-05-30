@@ -54,7 +54,7 @@
     "@nestjs/jwt": "^6.1.1",
     "@nestjs/platform-express": "7.6.17",
     "@nestjs/swagger": "^4.3.2",
-    "@nestjs/typeorm": "^6.3.3",
+    "@nestjs/typeorm": "^7.1.5",
     "@ngneat/content-loader": "^4.1.0",
     "@ngneat/until-destroy": "^7.3.2",
     "@ngrx/effects": "12.0.0",

@@ -13,7 +13,7 @@ import {
 @Injectable()
 export class RepositoryRepositoryAdapter extends RepositoryRepository {
   constructor(
-    @InjectRepository(RepositorySchema as any)
+    @InjectRepository(RepositorySchema)
     private typeOrmRepository: Repository<RepositoryEntity>,
     @Inject(remoteRepositoryRepositoryFactoryToken)
     private repositoryFactory: (platform: Platform) => RemoteRepositoryRepository

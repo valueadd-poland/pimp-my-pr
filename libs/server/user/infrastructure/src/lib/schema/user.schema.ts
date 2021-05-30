@@ -18,6 +18,4 @@ const schema = new EntitySchema<User>({
   }
 });
 
-// @ts-ignore https://github.com/nestjs/typeorm/issues/151
-schema.name = 'User';
 export const UserSchema = schema;

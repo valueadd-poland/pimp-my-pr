@@ -13,7 +13,7 @@ export class UserRepositoryAdapter extends UserRepository {
   constructor(
     @Inject(remoteUserRepositoryFactoryToken)
     private remoteUserRepository: (platform: Platform) => RemoteUserRepository,
-    @InjectRepository(UserSchema as any) private typeOrmRepository: Repository<User>
+    @InjectRepository(UserSchema) private typeOrmRepository: Repository<User>
   ) {
     super();
   }
