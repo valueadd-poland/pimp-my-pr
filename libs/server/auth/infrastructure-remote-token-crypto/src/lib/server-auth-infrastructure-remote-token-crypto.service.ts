@@ -25,7 +25,11 @@ export class ServerAuthInfrastructureRemoteTokenCryptoService extends RemoteToke
     const IV = Buffer.from(textParts.shift(), this.outputEncoding);
     const encryptedText = Buffer.from(textParts.join(':'), this.outputEncoding);
     const decipher = crypto.createDecipheriv(this.algorithm, this.key, IV);
-    let decrypted = decipher.update(encryptedText, this.outputEncoding, this.inputEncoding);
+    let decrypted = decipher.update(
+      encryptedText.toString(),
+      this.outputEncoding,
+      this.inputEncoding
+    );
     decrypted += decipher.final(this.inputEncoding);
     return decrypted.toString();
   }
